@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def user_name
+    self.name
+  end
+
 end
