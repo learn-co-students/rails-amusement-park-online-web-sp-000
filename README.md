@@ -1,5 +1,8 @@
 
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
 
+   <input type=submit value='Log Out' />
+ <% end %>
 
 
 

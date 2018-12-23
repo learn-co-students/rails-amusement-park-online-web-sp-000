@@ -37,17 +37,27 @@ class UsersController < ApplicationController
 
 end
 
-# it 'successfully signs up as admin' do
-#   visit '/users/new'
-#   expect(current_path).to eq('/users/new')
-#   # admin_signup method is defined in login_helper.rb
-#   admin_signup
-#   expect(current_path).to eq('/users/1')
-#   expect(page).to have_content("Walt Disney")
-#   expect(page).to have_content("ADMIN")
-# end
+# describe 'Feature Test: User Signout', :type => :feature do
 
+  # it 'redirects to home page after logging out' do
+  #   visit '/users/new'
+  #   # user_signup method is defined in login_helper.rb
+  #   user_signup
+  #   click_link("Log Out")
+  #   expect(current_path).to eq('/')
+  # end
 
-# {"utf8"=>"✓", "authenticity_token"=>"gcc9a8xYOfrtU3EcRnNKxNwu4FExmkZ+OfIGEFkkqKWp4Lfp15QGCeiJmLNu6z6KHla8P8u+vEoNQL9sMRJHVA==",
-#   "user"=>{"name"=>"user3", "height"=>"33", "happiness"=>"3", "nausea"=>"3", "tickets"=>"33", "password"=>"user3", "admin"=>"1"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} permitted
-# : false>
+  # it "successfully destroys session hash when 'Log Out' is clicked" do
+  #   visit '/users/new'
+  #   # user_signup method is defined in login_helper.rb
+  #   user_signup
+  #   click_link("Log Out")
+  #   expect(page.get_rack_session).to_not include("user_id")
+  # end
+  #
+  # it 'has a link to log out from the users/show page when user is an admin' do
+  #   visit '/users/new'
+  #   # admin_signup method is defined in login_helper.rb
+  #   admin_signup
+  #   expect(page).to have_content("Log Out")
+  # end
