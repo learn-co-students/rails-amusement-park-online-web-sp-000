@@ -1,5 +1,5 @@
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
-
+  <h1>Sign Up</h1>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br />
@@ -17,6 +17,9 @@
   <br />
   <%= f.label :password %>
   <%= f.text_field :password %>
+  <br />
+  <%= f.label "Are you an amusement park owner?" %>
+  <%= f.check_box :admin %>
   <br />
   <%= f.submit "Create User" %>
 
