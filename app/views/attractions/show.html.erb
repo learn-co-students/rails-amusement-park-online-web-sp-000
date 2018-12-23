@@ -1,2 +1,4 @@
-
-<%= button_to "Go on this ride", user_path(current_user.id), method: :get %>
+<%= form_for @attraction do |f| %>
+  
+  <%= button_to "Go on this ride", user_path(current_user.id), method: :get %>
+<% end %>
