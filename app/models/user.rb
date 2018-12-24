@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     self.name
   end
 
-
+  def last_ride
+    if self.rides.present?
+      self.rides.last
+    end
+  end
 
 end

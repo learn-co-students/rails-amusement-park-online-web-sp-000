@@ -22,11 +22,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    last_ride = @user.rides.last
     if current_user == @user
       render 'show'
     else
       redirect_to "/"
     end
+  end
+
+  def update
+    binding.pry
   end
 
   private

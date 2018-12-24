@@ -1,6 +1,7 @@
 class Ride < ActiveRecord::Base
   belongs_to :attraction
   belongs_to :user
+  accepts_nested_attributes_for :attraction
 
   def enough_tickets
     self.user.tickets > self.attraction.tickets
@@ -22,6 +23,7 @@ class Ride < ActiveRecord::Base
       self.user.nausea += self.attraction.nausea_rating
       self.user.happiness += self.attraction.happiness_rating
       self.user.save
+      "Thanks for riding the #{self.attraction.name}!"
     end
   end
 

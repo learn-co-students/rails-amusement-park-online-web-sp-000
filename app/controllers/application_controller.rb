@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :is_logged_in
   helper_method :current_user
   helper_method :is_admin
+  helper_method :last_ride
 
   def is_logged_in
     session[:user_id].present?
@@ -15,6 +16,12 @@ class ApplicationController < ActionController::Base
   def is_admin(user)
     if user.admin?
       "ADMIN"
+    end
+  end
+
+  def last_ride
+    if current_user.rides.present?
+      current_user.rides.last.take_ride
     end
   end
 

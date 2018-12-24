@@ -8,14 +8,17 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find_by(id: params[:id])
   end
 
+  def update
+    # attractions controller
+    binding.pry
+  end
+
 end
 
-#
-# it "links from the attractions index page to the attractions' show pages" do
-#   click_link('See attractions')
-#   click_link("Go on #{@ferriswheel.name}")
-#   expect(current_path).to eq("/attractions/2")
-# end
 
-# <ActionController::Parameters {"_method"=>"get", "authenticity_token"=>"cCW2UzIaOQBMgK8V3QTbckdXhKKgwuKTJjaUzlbyUbTuGUuZZyJ/DVx/5A0qiOgD9ebgPfHS8N+9SzirZiU7Y
-# Q==", "controller"=>"attractions", "action"=>"show", "id"=>"2"} permitted: false>
+
+# With hidden field "attraction_id"
+ # "ride"=>{"attraction_id"=>""}, "commit"=>"Go on this ride", "controller"=>"attractions", "action"=>"update", "id"=>"8"}
+
+# Without hidden_field "attraction_id"
+# "commit"=>"Go on this ride", "controller"=>"attractions", "action"=>"update", "id"=>"4"}
