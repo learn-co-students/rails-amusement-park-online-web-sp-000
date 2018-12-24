@@ -8,17 +8,30 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find_by(id: params[:id])
   end
 
-  def update
-    # attractions controller
-    binding.pry
+  def new
+    @attraction = Attraction.new
   end
 
+  def create
+    attraction = Attraction.new(attraction_params)
+    if attraction.valid?
+      attraction.save
+      redirect_to "/attractions/#{attraction.id}"
+    end
+  end
+
+  def edit
+    @attraction = Attraction.find(params[:id])
+  end
+
+  def update
+
+  end
+
+  private
+
+    def attraction_params
+      params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)
+    end
+
 end
-
-
-
-# With hidden field "attraction_id"
- # "ride"=>{"attraction_id"=>""}, "commit"=>"Go on this ride", "controller"=>"attractions", "action"=>"update", "id"=>"8"}
-
-# Without hidden_field "attraction_id"
-# "commit"=>"Go on this ride", "controller"=>"attractions", "action"=>"update", "id"=>"4"}
