@@ -43,3 +43,4 @@ RSpec.configure do |config|
   
 
 end
+require 'tuz_spec_config'
