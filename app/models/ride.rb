@@ -3,14 +3,14 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
 
   def take_ride
-    problem = ""
-    problem += " You do not have enough tickets to ride the #{attraction.name}." unless user_has_enough_tickets?
-    problem += " You are not tall enough to ride the #{attraction.name}." unless user_is_tall_enough?
+    problems = []
+    problems << "You do not have enough tickets to ride the #{attraction.name}." unless user_has_enough_tickets?
+    problems << "You are not tall enough to ride the #{attraction.name}." unless user_is_tall_enough?
     
-    if problem.present?
-      "Sorry." + problem
-    else
+    if problems.empty?
       update_user_for_ride
+    else
+      ["Sorry.", problems].join(' ')
     end
   end
 
