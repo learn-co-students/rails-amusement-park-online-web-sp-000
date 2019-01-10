@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :require_login, only: [:show, :index]
+
   def new    
   end
   
@@ -24,4 +26,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
   end
   
+  def require_login
+    redirect_to '/' unless session[:user_id]
+  end
+
 end
