@@ -12,7 +12,10 @@ class UsersController < ApplicationController
       flash.notice = ["Could not create user", @user.errors.full_messages].join("\r\n")
       redirect_to new_user_path
     end
-    
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
   
   private 

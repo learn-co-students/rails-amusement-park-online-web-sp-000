@@ -6,9 +6,13 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module RailsAmusementPark
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    
+    # Rails.application.
+    config.active_record.sqlite3.represent_boolean_as_integer = true
     config.load_defaults 5.1
 
     # Settings in config/environments/* take precedence over those specified here.
