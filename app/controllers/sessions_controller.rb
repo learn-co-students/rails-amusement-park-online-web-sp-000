@@ -4,13 +4,13 @@ class SessionsController < ApplicationController
   end
   
   def create
-    # binding.pry
     @user = User.find_by(name: params[:user][:name])
-    if @user.validate
+    if @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      binding.pry
+      flash[:notice] = "Incorrect credentials."
+      redirect_to '/signin'
     end
   end
   
