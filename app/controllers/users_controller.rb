@@ -26,8 +26,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
   end
   
-  def require_login
-    redirect_to '/' unless session[:user_id]
-  end
-
 end
