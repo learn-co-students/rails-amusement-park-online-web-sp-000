@@ -6,4 +6,5 @@
   <li>Mood: <%= @user.mood %></li>
   <li><%= "ADMIN" if @user.admin %></li>
 </ul>
+<p><%= link_to 'See attractions', attractions_path %></p>
 <p><%= link_to 'Log Out', '/signout' %></p>
