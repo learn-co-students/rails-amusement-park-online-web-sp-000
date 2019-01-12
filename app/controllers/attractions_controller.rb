@@ -8,9 +8,4 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find(params[:id])
   end
   
-  def ride
-    # ride the ride!
-    redirect_to user_path(current_user)
-  end
-
 end

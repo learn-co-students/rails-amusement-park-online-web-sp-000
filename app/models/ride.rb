@@ -11,6 +11,7 @@ class Ride < ActiveRecord::Base
       ["Sorry.", problems].join(' ')
     else
       update_user_for_ride
+      "Thanks for riding the #{attraction.name}!"
     end
   end
 
