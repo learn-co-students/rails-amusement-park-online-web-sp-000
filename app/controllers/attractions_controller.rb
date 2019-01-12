@@ -1,6 +1,6 @@
 class AttractionsController < ApplicationController
 
-  before_action :require_login
+  before_action :require_login, only: [:new]
 
   def index
     @attractions = Attraction.all
@@ -9,6 +9,10 @@ class AttractionsController < ApplicationController
 
   def show
     @attraction = Attraction.find(params[:id])
+  end
+
+  def new
+    
   end
   
 end
