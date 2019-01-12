@@ -1,7 +1,10 @@
 class AttractionsController < ApplicationController
 
+  before_action :require_login
+
   def index
     @attractions = Attraction.all
+    @user = current_user
   end
 
   def show

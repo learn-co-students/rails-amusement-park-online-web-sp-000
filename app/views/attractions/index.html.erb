@@ -2,3 +2,4 @@
 
 <%= render partial: 'list_attractions' %>
 
+<%= render partial: 'admin_attractions' if @user.admin? %>
