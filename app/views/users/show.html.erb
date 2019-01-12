@@ -4,7 +4,7 @@
   <li>Height: <%= @user.height %></li>
   <li>Tickets: <%= @user.tickets %></li>
   <li>Mood: <%= @user.mood %></li>
-  <li><%= "ADMIN" if @user.admin %></li>
+  <%= "<li>ADMIN</li>" if @user.admin %>
 </ul>
 <p><%= link_to 'See attractions', attractions_path %></p>
 <p><%= link_to 'Log Out', '/signout' %></p>
