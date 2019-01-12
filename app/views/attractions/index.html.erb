@@ -1,7 +1,4 @@
 <h1>Attractions</h1>
 
-<ul>
-  <% @attractions.each do |attraction| %>
-    <li><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></li>
-  <% end %>
-</ul>
+<%= render partial: 'list_attractions' %>
+
