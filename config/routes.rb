@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   post 'signin', to: 'sessions#create'
   get 'signout', to: 'sessions#destroy', as: :signout_path
   post 'ride/:attraction_id', to: 'rides#create', as: :ride
-  root new_user_path # should go to some index or something?
+  root 'users#new' # should go to some index or something?
 end
