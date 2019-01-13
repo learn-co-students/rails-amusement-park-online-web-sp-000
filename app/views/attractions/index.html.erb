@@ -1,4 +1,9 @@
 <h1>Attractions</h1>
 
 <%= render partial: 'list_attractions' %>
-<%= render partial: 'admin_attractions' if @user && @user.admin? %>
+
+<%= link_to 'New Attraction' if @user && @user.admin? %>
+
+<% if !@user %>
+  <%= link_to 'Sign Up', new_user_path %> or <%= link_to 'Sign In', signin_path %> to go on rides!
+<% end %>
