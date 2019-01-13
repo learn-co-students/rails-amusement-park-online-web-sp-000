@@ -2,7 +2,7 @@
 
 <%= render partial: 'list_attractions' %>
 
-<%= link_to 'New Attraction' if @user && @user.admin? %>
+<%= link_to 'New Attraction', new_attraction_path if @user && @user.admin? %>
 
 <% if !@user %>
   <%= link_to 'Sign Up', new_user_path %> or <%= link_to 'Sign In', signin_path %> to go on rides!
