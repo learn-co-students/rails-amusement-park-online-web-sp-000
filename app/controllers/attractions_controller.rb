@@ -1,6 +1,7 @@
 class AttractionsController < ApplicationController
 
-  before_action :require_login, only: [:new]
+  before_action :require_login, only: [:show]
+  before_action :require_admin, only: [:new, :create, :edit, :update]
 
   def index
     @attractions = Attraction.all
