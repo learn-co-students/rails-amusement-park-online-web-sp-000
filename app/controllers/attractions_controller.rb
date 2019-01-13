@@ -6,9 +6,10 @@ class AttractionsController < ApplicationController
     @attractions = Attraction.all
     @user = current_user
   end
-
+  
   def show
     @attraction = Attraction.find(params[:id])
+    @user = current_user
   end
 
   def new
@@ -24,6 +25,12 @@ class AttractionsController < ApplicationController
     end
   end
   
+  def edit
+    @attraction = Attraction.find(params[:id])
+  end
+  
+  private
+
   def attraction_params
     params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
   end
