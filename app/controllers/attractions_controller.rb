@@ -29,6 +29,12 @@ class AttractionsController < ApplicationController
   def edit
     @attraction = Attraction.find(params[:id])
   end
+
+  def update
+    @attraction = Attraction.find(params[:id])
+    @attraction.update(attraction_params)
+    redirect_to @attraction
+  end
   
   private
 
