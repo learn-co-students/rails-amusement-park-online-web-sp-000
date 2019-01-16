@@ -1,0 +1,14 @@
+<h1>Attractions</h1>
+<table>
+
+<% @attractions.each do |a| %>
+  <tr>
+    <td><%= user_index(a) %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<% if current_user.admin? %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
