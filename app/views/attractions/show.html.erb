@@ -1,0 +1,13 @@
+Name: <%=@att.name%><br>
+Total Number of Users: <%=@att.users.count%><br>
+Ticket Requirement: <%=@att.tickets%><br>
+Height Requirement: <%=@att.min_height%><br>
+Nausea Rating: <%=@att.nausea_rating%><br>
+Happiness RAting: <%=@att.happiness_rating%><br>
+<% if @user.admin %>
+  <%= link_to 'Edit Attraction', edit_attraction_path(@att)%>
+<%else%>
+  <%= form_for @att do |f| %>
+  <%= f.submit value='Go on this ride'%>
+  <% end %>
+<% end %>
