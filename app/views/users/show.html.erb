@@ -1,0 +1,17 @@
+<% if flash.notice == true %>
+<h3>"Thanks for riding the Ferris Wheel!"</h3>
+<% else %>
+  <%= flash.notice %>
+<% end %>
+
+<% if @user.admin %>
+<h2>ADMIN</h2>
+<% end %>
+
+<h1><%= @user.name %></h1>
+<h2><ul>
+  <li>Mood: <%= @user.mood %></li>
+  <li>Height: <%= @user.height %></li>
+  <li>Tickets: <%= @user.tickets %></li><br />
+  <%= link_to 'See attractions', attractions_path %>
+</ul></h2>
