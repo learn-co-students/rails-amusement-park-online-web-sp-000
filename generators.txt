@@ -1,0 +1,7 @@
+rails g resource Attraction name:string tickets:integer nausea_rating:integer happiness_rating:integer min_height:integer --no-test-framework
+
+rails g resource User name:string password_digest:string nausea:integer happiness:integer tickets:integer height:integer --no-test-framework
+
+rails g resource Ride user_id:integer attraction_id:integer --no-test-framework
+
+
