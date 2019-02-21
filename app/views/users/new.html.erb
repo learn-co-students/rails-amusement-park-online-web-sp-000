@@ -1,0 +1,9 @@
+<%= form_for User.new do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :password %>
+  <%= f.number_field :nausea %>
+  <%= f.number_field :happiness %>
+  <%= f.number_field :tickets %>
+  <%= f.number_field :height %>
+  <%= f.submit %>
+<% end %>
