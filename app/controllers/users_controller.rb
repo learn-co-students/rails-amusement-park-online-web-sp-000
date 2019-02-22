@@ -7,10 +7,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    return redirect_to controller: 'users', action: 'new' unless @user.save
-    session[:user_id] = @user.id
-    @user
-    redirect_to user_path(@user)
+    # return redirect_to controller: 'users', action: 'new' unless @user.save
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to controller: 'users', action: 'new'
+    end
   end
 
   def show
@@ -22,7 +25,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(
         :name,
-        :password_digest,
+        :password,
         :height,
         :tickets,
         :happiness,
