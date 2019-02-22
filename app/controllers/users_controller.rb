@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destory]
+  
   def new
     @user = User.new
   end
@@ -7,7 +9,8 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     return redirect_to controller: 'users', action: 'new' unless @user.save
     session[:user_id] = @user.id
-#    redirect_to controller: 'welcome', action: 'home'
+    @user
+    redirect_to user_path(@user)
   end
 
   def user_params
@@ -20,6 +23,9 @@ class UsersController < ApplicationController
       :nausea,
       :admin
     )
+  end
+
+  def show
   end
 
 end
