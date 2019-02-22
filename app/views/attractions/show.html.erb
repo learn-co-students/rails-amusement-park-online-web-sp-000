@@ -1,0 +1,6 @@
+<%= @attraction.name %><br>
+<form action="/rides/create" method="post">
+<%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+<input type="submit" value="Go on this ride">
+</form>
+<%= link_to "Edit Attraction", edit_attraction_path if @user.admin %>

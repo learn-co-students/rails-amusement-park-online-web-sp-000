@@ -1,0 +1,9 @@
+<%= @ride_taken %>
+
+Name: <%= @user.name %> <br>
+Mood: <%= @user.mood %><br>
+Tickets: <%= @user.tickets %><br>
+Height: <%= @user.height %>
+<%= "ADMIN" if @user.admin %><br>
+<%= link_to 'Log Out', sessions_destroy_path %><br>
+<%= link_to 'See attractions', attractions_path %>
