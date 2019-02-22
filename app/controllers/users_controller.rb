@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destory]
-  
+
   def new
     @user = User.new
   end
@@ -13,19 +13,25 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def user_params
-    params.require(:user).permit(
-      :name,
-      :password_digest,
-      :height,
-      :tickets,
-      :happiness,
-      :nausea,
-      :admin
-    )
-  end
-
   def show
   end
 
+
+  private
+
+    def user_params
+      params.require(:user).permit(
+        :name,
+        :password_digest,
+        :height,
+        :tickets,
+        :happiness,
+        :nausea,
+        :admin
+      )
+    end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
 end
