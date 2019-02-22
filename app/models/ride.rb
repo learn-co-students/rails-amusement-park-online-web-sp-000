@@ -14,6 +14,7 @@ class Ride < ApplicationRecord
       self.user.nausea += self.attraction.nausea_rating
       self.user.happiness += self.attraction.happiness_rating
       self.user.save
+      return "Thanks for riding the #{self.attraction.name}!"
     end
   end
 
