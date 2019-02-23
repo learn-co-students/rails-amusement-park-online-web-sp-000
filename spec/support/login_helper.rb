@@ -18,6 +18,10 @@ module LoginHelper
 
   def admin_signup
     fill_in("user[name]", :with => "Walt Disney")
+    fill_in("user[height]", :with => "58")
+    fill_in("user[happiness]", :with => "3")
+    fill_in("user[nausea]", :with => "2")
+    fill_in("user[tickets]", :with => "15")
     fill_in("user[password]", :with => "password")
     find(:css, "#user_admin").set(true)
     click_button('Create User')
@@ -48,10 +52,14 @@ module LoginHelper
       nausea: 2,
       tickets: 10,
       height: 50
-    )
+      )
     @walt = User.create(
       name: "Walt Disney",
       password: "password",
+      happiness: 3,
+      nausea: 2,
+      tickets: 10,
+      height: 50,
       admin: true
     )
   end
