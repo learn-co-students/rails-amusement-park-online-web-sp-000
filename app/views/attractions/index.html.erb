@@ -4,10 +4,9 @@
   <% if current_user.admin %>
     <%= link_to "Show #{attraction.name}", attraction_path(attraction) %><br>
   <% else %>
-    <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br>
+    <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br><br>
   <% end %>
 <% end %>
-
 <% if @user %>
   <p>
     <%= link_to "Back to profile", user_path(@user) %>

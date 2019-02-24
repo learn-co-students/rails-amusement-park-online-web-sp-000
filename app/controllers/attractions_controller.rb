@@ -2,6 +2,7 @@ class AttractionsController < ApplicationController
   before_action :set_attraction, only: [:show, :edit, :update, :destory]
 
   def index
+    @user = current_user if session[:user_id]
     @attractions = Attraction.all
   end
 
