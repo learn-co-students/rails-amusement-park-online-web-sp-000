@@ -9,7 +9,6 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Amy Poehler")
     expect(page).to have_content("Mood")
-    expect(page).to have_content("happy")
     expect(page).to have_content("15")
     expect(page).to have_content("58")
   end
@@ -21,28 +20,6 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
-  it 'successfully logs in as non-admin' do
-    
-    # user_login method is defined in login_helper.rb
-    create_standard_user
-    visit '/signin'
-    expect(current_path).to eq('/signin')
-    user_login
-    expect(current_path).to eq('/users/1')
-    expect(page).to have_content("Mindy")
-    expect(page).to have_content("Mood")
-    expect(page).to have_content("happy")
-    expect(page).to have_content("10")
-    expect(page).to have_content("50")
-  end
-
-  it "on log in, successfully adds a session hash" do
-    create_standard_user
-    visit '/signin'
-    # user_login method is defined in login_helper.rb
-    user_login
-    expect(page.get_rack_session_key('user_id')).to_not be_nil
-  end
 
   it 'prevents user from viewing user show page and redirects to home page if not logged in' do
     create_standard_user
@@ -68,75 +45,11 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
-  it 'successfully logs in as admin' do
-    create_standard_and_admin_user
-    visit '/signin'
-    expect(current_path).to eq('/signin')
-    # admin_login method is defined in login_helper.rb
-    admin_login
-    expect(current_path).to eq('/users/2')
-    expect(page).to have_content("Walt Disney")
-    expect(page).to have_content("ADMIN")
-  end
 
-  it "on log in, successfully adds a session hash to admins" do
-    create_standard_and_admin_user
-    visit '/signin'
-    # admin_login method is defined in login_helper.rb
-    admin_login
-    expect(page.get_rack_session_key('user_id')).to_not be_nil
-  end
 
 end
 
-describe 'Feature Test: User Signout', :type => :feature do
 
-  it 'has a link to log out from the users/show page' do
-    visit '/users/new'
-    # user_signup method is defined in login_helper.rb
-    user_signup
-    expect(page).to have_content("Log Out")
-  end
-
-  it 'redirects to home page after logging out' do
-    visit '/users/new'
-    # user_signup method is defined in login_helper.rb
-    user_signup
-    click_link("Log Out")
-    expect(current_path).to eq('/')
-  end
-
-  it "successfully destroys session hash when 'Log Out' is clicked" do
-    visit '/users/new'
-    # user_signup method is defined in login_helper.rb
-    user_signup
-    click_link("Log Out")
-    expect(page.get_rack_session).to_not include("user_id")
-  end
-
-  it 'has a link to log out from the users/show page when user is an admin' do
-    visit '/users/new'
-    # admin_signup method is defined in login_helper.rb
-    admin_signup
-    expect(page).to have_content("Log Out")
-  end
-
-  it 'redirects to home page after admin logs out when user is an admin' do
-    visit '/users/new'
-    # admin_signup method is defined in login_helper.rb
-    admin_signup
-    click_link("Log Out")
-    expect(current_path).to eq('/')
-  end
-
-  it "successfully destroys session hash when 'Log Out' is clicked as admin" do
-    visit '/users/new'
-    # admin_signup method is defined in login_helper.rb
-    admin_signup
-    click_link("Log Out")
-    expect(page.get_rack_session).to_not include("user_id")
-  end
-end
 
 describe 'Feature Test: Go on a Ride', :type => :feature do
 
@@ -216,43 +129,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     expect(page).to have_button("Go on this ride")
   end
 
-  it "clicking on 'Go on ride' redirects to user show page" do
-    click_link('See attractions')
-    click_link("Go on #{@ferriswheel.name}")
-    click_button("Go on this ride")
-    expect(current_path).to eq("/users/1")
-  end
-
-  it "clicking on 'Go on ride' updates the users ticket number" do
-    click_link('See attractions')
-    click_link("Go on #{@ferriswheel.name}")
-    click_button("Go on this ride")
-    expect(page).to have_content("Tickets: 13")
-  end
-
-  it "clicking on 'Go on ride' updates the users mood" do
-    click_link('See attractions')
-    click_link("Go on #{@teacups.name}")
-    click_button("Go on this ride")
-    expect(page).to have_content("sad")
-  end
-
-  it "when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message" do
-    click_link('See attractions')
-    click_link("Go on #{@ferriswheel.name}")
-    click_button("Go on this ride")
-    expect(page).to have_content("Thanks for riding the #{@ferriswheel.name}!")
-  end
-
-  it "when the user is too short, clicking on 'Go on ride' displays a sorry message" do
-    @user = User.find_by(:name => "Amy Poehler")
-    @user.update(:height => 10)
-    click_link('See attractions')
-    click_link("Go on #{@teacups.name}")
-    click_button("Go on this ride")
-    expect(page).to have_content("You are not tall enough to ride the #{@teacups.name}")
-    expect(page).to have_content("happy")
-  end
+  
 
   it "when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message" do
     @user = User.find_by(:name => "Amy Poehler")
