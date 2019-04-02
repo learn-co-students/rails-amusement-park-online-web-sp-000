@@ -21,15 +21,17 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
     <!-- content -->
+    <%= content_tag(:div, flash[:notice], :id => "flash_notice") %>
+    <%= content_tag(:div, flash[:message], :id => "flash_message") if (take_ride = true) %>
+
     <div class="container"  role="main">
       <%= yield %>
     </div>
   </body>
-</html>
