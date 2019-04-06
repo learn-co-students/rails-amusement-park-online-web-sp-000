@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+  <div> <%= flash[:notice] %> </div> %>
+<% end %>
+
+<%= link_to("Log Out", signout_path, method: "delete") %>
+<h2><%= @user.name %> <%= "ADMIN" if @user.admin %></h2>
+<ul>
+  <li>Height: <%= @user.height %></li>
+  <li>Mood: <%= @user.nausea && @user.happiness ? @user.mood : "unknown" %></li>
+  <li>Tickets: <%= @user.tickets %></li>
+</ul>
+
+<%= link_to "See attractions", attractions_path %>

@@ -1,0 +1,5 @@
+0<%= form_for(@user, url: :sessions_create) do |f| %>
+  <%= f.label :name %><%= f.select :name, @users.map { |u| u.name } %>
+  <%= f.label :password %><%= f.password_field :password, name: "password" %>
+  <%= f.submit "Sign In" %>
+<% end %>
