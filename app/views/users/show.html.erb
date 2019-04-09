@@ -1,0 +1,11 @@
+<h1>User Page</h1
+<% if @user.admin %>
+  <h2>Admin </h2>
+<% end %>
+
+<h2>Name: </h2> <%= @user.name %><br>
+<h2>Mood:</h2>: <%= @user.mood %><br>
+<h2>Tickets: </h2>: <%= @user.tickets %><br>
+<h2>Height: </h2>: <%= @user.height %>  
+
+<%= link_to "Log Out", logout_path %>
