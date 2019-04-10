@@ -1,12 +1,12 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
+    has_secure_password
     has_many :rides
     has_many :attractions, through: :rides
 
-    has_secure_password
-
     def mood
-       self.nausea > self.happiness ? 'sad' : 'happy'
-          
+        if self.happiness && self.nausea
+            mood = self.happiness - self.nausea
+            mood > 0 ? "happy" : "sad"
+        end
     end
-
 end

@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-     root 'users#index'
+  
+  #get 'user/new'
+  root 'static#home'
+  
+  get '/signin', to: 'sessions#new'
+  post '/signin', to: 'sessions#create'
+  delete '/signout', to: 'sessions#destroy'
 
-    get '/signin', to: 'sessions#new'
-    post '/signin', to: 'sessions#create'
-    get '/logout', to: 'sessions#destroy'
-    
-    resources :users
-    resources :attractions
-    resources :rides
-    resources :sessions, only: [:new, :create, :destroy]
+  resources :users
+  resources :rides 
+  resources :attractions
 end
-
