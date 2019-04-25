@@ -6,11 +6,16 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
+    session[:user_id] = user.id
     redirect_to user
   end
 
   def show
-    @user = User.find(params[:id])
+    if !logged_in?
+      redirect_to root_path
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   private
