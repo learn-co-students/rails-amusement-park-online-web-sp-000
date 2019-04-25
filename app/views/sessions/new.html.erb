@@ -1,0 +1,11 @@
+<%= form_tag("/signin") do %>
+  Your name:
+  <br>
+  <%= select_tag "user_name", options_from_collection_for_select(@users, "name", "name"), include_blank: true %>
+  <br>
+  Your Password:
+  <br>
+  <%= text_field_tag "password" %>
+  <br>
+  <%= submit_tag "Sign In" %>
+<% end %>
