@@ -1,0 +1,24 @@
+<%= form_for(@user) do |f| %>
+  <label>Name:</label><br>
+  <%= f.text_field :name %><br>
+
+  <label>Password:</label><br>
+  <%= f.text_field :password %><br>
+
+  <label>Nausea:</label><br>
+  <%= f.text_field :nausea %><br>
+
+  <label>happiness:</label><br>
+  <%= f.text_field :happiness %><br>
+
+  <label>Tickets:</label><br>
+  <%= f.text_field :tickets %><br>
+
+  <label>Height:</label><br>
+  <%= f.text_field :height %><br>
+
+  <label>Admin:</label><br>
+  <%= f.text_field :admin %><br>
+
+  <%= f.submit %>
+<% end %>
