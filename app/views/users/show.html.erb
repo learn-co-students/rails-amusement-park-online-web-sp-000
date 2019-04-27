@@ -1,0 +1,9 @@
+<h1><%= @user.name %></h1>
+<ul>
+  <li>Mood: <%= @user.mood %></li>
+  <li>Tickets: <%= @user.tickets %></li>
+  <li>Height: <%= @user.height %></li>
+  <%= render :partial => 'users/admin' if @user.admin? %>
+</ul>
+<%= link_to "Log Out", '/signout', {method: :delete} %>
+<%= link_to "See attractions", '/attractions' %>

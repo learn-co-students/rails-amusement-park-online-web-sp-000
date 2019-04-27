@@ -1,0 +1,7 @@
+<h2><%= @attraction.name %></h2>
+
+<% if @user.admin? %>
+  <%= render :partial => 'attractions/admin_show' %>
+<% else %>
+  <%= render :partial => 'attractions/user_show' %>
+<% end %>
