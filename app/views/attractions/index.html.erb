@@ -1,0 +1,7 @@
+<h1>Welcome to the Attractions Page</h1>
+
+<% if @user.admin? %>
+  <%= render :partial => 'attractions/admin_index' %>
+<% else %>
+  <%= render :partial => 'attractions/user_index' %>
+<% end %>

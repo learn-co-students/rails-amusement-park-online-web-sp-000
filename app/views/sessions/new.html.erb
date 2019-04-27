@@ -1,0 +1,6 @@
+<h2>Select your username to sign in</h2>
+<%= form_tag('/signin', method: :post) %>
+<%= select("user", "name", User.all.collect{|u| [u.name, u.name]}, prompt: 'Select User') %>
+<p>
+<p>Password: <%= password_field_tag 'password' %>
+<%= submit_tag "Sign In" %>
