@@ -1,0 +1,14 @@
+<%=flash.notice %>
+
+<h1>Welcome <%=@user.name%> <%=is_admin(@user)%></h1>
+
+<label>Height: </label><br>
+<%=@user.height%><br>
+<label>Mood: </label><br>
+<%=@user.mood%><br>
+<label>Tickets: </label><br>
+<%=@user.tickets%><br>
+
+
+<%=link_to "Log Out", signout_path%><br>
+<%=link_to "See attractions", attractions_path%>
