@@ -1,10 +1,26 @@
 class SessionsController < ApplicationController
 
+  skip_before_action :require_login
   def new
-    @users = User.all
-  end
+     @users = User.all
+   end
 
   def create
-    raise params.inspect
-  end
+     @user = User.find_by(name: params[:user_name])
+     if @user && @user.authenticate(params[:password])
+       session[:user_id] = @user.id
+       redirect_to user_path(@user)
+     else
+       redirect_to root_path
+     end
+   end
+
+   def destroy
+     if session[:user_id]
+       session.delete :user_id
+     end
+     redirect_to root_path
+   end
+
+
 end
