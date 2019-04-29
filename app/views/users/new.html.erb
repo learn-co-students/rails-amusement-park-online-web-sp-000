@@ -1,9 +1,13 @@
 <h1>Signup</h1>
 
-<%= form_for @user, url: signup_path do |f| %>
-  Username:<%= f.text_field :name %>
-  Password:<%= f.password_field :password %>
-  Password Confirmation:<%= f.password_field :password_confirmation %>
+<%= form_for @user do |f| %>
+  <p>Name</p><%= f.text_field :name %><br><br>
+  <p>Height (in inches) </p><%= f.number_field :height %><br><br>
+  <p>How happy are you? (1-5 scale)</p><%= f.number_field :happiness %><br><br>
+  <p>How nauseous are you? (1-5 scale)</p><%= f.number_field :nausea %><br><br>
+  <p>How many dollars are in your pocket? </p><%= f.number_field :tickets %><br><br>
+  Check box if you are a theme park owner <%= f.check_box :admin, {}, true, false %><br><br>
+  <p>Password</p><%= f.password_field :password %><br><br>
 
-  <%= f.submit "Signup" %>
+  <%= f.submit "Create User" %>
 <% end %>
