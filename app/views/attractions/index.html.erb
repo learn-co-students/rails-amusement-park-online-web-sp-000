@@ -1,15 +1,11 @@
-<h1>Attractions Listing: </h1>
-
 <ul>
   <% @attractions.each do |attraction| %>
-    <% if current_user.admin == true %>
-      <li><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></li>
+    <% if !!current_user.admin %>
+      <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
     <% else %>
-      <li><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></li>
+      <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
     <% end %>
   <% end %>
 </ul>
 
-<% if current_user.admin == true %>
-  <%= link_to "New Attraction", new_attraction_path %>
-<% end %>
+<%= link_to "New Attraction", new_attraction_path %>
