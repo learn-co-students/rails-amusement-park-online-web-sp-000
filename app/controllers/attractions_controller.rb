@@ -1,7 +1,7 @@
 class AttractionsController < ApplicationController
 
   def index
-    @rides = Ride.all
+    @attractions = Attraction.all
   end
 
 end
