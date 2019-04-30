@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
 
   def redirect_if_not_logged_in
-    redirect_to root_path if logged_in? == false
+    redirect_to root_path if !logged_in?
   end
 
   def logged_in?
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.find_by(id: session[:user_id])
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
 end

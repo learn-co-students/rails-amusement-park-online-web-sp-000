@@ -18,7 +18,7 @@ class AttractionsController < ApplicationController
     if @attraction.save
       redirect_to attraction_path(@attraction)
     else
-      render new_attraction_path
+      redirect_to attractions_path
     end
   end
 
