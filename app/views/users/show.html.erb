@@ -1,0 +1,12 @@
+<ul>
+  <li>Username: <%= @user.name %></li>
+  <li>Mood: <%= @user.mood %></li>
+  <li>Tickets: <%= @user.tickets %></li>
+  <li>Height: <%= @user.height %></li>
+  <li>ADMIN: <%= @user.admin %></li>
+</ul>
+
+
+<%= link_to "See attractions", attractions_path %><br>
+
+<%= link_to "Log Out", logout_path %>
