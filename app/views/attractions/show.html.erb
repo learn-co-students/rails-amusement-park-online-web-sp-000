@@ -1,0 +1,13 @@
+  <dl>
+    <dt>Name:<%= @attraction.name %></dt>
+    <dd>Tickets:<%= @attraction.tickets %></dd>
+    <dd>Nausea Rating:<%= @attraction.nausea_rating %></dd>
+    <dd>Happiness Rating:<%= @attraction.happiness_rating %></dd>
+    <dd>Min Height:<%= @attraction.min_height %></dd>
+  </dl>
+  <%= form_tag(user_path(@user), :method => "GET") do %>
+  <%= hidden_field_tag :attraction_id, @attraction.id %>
+  <%= submit_tag "Go on this ride"%>
+  <% end %>
+
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction) if @user.admin %>

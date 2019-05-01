@@ -1,0 +1,19 @@
+<% if @user.admin %>
+  <h1>ADMIN</h1>
+<% end %>
+<% if !@user.rides.blank? %>
+
+  <% if @user.rides.last.take_ride.is_a?(String) %>
+
+    <%= @user.rides.last.take_ride %>
+    <% else %>
+    <%= "Thanks for riding the #{@user.rides.last.attraction.name}!" %>
+  <% end %>
+<% end %>
+<h1>Name: <%= @user.name %></h1>
+
+<p>Height: <%= @user.height %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p><%= link_to "See attractions", attractions_path%></p>
+<p><%= link_to "Log Out", logout_path, :method => 'DELETE' %></p>
