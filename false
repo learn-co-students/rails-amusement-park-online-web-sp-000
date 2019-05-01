@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20190428230019_create_users.rb
