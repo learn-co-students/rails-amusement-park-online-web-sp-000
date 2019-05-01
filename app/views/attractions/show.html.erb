@@ -5,7 +5,11 @@
 <p>Nausea Rating: <%= @attraction.nausea_rating %></p>
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
 
-<%= form_for @attraction.rides.new do |f| %>
+<% if current_user.admin %>
+  <div><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></div>
+<% else %>
+  <%= form_for @attraction.rides.new do |f| %>
     <%= f.hidden_field :attraction_id %>
     <%= f.submit "Go on this ride" %>
   <% end %>
+<% end %> 
