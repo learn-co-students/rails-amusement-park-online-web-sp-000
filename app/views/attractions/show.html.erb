@@ -1,0 +1,9 @@
+<h1><%= @attraction.name %></h1>
+<p><%= @attraction.tickets %> Tickets</p>
+<p>Minimum Height to Ride: <%= @attraction.min_height %> inches</p>
+
+<% if @user.admin? %>
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+<%= button_to "Go on this ride", user_path(@user), :method => "patch", :params => {:attraction_id => "#{@attraction.id}"} %>
+<% end %>

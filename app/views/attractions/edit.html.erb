@@ -1,0 +1,19 @@
+<h1>Edit <%= @attraction.name %></h1>
+<%= form_for @attraction do |f| %>
+Name
+<br><%= f.text_field :name, :placeholder => "#{@attraction.name}" %>
+<br>
+Tickets
+<br><%= f.text_field :tickets, :placeholder => "#{@attraction.tickets}" %>
+<br>
+Nausea rating
+<br><%= f.text_field :nausea_rating, :placeholder => "#{@attraction.nausea_rating}" %>
+<br>
+Happiness rating
+<br><%= f.text_field :happiness_rating, :placeholder => "#{@attraction.happiness_rating}" %>
+<br>
+Minimum height to ride
+<br><%= f.text_field :min_height, :placeholder => "#{@attraction.min_height}" %>
+<br>
+<%= f.submit "Update Attraction" %>
+<% end %>
