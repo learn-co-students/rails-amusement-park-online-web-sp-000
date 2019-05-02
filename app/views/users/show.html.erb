@@ -1,0 +1,21 @@
+<% if @user.admin? %>
+<h2>ADMIN</h2>
+<% end %>
+
+<% if flash[:message] %>
+<p><%= flash[:message] %></p>
+<% end %>
+
+<h1><%= @user.name %></h1>
+
+<% if !@user.admin? %>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height: <%= @user.height %></p>
+<p>Mood: <%= @user.mood %></p>
+<% end %>
+<br>
+
+
+<%= link_to "Log Out", '/logout' %>
+<br>
+<%= link_to "See attractions", '/attractions' %>
