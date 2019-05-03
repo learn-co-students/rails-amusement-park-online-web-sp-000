@@ -1,0 +1,15 @@
+<%= link_to "Log Out", '/signout' %>
+<% if flash.alert %>
+<div class="alert"> <%= flash.alert %> </div>
+<% end %>
+<%= @user.name %>
+
+<% unless @user.admin %>
+	Mood: <%= @user.mood %>
+	Tickets: <%= @user.tickets %>
+	Height: <%= @user.height %>
+<% else %>
+	"ADMIN"
+<% end %>
+
+<%= link_to "See attractions", attractions_path %>
