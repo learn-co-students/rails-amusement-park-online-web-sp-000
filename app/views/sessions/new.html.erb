@@ -1,0 +1,7 @@
+<h1>Login</h1>
+<%= form_for @user, url: {action: "create"} do |f| %>
+  <p>Your name: <%= f.collection_select :name, @users, :name, :name %></p>
+  <p>Your password</p>
+  <input type="password" name="password" id="password" /></p>
+  <%= f.submit "Sign In" %>
+<% end %>
