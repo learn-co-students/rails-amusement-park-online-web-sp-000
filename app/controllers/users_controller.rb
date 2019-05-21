@@ -15,11 +15,12 @@ class UsersController < ApplicationController
   def show
     redirect_to root_path unless session.include? :user_id
     @user = User.find(params[:id])
+    @message = session[:message]
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets)
+    params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets, :admin)
   end
 end
