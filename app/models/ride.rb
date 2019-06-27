@@ -6,21 +6,12 @@ class Ride < ApplicationRecord
 
   def take_ride
     if error_message == false
-      self.user.happiness += self.attraction.happiness_rating
-      self.user.nausea += self.attraction.nausea_rating
-      self.user.tickets -= self.attraction.tickets
+      person = self.user
+      attraction = self.attraction
+      User.update(person.id, happiness: person.happiness+attraction.happiness_rating, nausea: person.nausea+attraction.nausea_rating, tickets: person.tickets-attraction.tickets)
     else
       error_message
     end
-  end
-
-private
-  def ticket_check
-    "Sorry. You do not have enough tickets to ride the Roller Coaster." if self.user.tickets < self.attraction.tickets
-  end
-
-  def height_check
-    "Sorry. You are not tall enough to ride the Roller Coaster." if self.user.height < self.attraction.min_height
   end
 
   def error_message
@@ -33,5 +24,14 @@ private
     else
       false
     end
+  end
+
+private
+  def ticket_check
+    "Sorry. You do not have enough tickets to ride the #{self.attraction.name}." if self.user.tickets < self.attraction.tickets
+  end
+
+  def height_check
+    "Sorry. You are not tall enough to ride the #{self.attraction.name}." if self.user.height < self.attraction.min_height
   end
 end
