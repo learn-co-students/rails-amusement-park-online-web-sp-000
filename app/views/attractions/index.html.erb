@@ -24,4 +24,7 @@
             </td>
         </tr>
     <% end %>
+    <% if current_user.admin? %>
+        <%= link_to "New Attraction", new_attraction_path %>
+    <% end %>
 </table>

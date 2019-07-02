@@ -3,13 +3,10 @@ class RidesController < ApplicationController
         # binding.pry
         @ride = Ride.create(ride_params)
         if @ride
-            take_ride
-            redirect_to user_path(@ride.user)
+            flash[:message] = @ride.take_ride
+            # binding.pry
+            redirect_to @ride.user
         end
-    end
-
-    def take_ride
-        binding.pry
     end
 
     private

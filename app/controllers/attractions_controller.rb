@@ -9,4 +9,7 @@ class AttractionsController < ApplicationController
         @user = current_user
         # binding.pry
     end
+
+    def new
+    end
 end
