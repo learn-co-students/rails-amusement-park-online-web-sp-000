@@ -11,9 +11,11 @@ class User < ActiveRecord::Base
     end
 
     def mood
+        return "" if self.admin == true
+
         happiness = self.happiness
         nausea = self.nausea
-
+        # binding.pry
         return "happy" if happiness > nausea
         return "sad" if nausea > happiness
     end
