@@ -1,0 +1,12 @@
+<%= form_tag '/login' do %>
+
+    <label for="user_name">Name</label>
+    <%= select_tag "user_name", options_from_collection_for_select(@users, "name", "name") %><br>
+
+    <label for="password">Password</label>
+    <%= text_field_tag 'password' %><br>
+
+
+
+    <%= submit_tag 'Sign In' %>
+<% end %>
