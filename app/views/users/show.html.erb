@@ -1,0 +1,9 @@
+<p id = "alert"><b><%= alert %></b></p>
+<%if @user.admin%>
+ <h3>ADMIN</h3>
+<%end%>
+Name: <%=@user.name%><br>
+Tickets: <%=@user.tickets%><br>
+Mood: <%=@user.mood%><br>
+Height: <%=@user.height%> inches<br>
+<p><%= link_to 'See attractions', attractions_path %></p>

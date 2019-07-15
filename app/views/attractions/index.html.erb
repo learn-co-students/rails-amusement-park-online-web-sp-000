@@ -1,0 +1,11 @@
+<%if admin?%>
+   <%str="Show "%>
+<%else%>
+    <%str="Go on "%>
+<%end%>
+<%@attractions.each do |attraction|%>
+    <p><%=attraction.name%> <%=attraction.tickets%> <%=link_to "#{str} #{attraction.name}", attraction_path(attraction)%></p>
+<%end%>
+<%if admin?%>
+<div><%=link_to "New Attraction", new_attraction_path%></div>
+<%end%>
