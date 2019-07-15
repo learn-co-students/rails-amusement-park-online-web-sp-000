@@ -26,7 +26,7 @@ RSpec.describe Ride, :type => :model do
     Ride.create(user_id: user.id, attraction_id: attraction.id)
   }
 
-  it "is valid with a user_id and a attraction_id" do
+  it "is valid with a user_id and   a attraction_id" do
     expect(ride).to be_valid
   end
 
