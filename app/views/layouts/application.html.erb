@@ -18,6 +18,11 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="/signup">Sign Up</a>
+        
+        <% #binding.pry %> 
+          <%= link_to "Log in", "/signin", class: "navbar-brand" if !logged_in? %>
+          <%= link_to("Log Out", "/destroy", method: :post, class: "navbar-brand") if logged_in? %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
