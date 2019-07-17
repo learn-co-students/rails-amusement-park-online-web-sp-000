@@ -1,0 +1,10 @@
+<%= form_for @user do |f| %>
+  Name: <%= f.text_field  :name %><br>
+  Nausea Level: <%= f.text_field  :nausea %><br>
+  Happiness Level: <%= f.text_field  :happiness %><br>
+  Number of Tickets: <%= f.text_field  :tickets %><br>
+  Height in Inches: <%= f.text_field  :height %><br>
+  Check if you are an Admin: <%= f.check_box :admin%><br>
+  Password: <%= f.password_field  :password %><br>
+  <%= f.submit "Create User" %>
+<% end %>
