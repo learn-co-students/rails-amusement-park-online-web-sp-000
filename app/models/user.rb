@@ -7,10 +7,12 @@ class User < ApplicationRecord
  
 
     def mood 
-        if self.happiness > self.nausea
-            "happy"
-        else 
-            "sad"
+        if !self.admin 
+             if self.happiness > self.nausea 
+                return "happy"
+             else 
+                return "sad"
+             end 
         end 
     end 
 
