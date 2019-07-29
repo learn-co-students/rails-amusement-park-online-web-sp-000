@@ -11,6 +11,7 @@ class Ride < ActiveRecord::Base
             "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
         else
             update_user_values
+            "Thanks for riding the #{self.attraction.name}!"
         end
     end
 

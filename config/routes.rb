@@ -3,10 +3,11 @@ Rails.application.routes.draw do
 
   # get '/signup' => 'users#new'
   resources :users, only:[:new, :create, :show]
-  resources :attractions, only:[:index]
+  resources :attractions, only:[:index, :show, :new, :create, :edit, :update]
   root :to => "static#home"
   get "/signin", to: "sessions#new"
   post '/signin', to: "sessions#create"
   delete '/logout', to: "sessions#destroy" 
+  post '/rides', to: "rides#create"
 end
 
