@@ -1,0 +1,3 @@
+      invoke  active_record
+      remove    db/migrate/20190727020024_add_admin_to_users.rb
+      create    db/migrate/20190727020307_add_admin_to_users.rb
