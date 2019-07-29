@@ -1,0 +1,6 @@
+<h1>Signin</h1>
+<%= form_with url: signin_path do |f| %>
+  <%= select_tag 'user_name', options_from_collection_for_select(@users, 'name', 'name') %>
+  <%= f.text_field :password, :placeholder => "Password" %>
+  <%= f.submit 'Sign In' %>
+<% end %>
