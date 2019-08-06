@@ -18,9 +18,33 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        
+       
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+          <!-- add to navbar -->
+           <% if not logged_in? %>
+            <li>
+              <%= link_to 'Sign Up', 'signup_path' %>
+            </li>
+            <li>
+              <%= link_to 'Sign In', signin_path %>
+            </li>
+           <% else %>
+            <li>
+              <%= link_to "Hello, #{current_user.name}!", user_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to "Attractions", attractions_path %>
+            </li>
+            <li>
+              <%= link_to "Log Out", logout_path %>
+            </li>
+           <% end %> 
+
+
+
             
           </ul>
         </div><!--/.nav-collapse -->
@@ -29,6 +53,10 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <!-- add flash messages -->
+
+      <%= content_tag(:div, flash[:message], :id => "flash_message") if flash[:message] %>
+      <%= @display_message %>
       <%= yield %>
     </div>
   </body>
