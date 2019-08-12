@@ -1,0 +1,9 @@
+<% if flash[:alert] %>
+    <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
+<%= form_with url: '/signin' do |f| %>
+    Name: <%= f.collection_select :user_name, User.all, :name, :name %><br>
+    Password: <%= f.password_field :password %><br>
+    <%= f.submit "Sign In" %>
+<% end %>
