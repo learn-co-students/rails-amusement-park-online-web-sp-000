@@ -1,5 +1,3 @@
-Test Commit1 offline
-Test Commit 2 offline
 # Rails Amusement Park
 
 ## Objectives
