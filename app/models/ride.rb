@@ -10,6 +10,7 @@ class Ride < ApplicationRecord
             update_user_happiness
             update_user_nausea
             self.user.save
+            "Thanks for riding the #{self.attraction_name}!"
         end
     end
 
@@ -41,6 +42,7 @@ class Ride < ApplicationRecord
         self.user_name
     end
 
+    private
     def apology_message
         message = "Sorry."
         message << " You do not have enough tickets to ride the #{self.attraction_name}." if !enough_tickets_to_ride?

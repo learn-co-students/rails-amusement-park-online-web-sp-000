@@ -10,7 +10,10 @@ class User < ApplicationRecord
     #validates :nausea, presence: true
 
     def mood
-
         self.happiness > self.nausea ? "happy" : "sad" if !self.admin
+    end
+
+    def is_admin?
+        self.admin == 1 || self.admin == true
     end
 end
