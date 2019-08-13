@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     def show
+        redirect_if_not_logged_in
         @user = User.find(params[:id])
     end
 
@@ -8,7 +9,8 @@ class UsersController < ApplicationController
     end
     
     def create
-        @user = User.new(params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height))
+        
+        @user = User.new(params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin))
         if @user.save
             session[:user_id] = @user.id
             redirect_to user_path(@user)

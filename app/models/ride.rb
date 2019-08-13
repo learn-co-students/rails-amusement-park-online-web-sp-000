@@ -7,8 +7,8 @@ class Ride < ApplicationRecord
             apology_message
         else
             take_tickets
-            update_happiness
-            update_nausea
+            update_user_happiness
+            update_user_nausea
             self.user.save
         end
     end
@@ -17,11 +17,11 @@ class Ride < ApplicationRecord
         self.user.tickets -= self.attraction.tickets
     end
 
-    def update_happiness
+    def update_user_happiness
         self.user.happiness += self.attraction.happiness_rating
     end
 
-    def update_nausea
+    def update_user_nausea
         self.user.nausea += self.attraction.nausea_rating
     end
 
