@@ -1,3 +1,4 @@
+First Offline commit
 # Rails Amusement Park
 
 ## Objectives
