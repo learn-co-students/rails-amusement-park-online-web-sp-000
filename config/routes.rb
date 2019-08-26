@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'static#index'
-  get '/signin', to: 'static#signin'
-  post '/login', to: 'static#login'
+  get '/signin', to: 'sessions#new'
+  post '/signin', to: 'sessions#create'
+  delete '/signout', to: 'sessions#destroy'
 
   resources :rides
   resources :attractions
