@@ -1,0 +1,18 @@
+<h1>Listing attractions</h1>
+
+
+<p><strong>Name</strong></p>
+<% @attractions.each do |att| %>
+  <div><%= att.name %></div>
+<% end %></br>
+
+<p><strong>Tickets</strong></p>
+<% @attractions.each do |att| %>
+  <div><%= att.tickets %></div>
+<% end %></br>
+
+<p><strong>Details</strong></p>
+<% @attractions.each do |att| %>
+<%= link_to "Go to #{att.name}", attraction_path(att) %>
+
+<% end %>
