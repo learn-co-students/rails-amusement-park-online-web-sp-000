@@ -1,6 +1,8 @@
 module RidesHelper
 
+  def take_ride
 
+  end
 
 
 
