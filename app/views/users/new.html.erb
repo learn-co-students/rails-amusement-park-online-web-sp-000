@@ -1,0 +1,31 @@
+<div>
+  <div>
+    <%= form_for(@user) do |f| %>
+      <%= f.label :name %></br>
+      <%= f.text_field :name %>
+    </br></br>
+      <%= f.label :height %></br>
+      <%= f.text_field :height %>
+</br></br>
+      <%= f.label :happiness %></br>
+      <%= f.text_field :happiness %>
+</br></br>
+      <%= f.label :nausea %></br>
+      <%= f.text_field :nausea %>
+</br></br>
+      <%= f.label :tickets %></br>
+      <%= f.text_field :tickets %>
+</br></br>
+
+    <p>Check box if you are a theme park owner</p>
+
+
+
+
+      <%= f.label :password %></br>
+      <%= f.password_field :password %>
+</br></br>
+      <%= f.submit "Create User" %>
+    <% end %>
+  </div>
+</div>
