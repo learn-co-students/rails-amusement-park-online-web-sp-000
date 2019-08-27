@@ -5,6 +5,7 @@
 <h2>Nausea: <%= @user.nausea %></h2>
 <h2>Happiness: <%= @user.happiness %></h2>
 
+<%= link_to('See attractions', attractions_path) %>
 
 <% if @user.admin %>
   <p>ADMIN</p>

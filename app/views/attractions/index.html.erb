@@ -1,0 +1,20 @@
+<h1>Attractions</h1>
+
+<% if current_user.admin %>
+
+  <%= render partial: 'admin', locals: {attractions: @attractions} %>
+
+<% else %>
+
+
+
+
+  <ul>
+    <% @attractions.each do |att| %>
+      <li>Name<%= att.name %></li>
+      <li>Tickets<%= att.tickets %></li>
+      <li><%= link_to "Go to #{att.name}", attraction_path(att) %></li>
+    <% end %>
+  </ul>
+
+<% end %>
