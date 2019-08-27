@@ -73,7 +73,12 @@ def make_attractions_and_rides
       User.all.each {|u| customers << u if u.admin != true}
       new_attraction.users << customers[rand(0...customers.length)]
     end
-    new_attraction.users.each {|c| c.save}
+    new_attraction.users.each do |c|
+
+      c.save
+
+    end
+
     new_attraction.save
   end
 end
