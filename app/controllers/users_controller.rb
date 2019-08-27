@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_login, except: [:new, :create]
 
   def show
     @user = User.find(params[:id])
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
+      params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
     end
 
 end
