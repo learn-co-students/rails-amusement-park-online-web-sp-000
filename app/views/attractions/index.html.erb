@@ -1,22 +1,31 @@
 
 <% if current_user.admin %>
 
-<h1>Attractions</h1>
-
   <%= render partial: 'admin', locals: {attractions: @attractions} %>
 
 <% else %>
 
 
-<h1>Attractions???</h1>
+<h1>Listing attractions</h1>
 
+<tr>
+  <td><strong>Name</strong></td></br>
 
-  <ul>
     <% @attractions.each do |att| %>
-      <li>Name<%= att.name %></li>
-      <li>Tickets<%= att.tickets %></li>
-      <li><%= link_to "Go to #{att.name}", attraction_path(att) %></li>
-    <% end %>
-  </ul>
+      <td><%= att.name %></td></br>
+    <% end %></br>
+
+    <td><strong>Tickets</strong></td></br>
+
+      <% @attractions.each do |att| %>
+        <td><%= att.tickets %></td></br>
+      <% end %></br>
+
+      <td><strong>Details</strong></td></br>
+
+        <% @attractions.each do |att| %>
+          <td><%= link_to "Go on #{att.name}", attraction_path(att) %></td></br>
+        <% end %></br>
+      </tr>
 
 <% end %>

@@ -1,9 +1,23 @@
-<ul>
+<h1>Listing attractions</h1>
 
-  <% attractions.each do |attraction| %>
-    <li><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></li>
-  <% end %>
+<tr>
+  <td><strong>Name</strong></td></br>
 
-</ul>
+    <% @attractions.each do |att| %>
+      <td><%= att.name %></td></br>
+    <% end %></br>
+
+    <td><strong>Tickets</strong></td></br>
+
+      <% @attractions.each do |att| %>
+        <td><%= att.tickets %></td></br>
+      <% end %></br>
+
+      <td><strong>Details</strong></td></br>
+
+        <% @attractions.each do |att| %>
+          <td><%= link_to "Show #{att.name}", attraction_path(att) %></td></br>
+        <% end %></br>
+      </tr>
 
 <%= link_to "New Attraction", new_attraction_path %>
