@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'welcome#home'
   resources :users
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
   post '/signout' => 'sessions#destroy'
 end
