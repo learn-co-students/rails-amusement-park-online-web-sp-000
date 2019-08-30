@@ -1,6 +1,6 @@
-<h1>New attraction</h1>
+<h1>Editing attraction</h1>
 
-<%= form_for Attraction.new do |f| %>
+<%= form_for @attraction do |f| %>
   <div class="form-group">
     <%= f.label "Name" %>
     <%= f.text_field :name, class: "form-control" %>
@@ -27,7 +27,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Create Attraction", class: "btn btn-primary" %>
+    <%= f.submit "Update Attraction", class: "btn btn-primary" %>
   </div>
 
 <% end %>
+<%= link_to "Show", attraction_path(@attraction) %> | <%= link_to "Back", attractions_path %>
