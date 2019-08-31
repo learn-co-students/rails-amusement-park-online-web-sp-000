@@ -1,0 +1,31 @@
+
+<% if current_user.admin %>
+
+  <%= render partial: 'admin', locals: {attractions: @attractions} %>
+
+<% else %>
+
+
+<h1>Listing attractions</h1>
+
+<tr>
+  <td><strong>Name</strong></td></br>
+
+    <% @attractions.each do |att| %>
+      <td><%= att.name %></td></br>
+    <% end %></br>
+
+    <td><strong>Tickets</strong></td></br>
+
+      <% @attractions.each do |att| %>
+        <td><%= att.tickets %></td></br>
+      <% end %></br>
+
+      <td><strong>Details</strong></td></br>
+
+        <% @attractions.each do |att| %>
+          <td><%= link_to "Go on #{att.name}", attraction_path(att) %></td></br>
+        <% end %></br>
+      </tr>
+
+<% end %>
