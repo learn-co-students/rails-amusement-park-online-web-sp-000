@@ -1,0 +1,8 @@
+
+<%= form_tag(signin_path, method: "post") do %>
+  Your Name<%= collection_select(:user, :name, User.all, :id, :name) %><br><br>
+
+  Password: <input type="password" name="password"><br>
+
+  <div><%= submit_tag 'Sign In' %></div>  
+<% end %>

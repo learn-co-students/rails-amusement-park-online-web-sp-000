@@ -276,6 +276,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
   end
 end
 
+
 describe 'Feature Test: Admin Flow', :type => :feature do
 
   before :each do
