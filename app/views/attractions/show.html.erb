@@ -21,7 +21,7 @@
     <p>
     <% if !@user.admin %>
       <p>
-        <a href='/take_ride/<%= @attraction.id %>'><button type="button" class="btn btn-primary">Go on this ride</button></a>
+        <%= button_to "Go on this ride", take_ride_path(:attraction_id), class: "btn btn-primary", method: :get %>
       </p>
     <% end %>
     <br>
