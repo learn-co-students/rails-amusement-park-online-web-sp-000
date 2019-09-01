@@ -1,0 +1,17 @@
+<h1>Login</h1>
+
+<%= form_tag('/signin') do %>
+  <div class="form-group">
+  <label>Name: </label>
+  <%= collection_select :user, :name, User.all, :name, :name, {prompt: "Please select your username from this dropdown"} %><br>
+  </div>
+
+  <div class="form-group">  
+  <label>Password: </label><br>
+  <%= password_field_tag :password, class: "form-control" %><br>
+  </div>
+
+  <div class="actions">
+  <%= submit_tag "Sign In", class: "btn btn-primary" %>
+  </div>
+<% end %>
