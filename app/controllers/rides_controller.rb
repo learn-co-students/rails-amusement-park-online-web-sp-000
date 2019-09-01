@@ -4,7 +4,7 @@ class RidesController < ApplicationController
     user = current_user
     attraction = Attraction.find(params[:attraction_id])
     ride = Ride.create(user_id: user.id, attraction_id: attraction.id)
-    ride.take_ride
+    flash[:notice] = ride.take_ride
     redirect_to user_path(user)
   end
 

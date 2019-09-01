@@ -6,7 +6,9 @@
       <th>Name</th>
       <th>Tickets</th>
       <th>Details</th>
-      <th>Take a Ride</th>
+      <% if !@user.admin %>
+        <th>Take a Ride</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -21,9 +23,11 @@
         <td>
           <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
         </td>
-        <td>
-          <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
-        </td>
+        <% if !@user.admin %>
+          <td>
+           <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   <tbody>
