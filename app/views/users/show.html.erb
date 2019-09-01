@@ -1,9 +1,13 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <% if @user.admin %>
 ADMIN
 <% end %>
 <%= @user.name %>
 Mood:<%= @user.mood %>
 <%= @user.height %>
-<%= @user.tickets %><br>
+Tickets: <%= @user.tickets %><br>
 <li><%= link_to "Log Out", logout_path, method: :delete  %></li>
 <li><%= link_to "See attractions", attractions_path %></li>
