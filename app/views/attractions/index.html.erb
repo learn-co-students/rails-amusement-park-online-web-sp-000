@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Tickets</th>
       <th>Details</th>
+      <th>Take a Ride</th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,9 @@
         </td>
         <td>
           <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+        </td>
+        <td>
+          <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
         </td>
       </tr>
     <% end %>

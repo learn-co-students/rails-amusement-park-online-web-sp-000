@@ -19,6 +19,11 @@
     <p>
       <strong>Happiness Rating: </strong><%= @attraction.happiness_rating %>
     <p>
+    <% if !@user.admin %>
+      <p>
+        <a href='/take_ride/<%= @attraction.id %>'><button type="button" class="btn btn-primary">Go on this ride</button></a>
+      </p>
+    <% end %>
     <br>
     <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
   </div>

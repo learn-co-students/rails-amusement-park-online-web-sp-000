@@ -25,6 +25,7 @@ class AttractionsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @attraction = Attraction.find(params[:id])
   end
 
