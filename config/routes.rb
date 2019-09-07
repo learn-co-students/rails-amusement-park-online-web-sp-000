@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   post '/session', to: "sessions#create"
   get '/signout', to: "sessions#destroy"
   resources :users, only: [:new, :create, :show]
-  resources :attractions, only: [:index]
+  resources :attractions, only: [:index, :show]
 end

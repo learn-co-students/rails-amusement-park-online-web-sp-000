@@ -6,8 +6,21 @@
     </tr>
   </thead>
   <tbody>
-    <td><strong>Name</strong></td>
-    <td><strong>Tickets</strong></td>
-    <td><strong>Details</strong></td>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>Tickets</strong></td>
+      <td><strong>Details</strong></td>
+    </tr>
+    <% @attractions.each do |attraction| %>
+    <tr>
+      <td><%= attraction.name %></td>
+      <td><%= attraction.tickets %></td>
+      <% if @user.admin == true %>
+      <td><%= link_to "Show  #{attraction.name}", attraction_path(attraction.id) %></td>
+      <% else %>
+      <td><%= link_to "Go on  #{attraction.name}", attraction_path(attraction.id) %></td>
+      <% end %>
+    </tr>
+    <% end %>
   </tbody>
 </table>
