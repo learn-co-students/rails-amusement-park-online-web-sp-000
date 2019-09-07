@@ -1,3 +1,9 @@
+<% flash.each do |key, value| %>
+  <div class="center">
+      <%= value %>
+  </div>
+<% end %>
+
 <div class="center">
   <div class="info">
     <% if @user.admin == true %>

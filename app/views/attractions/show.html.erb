@@ -1,0 +1,22 @@
+<div class="center">
+  <div class="info">
+    <% if current_user.admin == true %>
+    <p><strong>ADMIN</strong></p>
+    <% end %>
+    <p><strong>Name: </strong><%= current_user.name %></p>
+    <p><strong>Tickets: </strong><%= current_user.tickets %></p>
+    <p><strong>Mood: </strong><%= current_user.mood %></p>
+    <p><strong>Height: </strong><%= current_user.height %></p>
+    <p>
+      <%= form_for @ride do |f| %>
+      <%= f.hidden_field :user_id, value: "#{current_user.id}" %>
+      <%=f.hidden_field :attraction_id, value:"#{@attraction.id}"%>
+      <%= f.submit "Go on this ride", class: "btn btn-primary m-5" %>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+
+
+

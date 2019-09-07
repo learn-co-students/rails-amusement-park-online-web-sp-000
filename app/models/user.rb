@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
     # binding.pry
     self.nausea > self.happiness ? "sad" : "happy" if self.nausea && self.happiness
   end
+
+
 end
