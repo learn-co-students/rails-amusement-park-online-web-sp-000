@@ -1,5 +1,4 @@
 class RidesController < ApplicationController
-  include ApplicationHelper
 
   def create
     # binding.pry
