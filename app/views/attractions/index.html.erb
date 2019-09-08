@@ -1,0 +1,7 @@
+<h1>Attractions</h1>
+<ol>
+<% @attractions.each do |attr| %>
+  <li><%= link_to "Go on #{attr.name}", attraction_path(attr) %></li>
+<% end %>
+
+</ol>

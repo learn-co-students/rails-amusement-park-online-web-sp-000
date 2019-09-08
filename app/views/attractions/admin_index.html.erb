@@ -1,0 +1,10 @@
+<h1>Attractions</h1>
+<ol>
+<% @attractions.each do |attr| %>
+  <li><%= link_to "Show #{attr.name}", attraction_path(attr) %></li>
+<% end %>
+
+</ol>
+
+
+<%= link_to "New Attraction", new_attraction_path %>
