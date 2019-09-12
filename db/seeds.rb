@@ -40,11 +40,7 @@ DATA = {
   ]
 }
 
-def main
-  make_users
-  make_admin
-  make_attractions_and_rides
-end
+
 
 def make_users
   DATA[:users].each do |user|
@@ -55,6 +51,16 @@ def make_users
     new_user.save
   end
 end
+
+
+def main
+  make_users
+  make_admin
+  make_attractions_and_rides
+end
+
+
+
 
 def make_admin
   DATA[:admins].each do |name|
