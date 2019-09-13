@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'application#index'
+
+  resources :users
+
+  resources :attractions
+
+  patch '/attractions/:id/ride' => 'attractions#ride'
+
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
+  delete '/signin' => 'sessions#delete'
 end

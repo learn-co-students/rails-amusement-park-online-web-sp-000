@@ -1,0 +1,15 @@
+<%= @user.name %><%= "ADMIN" if @user.admin %>
+<%= link_to "Log Out", '/signin', :method => :delete %>
+Mood: <%= @user.mood %>
+Tickets: <%= @user.tickets %>
+Height: <%= @user.height %>
+
+<% unless @user.rides.empty? %>
+  <% if session[:ride_errors] %>
+    <%= "#{session[:ride_errors]}"%>
+  <% else %>
+    <%= "Thanks for riding the #{@user.rides.last.attraction.name}!" %>
+  <% end %>
+<% end %>
+
+<%= link_to "See attractions", attractions_path %>
