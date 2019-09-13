@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_09_13_175155) do
+=======
+ActiveRecord::Schema.define(version: 2019_09_13_135816) do
+>>>>>>> e8b0703528b15e83c1bb7b10c90cc4b17f96d7ed
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
     t.integer "tickets"
+<<<<<<< HEAD
     t.integer "nausea_rating"
+=======
+    t.integer "naeusea_rating"
+>>>>>>> e8b0703528b15e83c1bb7b10c90cc4b17f96d7ed
     t.integer "happiness_rating"
     t.integer "min_height"
   end
