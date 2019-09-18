@@ -1,21 +1,16 @@
-class SessionController < ApplicationController
-    def new
-    end
-  
-    def create
-      user = User.find_by(:name => params[:user][:name])
-      if user && user.authenticate(params[:password])
-        session[:user_id] = user.id
-        redirect_to user_path(user)
+class SessionsController < ApplicationController 
+
+    def sign_in
+        @user = User.new 
+    end 
+
+    def create 
+      @user = User.find_by(name: params[:name]) 
+      if @user && @user.authenticate(params[:user, :password])
+        session[:user_id] = @user.id 
+        redirect_to user_path(@user)
       else
-        render :new
+        render 'sign_in'
       end
-    end
-  
-    def destroy
-      if current_user
-        session.delete :user_id
-        redirect_to root_url
-      end
-    end
-  end
+    end 
+end 

@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2019_09_06_015324) do
   create_table "rides", force: :cascade do |t|
     t.integer "user_id"
     t.integer "attraction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,6 +34,8 @@ ActiveRecord::Schema.define(version: 2019_09_06_015324) do
     t.integer "happiness"
     t.integer "tickets"
     t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "admin", default: false
   end
 

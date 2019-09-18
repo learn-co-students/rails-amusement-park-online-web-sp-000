@@ -1,15 +1,15 @@
-    
 class RidesController < ApplicationController
-   #  before_action :authenticate
-  
+    before_action :authorize
     def create
-      ride = Ride.create(user_id: current_user.id, attraction_id: params[:attraction_id])
-      if ride
-        response = ride.take_ride
-        flash[:notice] = response
-        redirect_to user_path(ride.user)
-      else
-        redirect_to attraction_path(ride.attraction)
-      end
+        ride = Ride.new(user: current_user, attraction_id: params[:attraction][:id])
+        begin
+            ride.take_ride
+            ride.save
+            flash[:message] = "Thanks for riding the #{ride.attraction.name}!"
+            redirect_to user_path(ride.user)
+        rescue Exceptions::RideError => e
+            flash[:alert] = e.message
+            redirect_to user_path(ride.user)
+        end
     end
-  end
+end

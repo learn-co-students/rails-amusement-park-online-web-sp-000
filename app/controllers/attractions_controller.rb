@@ -1,9 +1,12 @@
 class AttractionsController < ApplicationController
-    before_action :find_attraction, only: [:show, :edit, :update]
-    before_action :admin_only, except: [:index, :show]
-  
+    before_action :authorize, except: [:edit, :update]
+    before_action :authorize_admin, only: [:edit, :update]
     def index
       @attractions = Attraction.all
+    end
+  
+    def show
+      @attraction = Attraction.find(params[:id])
     end
   
     def new
@@ -11,35 +14,37 @@ class AttractionsController < ApplicationController
     end
   
     def create
-      @attraction = Attraction.create(attraction_params)
-      if @attraction
+      @attraction = Attraction.new(all_attraction_params)
+      if @attraction.save
+        flash[:message] = "#{@attraction.name} successfully created"
         redirect_to attraction_path(@attraction)
       else
-        render :new
+        flash[:message] = "There were problems creating your attraction."
+        render "new"
       end
     end
   
-    def show
-    end
-  
     def edit
+      @attraction = Attraction.find(params[:id])
     end
   
     def update
-      @attraction.update(attraction_params)
-      if @attraction.save
+      @attraction = Attraction.find(params[:id])
+      if @attraction.update(all_attraction_params)
+        flash[:message] = "#{@attraction.name} was successfully updated."
         redirect_to attraction_path(@attraction)
       else
-        render :edit
+        flash[:alert] = "There were problems updating this attraction."
+        render "edit"
       end
     end
   
     private
-    def find_attraction
-      @attraction = Attraction.find_by(id: params[:id])
+    def all_attraction_params
+      attraction_params(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
     end
-  
-    def attraction_params
-      params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)
+    def attraction_params(*args)
+      params.require(:attraction).permit(*args)
     end
+    
   end
