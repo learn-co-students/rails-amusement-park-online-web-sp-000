@@ -5,3 +5,7 @@ class AttractionsControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 end
+
+
+
+
