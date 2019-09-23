@@ -1,0 +1,9 @@
+<h1>Attractions</h1>
+
+<ul>
+  <% @attractions.each do |attraction| %>
+    <%= render partial: "link", locals: {attraction: attraction, admin: @user.admin} %>
+  <% end %>
+</ul><br>
+
+<%= link_to("New Attraction", new_attraction_path) if @user.admin %>
