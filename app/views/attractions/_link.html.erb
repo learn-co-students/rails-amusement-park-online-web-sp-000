@@ -1,0 +1,3 @@
+<% admin ? verb = "Show" : verb = "Go on" %>
+
+<li><%= link_to "#{verb} #{attraction.name}", attraction_path(attraction) %></li>
