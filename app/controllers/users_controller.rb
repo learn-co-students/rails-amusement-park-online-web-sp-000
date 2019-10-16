@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-   # before_action :require_login
-   # skip_before_action :require_login, only: [:new]
+   before_action :require_login
+   skip_before_action :require_login, only: [:new,:create]
   def new
     @user=User.new
+  end
+
+  def welcome
+
   end
 
   def create
@@ -11,7 +15,7 @@ class UsersController < ApplicationController
       session[:user_id]=@user.id
       redirect_to user_path(@user)
     else
-      redirect_to new_user_path
+      render 'new'
     end
   end
 
@@ -24,6 +28,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
+    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
   end
 end

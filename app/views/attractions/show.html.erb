@@ -1,4 +1,10 @@
 <b>Name: </b><%=@attraction.name%><br>
+<b>Total Number of Users: </b><%=@attraction.users.count%><br>
+<b>Ticket Requirement: </b><%=@attraction.tickets%><br>
+<b>Height Requirement: </b><%=@attraction.min_height%> inches<br>
+<b>Nausea Rating: </b><%=@attraction.nausea_rating%><br>
+<b>Happiness Rating: </b><%=@attraction.happiness_rating%><br>
+
 <a href="<%=user_path(current_user)%>">
    <button>Go on this ride</button>
 </a>
