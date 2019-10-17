@@ -1,0 +1,16 @@
+<%=@notice%>
+<h1><%= @user.name %></h1>
+<% if !@user.admin %>
+<ul>
+<li>Height: <%= @user.height %></li>
+<li>Mood: <%= @user.mood %> </li>
+<li>Tickets: <%= @user.tickets %> </li>
+</ul>
+
+
+<% else %>
+  <h2> ADMIN </h2>
+<% end %>
+
+<%=link_to 'Log Out', signout_path%><br>
+<%= link_to "See attractions", attractions_path %>
