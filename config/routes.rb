@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :attractions
   get '/signin', to: 'session#new'
   post '/signin', to: 'session#create'
-  delete '/session', to: 'session#destroy'
+  get '/session', to: 'session#destroy'
   post '/rides', to: 'rides#create'
 
 
