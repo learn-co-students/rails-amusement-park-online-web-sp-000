@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   post '/signin', to: 'session#create'
   delete '/session', to: 'session#destroy'
   post '/rides', to: 'rides#create'
+
+
 end
