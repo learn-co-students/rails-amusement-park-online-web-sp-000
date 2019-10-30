@@ -1,0 +1,6 @@
+<%= form_for :user, url: '/sessions' do |f|%>
+    <%= f.collection_select(:name, User.all, :name, :name, include_blank: true)%>
+    <%= f.text_field :password %>
+    <%= f.submit  "Sign In"%>
+<% end %>
+
