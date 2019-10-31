@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
+  def index
+  end
+  
   def create
-    
-    @user = User.find_or_create_by(user_params)
+    @user = User.create(user_params)
 
+    if @user && @user.try(:authenticate, user_params[:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to '/'
+    end
   end
 
   def new
@@ -10,10 +18,12 @@ class UsersController < ApplicationController
   end
 
   def show
+
   end
 
   private
 
+ 
   def user_params
     params.require(:user).permit(:name, :password, :height, :nausea, :happiness, :tickets, :admin, :password_confirmation)
   end
