@@ -5,19 +5,28 @@ class Ride < ApplicationRecord
   def take_ride
     user=User.find(self.user_id)
     attraction = Attraction.find(self.attraction_id)
+    pauper = "You do not have enough tickets to ride the #{attraction.name}."
+    shorty = "You are not tall enough to ride the #{attraction.name}."
+    
+    
+    if (user.tickets < attraction.tickets) && (user.height < attraction.min_height)
+     return "Sorry. "+pauper+" " +shorty
+    end
 
     if user.tickets >= attraction.tickets
       if user.height >= attraction.min_height
+        
         user.tickets = user.tickets-attraction.tickets
         user.nausea += attraction.nausea_rating
         user.happiness += attraction.happiness_rating
         user.save
         self.save
+
       else
-        "Sorry.  You are not tall enough to ride the #{attraction.name}."
+        "Sorry. "+shorty
       end
     else
-      "Sorry.  You do not have neough tickets to ride the #{attraction.name}."
+      "Sorry. "+pauper
     end
   end
 
