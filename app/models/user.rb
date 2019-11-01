@@ -4,14 +4,17 @@ class User < ApplicationRecord
   has_many :attractions, through: :rides
 
   validates :password, :presence => { :on => :create }, confirmation: true
-  # validates :name, :happiness, :nausea, :height, :tickets, presence: true
 
+  def sign_in_list
+    self.class.all.map {|user| ["#{user.name}", user.id]}
+  end
+    
   def mood
-    if self.nausea>self.happiness
-      "sad"
-    else
-      "happy"
+    if self.nausea && self.happiness
+      mood = self.happiness - self.nausea
+      mood > 0 ? "happy" : "sad"
     end
   end
 
 end
+

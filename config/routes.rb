@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :attractions, only: [:create, :new, :edit, :update, :show, :index]
 
   get '/home', to: 'sessions#show'
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  post '/logout', to: 'sessions#destroy'
+  get '/signin', to: 'sessions#new'
+  post '/signin', to: 'sessions#create'
+  post '/signout', to: 'sessions#destroy'
   root 'application#home'
 
 
