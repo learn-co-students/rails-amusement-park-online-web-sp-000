@@ -1,0 +1,15 @@
+<h1><%= @attraction.name %></h1>
+
+  <% @attraction.attributes.each do |attr_name, attr_value| %>
+    <%= attr_name %>: <%= attr_value %> <br>
+  <% end %>
+  <br>
+  <% if current_user.admin == true %>
+    <%= link_to "Edit Attraction", edit_attraction_path %>
+  <% else %>
+    <%= form_for @ride do |f| %>
+      <%= hidden_field_tag 'attraction_id', @attraction.id %>
+      <%= hidden_field_tag 'user_id', current_user.id %>
+      <%= f.submit 'Go on this ride' %>
+    <% end %>
+  <% end %>

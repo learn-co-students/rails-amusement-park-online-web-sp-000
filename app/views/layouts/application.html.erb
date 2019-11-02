@@ -17,11 +17,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= root_path %>"/>Home</a>
+        <% if logged_in? %>
+          <%= link_to "Log Out", logout_path, class: "navbar-brand" %>
+          <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%= current_user.name %></a>
+          <% if current_user.admin == true %>
+            <span class="navbar-brand">ADMIN</span>
+          <% end %>
+        <% else %>
+          <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up!</a>
+          <a class="navbar-brand" href="<%= signin_path %>"/>Sign In</a>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +39,7 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <%= flash[:message] %>
       <%= yield %>
     </div>
   </body>
