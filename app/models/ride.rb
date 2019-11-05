@@ -16,14 +16,14 @@ class Ride < ApplicationRecord
 
     if user.tickets >= attraction.tickets
       if user.height >= attraction.min_height
-        
+        # byebug
         user.tickets = user.tickets-attraction.tickets
         user.nausea += attraction.nausea_rating
         user.happiness += attraction.happiness_rating
         user.save
         self.save
-        "Thanks for riding the #{attraction.name}"
-        redirect_to user_path()
+        "Thanks for riding the #{attraction.name}!"
+        
       else
         "Sorry. "+shorty
       end
