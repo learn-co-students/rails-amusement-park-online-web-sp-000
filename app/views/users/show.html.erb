@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<% if current_user && current_user.admin? %>
+  <h2><%= "ADMIN" %></h2>
+<% end %>
+
+<h1>Name: <%= current_user.name %>'s Show Page</h1>
+<h2>Id: <%= current_user.id %></h2>
+<h2>Mood: <%= current_user.mood %></h2>
+<h2>Height: <%= current_user.height %> inches</h2>
+<h2>Tickets: <%= current_user.tickets %></h2>

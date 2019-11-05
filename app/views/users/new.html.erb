@@ -1,0 +1,41 @@
+<h2>Sign up Here:</h2>
+
+<%= form_for(@user) do |user| %>
+  <div class="form-group">
+    <%= user.label :name, "Name:" %>
+    <%= user.text_field :name, :placeholder => "enter your name" %> 
+  </div>
+
+  <div class="form-group">
+    <%= user.label :height, "Height" %> 
+    <%= user.text_field :height, :placeholder => "enter your height" %> 
+  </div>
+
+  <div class="form-group">
+    <%= user.label :happiness, "Happiness:" %> 
+    <%= user.text_field :happiness, :placeholder => "enter your happiness level" %> 
+  </div>
+
+  <div class="form-group">
+    <%= user.label :nausea, "Nausea:" %> 
+    <%= user.text_field :nausea, :placeholder => "enter your nausea level" %> 
+  </div>
+
+  <div class="form-group">
+    <%= user.label :tickets, "Tickets:" %> 
+    <%= user.text_field :tickets, :placeholder => "enter the number of tickets you have" %> 
+  </div>
+
+  <div class="form-group">
+    <%= user.label :admin, "are you an admin?" %>
+    <%= user.check_box :admin %>
+  </div>
+
+  <div class="form-group">
+    <%= user.label :password %> 
+    <%= user.password_field :password, :id => "password", :placeholder => "enter your password" %> 
+  </div>
+
+  
+  <%= user.submit "Create User" %>
+<% end %>

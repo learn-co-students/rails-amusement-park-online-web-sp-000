@@ -1,0 +1,31 @@
+<h2>Sign up Here:</h2>
+
+<%= form_for(@attraction) do |attraction| %>
+  <div class="form-group">
+    <%= attraction.label :name, "Name:" %>
+    <%= attraction.text_field :name, :placeholder => "enter the attraction name" %> 
+  </div>
+
+  <div class="form-group">
+    <%= attraction.label :min_height, "Height Requirement" %> 
+    <%= attraction.text_field :min_height, :placeholder => "Enter How high you need to be to ride this attraction" %> 
+  </div>
+
+  <div class="form-group">
+    <%= attraction.label :happiness_rating, "Happiness Rating:" %> 
+    <%= attraction.text_field :happiness_rating, :placeholder => "Enter the happiness Rating" %> 
+  </div>
+
+  <div class="form-group">
+    <%= attraction.label :nausea_rating, "Nausea Rating:" %> 
+    <%= attraction.text_field :nausea_rating, :placeholder => "Enter the Nausea Rating" %> 
+  </div>
+
+  <div class="form-group">
+    <%= attraction.label :tickets, "Tickets Required:" %> 
+    <%= attraction.text_field :tickets, :placeholder => "Enter the number of tickets required" %> 
+  </div>
+
+  
+  <%= attraction.submit "Create Attraction" %>
+<% end %>
