@@ -23,7 +23,7 @@ class Ride < ApplicationRecord
         user.save
         self.save
         "Thanks for riding the #{attraction.name}"
-
+        redirect_to user_path()
       else
         "Sorry. "+shorty
       end
