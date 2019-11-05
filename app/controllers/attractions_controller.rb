@@ -20,16 +20,21 @@ class AttractionsController < ApplicationController
   def show
     @attraction = Attraction.find(params[:id])
   end
-
+  
   def edit
+    @attraction = Attraction.find(params[:id])
   end
 
   def update
+    @attraction = Attraction.find(params[:id])
+    @attraction.update(attraction_params)
+    @attraction.save
+    redirect_to attraction_path(@attraction)
   end
 
   private
 
   def attraction_params
-  params.require(:attraction).permit(:id, :name, :min_height, :tickets, :nausea_rating, :happiness_rating)
+    params.require(:attraction).permit(:id, :name, :min_height, :tickets, :nausea_rating, :happiness_rating)
   end
 end

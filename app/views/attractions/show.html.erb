@@ -1,12 +1,16 @@
-<h1>Current Attraction: <%= @attraction.name.capitalize %></h1>
+<h1>Current Attraction: <%= @attraction.name %></h1>
 <h2>Happiness Rating: <%= @attraction.happiness_rating %></h2>
 <h2>Nausea Rating: <%= @attraction.nausea_rating %></h2>
 <h2>Min Height: <%= @attraction.min_height %></h2>
 <h2>Tickets: <%= @attraction.tickets %></h2>
-<%#= link_to 'Go on '+@attraction.name, user_path(current_user) %>
 
-<%= form_tag('/rides',method: :post) do %>
-  <%= hidden_field_tag "attraction", @attraction.id %>
-  <%= submit_tag("Go on this ride") %>
+<% if current_user.admin? %>
+  <%= link_to 'Edit Attraction', edit_attraction_path(@attraction) %>
+ 
+<% else %>
+  <%= form_tag('/rides',method: :post) do %>
+    <%= hidden_field_tag "attraction", @attraction.id %>
+    <%= submit_tag("Go on this ride") %>
+  <% end %>
 <% end %>
 

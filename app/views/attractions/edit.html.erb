@@ -1,2 +1,32 @@
-<h1>Attractions#edit</h1>
-<p>Find me in app/views/attractions/edit.html.erb</p>
+<h1>Adjust the attraction:</h1>
+
+<%= form_for(@attraction) do |attraction| %>
+<%# byebug %>
+  <div class="form-group">
+    <%= attraction.label :name, "Name:" %>
+    <%= attraction.text_field :name, :placeholder => "#{@attraction.name}" %> 
+  </div>
+
+  <div class="form-group">
+    <%= attraction.label :min_height, "Height Requirement" %> 
+    <%= attraction.text_field :min_height, :placeholder => "#{@attraction.min_height}" %> 
+  </div>
+
+  <div class="form-group">
+    <%= attraction.label :happiness_rating, "Happiness Rating:" %> 
+    <%= attraction.text_field :happiness_rating, :placeholder => "#{@attraction.happiness_rating}" %> 
+  </div>
+
+  <div class="form-group">
+    <%= attraction.label :nausea_rating, "Nausea Rating:" %> 
+    <%= attraction.text_field :nausea_rating, :placeholder => "#{@attraction.nausea_rating}" %> 
+  </div>
+
+  <div class="form-group">
+    <%= attraction.label :tickets, "Tickets Required:" %> 
+    <%= attraction.text_field :tickets, :placeholder => "#{@attraction.tickets}" %> 
+  </div>
+
+  
+  <%= attraction.submit "Update Attraction" %>
+<% end %>
