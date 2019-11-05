@@ -8,6 +8,8 @@ class User < ApplicationRecord
   def sign_in_list
     self.class.all.map {|user| ["#{user.name}", user.id]}
   end
+
+
     
   def mood
     if self.nausea && self.happiness

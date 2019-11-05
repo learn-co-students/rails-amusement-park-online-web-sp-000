@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :rides, only: [:new, :create]
   resources :users, only: [:new, :create, :index, :show]
   resources :attractions, only: [:create, :new, :edit, :update, :show, :index]
 

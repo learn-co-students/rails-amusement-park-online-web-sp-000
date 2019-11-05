@@ -5,10 +5,9 @@ class UsersController < ApplicationController
   def create
     
     @user = User.create(user_params)
-
     if @user && @user.try(:authenticate, user_params[:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to user_path(@user.id)
     else
       redirect_to '/'
     end
@@ -19,13 +18,14 @@ class UsersController < ApplicationController
   end
 
   def show
-     byebug
+    redirect_to root_path unless signed_in?      
   end
 
   private
 
  
   def user_params
+    # byebug
     params.require(:user).permit(:name, :password, :height, :nausea, :happiness, :tickets, :admin)
   end
 end

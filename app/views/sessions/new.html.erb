@@ -1,7 +1,7 @@
 <h1>Sign In Here:</h1>
-<%= form_for(@user) do |f| %>
-  <%= f.select(:name, options_for_select(@user.sign_in_list)) %>
-  <%= f.password_field :password, :id => "password", :placeholder => "enter your password" %>
-  <%= f.submit "Sign In" %>
+<%= form_tag('/signin',method: :post) do %>
+  <%= select_tag 'user[id]', options_for_select(@user.sign_in_list), :id => 'user_name' %>
+  <%= password_field(:user, :password, :placeholder => 'enter your password', :id => 'password') %>
+  <%= submit_tag("Sign In") %>
 
 <% end %>
