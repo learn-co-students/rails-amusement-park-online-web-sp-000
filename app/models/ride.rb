@@ -4,9 +4,7 @@ class Ride < ApplicationRecord
 
   def take_ride
     if user_is_tall_enough? && user_has_enough_tickets?
-      update_tickets
-      update_nausea
-      update_happiness
+      user_ride
     elsif !user_is_tall_enough? && !user_has_enough_tickets?
       "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
     elsif !user_is_tall_enough?
@@ -42,6 +40,13 @@ class Ride < ApplicationRecord
     happiness_points = self.user.happiness + self.attraction.happiness_rating
     self.user.happiness = happiness_points
     self.user.save
+  end
+
+  def user_ride
+    self.update_happiness
+    self.update_nausea
+    self.update_tickets
+    "Thanks for riding the #{self.attraction.name}!"
   end
 
 end
