@@ -1,2 +1,3 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
+    validates :password, presence: true
 end
