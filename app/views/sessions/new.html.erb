@@ -1,0 +1,12 @@
+<%= form_for(@user, url: url_for(controller: 'sessions', action: 'create'), method: :post) do |f|%>
+<%= f.label(:name) %>
+<%= select_tag "users", options_from_collection_for_select(@users, "id", "name"), include_blank: true %>
+<br>
+<%= f.label(:password) %>
+<%= f.password_field(:password) %>
+<br>
+<%= f.submit("Log in") %>
+<%end%>
+
+<!-- select_tag "people", options_from_collection_for_select(@people, "id", "name")
+# <select id="people" name="people"><option value="1">David</option></select> -->
