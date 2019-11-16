@@ -1,0 +1,22 @@
+<h1>Edit Attraction:</h1>
+
+<%= flash[:message] if flash[:message] %>
+
+<%= form_for(@attraction) do |f| %>
+<%= f.label(:name) %>
+<%= f.text_field(:name, placeholder: "Name Here") %>
+<br>
+<%= f.label(:min_height) %>
+<%= f.number_field(:min_height, placeholder: "Height in Inches") %>
+<br>
+<%= f.label(:happiness_rating) %>
+<%= f.number_field(:happiness_rating, placeholder: "Happiness Level") %>
+<br>
+<%= f.label(:nausea_rating) %>
+<%= f.number_field(:nausea_rating, placeholder: "Nausea Level") %>
+<br>
+<%= f.label(:tickets) %>
+<%= f.number_field(:tickets, placeholder: "Number of Tickets") %>
+<br>
+<%= f.submit("Update Attraction") %>
+<%end%>
