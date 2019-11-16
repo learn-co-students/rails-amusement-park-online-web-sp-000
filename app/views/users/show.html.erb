@@ -1,6 +1,11 @@
+
+<h1><%= "ADMIN" if @user.admin? %></h1>
+<h1><%= flash[:message] if flash[:message]%></h1>
 <h1>Name: <%= @user.name%></h1>
-<h2>Mood: <%= @user.mood%></h2>
+<h2>Mood: <%= @user.mood if @user.mood%></h2>
 <h2>Tickets: <%= @user.tickets%></h2>
 <h2>Height: <%= @user.height%></h2>
 
-<%= link_to("logout", signout_path, method: :post)  %>
+
+<%= link_to("See attractions", attractions_path)%>
+<%= link_to("Log Out", signout_path, method: :post)  %>

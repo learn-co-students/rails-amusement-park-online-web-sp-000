@@ -1,0 +1,8 @@
+<h1><%= @attraction.name %></h1>
+
+<%= form_for(@attraction, url: url_for(controller: 'attractions', action: 'ride'), method: :post) do |f|%>
+<%= f.submit("Go on this ride") unless @user.admin%>
+<%= "You may not go on rides" if @user.admin%>
+<%end %>
+
+<%=link_to("Edit Attraction", edit_attraction_path(@attraction)) if @user.admin%>

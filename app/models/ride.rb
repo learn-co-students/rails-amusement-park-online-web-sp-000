@@ -19,6 +19,7 @@ class Ride < ActiveRecord::Base
       user.update_attribute(:tickets, tickets_left)
       user.update_attribute(:nausea, nausea_level)
       user.update_attribute(:happiness, happiness_level)
+      return "Thanks for riding the #{attraction.name}!"
     end
   end
 

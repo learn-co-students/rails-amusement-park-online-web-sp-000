@@ -22,7 +22,7 @@ describe 'Feature Test: User Signup', :type => :feature do
   end
 
   it 'successfully logs in as non-admin' do
-    
+
     # user_login method is defined in login_helper.rb
     create_standard_user
     visit '/signin'
@@ -246,7 +246,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
 
   it "when the user is too short, clicking on 'Go on ride' displays a sorry message" do
     @user = User.find_by(:name => "Amy Poehler")
-    @user.update(:height => 10)
+    @user.update_attribute(:height, 10)
     click_link('See attractions')
     click_link("Go on #{@teacups.name}")
     click_button("Go on this ride")
@@ -256,7 +256,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
 
   it "when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message" do
     @user = User.find_by(:name => "Amy Poehler")
-    @user.update(:tickets => 1)
+    @user.update_attribute(:tickets, 1)
     click_link('See attractions')
     click_link("Go on #{@ferriswheel.name}")
     click_button("Go on this ride")
@@ -266,7 +266,8 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
 
   it "when the user is too short and doesn't have enough tickets, clicking on 'Go on ride' displays a detailed sorry message" do
     @user = User.find_by(:name => "Amy Poehler")
-    @user.update(:tickets => 1, :height => 30)
+    @user.update_attribute(:tickets, 1)
+    @user.update_attribute(:height, 30)
     click_link('See attractions')
     click_link("Go on #{@rollercoaster.name}")
     click_button("Go on this ride")

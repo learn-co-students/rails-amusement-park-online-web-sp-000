@@ -1,9 +1,11 @@
+<h1>Sign Up!</h1>
 <%if flash[:errors]%>
   <%flash[:errors].each do |error_message| %>
       <p><%=error_message%></p>
       <br>
   <%end%>
 <%end%>
+
 
 <%= form_for(@user) do |f| %>
 <%= f.label(:name) %>
@@ -22,7 +24,10 @@
 <%= f.number_field(:tickets, placeholder: "Number of Tickets") %>
 <br>
 <%= f.label(:pasword) %>
-<%= f.text_field(:password, placeholder: "Password") %>
+<%= f.password_field(:password, placeholder: "Password") %>
+<br>
+<%= f.label(:admin) %>
+<%= f.check_box(:admin) %>
 <br>
 <%= f.submit("Create User") %>
 <%end%>
