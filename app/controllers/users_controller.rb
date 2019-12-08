@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end 
 
     def signin
-        @user = User.find_by(id: params[:id])
+        @user = User.find_or_create_by(id: params[:id])
     end 
 
 
