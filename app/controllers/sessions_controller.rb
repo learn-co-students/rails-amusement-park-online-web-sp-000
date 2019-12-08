@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
     end 
 
     def create
-        byebug
         session[:name] = params[:name]
     
     end 

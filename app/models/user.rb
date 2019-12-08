@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
     has_many :rides
     has_many :attractions, through: :rides 
-
-
     has_secure_password
 
     def mood 
@@ -11,7 +9,6 @@ class User < ActiveRecord::Base
         elsif self.happiness > self.nausea 
             return "happy"
         end  
-
     end 
 
 end
