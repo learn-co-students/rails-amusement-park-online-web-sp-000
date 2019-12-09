@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_023641) do
+ActiveRecord::Schema.define(version: 2019_12_09_035519) do
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2019_11_29_023641) do
     t.integer "nausea_rating"
     t.integer "happiness_rating"
     t.integer "tickets"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.string "attraction_sort_order"
+    t.string "ride_sort_order"
+    t.boolean "allow_create_attractions"
+    t.boolean "allow_create_rides"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

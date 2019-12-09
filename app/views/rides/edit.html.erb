@@ -1,4 +1,12 @@
-<h1>Editing Ride</h1>
+<h1>Editing <%= @ride.name %></h1>
+
+<%= form_for @ride  do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br />
+
+  <%= f.submit %>
+<% end %>
 
 <%= render 'form', ride: @ride %>
 

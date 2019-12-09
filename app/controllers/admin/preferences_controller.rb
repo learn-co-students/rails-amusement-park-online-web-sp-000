@@ -1,16 +1,21 @@
 class Admin::PreferencesController < ApplicationController
-    before_action :require_logged_in
+    # 
 
     def index
+        @preference = Preference.first_or_create(allow_create_attractions: true, allow_create_rides: true, ride_sort_order: "DESC", attraction_sort_order: "DESC")
     end
-
-    def create
-        user = User.find_by(name: params[:user][:name])
-        user = user.try(:authenticate, params[:user][:password])
-          return redirect_to(controller: 'sessions', action: 'new') unless user
-        session[:user_id] = user.id
-        @user = user
-        redirect_to @user 
+      
+    def update
+        @preference = Preference.find(params[:id])
+        @preference.update(preference_params)
+        redirect_to admin_preferences_path
+    end
+      
+    private
+      
+    def preference_params
+        params.require(:preference).permit(:allow_create_attractions, :allow_create_rides, :ride_sort_order, :attraction_sort_order)
+        end
     end
 
 end

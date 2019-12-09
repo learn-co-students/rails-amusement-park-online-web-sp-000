@@ -16,8 +16,8 @@ class AttractionsController < ApplicationController
   # GET /attractions/new
   def new
     @preference = Preference.first
-    if @preference.allow_create_attraction
-       @attraction = Attraction.new
+    if @preference.allow_create_attractions
+      redirect_to controller: 'admin_preferences', action: 'index'
     else
       redirect_to attractions_path
     end
