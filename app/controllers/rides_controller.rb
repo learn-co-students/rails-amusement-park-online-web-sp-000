@@ -1,3 +1,4 @@
+require 'pry'
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update, :destroy]
 
@@ -14,7 +15,12 @@ class RidesController < ApplicationController
 
   # GET /rides/new
   def new
+    @preference = Preference.first
+    if @preference.allow_create_rides
     @ride = Ride.new
+    else
+      redirect_to rides_path
+    end 
   end
 
   # GET /rides/1/edit
@@ -25,16 +31,9 @@ class RidesController < ApplicationController
   # POST /rides.json
   def create
     @ride = Ride.new(ride_params)
-
-    respond_to do |format|
-      if @ride.save
-        format.html { redirect_to @ride, notice: 'Ride was successfully created.' }
-        format.json { render :show, status: :created, location: @ride }
-      else
-        format.html { render :new }
-        format.json { render json: @ride.errors, status: :unprocessable_entity }
-      end
-    end
+    @ride.save
+    @message = @ride.take_ride
+    redirect_to user_path(@ride.user, message: @message)
   end
 
   # PATCH/PUT /rides/1

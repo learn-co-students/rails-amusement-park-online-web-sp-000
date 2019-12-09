@@ -10,11 +10,17 @@ class AttractionsController < ApplicationController
   # GET /attractions/1
   # GET /attractions/1.json
   def show
+    
   end
 
   # GET /attractions/new
   def new
-    @attraction = Attraction.new
+    @preference = Preference.first
+    if @preference.allow_create_attraction
+       @attraction = Attraction.new
+    else
+      redirect_to attractions_path
+    end
   end
 
   # GET /attractions/1/edit

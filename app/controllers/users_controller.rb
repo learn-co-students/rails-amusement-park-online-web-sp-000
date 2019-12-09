@@ -10,6 +10,14 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if params[:message]
+      @message = params[:message]
+    end
+    if !logged_in?
+      redirect_to '/'
+    else
+      render :show
+    end
   end
 
   # GET /users/new
@@ -25,16 +33,18 @@ class UsersController < ApplicationController
   # POST /users.json
 
   def create
+    #binding.pry
     @user = User.new(user_params)
-    return redirect_to controller: 'users', action: 'new' unless @user.save
+    #binding.pry
+    return redirect_to controller: 'users', action: 'new' unless @user.save 
     session[:user_id] = @user.id
-    redirect_to controller: 'welcome', action: 'home'
+    # redirect_to controller: 'welcome', action: 'home'
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new }
+        format.html { render :home, location: @welcome}
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -67,11 +77,13 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
+      #binding.pry
       @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password_digest, :happiness, :nausea, :height, :tickets, :admin)
+      params.require(:user).permit(:name, :password, :happiness, :nausea, :height, :tickets, :admin)
     end
 end
+  

@@ -2,8 +2,13 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown") %>
+
   <%= f.label :password %>
   <%= f.password_field :password, :id => "password" %>
-  <%= f.submit "Sign In" %>
+
+  <%= f.label :admin %>
+  <%= f.user_field :admin %>
+
+  <%= f.submit "Create User" %>
   Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
 <% end %>
