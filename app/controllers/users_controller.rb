@@ -1,6 +1,7 @@
+require 'pry'
 class UsersController < ApplicationController
-    #before_action :require_login
-    #skip_before_action :require_login, only: [:index, :new, :create]
+    before_action :require_login
+    skip_before_action :require_login, only: [:index, :new, :create]
 
     def new
         @user = User.new 
@@ -20,10 +21,6 @@ class UsersController < ApplicationController
     def show
         @user = User.find_by(id: params[:id])
     end 
-
-    # def signin
-    #     @user = User.find_or_create_by(name: params[:name])
-    # end 
 
 
     private
