@@ -3,5 +3,8 @@
 <%= @user.tickets %>
 <%= @user.height %>
 <%= @user.nausea %>
-ADMIN: <%= @user.admin %>
-<% binding.pry %>
+ADMIN: <%= @user.admin %><br>
+
+<%= link_to "Log Out", logout_path, method: 'post'%></br></br>
+
+<%= link_to "See attractions", attractions_path %>

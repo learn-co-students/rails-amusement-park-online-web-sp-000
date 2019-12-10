@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root :to => 'users#new'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
 
   resources :users, only: [:new, :create, :show]
-  
+  resources :attractions
 
 end
