@@ -1,3 +1,4 @@
+require 'pry'
 class AttractionsController < ApplicationController
   before_action :set_attraction, only: [:show, :edit, :update, :destroy]
 
@@ -9,29 +10,28 @@ class AttractionsController < ApplicationController
 
   # GET /attractions/1
   # GET /attractions/1.json
-  def show
-    
+  def show 
   end
 
   # GET /attractions/new
   def new
-    @preference = Preference.first
-    if @preference.allow_create_attractions
-      redirect_to controller: 'admin_preferences', action: 'index'
-    else
-      redirect_to attractions_path
+    if !is_admin?
+      redirect_to attractions_path(attraction_params)
     end
   end
 
   # GET /attractions/1/edit
   def edit
+    if !is_admin?
+    @attraction = Attraction.find(params[:id])
+    end
   end
 
   # POST /attractions
   # POST /attractions.json
   def create
     @attraction = Attraction.new(attraction_params)
-
+    #binding.pry
     respond_to do |format|
       if @attraction.save
         format.html { redirect_to @attraction, notice: 'Attraction was successfully created.' }
@@ -46,6 +46,7 @@ class AttractionsController < ApplicationController
   # PATCH/PUT /attractions/1
   # PATCH/PUT /attractions/1.json
   def update
+    @attraction = Attraction.find(params[:id])
     respond_to do |format|
       if @attraction.update(attraction_params)
         format.html { redirect_to @attraction, notice: 'Attraction was successfully updated.' }
@@ -75,6 +76,6 @@ class AttractionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attraction_params
-      params.require(:attraction).permit(:name, :min_height, :nausea_rating, :happiness_rating, :ticket)
+      params.require(:attraction).permit(:name, :min_height, :nausea_rating, :happiness_rating, :tickets)
     end
 end

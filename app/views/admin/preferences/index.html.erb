@@ -1,14 +1,9 @@
-<%= form_for @user, url: login_path, method: :post do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown") %>
+<h1>Admin Pref</h1>
 
-  <%= f.label :password %>
-  <%= f.password_field :password, :id => "password" %>
+<%= render 'form', preference: @preference %>
 
-  <%= f.label :admin %>
-  <%= f.user_field :admin %>
+<%= link_to 'Edit Attraction', edit_attraction_path(@preference) %>
+<%= link_to 'Edit Ride', edit_ride_path(@preference) %>
 
-  <%= f.submit "Create User" %>
-  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
-<% end %>
+<%= link_to 'Back', attractions_path %>
+

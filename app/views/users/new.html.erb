@@ -42,9 +42,9 @@
     <%= form.number_field :tickets %>
   </div>
 
-  <div class="field" id="user_admin">
-    <%= form.label :admin %>
-    <%= form.check_box :admin %>
+  <div class="field">
+    <%= form.label(:admin) %>
+    <%= form.check_box :admin, :id => "user_admin"%>
   </div>
 
 <div class="actions">

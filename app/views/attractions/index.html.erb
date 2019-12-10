@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <h1>Attractions</h1>
@@ -15,6 +16,7 @@
   </thead>
 
   <tbody>
+    <% if @user.admin %>
     <% @attractions.each do |attraction| %>
       <tr>
         <td><%= attraction.name %></td>
@@ -22,9 +24,22 @@
         <td><%= attraction.nausea_rating %></td>
         <td><%= attraction.happiness_rating %></td>
         <td><%= attraction.tickets %></td>
-        <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></td> 
         <td><%= link_to 'Edit', edit_attraction_path(attraction) %></td>
+        <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
         <td><%= link_to 'Destroy', attraction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+    <% else %>
+        <% @attractions.each do |attraction| %>
+        <td><%= attraction.name %></td>
+        <td><%= attraction.min_height %></td>
+        <td><%= attraction.nausea_rating %></td>
+        <td><%= attraction.happiness_rating %></td>
+        <td><%= attraction.tickets %></td>
+        <td><%= link_to 'Edit', edit_attraction_path(attraction) %></td>
+        <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
+        <td><%= link_to 'Destroy', attraction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></td>    
+        <%end%>  
       </tr>
     <% end %>
   </tbody>
@@ -32,5 +47,5 @@
 
 <br>
 
-<%= link_to 'New Attraction', new_attraction_path %>
+<%= link_to 'New Attraction', new_attraction_path %> |
 
