@@ -1,0 +1,9 @@
+<h1>Admin Pref</h1>
+
+<%= render 'form', preference: @preference %>
+
+<%= link_to 'Edit Attraction', edit_attraction_path(@preference) %>
+<%= link_to 'Edit Ride', edit_ride_path(@preference) %>
+
+<%= link_to 'Back', attractions_path %>
+

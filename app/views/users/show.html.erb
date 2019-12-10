@@ -1,0 +1,49 @@
+
+<p><% if @message %>
+    <%= @message %>
+    <%end %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password_digest %>
+</p>
+
+<p>
+  <strong>Happiness:</strong>
+  <%= @user.happiness %>
+</p>
+
+<p>
+  <strong>Nausea:</strong>
+  <%= @user.nausea %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @user.height %>
+</p>
+
+<p>
+  <strong>Tickets:</strong>
+  <%= @user.tickets %>
+</p>
+
+<p id="user_admin">
+  <strong>ADMIN</strong>
+  <%= @user.admin %>
+</p>
+
+<p>
+  <strong>Mood:</strong>
+  <%= @user.mood %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %> |
+<%= link_to 'Log Out', session_path, method: "delete" %> |
+<%= link_to 'See attractions', attractions_path %>

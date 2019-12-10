@@ -1,0 +1,14 @@
+<h1>Editing <%= @ride.name %></h1>
+
+<%= form_for @ride  do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br />
+
+  <%= f.submit %>
+<% end %>
+
+<%= render 'form', ride: @ride %>
+
+<%= link_to 'Show', @ride %> |
+<%= link_to 'Back', rides_path %>
