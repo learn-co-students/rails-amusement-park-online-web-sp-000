@@ -11,12 +11,25 @@ class RidesController < ApplicationController
             @user = User.find_by(id: params[:ride][:user_id])
             @attraction = Attraction.find_by(id: params[:ride][:attraction_id])
     
-            if @user.tickets > @attraction.tickets
+            if @user.tickets > @attraction.tickets && @user.height > @attraction.min_height       
                 tickets_left = @user.tickets - @attraction.tickets 
-                @user.tickets = tickets_left
-                @user.save 
-                redirect_to user_path(@ride.user)
+                    @user.tickets = tickets_left
+
+                    happiness = @user.happiness - @attraction.happiness_rating
+                    @user.happiness = happiness
+                    nausea = @user.nausea - @attraction.nausea_rating
+                    @user.nausea = nausea 
+                    @user.save 
+                    redirect_to user_path(@ride.user), notice: "Thanks for riding the #{@attraction.name}!"
+                
+            elsif @user.tickets < @attraction.tickets && @user.height < @attraction.min_height 
+                    redirect_to user_path(@ride.user), notice: "You are not tall enough to ride the #{@attraction.name}. You do not have enough tickets to ride the #{@attraction.name}"     
+            elsif  @user.height < @attraction.min_height
+                    redirect_to user_path(@ride.user), notice: "You are not tall enough to ride the #{@attraction.name}"
+            elsif @user.tickets < @attraction.tickets
+                redirect_to user_path(@ride.user), notice: "You do not have enough tickets to ride the #{@attraction.name}"
             end
+            
         end 
     end 
 
