@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
 
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :update]
   resources :attractions
 
 end
