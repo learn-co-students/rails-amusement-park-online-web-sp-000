@@ -1,3 +1,4 @@
+require 'pry'
 class AttractionsController < ApplicationController
 
     def index
@@ -7,12 +8,6 @@ class AttractionsController < ApplicationController
     def show 
         @attraction = Attraction.find_by(id: params[:id])
         @user = User.find_by(id: session[:user_id])
-        if @user.tickets > @attraction.tickets && @user.height > @attraction.min_height
-            tickets_left = @user.tickets - @attraction.tickets 
-            @user.tickets = tickets_left
-            @user.save 
-
-        end 
-
-    end 
+        @ride = Ride.new(attraction_id: @attraction.id, user_id: @user.id)
+    end
 end 

@@ -1,1 +1,5 @@
-<%= button_to "Go on this ride", user_path(@user), method: 'get' %>
+<%= form_for @ride do |f| %>
+<%= f.hidden_field(:attraction_id) %>
+<%= f.hidden_field(:user_id)%>
+<%= f.submit "Go on this ride" %>
+<% end %>
