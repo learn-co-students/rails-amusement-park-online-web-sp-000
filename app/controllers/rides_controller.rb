@@ -15,9 +15,9 @@ class RidesController < ApplicationController
                 tickets_left = @user.tickets - @attraction.tickets 
                     @user.tickets = tickets_left
 
-                    happiness = @user.happiness - @attraction.happiness_rating
+                    happiness = @user.happiness + @attraction.happiness_rating
                     @user.happiness = happiness
-                    nausea = @user.nausea - @attraction.nausea_rating
+                    nausea = @user.nausea + @attraction.nausea_rating
                     @user.nausea = nausea 
                     @user.save 
                     redirect_to user_path(@ride.user), notice: "Thanks for riding the #{@attraction.name}!"

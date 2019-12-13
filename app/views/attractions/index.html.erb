@@ -2,8 +2,7 @@
     <% if @user.admin == false %>
        <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></br>
     <% elsif @user.admin %>
-       <%= link_to "See attractions", attraction_path(attraction) %>
-       <%= flash[:notice] = "Show #{attraction.name}" %>
+       <%= flash[:notice] = link_to "Show #{attraction.name}", attraction_path(attraction) %>
     <% end %>
 <% end %>
     <h1>New Attraction</h1>
