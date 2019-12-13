@@ -1,0 +1,21 @@
+<% @attractions.each do |attraction| %>
+    <% if @user.admin == false %>
+       <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></br>
+    <% elsif @user.admin %>
+       <%= flash[:notice] = link_to "Show #{attraction.name}", attraction_path(attraction) %>
+    <% end %>
+<% end %>
+    <h1>New Attraction</h1>
+    <% if @user.admin %>
+        <%= form_for @attraction, url: new_attraction_path do |f| %>
+             Name: <%= f.text_field :name %>
+             Tickets: <%= f.text_field :tickets %>
+             Nausea Rating: <%= f.text_field :nausea_rating %>
+             Happiness Rating: <%= f.text_field :happiness_rating %>
+             Height Requirement: <%= f.text_field :min_height %>
+        <% end %>
+    <% end %>
+    <%= link_to "New Attraction", new_attraction_path %>
+
+    
+

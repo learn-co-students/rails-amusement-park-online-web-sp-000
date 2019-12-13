@@ -1,0 +1,13 @@
+<%= notice %>
+Name: <%= @user.name %>
+Mood: <%= @user.mood %>
+Tickets: <%= @user.tickets %>
+Height: <%= @user.height %>
+Nausea: <%= @user.nausea %>
+ADMIN: <%= @user.admin %><br>
+
+<%= link_to "Log Out", logout_path, method: 'post'%></br></br>
+
+<%= link_to "See attractions", attractions_path %>
+
+
