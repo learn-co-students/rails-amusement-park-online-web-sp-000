@@ -1,8 +1,10 @@
 <% @attractions.each do |attraction| %>
-    <%= link_to_if @user.admin == false, "Go on #{attraction.name}", attraction_path(attraction) %></br>
-    <%= link_to_if @user.admin, "Show #{attraction.name}", attraction_path(attraction) %>
+    <% if @user.admin == false %>
+       <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></br>
+    <% else %>
+       <%= link_to "See attractions", attraction_path(attraction) %>
     <% end %>
-
+<% end %>
     <h1>New Attraction</h1>
     <% if @user.admin %>
         <%= form_for @attraction, url: new_attraction_path do |f| %>
