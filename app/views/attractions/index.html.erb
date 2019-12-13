@@ -1,8 +1,9 @@
 <% @attractions.each do |attraction| %>
     <% if @user.admin == false %>
        <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></br>
-    <% else %>
+    <% elsif @user.admin %>
        <%= link_to "See attractions", attraction_path(attraction) %>
+       <%= flash[:notice] = "Show #{attraction.name}" %>
     <% end %>
 <% end %>
     <h1>New Attraction</h1>
