@@ -1,0 +1,11 @@
+<%= form_for :user, url: login_path  do |f| %>
+    
+      <%= f.label :name %><br>
+      <%= f.collection_select :name, @users, :name, :name%>
+      <br>
+      <%= f.label :password %><br>
+      <input type="text" id="password" name="password">
+      <br>
+      <%= f.submit "Sign In" %>
+   
+  <% end %>

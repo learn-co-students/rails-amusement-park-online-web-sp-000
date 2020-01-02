@@ -1,0 +1,12 @@
+<h1> Attractions </h1>
+
+<%@attractions.each do |att| %>
+    <h3><%=link_to "Go on #{att.name}", attraction_path(att) unless current_user.admin%><br></h3>
+    <p>Tickets: <%=att.tickets%></p>
+
+    <p><%= link_to "Show #{att.name}", attraction_path(att) if current_user.admin %></p>
+    
+    <br>
+<% end %>
+
+</p><%= link_to 'New Attraction', new_attraction_path if current_user.admin? %></p>
