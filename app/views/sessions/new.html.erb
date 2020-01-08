@@ -1,0 +1,8 @@
+<h2>Sign In</h3>
+<%= form_for :user, url: '/signin' do |f| %>
+    <p><%= f.label :name, "Your Name:" %><br>
+    <%= f.collection_select(:name, User.all, :id, :name) %>
+    <p><%= f.label :password, "password" %><br>
+    <%= f.password_field :password %></p>
+    <%= f.submit "Sign In" %>
+<% end %>

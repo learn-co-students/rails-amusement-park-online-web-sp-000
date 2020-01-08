@@ -10,6 +10,8 @@
     <%= f.number_field :nausea %></p>
     <p><%= f.label :tickets, "How many tickets do you have?"%><br>
     <%= f.number_field :tickets %></p>
+    <p><%= f.label :admin, "Check if you are a theme park owner " %>
+    <%= f.check_box :admin %></p>
     <p><%= f.label :password %><br>
     <%= f.password_field :password %></p>
     <p><%= f.submit "Create User"  %>

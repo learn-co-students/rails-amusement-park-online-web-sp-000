@@ -1,0 +1,4 @@
+<h2>All the Attractions</h2>
+<% Attraction.all.each do |ride| %>
+    <p><%= link_to "Go on #{ride.name}", attraction_path(ride.id) %></p>
+<% end %>

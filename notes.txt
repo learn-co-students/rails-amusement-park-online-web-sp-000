@@ -1,5 +1,5 @@
 MODELS
-Attraction
+XAttraction
 has_many :rides
 has_many :users, through: :rides
     - name:string
@@ -8,7 +8,7 @@ has_many :users, through: :rides
     - happiness_rating:integer
     - tickets:integer
 
-Ride
+XRide
 belongs_to :user 
 belongs_to :attraction 
     - user_id
@@ -22,7 +22,7 @@ belongs_to :attraction
         5. updates user's naseau (update_nausea)
         6. updates happiness (update_happiness)
 
-User 
+XUser 
 has_many :rides 
 has_many :attractions, through: :rides 
 has_secure_password (remember to add 'bcrypt' gem)
@@ -39,7 +39,7 @@ has_secure_password (remember to add 'bcrypt' gem)
         2. returns 'happy' when user is more happy than nauseous
 
 CONTROLLERS & VIEWS
-UserController
+XUserController
     Signup page 
         - at users/new
             - in routes, resources :user, only: [:new, :create]
@@ -52,8 +52,13 @@ UserController
             - password 
             - "Create User"
     
-SessionController
+XSessionController
     - Sign a user in & create a session hash
+
+Login
+    - path should be '/signin'
+    - fields should be 'user_name' and 'password'
+    - submit button should be 'Sign In'
 
 Access Controls
     - only view user show page if you are that logged in user
