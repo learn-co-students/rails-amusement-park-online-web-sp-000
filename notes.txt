@@ -55,14 +55,23 @@ XUserController
 XSessionController
     - Sign a user in & create a session hash
 
-Login
+XLogin
     - path should be '/signin'
     - fields should be 'user_name' and 'password'
     - submit button should be 'Sign In'
 
-Access Controls
+XAccess Controls
     - only view user show page if you are that logged in user
     - otherwise redirect to homepage, which should have a signup link
 
-Figure out the admin thing 
-    - check box on signup page
+XSignout
+    - destroys session hash
+    - redirects to homepage
+
+Go on a Ride
+    - link from user show page to attractions index page
+    - links from attractions index page to attraction show pages
+    - button from attraction show page to "Go on this ride"
+        - clicking button redirects to user show page
+        - take_ride
+        - if user is tall enough and has enough tickets, clicking button displays "Thanks for riding the #{@attraction.name}!"

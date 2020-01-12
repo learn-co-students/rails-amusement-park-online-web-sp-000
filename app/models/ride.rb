@@ -3,38 +3,35 @@ class Ride < ApplicationRecord
     belongs_to :attraction
 
     def take_ride
-        return "Sorry. You do not have enough tickets to ride the #{coaster.name}. You are not tall enough to ride the #{coaster.name}." if !tall_enough && !enough_tickets
+        return "Sorry. You do not have enough tickets to ride the #{coaster.name}. You are not tall enough to ride the #{coaster.name}." if !self.tall_enough && !self.enough_tickets
 
-        return "Sorry. You do not have enough tickets to ride the Roller Coaster." unless enough_tickets
+        return "Sorry. You do not have enough tickets to ride the #{coaster.name}." unless self.enough_tickets
         
-        return "Sorry. You are not tall enough to ride the #{coaster.name}." unless tall_enough
-
-        update_tickets
-        update_nausea
-        update_happiness
+        return "Sorry. You are not tall enough to ride the #{coaster.name}." unless self.tall_enough
+        
+        self.update_tickets
+        self.update_nausea
+        self.update_happiness
     end
-
+    
     def enough_tickets
         true if rider.tickets >= coaster.tickets
     end
-
+    
     def tall_enough
         true if rider.height >= coaster.min_height
     end
-
+    
     def update_tickets
-        rider.tickets -= coaster.tickets
-        rider.save
+        rider.update_column(:tickets, rider.tickets -= coaster.tickets)
     end
 
     def update_nausea
-        rider.nausea += coaster.nausea_rating
-        rider.save
+        rider.update_column(:nausea, rider.nausea += coaster.nausea_rating)
     end
 
     def update_happiness
-        rider.happiness += coaster.happiness_rating
-        rider.save
+        rider.update_column(:happiness, rider.happiness += coaster.happiness_rating)
     end
 
     def rider 
