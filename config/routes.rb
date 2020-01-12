@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   post '/rides', to: 'rides#create'
   resources :users, only: [:new, :create, :show]
-  resources :attractions, only: [:index, :show]
+  resources :attractions
 
 end

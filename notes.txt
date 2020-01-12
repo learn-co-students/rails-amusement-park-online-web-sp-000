@@ -68,10 +68,19 @@ XSignout
     - destroys session hash
     - redirects to homepage
 
-Go on a Ride
+XGo on a Ride
     - link from user show page to attractions index page
     - links from attractions index page to attraction show pages
     - button from attraction show page to "Go on this ride"
         - clicking button redirects to user show page
         - take_ride
         - if user is tall enough and has enough tickets, clicking button displays "Thanks for riding the #{@attraction.name}!"
+
+ADMIN FLOW
+    [x] on attractions index, admins:
+        [x] have  "New Attraction" link
+        [x] attraction links say "Show #{attraction}" instead of "Go on #{attraction}" link
+    [x] attractions/new has form to add attraction that redirects to created attraction
+    [x] on attraction show page, admin:
+        - do have "Edit Attraction" link, which allows admin to edit
+        - don't have "Go on this ride" link
