@@ -1,11 +1,3 @@
-# class ApplicationController < ActionController::Base
-#   protect_from_forgery with: :exception
-#
-#   def current_user
-#     User.find(session[:user_id])
-#   end
-# end
-
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :is_logged_in
@@ -32,5 +24,4 @@ class ApplicationController < ActionController::Base
       current_user.rides.last.take_ride
     end
   end
-
 end
