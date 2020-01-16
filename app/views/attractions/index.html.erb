@@ -1,0 +1,17 @@
+<ul>
+  <% @attractions.each do |a| %>
+    <li><%= a.name %></li>
+    <br />
+    <% if !is_admin(current_user) %>
+    <%= link_to "Go on #{a.name}", "/attractions/#{a.id}", method: :get %>
+    <% end %>
+    <% if is_admin(current_user) %>
+      <br />
+      <%= link_to "Show #{a.name}", "/attractions/#{a.id}" %>
+    <% end %>
+  <% end %>
+</ul>
+
+<% if is_admin(current_user) %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
