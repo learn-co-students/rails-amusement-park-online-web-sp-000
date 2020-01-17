@@ -1,0 +1,9 @@
+You have reached the edit page for <%= @attraction.name %>
+<%= form_for @attraction do |f| %>
+    Name <%= f.text_field :name %>
+    Tickets <%= f.text_field :tickets %>
+    Nausea rating <%= f.text_field :nausea_rating %>
+    Happiness rating <%= f.text_field :happiness_rating %>
+    Minimum height <%= f.text_field :min_height %>
+    <%= f.submit %>
+<% end %>
