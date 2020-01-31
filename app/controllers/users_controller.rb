@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id]
+        @user = User.find(params[:id])
         @user.rides.build(:attraction_id => params[:attraction_id], :user_id => @user.id).save if params[:attraction_id]
         redirect_to '/' if !session[:user_id]
     end
