@@ -1,0 +1,11 @@
+<div style="width: 600px; margin:auto">
+  <img style="width: 600px"
+       src="http://www.washingtonpost.com/wp-srv/special/health/why-roller-coasters-make-us-scream/images/rollercoasterBackground.jpg">
+</div>
+<h1 align="center">Welcome to the //Amusement Park!</h1>
+
+<% if logged_in? %>
+  <h2>You are logged in, <%= current_user.name %></h2>
+<% end %>
+
+<h1>Hi, <%= session[:id] %></h1>

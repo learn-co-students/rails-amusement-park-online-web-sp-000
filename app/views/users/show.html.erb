@@ -1,0 +1,17 @@
+<div class="continer" role="main">
+  <div class="center">
+      <div class="info">
+        <% if @user.admin %>
+          <p><Strong>ADMIN</Strong></p>
+        <% end %>
+<P>Walt Disney</P>
+        <p>ADMIN</p>
+        <p><strong>Welcome, <%= @user.name %></strong></p>
+        <p><strong>Name: </strong><%= @user.name %></p>
+        <p><strong>Mood: </strong><%= @user.mood %></p>
+        <p><strong>Tickets: </strong><%= @user.tickets %></p>
+        <p><strong>Height: </strong><%= @user.height %></p>
+        <%= link_to "See attractions", attractions_path %>
+      </div>
+  </div>
+</div>

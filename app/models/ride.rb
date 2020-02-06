@@ -3,7 +3,7 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
 
   def take_ride
-    ride = []
+    ride = Array.new
     ride[0] = " "
     if user.tickets < attraction.tickets
       tick = "You do not have enough tickets to ride the #{attraction.name}."
