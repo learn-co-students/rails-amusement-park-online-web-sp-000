@@ -20,7 +20,7 @@
         <a class="navbar-brand" href="<%= root_path %>" />Home</a>
         <a class="navbar-brand" href="<%= new_user_path %>" />Sign Up</a>
         <a class="navbar-brand" href="<%= signin_path %>" />Log in</a>
-        <a class="navbar-brand" href="<%= logout_path %>" />Log Out</a>
+        <%= link_to "Log Out", {:controller => 'sessions', :action => 'destroy'}, :method => :delete %>
 
         </div>
         <div class="navbar-collapse collapse">
