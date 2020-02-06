@@ -74,7 +74,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(current_path).to eq('/signin')
     # admin_login method is defined in login_helper.rb
     admin_login
-    expect(current_path).to eq('/users/1')
+    expect(current_path).to eq('/users/2')
     expect(page).to have_content("Walt Disney")
     expect(page).to have_content("ADMIN")
   end

@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   post 'signup' => 'users#create'
   get 'signin' => 'sessions#login'
   post 'signin' => 'sessions#create'
-  delete 'delete' => 'sessions#destroy'
+  delete 'logout' => 'sessions#destroy'
 
 end

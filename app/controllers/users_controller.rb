@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if (@user = User.find_by(id: params[:id]))
+      if (@user = User.find_by(id: params[:id]))
     authorize(@user)
     else
       not_authorized
