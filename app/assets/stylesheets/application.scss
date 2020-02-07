@@ -38,12 +38,13 @@ body {
 
 .pic,
 .info {
+  align-content: center;
+  align-items: center;
   padding: 20px;
   display: inline-block;
-  background-color: #eeeeee;
   border-radius: 7px;
   vertical-align: middle;
-  margin: 10px;
+  margin: auto;
 }
 
 .info {
