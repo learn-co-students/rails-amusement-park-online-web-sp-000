@@ -1,0 +1,10 @@
+<h2>All the Attractions!</h2>
+
+<% @attractions.each do |attraction| %>
+  <ul>
+    <li><strong><%= link_to admin_index_string + attraction.name, attraction_path(attraction) %></strong></li>
+  </ul>
+<% end %>
+<br>
+
+<p><h3><%= link_to "New Attraction", new_attraction_path %></h3></p>

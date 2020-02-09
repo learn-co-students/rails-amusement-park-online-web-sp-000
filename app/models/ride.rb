@@ -3,30 +3,38 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
 
   def take_ride
-    ride = Array.new
-    ride[0] = " "
-    if user.tickets < attraction.tickets
-      tick = "You do not have enough tickets to ride the #{attraction.name}."
-    end
+    raise Exceptions::RideError.new("Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}.") if too_short and not_enough_tickets
+    raise Exceptions::NotTallEnoughError.new(self.attraction.name) if too_short
+    raise Exceptions::NotEnoughTicketsError.new(self.attraction.name) if not_enough_tickets
+    deduct_tickets
+    update_happiness
+    update_nausea
+  end
 
-    if user.height < attraction.min_height
-      ht = "You are not tall enough to ride the #{attraction.name}."
-    end
+  private
 
-    if user.tickets > attraction.tickets && user.height > attraction.min_height
-      user.update(:tickets => (user.tickets - attraction.tickets))
-      user.update(:nausea => (user.nausea + attraction.nausea_rating))
-      user.update(:happiness => (user.happiness + attraction.happiness_rating))
-    end
+  def too_short
+    self.user.height < self.attraction.min_height
+  end
 
-    ride << tick
-    ride << ht
+  def not_enough_tickets
+    self.user.tickets < self.attraction.tickets
+  end
 
-    unless ride.first.empty?
-      ride[0] = "Sorry."
-    end
-    result = ride.compact.split("").flatten.join(" ")
-    result
+  def deduct_tickets
+    update_user(:tickets, -1 * self.attraction.tickets)
+  end
+
+  def update_happiness
+    update_user(:happiness, self.attraction.happiness_rating)
+  end
+
+  def update_nausea
+    update_user(:nausea, self.attraction.nausea_rating)
+  end
+
+  def update_user(attribute, value)
+    self.user.update(attribute => (self.user.send(attribute) + value))
   end
 
 end

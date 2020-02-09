@@ -5,6 +5,6 @@
 <h1 align="center">Welcome to the //Amusement Park!</h1>
 
 <% if logged_in? %>
-  <h2>You are logged in, <%= current_user.name %></h2>
+  <h2>You are logged in, <%= link_to current_user.name, user_path(current_user.id) %></h2>
 <% end %>
 

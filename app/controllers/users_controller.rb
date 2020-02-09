@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if (@user = User.new(user_params))
       if @user.save
         session[:user_id] = @user.id
-        flash[:message] = "Welcome, #{@user.name}"
+        # flash[:message] = "Welcome, #{@user.name}"
         redirect_to user_path(@user)
       else
         render :new
@@ -25,6 +25,12 @@ class UsersController < ApplicationController
     else
       not_authorized
     end
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    redirect_to @user
   end
 
   private
