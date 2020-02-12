@@ -2,4 +2,4 @@ Name: <%= @attraction.name %><br>
 Tickets: <%= @attraction.tickets %><br>
 Mood: <%= @attraction.nausea_rating %><br>
 Height: <%= @attraction.min_height %>
-<%= button_to "Go on this ride", {:controller => "attractions", :action => "ride", :attraction_id => @attraction.id, :user_id=> session[:user_id]} , :method=>:post %>
+<%= edit_attraction_link(@attraction) %>

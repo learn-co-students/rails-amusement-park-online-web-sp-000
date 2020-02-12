@@ -14,4 +14,16 @@ class AttractionsController < ApplicationController
         flash[:alert] = @ride.take_ride
         redirect_to user_path(@user)
     end
+
+    def new
+
+    end
+
+    def create
+    
+    end
+
+    def edit
+
+    end
 end
