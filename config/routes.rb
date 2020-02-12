@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :attractions, only: [:index, :show]
+  post '/ride', to: 'attractions#ride'
 end
