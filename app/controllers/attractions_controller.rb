@@ -16,14 +16,34 @@ class AttractionsController < ApplicationController
     end
 
     def new
-
+        if !current_user.admin
+            redirect_to '/'
+        else
+            @attraction = Attraction.new
+        end
     end
 
     def create
-    
+        attraction = Attraction.create(attraction_params)
+        redirect_to attraction_path(attraction)
     end
 
     def edit
+        if !current_user.admin
+            redirect_to '/'
+        else
+            @attraction = Attraction.find(params[:id])
+        end
+    end
 
+    def update
+        @attraction = Attraction.find(params[:id])
+        @attraction.update(attraction_params)
+        redirect_to attraction_path(@attraction)
+    end
+    private
+
+    def attraction_params
+        params.require(:attraction).permit(:name, :tickets, :min_height, :nausea_rating, :happiness_rating)
     end
 end
