@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
     has_many :rides
     has_many :attractions, through: :rides
 
-    def self.mood
-        if self.nausea > self.happiness
-            return 'happy'
-        elsif self.nausea < self.happiness
+    def mood
+        if nausea > happiness
             return 'sad'
+        elsif nausea < happiness
+            return 'happy'
         end
     end
 end
