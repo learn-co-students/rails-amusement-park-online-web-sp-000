@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
     has_many :attractions, through: :rides
 
     def mood
-        if self.nausea > self.happiness
+        binding.pry
+        if self.nausea > self.happiness 
             return 'sad'
-        elsif self.nausea < self.happiness
+        elsif self.nausea < self.happiness 
             return 'happy'
         end
     end
