@@ -4,4 +4,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def create
+    @user = User.new(user_params)
+    redirect_to users_path(@user)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
+  end
 end
+
