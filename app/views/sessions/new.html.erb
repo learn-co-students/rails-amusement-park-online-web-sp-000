@@ -1,5 +1,9 @@
-<%= form_tag ({controller: 'sessions', method: 'post'}) do %>
-    <input name=name>
-    <input type=password name='password'>
-    <input type=submit value='login'>
+<%= form_for @user do |f| %>
+    <%= f.label :name, 'Your Name:' %>
+    <%= f.collection_select :name, User.all, :name, :name, {:prompt => 'Please select your username from this dropdown'}, html: {id: :user_name } %>
+    <br>
+    <%= f.label :password, 'Your Password:' %>
+    <%= f.password_field :password %>
+    <br>
+    <%= f.button 'Sign In', type: 'submit' %>
   <% end %>

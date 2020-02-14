@@ -14,7 +14,13 @@ class SessionsController < ApplicationController
             redirect_to user_path(@user.id)
         end
       end
-    
+
+      def destroy
+        User.find(session[:user_id]).destroy      
+        session[:user_id] = nil         
+        redirect_to '/' 
+      end
+
     private
 
       def user_params
