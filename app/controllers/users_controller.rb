@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
+    before_action :require_logged_in
+    
     def new
         @user = User.new
     end
 
     def create
-        raise params.inspect
-
         @user = User.create(user_params)
+        session[:user_id] = @user.id
         redirect_to user_path(@user.id)
     end
 
     def show
-        @user = User.find(user_params)
+        @user = User.find(session[:user_id])
     end
 
     private
