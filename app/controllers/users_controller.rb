@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     def show
         # > error is happening b/c I'm not differentiating between admin and non admin- do that here
         @user = User.find(session[:user_id])
-        if @user.admin = 1
-            #render admin index
+        if @user.admin == true
+            render '/admin/index'
         else 
             render '/users/show'
         end

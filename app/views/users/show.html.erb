@@ -2,8 +2,10 @@
 <h3>Name: <%= @user.name %></h3>
 <p>Tickets: <%= @user.tickets %></p>
 <p>Height: <%= @user.height %> </p>
-<p>Mood: <%= @user.mood %> 
+<p>Mood: <%= @user.mood %> <br><br>
 
+<%= link_to 'See attractions', attractions_path %><br>
+<%= link_to "Log out", session_path(@user), :method => :delete %>
 <%= link_to "Log out", session_path(@user), :method => :delete %>
 
-#see attractions link to /attractions
+
