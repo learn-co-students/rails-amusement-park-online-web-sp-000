@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
     def new
+      @user = User.new
     end
 
     def create
@@ -11,9 +12,14 @@ class SessionsController < ApplicationController
         else 
             @user = User.find(user_params)
             session[:user_id] = @user.id
-            redirect_to user_path(@user.id)
+            if @user.admin == true
+              render '/admin/index'
+            else 
+              render '/users/show'
+            end
         end
       end
+
 
       def destroy
         User.find(session[:user_id]).destroy      
