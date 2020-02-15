@@ -5,19 +5,19 @@ class UsersController < ApplicationController
     end
 
     def create
+
         @user = User.create(user_params)
         session[:user_id] = @user.id
         if @user.admin == true
-            redirect_to admin_path
+            render '/admin/index'
         else 
-            redirect_to user_path(@user.id)
+            redirect_to user_path(@user)
         end
     end
 
     def show
-        # > error is happening b/c I'm not differentiating between admin and non admin- do that here
+        # > error is happening b/c I'm not differentiating between admin and non admin- do that here (switched this to create method)
         @user = User.find(session[:user_id])
-            
     end
 
     private
