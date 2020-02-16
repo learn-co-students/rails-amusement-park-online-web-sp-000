@@ -8,8 +8,7 @@ class RidesController < ApplicationController
        @message = @ride.take_ride 
        # binding.pry
        user = @ride.user
-       
-       redirect_to user_path(user, notice: @message)
+       redirect_to user_path(user), flash: {notice: @message}
     end
 
 end
