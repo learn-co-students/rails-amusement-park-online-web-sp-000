@@ -12,9 +12,6 @@ class SessionsController < ApplicationController
         #elsif params[:password].nil? || params[:password] == ""
          #   redirect_to '/sessions/new'
         #else 
-        
-        #authenticate here
-    
         @user = User.find_by(name: params[:user][:name])
         if @user.authenticate(params[:password])    
           session[:user_id] = @user.id

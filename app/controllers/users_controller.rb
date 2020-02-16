@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
     def new
         @user = User.new
     end
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        #how to use take_ride 
+        #binding.pry
         @user = User.find(session[:user_id])
     end
 
@@ -25,3 +24,5 @@ class UsersController < ApplicationController
         params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
     end
 end
+
+

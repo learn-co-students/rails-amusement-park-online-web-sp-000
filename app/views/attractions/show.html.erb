@@ -8,7 +8,8 @@
 <% if @user.admin == true %>
     <%= link_to "Edit Attraction", edit_attraction_path%>
     <% else %>
-    <%= link_to "Go on this ride", user_path(@user.id) %>
+        <%= form_for @ride, :url => rides_path, :action => 'create' do |f| %>
+            <%= f.hidden_field :attraction, value: @attraction.id %>
+            <%= f.submit "Go on this ride" %>
     <%end%>
-
-    #how to get this @attraction to carry into show
+    <%end%>
