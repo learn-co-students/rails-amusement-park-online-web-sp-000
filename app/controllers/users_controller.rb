@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         session[:user_id] = @user.id
         if @user.admin == true
-            render '/admin/index'
+            render '/admin/show'
         else 
             redirect_to user_path(@user)
         end
