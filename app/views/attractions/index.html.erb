@@ -1,8 +1,13 @@
 <% @attractions.each do |t| %>
     <p>Name <%= t.name %></p>
     <p>Tickets <%= t.tickets %></p>
-    <p>Details <%= link_to "Show #{t.name}", attraction_path(t) %> </p>
+    <% if @user.admin == true %>
+        <p>Details <%= link_to "Show #{t.name}", attraction_path(t) %> </p>
+        <% else %>
+        <p> Details <%= link_to "Go on #{t.name}", attraction_path(t) %> </p>
+    <%end%>
     <%end%>
     
- 
+ #not sure how to filter for admin or not with link here- show vs go on
+
 <%= link_to "New Attraction", new_attraction_path %>
