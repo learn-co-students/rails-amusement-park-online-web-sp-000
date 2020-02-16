@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    
+    before_action :require_logged_in, only: [:show]
+
     def new
         @user = User.new
     end
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        
         @user = User.find(session[:user_id])
     end
 
