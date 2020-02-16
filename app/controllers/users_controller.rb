@@ -1,20 +1,30 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user, :except => [:new, :create]
+
     def new
         @user = User.new
     end
 
     def create
-        @user = User.create(user_params)
-        session[:user_id] = @user.id
-        if @user.admin == true
-            render '/admin/show'
+        @user = User.new(user_params)
+        if @user.save
+            session[:user_id] = @user.id
+                if @user.admin == true
+                    render '/admin/show'
+                else 
+                    redirect_to user_path(@user)
+            end
         else 
-            redirect_to user_path(@user)
+            redirect_to root_path
         end
     end
 
     def show
-        @user = User.find(session[:user_id])
+        if @user = User.find(session[:user_id])
+            render '/users/show'
+        else 
+            redirect_to root_path
+        end
     end
 
     private
