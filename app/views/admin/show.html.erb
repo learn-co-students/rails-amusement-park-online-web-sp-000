@@ -1,0 +1,7 @@
+<h3>ADMIN</h3>
+<p>Name: <%= @user.name %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height: <%= @user.height %></p>
+
+<%= link_to 'See attractions', attractions_path %><br>
+<%= link_to "Log Out", session_path(@user.id), :method => :delete %>
