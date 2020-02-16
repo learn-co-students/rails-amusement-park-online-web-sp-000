@@ -4,8 +4,12 @@
 <p>Height Requirement: <%= @attraction.min_height %></p>
 <p>Nausea Rating: <%= @attraction.nausea_rating %></p>
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
+
 <% if @user.admin == true %>
     <%= link_to "Edit Attraction", edit_attraction_path%>
     <% else %>
-    <%= link_to "Go on the #{@attraction.name}", user_path(@user.id) %>
+    <%= link_to "Go on #{@attraction.name}", user_path(@user.id) %>
+
     <%end%>
+
+    #how to get this @attraction to carry into show

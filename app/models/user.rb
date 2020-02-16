@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User< ActiveRecord::Base
     has_secure_password
 
     has_many :rides
@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
             return 'happy'
         end
     end
+
+  
 end

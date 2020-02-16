@@ -3,6 +3,15 @@ class AttractionsController < ApplicationController
         @attractions = Attraction.all
     end
 
+    def new
+        @attraction = Attraction.new
+    end
+
+    def create
+        @attraction = Attraction.create(attraction_params)
+        redirect_to attraction_path(@attraction)
+    end
+
     def show
         @attraction = Attraction.find(params[:id])
         @user = User.find(session[:user_id])
@@ -14,13 +23,14 @@ class AttractionsController < ApplicationController
 
     def update
         @attraction = Attraction.find(params[:id])
-        @attraction.name = params[:attraction][:name]
-        @attraction.min_height = params[:attraction][:min_height]
-        @attraction.happiness_rating = params[:attraction][:happiness_rating]
-        @attraction.nausea_rating = params[:attraction][:nausea_rating]
-        @attraction.tickets = params[:attraction][:tickets]
+        @attraction.update(attraction_params)
         @attraction.save
         redirect_to attraction_path(@attraction)
     end
 
+    private
+
+    def attraction_params
+        params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)
+    end
 end

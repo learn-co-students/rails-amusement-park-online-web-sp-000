@@ -5,14 +5,10 @@ class ApplicationController < ActionController::Base
     session[:name]
   end
 
-  def home
-
-  end
-
   private
 
   def require_logged_in
-    redirect_to controller: 'sessions', action: 'new' unless current_user
+      redirect_to controller: 'sessions', action: 'new' unless current_user
   end
 
 end

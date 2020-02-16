@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   #are these new and create methods used anywhere, or am I always using the new and create for user???
-    def new
+  before_action :require_logged_in, only: [:show]
+  
+  def new
       @user = User.new
     end
 
