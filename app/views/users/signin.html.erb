@@ -1,10 +1,11 @@
-<%=form_tag('/session')%>
+<%=form_for :user do |f|%>
 
-Your name: <%=select("user", "user_id", User.all.collect {|p| [ p.name, p.id ] })%><br>
-
+Your name: <%=f.collection_select(:user_id, User.all, :id, :name, :prompt => true)%><br>
+<br>
 Your password: <%=password_field_tag 'password'%><br>
 
-<%=submit_tag 'Login'%>
+<%=f.submit 'Sign In'%>
+<%end%>
 
 
  
