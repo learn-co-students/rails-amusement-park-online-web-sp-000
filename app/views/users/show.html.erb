@@ -5,5 +5,4 @@
 <p>Mood: <%= @user.mood %> <br><br>
 
 <%= link_to 'See attractions', attractions_path %><br>
-
-
+<%= link_to "Log Out", session_path, :method => :delete %>

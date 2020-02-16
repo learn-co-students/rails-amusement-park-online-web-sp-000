@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     end
 
     def show
-        # > error is happening b/c I'm not differentiating between admin and non admin- do that here (switched this to create method)
         @user = User.find(session[:user_id])
     end
 
