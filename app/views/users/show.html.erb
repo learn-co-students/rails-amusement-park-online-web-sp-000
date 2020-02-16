@@ -1,4 +1,9 @@
 <p class="flash-notice"><%= flash[:notice] %></p>
+
+<% if @user.admin == true %>
+    <p>ADMIN</p>
+    <%end%>
+
 <h3>Name: <%= @user.name %></h3>
 <p>Tickets: <%= @user.tickets %></p>
 <p>Height: <%= @user.height %> </p>

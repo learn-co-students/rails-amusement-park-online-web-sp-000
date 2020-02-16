@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 
   def current_user
-    User.find(session[:user_id])    
+    current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]  
   end
 
   def logged_in?
@@ -12,14 +12,14 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if !logged_in?
-      redirect_to controller: 'sessions', action: 'new'
+      redirect_to root_path
     end
   end
 
   private
 
   def require_logged_in
-      redirect_to controller: 'sessions', action: 'new' unless current_user
+      redirect_to root_path unless current_user
   end
 
 end

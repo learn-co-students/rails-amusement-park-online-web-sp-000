@@ -9,11 +9,8 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
-                if @user.admin == true
-                    render '/admin/show'
-                else 
-                    redirect_to user_path(@user)
-            end
+            redirect_to user_path(@user)
+            
         else 
             redirect_to root_path
         end

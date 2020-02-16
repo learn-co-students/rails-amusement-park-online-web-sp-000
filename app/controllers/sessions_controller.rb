@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       @user = User.new
     end
 
-    def create #create a new session
+    def create 
         #if params[:name].nil? || params[:name] == ""
          #   redirect_to '/sessions/new'
         #elsif params[:password].nil? || params[:password] == ""
@@ -15,11 +15,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(name: params[:user][:name])
         if @user.authenticate(params[:password])    
           session[:user_id] = @user.id
-            if @user.admin == true
-              render '/admin/show'
-            else 
-              redirect_to user_path(@user)
-            end
+          redirect_to user_path(@user)
           else 
             redirect_to '/'
           end
