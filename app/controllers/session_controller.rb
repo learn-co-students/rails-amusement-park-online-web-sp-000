@@ -1,7 +1,8 @@
 class SessionController < ApplicationController
 
   def create  
-    user = User.find(params[:user][:user_id])
+
+    user = User.find(params[:user][:name])
 
     if user.authenticate(params[:password])
       session[:user_id] = params[:user_id]
