@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        
+        #how to use take_ride 
         @user = User.find(session[:user_id])
     end
 
