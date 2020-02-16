@@ -1,0 +1,21 @@
+<div class="container" role="main">
+  <div class="center">
+      <div class="info">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: name %>
+        <% end %>
+        <br>
+
+        <% if @user.admin %>
+          <p><Strong>ADMIN</Strong></p>
+        <% end %>
+
+        <p><strong>Welcome, <%= @user.name %></strong></p>
+        <p><strong>Name: </strong><%= @user.name %></p>
+        <p><strong>Mood: </strong><%= @user.mood %></p>
+        <p><strong>Tickets: </strong><%= @user.tickets %></p>
+        <p><strong>Height: </strong><%= @user.height %></p>
+        <%= link_to "See attractions", attractions_path %>
+      </div>
+  </div>
+</div>

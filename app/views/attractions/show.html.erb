@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="center">
+    <% flash.each do |msg| %>
+      <div>
+        <strong><%= msg %></strong>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container" role="main">
+  <div class="center">
+    <div class="info">
+
+      <h2><strong><span style="color: lightblue; "><%= @attraction.name %></span></strong></h2><br>
+      <p><strong>Name: <%= @attraction.name %></strong></p>
+      <p><strong>Tickets: <%= @attraction.tickets %></strong></p>
+      <p><strong>Nausea Rating: <%= @attraction.nausea_rating %></strong></p>
+      <p><strong>Happiness Rating: <%= @attraction.happiness_rating %></strong></p>
+      <p><strong>Minimum Height: <%= @attraction.min_height %></strong></p>
+
+      <%= attraction_action %>
+
+    </div>
+  </div>
+</div>

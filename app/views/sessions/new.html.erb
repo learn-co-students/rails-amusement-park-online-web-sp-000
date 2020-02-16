@@ -1,0 +1,10 @@
+<p><strong>Your name:</strong>
+  <%= hidden_field_tag 'user_name' %>
+  <%= collection_select(:user, :name, User.all, :id, :name,
+                        { prompt: 'Please select your username from this dropdown' } ) %></p>
+
+<%= form_tag '/signin' do %>
+  <p><strong>Your password:</strong></p>
+  <p><%=  password_field_tag :password %></p>
+  <%= submit_tag 'Sign In' %>
+<% end %>
