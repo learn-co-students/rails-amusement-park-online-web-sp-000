@@ -1,3 +1,11 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<br/>
+
 Name: <%=@user.name%><br>
 Nausea Rating: <%=@user.nausea%><br>
 Happiness Rating: <%=@user.happiness%><br>
