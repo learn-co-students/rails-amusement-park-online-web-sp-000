@@ -1,7 +1,6 @@
 class SessionController < ApplicationController
 
   def create  
-
     user = User.find(params[:user][:name])
 
     if user.authenticate(params[:password])
@@ -11,6 +10,11 @@ class SessionController < ApplicationController
       render 'users/signin'
       end
 
+  end
+
+  def destroy
+    session.delete(:user_id)
+    redirect_to '/'
   end
 
   end

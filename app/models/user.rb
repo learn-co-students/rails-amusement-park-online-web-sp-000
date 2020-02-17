@@ -4,7 +4,7 @@ has_many :rides
 has_many :attractions, through: :rides
 
 def mood
-  self.nausea > self.happiness ? 'sad' : 'happy'
+  self.nausea.to_i > self.happiness.to_i ? 'sad' : 'happy'
 end
 
 

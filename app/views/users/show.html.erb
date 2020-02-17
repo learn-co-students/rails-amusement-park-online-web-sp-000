@@ -5,3 +5,11 @@ Mood: <%=@user.mood%><br>
 Tickets: <%=@user.tickets%><br>
 Height: <%=@user.height%> inches<br>
 
+<% if @user.admin?%>
+<%="ADMIN"%><br/>
+<%end%>
+
+<br/>
+
+<%= link_to "Log Out", logout_url %>
+
