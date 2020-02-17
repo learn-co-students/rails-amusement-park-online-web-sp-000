@@ -15,7 +15,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    if logged_in?
     @user= User.find(params[:id])
+    else redirect_to '/'
+    end
+  end
+
+  def logged_in?
+    session[:user_id].present?
   end
 
 
@@ -24,5 +31,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
   end
+
+  
 end
 
