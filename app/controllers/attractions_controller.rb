@@ -8,6 +8,7 @@ end
   end
 
   def show
+    @user= User.find(session[:user_id])
     @attraction = Attraction.find(params[:id])
   end
 
@@ -19,6 +20,10 @@ end
     @attraction=Attraction.create(attraction_params)
     @attraction.save
     redirect_to attraction_path(@attraction)
+  end
+
+  def edit
+    @attraction = Attraction.find(params[:id])
   end
 
   private
