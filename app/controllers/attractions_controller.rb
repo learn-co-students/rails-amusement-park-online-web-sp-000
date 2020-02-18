@@ -3,6 +3,7 @@ def new
 end
 
   def index
+    @user= User.find(session[:user_id])
     @attractions = Attraction.all
   end
 
