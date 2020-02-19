@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 root to: "users#index"
 
 resources :users, :only => [:new, :create, :show]
-resources :attractions, :only => [:new, :create, :show]
+resources :attractions, :only => [:index, :new, :create, :show]
 get '/signin' => 'sessions#new'
 post '/sessions' => 'sessions#create'
 get '/logout' => 'sessions#destroy'
