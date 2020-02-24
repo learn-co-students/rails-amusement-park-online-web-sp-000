@@ -14,6 +14,7 @@ class Ride < ActiveRecord::Base
       new_nausea = (self.user.nausea) + (self.attraction.nausea_rating)
       new_happiness = (self.user.happiness) + (self.attraction.happiness_rating)
       self.user.update(:tickets => new_ticket , :happiness => new_happiness, :nausea => new_nausea)
+      "Thanks for riding the #{self.attraction.name}. Your mood is now #{self.user.mood}"
     end
     #accounts for the user not having enough tickets
     #accounts for the user not been tall enough

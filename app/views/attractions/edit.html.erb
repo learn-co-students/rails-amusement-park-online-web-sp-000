@@ -1,4 +1,4 @@
-<h1>New Attraction Form</h1>
+<h1>Edit Attraction Form</h1>
 
 <%= form_for(@attraction) do |f| %>
   Name: <%= f.text_field :name %><br />
@@ -11,7 +11,7 @@
   <br>
   Tickets Cost: <%= f.number_field :tickets %><br />
   <br>
-  <%= f.submit "Create Attraction" %>
+  <%= f.submit "Update Attraction" %>
 <% end %>
 <% if current_user != nil %>
 You are Log in as <%= link_to current_user.name, user_path(current_user.id) %><br>

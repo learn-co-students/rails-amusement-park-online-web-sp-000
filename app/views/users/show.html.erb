@@ -1,11 +1,11 @@
 <h1>Home Page</h1>
 <h3>Welcome <%= current_user.name %></h3>
-<p>Name: <%= @user.name %></p><br>
+<p>Name: <%= @user.name %></p>
 - Nausea Level:<%= @user.nausea %><br>
 - Happiness Level:<%= @user.happiness %><br>
 - Height :<%= @user.height %><br>
 - Total Tickets:<%= @user.tickets %><br>
 - Admin Certificate: <%= @user.admin %><br>
-
-<%= link_to "See attractions", "/attractions" %>
-<%= link_to "Log out", "/logout" %>
+<br>
+<%= link_to "Go on a ride", "/attractions" %><br>
+<%= link_to "Log out", "/logout" %><br>

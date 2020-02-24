@@ -1,14 +1,21 @@
 <h1>Sign Up</h1>
-
-<%= form_for @user, url: '/users' do |f| %>
-  Username: <%= f.text_field :name %><br />
+<br>
+<%= form_for @user do |f| %>
+  Name: <%= f.text_field :name %><br />
+  <br>
   Password: <%= f.password_field :password %><br />
+  <br>
   Password Confirmation: <%= f.password_field :password_confirmation %><br />
-  Happiness: <%= f.number_field :happiness %><br />
-  Nausea: <%= f.number_field :nausea %><br />
-  Height: <%= f.number_field :height %><br />
-  Tickets: <%= f.number_field :tickets %><br />
+  <br>
+  How happy are you? (1-5 scale): <%= f.number_field :happiness %><br />
+  <br>
+  How nauseous are you? (1-5 scale): <%= f.number_field :nausea %><br />
+  <br>
+  Height (in inches): <%= f.number_field :height %><br />
+  <br>
+  How many tickets are in your pocket?: <%= f.number_field :tickets %><br />
+  <br>
   Admin: <%= f.check_box :admin %><br />
-
+  <br>
   <%= f.submit "Create User" %>
 <% end %>
