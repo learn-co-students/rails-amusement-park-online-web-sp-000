@@ -1,0 +1,10 @@
+<%= form_for @user, url: signin_url, method: :post do |f| %>
+
+<%= f.collection_select :name, User.all, :id, :name, prompt: true %>
+
+  <%= f.label(:password, "password") %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Sign In" %>
+  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+<% end %>
