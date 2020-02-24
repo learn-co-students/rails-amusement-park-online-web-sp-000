@@ -1,3 +1,4 @@
 <%= link_to 'Log Out', logout_url %><br \>
 User: <%= @user.name %><br \>
-<%= @user.admin ? 'ADMIN' : simple_format("Mood: #{@user.mood} \nNausea: #{@user.nausea} \nHeight: #{@user.height} \nTickets: #{@user.tickets}") %>
+<%= @user.admin ? 'ADMIN' : simple_format("Mood: #{@user.mood} \nNausea: #{@user.nausea} \nHeight: #{@user.height} \nTickets: #{@user.tickets}") %><br \>
+<%= link_to 'See attractions', attractions_url %>
