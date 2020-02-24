@@ -1,0 +1,21 @@
+<h1>Listing Attractions</h1>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Tickets</td>
+<td>Details</td>
+</tr>
+<tr><br>
+<% @attractions.each do |a| %>
+<td><%= a.name %>   <%= a.tickets %>   <%= link_to "Go on #{a.name}", attraction_path(a) %></td><br>
+<% end %>
+</tr>
+<br>
+
+<% if current_user != nil %>
+You are Log in as <%= link_to current_user.name, user_path(current_user.id) %><br>
+  <% if current_user.admin == true %>
+   <%= link_to "Create New Attraction", new_attraction_path %>
+   <% end %>
+<% end %>
+<br>

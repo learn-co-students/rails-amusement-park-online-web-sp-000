@@ -1,0 +1,10 @@
+<h1>Welcome to the Amusement Park!</h1>
+
+
+<% if current_user != nil %>
+You are Log in as <%= link_to current_user.name, user_path(current_user.id) %><br>
+<% end %>
+<br>
+<%= link_to "Sign Up", "/users/new" %><br>
+<%= link_to "Sign In", "/signin" %><br>
+<%= link_to "Log out", "/logout" %><br>

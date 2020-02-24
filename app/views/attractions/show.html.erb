@@ -1,0 +1,25 @@
+<h1>Attraction Page</h1>
+
+- Name: <%= @attraction.name %><br>
+- Minimun Height Req: <%= @attraction.min_height %><br>
+- Nausea Rating: <%= @attraction.nausea_rating %><br>
+- Happiness Rating: <%= @attraction.happiness_rating %><br>
+- Tickets Cost: <%= @attraction.tickets %><br>
+<br>
+<% if current_user != nil %>
+  <%= form_for @ride, url: '/rides' do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+  <%= f.submit "Go on this ride" %>
+  <% end %><br>
+  You are Log in as <%= link_to current_user.name, user_path(current_user.id) %><br>
+    <% if current_user.admin == true %>
+    <%= link_to "Edit Attraction", edit_attraction_path %>
+    <% end %>
+  <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
+<% end %>
+<br>
