@@ -1,5 +1,10 @@
 <h1>Home Page</h1>
 <h3>Welcome <%= current_user.name %></h3>
+
+
+<% if current_user.admin == true %>
+<h4>ADMIN</h4><br>
+<% end %>
 <p>Name: <%= @user.name %></p>
 - Nausea Level:<%= @user.nausea %><br>
 - Happiness Level:<%= @user.happiness %><br>
