@@ -1,1 +1,2 @@
-<%= button_to "Go on this ride", :action=>"new", :controller=>"attractions" %>
+<%= button_to "Go on this ride", :action=>"do_ride", :controller=>"rides", :user_id=>@user.id, :attraction_id=>@attraction.id %>
+<%= %>
