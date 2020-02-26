@@ -62,7 +62,7 @@ def make_admin
   end
 end
 
-def make_attractions_and_rides
+def make_attractions_and_rides  
   DATA[:attractions].each do |attraction|
     new_attraction = Attraction.new
     attraction.each_with_index do |attribute, i|
@@ -73,7 +73,11 @@ def make_attractions_and_rides
       User.all.each {|u| customers << u if u.admin != true}
       new_attraction.users << customers[rand(0...customers.length)]
     end
-    new_attraction.users.each {|c| c.save}
+   
+    new_attraction.users.each {|c| 
+      c.password = "password"
+      c.save}
+    
     new_attraction.save
   end
 end
