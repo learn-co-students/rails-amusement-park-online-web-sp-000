@@ -1,0 +1,25 @@
+
+[1mFrom:[0m /home/learn/code/labs/rails-amusement-park-online-web-sp-000/app/models/ride.rb @ line 8 Ride#take_ride:
+
+     [1;34m5[0m: [32mdef[0m [1;34mtake_ride[0m
+     [1;34m6[0m:   message_one = [31m[1;31m"[0m[31mYou do not have enough tickets to ride the #{self.attraction.name}[0m[31m.[1;31m"[0m[31m[0m
+     [1;34m7[0m:   message_two = [31m[1;31m"[0m[31mYou are not tall enough to ride the #{self.attraction.name}[0m[31m.[1;31m"[0m[31m[0m
+ =>  [1;34m8[0m:   binding.pry
+     [1;34m9[0m:   [1;34m#new_amount = self.user.tickets - self.attraction.tickets[0m
+    [1;34m10[0m:   [32mif[0m [1;36mself[0m.user.tickets < [1;36mself[0m.attraction.tickets
+    [1;34m11[0m:     [32mif[0m [1;36mself[0m.user.height < [1;36mself[0m.attraction.min_height
+    [1;34m12[0m:       [31m[1;31m"[0m[31mSorry. [1;31m"[0m[31m[0m + message_one + [31m[1;31m"[0m[31m [1;31m"[0m[31m[0m + message_two
+    [1;34m13[0m:     [32melse[0m
+    [1;34m14[0m:       [31m[1;31m"[0m[31mSorry. [1;31m"[0m[31m[0m + message_one
+    [1;34m15[0m:     [32mend[0m
+    [1;34m16[0m:   [32melsif[0m [1;36mself[0m.user.height < [1;36mself[0m.attraction.min_height
+    [1;34m17[0m:     [31m[1;31m"[0m[31mSorry. [1;31m"[0m[31m[0m + message_two
+    [1;34m18[0m:   [32melse[0m
+    [1;34m19[0m:     new_amount = [1;36mself[0m.user.tickets - [1;36mself[0m.attraction.tickets
+    [1;34m20[0m:     [1;34m#code below is not working. need to work on it further[0m
+    [1;34m21[0m:     [1;36mself[0m.user.update(
+    [1;34m22[0m:       [33m:tickets[0m => new_amount
+    [1;34m23[0m:     )
+    [1;34m24[0m:   [32mend[0m
+    [1;34m25[0m: [32mend[0m
+
