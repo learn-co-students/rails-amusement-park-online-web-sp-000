@@ -1,0 +1,15 @@
+<%= flash[:notice] %>
+
+
+<% if @user.admin == true %>
+    <%= "ADMIN" %>
+<% end %>
+    <%= @user.name %>
+    Tickets: <%= @user.tickets %>
+    Mood: <%= @user.mood %>
+    <%= @user.height %>
+
+
+    <%= link_to "See attractions", attractions_path %>
+    <%= link_to "Log Out", '/logout' %>
+         
