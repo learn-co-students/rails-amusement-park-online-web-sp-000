@@ -1,4 +1,4 @@
-# Rails Amusement Park
+ # Rails Amusement Park
 
 ## Objectives
 
@@ -22,3 +22,10 @@ You're going to be building an amusement park. There will be users, attractions,
 * [`has_secure_password`](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-amusement-park' title='Rails Amusement Park'>Rails Amusement Park</a> on Learn.co and start learning to code for free.</p>
+
+Notes:
+rspec ./spec/models/user_spec.rb
+rspec ./spec/models/ride_spec.rb
+rspec ./spec/models/attraction_spec.rb
+rspec ./spec/features/users_features_spec.rb
+rails g resource User name:string password:password_digest nausea:integer happiness:integer tickets:integer height:integer --no-test-framework
