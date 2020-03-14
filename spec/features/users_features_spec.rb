@@ -21,8 +21,9 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
+=begin
   it 'successfully logs in as non-admin' do
-    
+
     # user_login method is defined in login_helper.rb
     create_standard_user
     visit '/signin'
@@ -382,4 +383,5 @@ describe 'Feature Test: Admin Flow', :type => :feature do
     expect(current_path).to eq("/attractions/1")
     expect(page).to have_content("Nitro")
   end
+=end
 end
