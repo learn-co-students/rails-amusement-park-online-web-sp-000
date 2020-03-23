@@ -1,0 +1,14 @@
+<h1>Attraction: <%= @attraction.name %></h1>
+
+<% if current_user_is_admin %>
+  <%=  link_to "Edit Attraction", "/attractions/#{@attraction.id}/edit" %>
+<%  else %>
+  <%= form_tag rides_path do %>
+    
+    <%= hidden_field_tag :user_id, @user.id %>
+    <%= hidden_field_tag :attraction_id, @attraction.id %>
+    
+
+    <%= submit_tag "Go on this ride" %>
+  <% end %>
+<% end %>
