@@ -1,0 +1,8 @@
+<h1>Sign In!</h1>
+
+<%= form_for @user do |f| %>
+
+  <%= f.collection_check_boxes :name, User.all, :id, :name %>
+  <%= f.submit %>
+
+<% end %>
