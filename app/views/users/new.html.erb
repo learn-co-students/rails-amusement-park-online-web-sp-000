@@ -17,5 +17,8 @@
   <%= f.label "Password" %>
   <%= f.text_field :password %>
 
+  <%= f.label "Admin"%>
+  <%= f.check_box :admin, {}, true, false %>
+
     <%= f.submit %>
 <% end %>

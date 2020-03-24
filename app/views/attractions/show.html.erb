@@ -1,0 +1,7 @@
+<h1>Attraction Show Page</h1>
+
+<%= button_to "Go on this ride", user_path(User.find_by(id: session[:user_id])), params: { attraction: params[:id] }%>
+
+<% if @current_user.admin %>
+  <%= link_to "Edit Attraction", "attractions/#{@attraction.id}/edit}" %>
+<% end %>

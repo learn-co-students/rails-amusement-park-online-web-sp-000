@@ -1,8 +1,18 @@
 <h1><%= @user.name %></h1>
+<% if @user.admin == true %>
+  <h2> ADMIN </h2>
+<% end %>
+<%if session[:message] != nil%>
+  <div> <%= session[:message] %> </div>
+<%end%>
 
 <ul>
   <li> Mood: <%= @user.mood %> </li>
   <li> Happiness level: <%= @user.happiness %> </li>
-  <li> Number of tickets: <%= @user.tickets %> </li>
+  <li> Tickets: <%= @user.tickets %> </li>
   <li> Height in inches: <%= @user.height %> </li>
 </ul>
+
+<%= link_to "See attractions", "/attractions"%>
+
+<%= link_to "Log Out", sessions_path, method: "delete" %>

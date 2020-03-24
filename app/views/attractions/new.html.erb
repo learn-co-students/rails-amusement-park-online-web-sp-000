@@ -1,0 +1,8 @@
+<h1>Add New Attraction</h1>
+
+<%= form_for @attraction do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %>
+
+    <%= f.submit %>
+<% end %>
