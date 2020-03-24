@@ -1,8 +1,9 @@
 <h1>Sign In!</h1>
 
-<%= form_for @user do |f| %>
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
 
-  <%= f.collection_check_boxes :name, User.all, :id, :name %>
-  <%= f.submit %>
+  <%= collection_select :user, :name, User.all, :name, :name %>
+  <%= text_field_tag :password %>
+  <%= submit_tag('Sign In') %>
 
 <% end %>

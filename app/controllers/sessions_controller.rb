@@ -1,9 +1,13 @@
 class SessionsController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:new, :create]
 
   def create
-    @user = User.find_by(name: params[:user_name])
-    if @user.authenticate(params[:user][:password])
-      session[:user_id] = user.id
+
+    @user = User.find_by(name: params[:user][:name])
+    if @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to @user
     else
       redirect_to '/signin'
     end
@@ -16,7 +20,7 @@ class SessionsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name=, :admin, :password, :name)
+    params.require(:user).permit(:admin, :password, :name)
   end
 
 end
