@@ -1,0 +1,7 @@
+<ul>
+  <li>Name: <%= @user.name %></li>
+  <% unless @user.admin %>
+  <%= render partial: "user_li", locals: {user: @user} %>
+  <% end %>
+  <%= link_to "See attractions", attractions_path %>
+</ul>

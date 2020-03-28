@@ -1,0 +1,7 @@
+<%= form_for :user, controller: 'sessions', action: 'create' do |f| %>
+  <%= f.label :name %>
+  <%= f.collection_select :name, User.all, :name, :name %>
+  <%= f.label :password %>
+  <%= text_field_tag 'password' %>
+  <%= f.submit 'Sign In'%>
+<% end %>
