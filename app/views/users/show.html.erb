@@ -1,11 +1,11 @@
-<h2><%= @user.name %>'s Profile</h2>
+<h2>My Profile</h2>
 
 <br>
 
-<h4>Height: <%= @user.height %></h4>
-<h4>Level of Nausea: <%= @user.nausea %></h4>
-<h4>Level of Happiness: <%= @user.happiness %></h3>
-<h4>Number of Tickets: <%= @user.tickets %></h4>
+<strong>Name: </strong><%= @user.name %>
+<strong>Tickets: </strong><%= @user.tickets %>
+<strong>Mood: </strong><%= @user.happiness %>
+<strong>Height: </strong><%= @user.height %> inches
 
 <a><%= link_to "See attractions", attractions_path %></a>
 
