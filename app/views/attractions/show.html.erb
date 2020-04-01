@@ -1,12 +1,15 @@
-<div class="center",{text-align: center;}>
+<div class="center", { text-align: center; }>
   <h2>Ride Details</h2>
-  <div class="info",{text-align: left;}>
-    <strong >Name: </strong><%= @attraction.name %><br>
-    <strong>Tickets Requirement: </strong><%= @attraction.tickets %><br>
-    <strong>Height Requirement: </strong><%= @attraction.min_height %> inches<br>
-    <strong>Nausea Rating: </strong><%= @attraction.nausea_rating %><br>
-    <strong>Happiness Rating: </strong><%= @attraction.happiness_rating %><br>
-    <br><br>
-    <button><%= link_to "Go on this ride", ride_path %></button>
-  </div>
+
+    <div class="info", { text-align: left; }>
+      <strong >Name: </strong><%= @attraction.name %><br><br>
+      <strong>Tickets Requirement: </strong><%= @attraction.tickets %><br><br>
+      <strong>Height Requirement: </strong><%= @attraction.min_height %> inches<br><br>
+      <strong>Nausea Rating: </strong><%= @attraction.nausea_rating %><br><br>
+      <strong>Happiness Rating: </strong><%= @attraction.happiness_rating %><br><br>
+        <div class="center", { text-align: center; }>
+          <%= button_to "Go on this ride", user_path %> 
+        </div>
+    </div>
+  <br><%= link_to "Back", :back %>
 </div>

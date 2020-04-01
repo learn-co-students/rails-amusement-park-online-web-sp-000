@@ -1,6 +1,7 @@
-<div class="center",{text-align: center;}>
+<div class="center", { text-align: center; }>
   <h2>My Profile</h2>
-  <div class="info",{text-align: left;}>
+
+  <div class="info", { text-align: left; }>
     <% if @user.admin %>
       <strong>ADMIN</strong><br>
     <% end %>
@@ -11,4 +12,5 @@
     <br><br>
     <a><%= link_to "See attractions", attractions_path %></a>
   </div>
+
 </div>

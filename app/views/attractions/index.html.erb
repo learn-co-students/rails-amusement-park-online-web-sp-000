@@ -1,6 +1,6 @@
 <h1>Listing attractions</h1>
 
-<table>
+<table class="table", { box-sizing: border-box }>
   <thead>
     <tr>
       <th>Name</th>
@@ -9,12 +9,17 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+
   <tbody>
     <% @attractions.each do |attraction| %>
       <tr>
         <td><%= attraction.name %></td>
         <td><%= attraction.tickets %></td>
-        <td><%= link_to "Go on #{attraction.name}", attraction %></td>
+        <% if current_user.admin %>
+          <td><%= link_to "Show #{attraction.name}", attraction %></td>
+        <% else %>
+          <td><%= link_to "Go on #{attraction.name}", attraction %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
