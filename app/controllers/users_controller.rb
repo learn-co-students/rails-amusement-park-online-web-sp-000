@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     else
       redirect_to signin_path
     end
-    
   end
 
   def show
