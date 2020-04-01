@@ -1,5 +1,24 @@
-<h1>All Attractions</h1>
+<h1>Listing attractions</h1>
 
-<% @attractions.each do |attraction| %>
-  <li><%= link_to attraction.name, attraction_path(attraction) %></li>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <strong><th>Name</th></strong>
+      <strong><th>Tickets</th></strong>
+      <strong><th>Details</th></strong>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attractions.each do |attraction| %>
+      <tr>
+        <td><%= attraction.name %></td>
+        <td><%= attraction.tickets %></td>
+        <td><%= link_to "Go on #{attraction.name}", attraction %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "New Attraction", new_attraction_path %>
