@@ -13,7 +13,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("15")
     expect(page).to have_content("58")
   end
-
+ 
   it "on sign up, successfully adds a session hash" do
     visit '/users/new'
     # user_signup method is defined in login_helper.rb
