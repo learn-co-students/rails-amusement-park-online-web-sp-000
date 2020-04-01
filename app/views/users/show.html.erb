@@ -1,14 +1,14 @@
-<h2>My Profile</h2>
-
-<% if @user.admin %>
-  <strong>ADMIN</strong><br>
-<% end %>
-
-<strong>Name: </strong><%= @user.name %><br>
-<strong>Tickets: </strong><%= @user.tickets %><br>
-<strong>Mood: </strong><%= @user.mood %><br>
-<strong>Height: </strong><%= @user.height %> inches
-
-<br><br>
-
-<a><%= link_to "See attractions", attractions_path %></a>
+<div class="center",{text-align: center;}>
+  <h2>My Profile</h2>
+  <div class="info",{text-align: left;}>
+    <% if @user.admin %>
+      <strong>ADMIN</strong><br>
+    <% end %>
+    <strong>Name: </strong><%= @user.name %><br>
+    <strong>Tickets: </strong><%= @user.tickets %><br>
+    <strong>Mood: </strong><%= @user.mood %><br>
+    <strong>Height: </strong><%= @user.height %> inches
+    <br><br>
+    <a><%= link_to "See attractions", attractions_path %></a>
+  </div>
+</div>

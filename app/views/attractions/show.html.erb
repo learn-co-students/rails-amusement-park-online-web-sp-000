@@ -1,11 +1,12 @@
-<h2>Attraction Details: </h2>
-
-<strong>Name: </strong><%= @attraction.name %><br>
-<strong>Tickets Requirement: </strong><%= @attraction.tickets %><br>
-<strong>Height Requirement: </strong><%= @attraction.min_height %> inches<br>
-<strong>Nausea Rating: </strong><%= @attraction.nausea_rating %><br>
-<strong>Happiness Rating: </strong><%= @attraction.happiness_rating %><br>
-
-<br>
-
-<a><%= link_to "Go on this ride", ride_path %></a>
+<div class="center",{text-align: center;}>
+  <h2>Ride Details</h2>
+  <div class="info",{text-align: left;}>
+    <strong >Name: </strong><%= @attraction.name %><br>
+    <strong>Tickets Requirement: </strong><%= @attraction.tickets %><br>
+    <strong>Height Requirement: </strong><%= @attraction.min_height %> inches<br>
+    <strong>Nausea Rating: </strong><%= @attraction.nausea_rating %><br>
+    <strong>Happiness Rating: </strong><%= @attraction.happiness_rating %><br>
+    <br><br>
+    <button><%= link_to "Go on this ride", ride_path %></button>
+  </div>
+</div>
