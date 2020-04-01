@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  #before_action :authentication_required
 
   def new
     @user = User.new
@@ -16,7 +17,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    if session[:user_id].blank?
+      redirect_to '/'
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   private 

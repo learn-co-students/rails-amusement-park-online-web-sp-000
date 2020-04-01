@@ -1,1 +1,8 @@
-<h2>User's Page</h2>
+<h2><%= @user.name %>'s Page</h2>
+
+<h4>Height: <%= @user.height %></h4>
+<h4>Level of Nausea: <%= @user.nausea %></h4>
+<h4>Level of Happiness: <%= @user.happiness %></h3>
+<h4>Number of Tickets: <%= @user.tickets %></h4>
+
+<%= link_to "Log Out", logout_path %>
