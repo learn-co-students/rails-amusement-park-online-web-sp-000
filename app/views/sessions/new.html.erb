@@ -1,11 +1,16 @@
-<h1>Sign In!</h1>
+<h1>Log In</h1>
 
 <%= form_tag(signin_path) do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
+  <br>
+  <%= label_tag "Your name" %>
+  <%= collection_select(:user, :name, @users, :name, :name, {prompt: 'Please select your username from this dropdown'}) %>
 
-  <%= label_tag :password %>
+  <br><br>
+
+  <%= label_tag "Your password" %>
   <%= password_field_tag :password %>
 
+  <br><br>
+  
   <%= submit_tag "Sign In" %>
 <% end %>
