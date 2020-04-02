@@ -5,7 +5,7 @@ Rails.application.routes.draw do
  
   resources :users, only: [:new, :create, :show]
   resources :attractions
-  resources :rides, only: [:new, :create]
+  resources :rides, only: [:create]
 
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
