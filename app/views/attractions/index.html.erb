@@ -1,6 +1,6 @@
 <h1>Listing attractions</h1>
 
-<table class="table", { box-sizing: border-box }>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,11 +15,8 @@
       <tr>
         <td><%= attraction.name %></td>
         <td><%= attraction.tickets %></td>
-        <% if current_user.admin %>
-          <td><%= link_to "Show #{attraction.name}", attraction %></td>
-        <% else %>
-          <td><%= link_to "Go on #{attraction.name}", attraction %></td>
-        <% end %>
+        <td><%= link_to "Show #{attraction.name}", attraction if admin_user %></td>
+        <td><%= link_to "Go on #{attraction.name}", attraction if !admin_user %></td>
       </tr>
     <% end %>
   </tbody>

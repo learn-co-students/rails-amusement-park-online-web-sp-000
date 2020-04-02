@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  helper_method :current_user, :logged_in?
+  def admin_user
+    current_user.admin
+  end
+
+  helper_method :current_user, :logged_in?, :admin_user
 
   # Methoda built in controllers don't permeate in ActionViews part of the code
   # Cannot call this in html.erb unless explicitly said by using helper_method
