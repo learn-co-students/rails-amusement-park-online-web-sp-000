@@ -1,4 +1,4 @@
-<h1>New Attraction</h1>
+<h1>Editing Attraction</h1>
 
 <%= form_for(@attraction) do |t| %>
   <%= t.label :name %><br>
@@ -21,4 +21,4 @@
 
 <br>
 
-<%= link_to "Back", attractions_path %>
+<%= link_to "Show", @attraction %> | <%= link_to "Back", attractions_path %>
