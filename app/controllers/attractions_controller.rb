@@ -13,6 +13,7 @@ class AttractionsController < ApplicationController
     if @attraction.save 
       redirect_to attraction_path(@attraction)
     else
+      flash[:errors] = "Account creation failure: #{@attraction.errors.full_messages.to_sentence}"
       redirect_to attractions_path
     end
   end
@@ -25,6 +26,7 @@ class AttractionsController < ApplicationController
     if admin_user
       find_attraction
     else
+      flash[:errors] = "You do not have access to this page"
       redirect_to attractions_path
     end
   end

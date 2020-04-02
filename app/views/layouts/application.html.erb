@@ -18,22 +18,33 @@
             <span class="icon-bar"></span>
           </button>
           <div class="navbar-brand">
-            <%= link_to "Home", root_path %>
+            <%= link_to "Home", root_path %> 
             <%= link_to "Log In", signin_path if !logged_in? %>
             <%= link_to "Sign Up", new_user_path if !logged_in? %>
             <%= link_to "#{current_user.name}'s profile", current_user if logged_in? %>
-            <%= link_to "Log Out", logout_path if logged_in? %>
+            <%= link_to "Log Out", logout_path if logged_in? %> 
           </div>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+            
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
     <!-- content -->
     <div class="container"  role="main">
+      <div class="center">
+        <% if flash[:messages] %>
+          <h4 style="color: green;"><%= flash[:messages] %></h4>
+          <br>
+        <% end %>
+
+        <% if flash[:errors] %>
+          <h4 style="color: red;"><%= flash[:errors] %></h4>
+          <br>
+        <% end %>
+      </div>      
       <%= yield %>
     </div>
   </body>
