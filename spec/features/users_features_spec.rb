@@ -13,7 +13,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("15")
     expect(page).to have_content("58")
   end
-
+ 
   it "on sign up, successfully adds a session hash" do
     visit '/users/new'
     # user_signup method is defined in login_helper.rb
@@ -189,7 +189,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     expect(page).to have_content("#{@ferriswheel.name}")
     expect(page).to have_content("#{@rollercoaster.name}")
   end
-
+ 
   it "has links on the attractions index page to the attractions' show pages" do
     click_link('See attractions')
     expect(page).to have_content("Go on #{@ferriswheel.name}")

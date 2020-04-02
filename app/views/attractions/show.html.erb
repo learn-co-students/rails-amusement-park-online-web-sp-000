@@ -1,0 +1,21 @@
+<div class="center">
+  <h2>Ride Details</h2>
+
+    <div class="info">
+      <strong >Name: </strong><%= @attraction.name %><br><br>
+      <strong>Tickets Requirement: </strong><%= @attraction.tickets %><br><br>
+      <strong>Height Requirement: </strong><%= @attraction.min_height %> inches<br><br>
+      <strong>Nausea Rating: </strong><%= @attraction.nausea_rating %><br><br>
+      <strong>Happiness Rating: </strong><%= @attraction.happiness_rating %><br><br>
+      <div class="center">
+        <% if admin_user %>
+          <%= link_to "Edit Attraction", edit_attraction_path %>
+        <% else %>
+          <%= button_to "Go on this ride", rides_path(attraction_id: @attraction.id), data: {confirm: "Are you sure?"} %>
+        <% end %>
+      </div>
+    </div>
+    
+  <br>
+  <%= link_to "Back", attractions_path %>
+</div>
