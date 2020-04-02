@@ -8,10 +8,10 @@
   <%= t.number_field :min_height %><br><br>
 
   <%= t.label "How fun is it? (1-5 scale)" %><br>
-  <%= t.number_field :happiness_rating %><br><br>
+  <%= t.number_field :happiness_rating, in: 1..5 %><br><br>
 
   <%= t.label "How nausea-inducing is it? (1-5 scale)" %><br>
-  <%= t.number_field :nausea_rating %><br><br>
+  <%= t.number_field :nausea_rating, in: 1..5 %><br><br>
 
   <%= t.label "How many tickets does it cost?" %><br>
   <%= t.number_field :tickets %><br><br>

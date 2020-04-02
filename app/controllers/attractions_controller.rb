@@ -5,12 +5,12 @@ class AttractionsController < ApplicationController
   end
 
   def new
-    @attraction = Attraction.new
+    @attraction = Attraction.new 
   end
 
   def create
     @attraction = Attraction.new(attraction_params)
-    if @attraction.save
+    if @attraction.save 
       redirect_to attraction_path(@attraction)
     else
       redirect_to attractions_path
@@ -22,15 +22,16 @@ class AttractionsController < ApplicationController
   end
 
   def edit
-    find_attraction
+    if admin_user
+      find_attraction
+    else
+      redirect_to attractions_path
+    end
   end
 
   def update
     find_attraction.update(attraction_params)
     redirect_to attraction_path
-  end
-
-  def destroy
   end
 
   private 
