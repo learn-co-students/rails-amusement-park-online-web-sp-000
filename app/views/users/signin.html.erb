@@ -1,0 +1,13 @@
+<h1>Sign In</h1>
+
+<%= form_tag('/login') do %>
+    <%= "User" %>
+    <%= select_tag 'user_name', options_for_select(@users.collect{ |user| [user.name] }) %>
+    <br>
+
+    <%= "Password" %>
+    <%= text_field_tag 'password' %>
+    <br>
+
+    <%= button_tag 'Sign In' %>
+<% end %>
