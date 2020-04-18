@@ -1,0 +1,11 @@
+<h1>Show page for <%= @user.name %>!</h1>
+<% if @user.admin %>
+  <p>Status = ADMIN</p>
+<% end %>
+<p>Current Mood: <%= @user.mood %></p>
+<p>Height: <%= @user.height %></p>
+<p>Number of tickets: <%= @user.tickets %></p>
+
+<h3><%= link_to "See attractions", attractions_path %></h3>
+<br><br><br>
+<p><%= link_to "Log Out", '/logout' %></p>
