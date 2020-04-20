@@ -2,9 +2,12 @@
 <% if @user.admin %>
   <p>Status = ADMIN</p>
 <% end %>
+<% if @ride_message %>
+  <p><%= @ride_message %></p>
+<% end %>
 <p>Current Mood: <%= @user.mood %></p>
 <p>Height: <%= @user.height %></p>
-<p>Number of tickets: <%= @user.tickets %></p>
+<p>Number of Tickets: <%= @user.tickets %></p>
 
 <h3><%= link_to "See attractions", attractions_path %></h3>
 <br><br><br>

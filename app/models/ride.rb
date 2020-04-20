@@ -12,6 +12,7 @@ class Ride < ActiveRecord::Base
     not_too_short = tall_enough?
     if has_tickets && not_too_short
       update_user_levels
+      "Thanks for riding the #{attraction.name}!"
     else
       @ride_restrictions.join(' ')
     end

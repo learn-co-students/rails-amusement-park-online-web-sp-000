@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 
   def show
     if current_user
-      @user = User.find(current_user)
+      @user = current_user
+      @ride_message = ride_message
     else
       redirect_to root_path
     end

@@ -1,4 +1,4 @@
-<h1>Create a new attraction!</h1>
+<h1>Edit <%= @attraction.name %></h1>
 
 <%= form_for(@attraction) do |f| %>
   <%= f.label :name, "Name:" %>
@@ -16,5 +16,5 @@
   <%= f.label :min_height, "How tall must a user be? (in inches)" %>
   <%= f.number_field :min_height, in: 1..100, step:1 %>
   <br>
-  <%= f.submit "Create Attraction" %>
+  <%= f.submit "Update Attraction" %>
 <% end %>

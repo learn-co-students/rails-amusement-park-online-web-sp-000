@@ -1,3 +1,9 @@
 <h1><%= @attraction.name %>!</h1>
-
-<p>Ride now! <%= link_to "Go on #{@attraction.name}", root_path %></p>
+<% if !@admin %>
+  <%= form_for(@ride) do |f| %>
+    <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+    <%= f.submit "Go on this ride" %>
+  <% end %>
+<% else %>
+  <p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></p>
+<% end %>
