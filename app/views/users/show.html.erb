@@ -1,0 +1,13 @@
+<h1>Your Profile</h1>
+
+
+<h3>Name: <%= @user.name %></h3>
+<p>Type: <%= "ADMIN" if @user.admin %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height: <%= @user.height %></p>
+
+<p><%= link_to "See attractions", attractions_url %></p>
+
+
+<a href="/logout">Log Out</a>

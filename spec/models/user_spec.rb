@@ -45,6 +45,7 @@ RSpec.describe User, :type => :model do
   }
 
   it "is valid with a name, password, happiness, nausea, height, and tickets" do
+    # binding.pry
     expect(user).to be_valid
   end
 
@@ -74,12 +75,15 @@ RSpec.describe User, :type => :model do
   end
 
   it "has a method 'mood' that returns 'sad' when the user is more nauseous than happy" do
+  # binding.pry
     expect(user.mood).to eq("sad")
+
   end
 
   it "has a method 'mood' that returns 'happy' when the user is more happy than nauseous" do
     user.update(:happiness => 7)
     expect(user.mood).to eq("happy")
+  # binding.pry
   end
 
 end
