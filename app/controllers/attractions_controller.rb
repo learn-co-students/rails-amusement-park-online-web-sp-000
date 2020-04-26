@@ -1,4 +1,16 @@
 class AttractionsController < ApplicationController
+	before_action :set_user
+
+	def new
+		@attraction = Attraction.new
+	end
+
+	def create
+		attraction = Attraction.create(attraction_params)
+
+		redirect_to attraction_path(attraction)
+	end
+
 	def index
 		@attractions = Attraction.all
 	end
@@ -7,16 +19,26 @@ class AttractionsController < ApplicationController
 		@attraction = Attraction.find(params[:id])
 	end
 
-	# def create
-	# 	binding.pry
-	# 	ride = Ride.new(user_id: session[:user_id], attraction_id: params[:id])
-	# 	redirect_to user_path(User.find(session[:user_id]))
-	# end
+	def edit
+		@attraction = Attraction.find(params[:id])
+	end
+
+	def update
+		attraction = Attraction.find(params[:id])
+		attraction.update(attraction_params)
+
+		redirect_to attraction_path(attraction)	
+	end
+
 
 
 	private
 
+	def set_user
+		@user = User.find(session[:user_id])
+	end
+
 	def attraction_params
-		params.permit(:user_id, :attraction_id)
+		params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)
 	end
 end

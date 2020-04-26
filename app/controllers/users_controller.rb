@@ -35,8 +35,8 @@ class UsersController < ApplicationController
 
 	def show
 		redirect_to root_url if !session[:user_id]
-
 		@user = User.find(params[:id])
+
 	end
 
 	def logout
