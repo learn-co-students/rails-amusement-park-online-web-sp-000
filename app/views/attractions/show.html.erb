@@ -1,0 +1,10 @@
+<h1><%= @attraction.name %></h1>
+
+<% if @user.admin == true %>
+	<span><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></span>
+<% else %>
+	<form action="/rides" method="POST">
+		<input type="hidden" name="attraction_id" value="<%= @attraction.id %>">
+		<input type="submit" value="Go on this ride">
+	</form>
+<% end %>
