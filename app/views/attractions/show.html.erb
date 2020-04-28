@@ -1,0 +1,5 @@
+
+<%= form_for @ride do |f|%>
+<%= f.button value="Go on this ride" %>
+<%= hidden_field_tag 'attraction_id', "#{@attraction.id}"%>
+<% end%>
