@@ -1,0 +1,17 @@
+Welcome <%= @user.name %>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %> 
+
+<% if @user.admin %>
+      <p><strong>ADMIN</strong></p>
+<% end %>
+
+<p>Tickets: <%= @user.tickets %></p>
+
+<p>Mood <%= @user.mood %></p>
+
+<p>You are  <%= @user.height %> inches tall</p>
+
+<%= link_to "See attractions", attractions_path %>
