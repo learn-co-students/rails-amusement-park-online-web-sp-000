@@ -1,0 +1,18 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+  Username: <%=      @user.name %>
+  Password: <%=    @user.password %>
+  Height: <%=  @user.height %>
+  Happiness: <%=     @user.happiness %>
+  Nausea: <%=  @user.nausea %>
+  Tickets: <%=    @user.tickets %>
+  Mood: <%= @user.mood %>
+  <%= 'ADMIN' if @user.admin %>
+
+<%= link_to  "Log Out", controller: "sessions", action: "destroy" %>
+<%= link_to  "See attractions", controller: "attractions", action: "index" %>
+
+
