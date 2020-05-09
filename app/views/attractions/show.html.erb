@@ -1,0 +1,8 @@
+<%= @attraction.name %>
+
+<%= button_to 'Go on this ride', {:controller => "users", :action => "update", :attraction_id => @attraction.id}, :method => :patch %>
+
+
+<% if current_user.admin? %>
+    <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>

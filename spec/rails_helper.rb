@@ -11,7 +11,7 @@ require "capybara/dsl"
 require 'database_cleaner'
 require "rack_session_access/capybara"
 # Add additional requires below this line. Rails is not loaded until this point!
-
+Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
