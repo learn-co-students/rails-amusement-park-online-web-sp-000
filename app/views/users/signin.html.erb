@@ -1,0 +1,14 @@
+<form action="/users/show" method="get" >
+
+    <select id='user_name' name='user[id]'>
+        <% @users.each do |u| %>
+            <option value="<%= u.id %>"><%= u.name %></option>
+        <% end %>
+    </select>
+    
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="user[password]"><br><br>
+
+    <input type="submit" value="Sign In">
+
+</form>
