@@ -1,0 +1,10 @@
+<h1>Edit <%= @attr.name %></h1>
+
+<%= form_for @attr do |f| %>
+
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.submit %>
+
+<% end %>
