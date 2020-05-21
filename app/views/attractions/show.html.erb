@@ -1,1 +1,6 @@
 <h1><%=@attraction.name%></h1>
+
+<%= form_for Ride.new do |f| %>
+  <input type="hidden" name="ride[attraction_id]" value="<%=@attraction.id%>">
+  <%= f.submit 'Go on this ride' %>
+<% end %>

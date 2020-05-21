@@ -1,8 +1,13 @@
 <h1><%=@user.name%></h1>
 
+<% if session[:message] %>
+  <p><%=session[:message]%></p>
+  <% session.delete :message %>
+<% end %>
+
 <h2>Mood: <%=@user.mood%></h2>
 <p>Height: <%=@user.height%></p>
-<p>Ticket: <%=@user.tickets%></p>
+<p>Tickets: <%=@user.tickets%></p>
 
 <% if @user.admin %>
 <p>ADMIN</p>

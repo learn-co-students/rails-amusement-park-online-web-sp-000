@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
   resources :users
   resources :attractions
+  resources :rides
 
   get '/signin', to: 'users#login'
   post '/signin', to: 'sessions#create'
