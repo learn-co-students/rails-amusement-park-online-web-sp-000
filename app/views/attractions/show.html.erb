@@ -4,3 +4,7 @@
   <input type="hidden" name="ride[attraction_id]" value="<%=@attraction.id%>">
   <%= f.submit 'Go on this ride' %>
 <% end %>
+
+<% if @user.admin %>
+  <a href="/attractions/<%=@attraction.id%>/edit">Edit Attraction</a>
+<% end %>
