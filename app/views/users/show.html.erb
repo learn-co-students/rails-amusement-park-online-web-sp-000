@@ -3,3 +3,12 @@
 <h2>Mood: <%=@user.mood%></h2>
 <p>Height: <%=@user.height%></p>
 <p>Ticket: <%=@user.tickets%></p>
+
+<% if @user.admin %>
+<p>ADMIN</p>
+<% end %>
+
+<br><br>
+<a href="/attractions">See attractions</a>
+<br>
+<a href="/logout">Log Out</a>

@@ -1,0 +1,9 @@
+<h1>Log in to the amusement park.</h1>
+
+<%= form_tag '/signin', method: 'post' do %>
+  <label>User: </label>
+  <%= collection_select :user, :name, User.all, :name, :name, include_blank: true%><br>
+  <label>Password: </label>
+  <%= password_field_tag :password %><br>
+  <%= submit_tag "Sign In" %>
+<% end %>
