@@ -1,0 +1,7 @@
+<b>Sign In</b><br><br>
+<%= form_for signin_path do |f| %>
+    Name: <%= collection_select(:user, :name, User.all, :id, :name) %><br>
+    Password: <%= f.password_field 'password' %><br>
+    Confirm Password: <%= f.password_field :password_confirmation %><br>
+    <%= f.submit 'Sign In' %><br>
+<% end %>
