@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   # root :to => "users#new"
   # resources :sessions
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :edit, :update]
   root 'users#new'
 
   resources :attractions
   resources :rides
 
+
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
-  get '/signout', to: 'sessions#destroy', via: 'delete'
+  delete "/signout", to: 'sessions#destroy', as: 'logout'
 end

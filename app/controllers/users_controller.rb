@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -6,11 +7,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.valid?
+      #binding.pry
       @user.save
+      #binding.pry
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to '/'
+      render :new
     end
   end
 
