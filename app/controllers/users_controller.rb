@@ -17,6 +17,8 @@ class UsersController < ApplicationController
         if @user.save 
             session[:user_id] = @user.id
             redirect_to user_path(@user) 
+        else 
+            redirect_to :signin
         end
     end
     
