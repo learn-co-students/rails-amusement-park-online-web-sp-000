@@ -1,4 +1,5 @@
 class UsersController < ApplicationController 
+    #skip_before_action :verify_user, only: [:new, :create]
 
     def index 
         @users = User.all
@@ -13,8 +14,8 @@ class UsersController < ApplicationController
     end
 
     def create 
-        @user = User.create(user_params)
-        if @user.save 
+        
+        if @user = User.create(user_params)
             session[:user_id] = @user.id
             redirect_to user_path(@user), alert: "You Just Signed Up" 
         else 
