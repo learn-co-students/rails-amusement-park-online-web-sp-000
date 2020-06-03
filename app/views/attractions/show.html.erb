@@ -1,0 +1,9 @@
+<ul>
+    <li>Name: <%= @attraction.name %></li>
+    <li>Tickets Requirement: <%= @attraction.tickets %></li>
+    <li>Height Requirement: <%= @attraction.min_height %></li>
+    <li>Nausea Rating: <%= @attraction.nausea_rating %></li>
+    <li>Happiness Rating: <%= @attraction.happiness_rating %></li>
+</ul>
+
+<%= link_to "Go on this ride", take_ride_path %><br>
