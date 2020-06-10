@@ -1,0 +1,26 @@
+  
+<p id="notice"><%= notice %></p>
+
+
+
+<% if flash[:message] %>
+  <div class="center alert">
+    <p><%= flash[:message] %></p>
+  </div>
+<% end %>
+
+Name: <%= @user.name %> <br> <br>
+
+Mood: <%= @user.mood  %> <br> <br>
+
+Height: <%= @user.height %> <br> <br>
+
+Tickets: <%= @user.tickets %> <br> <br>
+
+<%="ADMIN" if @user.admin%> <br> <br>
+
+<% if logged_in %>
+<%= link_to "Log Out", signout_path, method: :post %>
+<% end %> <br> <br>
+
+<%= link_to "See attractions", attractions_path %>
