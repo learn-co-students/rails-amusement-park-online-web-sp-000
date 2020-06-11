@@ -1,7 +1,6 @@
 <b>Sign In</b><br><br>
-<%= form_for signin_path do |f| %>
+<%= form_tag(signin_path) do %>
     Name: <%= collection_select(:user, :name, User.all, :id, :name) %><br>
-    Password: <%= f.password_field :password, {id: 'password'} %><br>
-    Confirm Password: <%= f.password_field :password_confirmation %><br>
-    <%= f.submit 'Sign In' %><br>
+    Password: <%= password_field_tag 'password', nil, class: 'masked_input_field' %><br>
+    <%= submit_tag 'Sign In' %><br>
 <% end %>

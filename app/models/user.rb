@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :rides
+    has_many :attractions, through: :rides
 
     def status
         if self.admin
@@ -8,11 +10,17 @@ class User < ApplicationRecord
     end
 
     def mood
-        if self.happiness >2
-            'happy'
-        else
-            'sad'
+        if !happiness.nil?
+            if happiness > nausea
+                'happy'
+            else
+                'sad'
+            end
         end
+    end
+
+    def admin?
+       !self.status.nil?
     end
 
 end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         if params[:user][:password]
             if @user.save
                 session[:user_id] = @user.id
-                redirect_to user_path(@user.id)
+                redirect_to user_path(session[:user_id])
             else
                 redirect_to controller: 'users', action: 'new'
             end
@@ -19,7 +19,11 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+        if session[:user_id]
+            @user = User.find(session[:user_id]) 
+        else 
+            redirect_to root_path
+        end        
     end
 
     private

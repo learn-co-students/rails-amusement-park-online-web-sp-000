@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :users, :attractions
   get 'signin', to: 'sessions#new'
   post 'signin', to: 'sessions#create'
-  resources :session, only: [ :destroy]
+  delete 'logout', to: 'sessions#destroy'
+
+  post 'ride', to: 'rides#create'
+
+  resources
+
   
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
