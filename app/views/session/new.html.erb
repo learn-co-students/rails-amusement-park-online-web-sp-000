@@ -1,0 +1,10 @@
+<%= form_tag(session_path) do %>
+
+    <%= label_tag 'Name: ' %>
+    <%= collection_select(:user, :name, User.all,  :name, :name, prompt: "Please select your username from this dropdown") %><br>
+
+    <%= label_tag 'Password: ' %>
+    <%= password_field_tag :password %>
+    <br>
+    <%= submit_tag 'Sign In'%>
+<% end %>
