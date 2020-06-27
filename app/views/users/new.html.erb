@@ -1,0 +1,18 @@
+<h2>Signup for an Account!</h2>
+<%= form_for :user, url: '/users' do |f| %>
+    <p><%= f.label :name %><br>
+    <%= f.text_field :name %></p>
+    <p><%= f.label :height, "Height (in inches)" %><br>
+    <%= f.number_field :height %></p>
+    <p><%= f.label :happiness, "How happy are you? (scale of 1-5)" %><br>
+    <%= f.number_field :happiness %></p>
+    <p><%= f.label :nausea, "How nauseous are you? (scale of 1-5)"%><br>
+    <%= f.number_field :nausea %></p>
+    <p><%= f.label :tickets, "How many tickets do you have?"%><br>
+    <%= f.number_field :tickets %></p>
+    <p><%= f.label :admin, "Check if you are a theme park owner " %>
+    <%= f.check_box :admin %></p>
+    <p><%= f.label :password %><br>
+    <%= f.password_field :password %></p>
+    <p><%= f.submit "Create User"  %>
+<% end %>

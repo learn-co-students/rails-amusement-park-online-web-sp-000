@@ -1,0 +1,8 @@
+<h2>All the Attractions</h2>
+<ul><% Attraction.all.each do |ride| %>
+    <li><%= link_to link_text(ride), attraction_path(ride.id) %></li>
+<% end %></ul>
+
+<% if current_user.admin %>
+    <p><%= link_to "New Attraction", new_attraction_path %></p>
+<% end %>

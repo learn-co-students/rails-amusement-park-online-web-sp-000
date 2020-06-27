@@ -1,0 +1,14 @@
+<% if flash[:notice] %>
+    <p style="color:red"><strong><%= flash[:notice] %></strong></p>
+<% end %>
+
+<h3>Hello <%= @user.name %>!</h3>
+<% if @user.admin %>
+    <strong>ADMIN</strong>
+<% end %>
+<p><strong>Tickets:</strong> <%= @user.tickets %>
+<p><strong>Mood:</strong> <%= @user.mood %></p>
+<p><strong>Height:</strong> <%= @user.height %> inches
+
+<p><%= link_to "See attractions", attractions_path %>
+<p><%= link_to "Log Out", '/logout' %>

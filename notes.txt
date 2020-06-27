@@ -1,0 +1,86 @@
+MODELS
+XAttraction
+has_many :rides
+has_many :users, through: :rides
+    - name:string
+    - min_height:integer
+    - nausea_rating:integer
+    - happiness_rating:integer
+    - tickets:integer
+
+XRide
+belongs_to :user 
+belongs_to :attraction 
+    - user_id
+    - attraction_id
+
+    Method: take_ride 
+        1. does the user have enough tickets for me? (enough_tickets?)
+        2. is the user tall enough? (tall_enough?)
+        3. are both 1. and 2. true? 
+        4. updates # of tickets (update_tickets)
+        5. updates user's naseau (update_nausea)
+        6. updates happiness (update_happiness)
+
+XUser 
+has_many :rides 
+has_many :attractions, through: :rides 
+has_secure_password (remember to add 'bcrypt' gem)
+    - name:string
+    - password_digest:string
+    - nausea:integer
+    - happiness:integer
+    - tickets:integer
+    - height:integer
+    - admin:boolean (defaults to false - look this up!)
+
+    Method: mood
+        1. returns 'sad' when user is more nauseous than happy
+        2. returns 'happy' when user is more happy than nauseous
+
+CONTROLLERS & VIEWS
+XUserController
+    Signup page 
+        - at users/new
+            - in routes, resources :user, only: [:new, :create]
+        - form with users 
+            - name
+            - height
+            - happiness
+            - nausea
+            - tickets
+            - password 
+            - "Create User"
+    
+XSessionController
+    - Sign a user in & create a session hash
+
+XLogin
+    - path should be '/signin'
+    - fields should be 'user_name' and 'password'
+    - submit button should be 'Sign In'
+
+XAccess Controls
+    - only view user show page if you are that logged in user
+    - otherwise redirect to homepage, which should have a signup link
+
+XSignout
+    - destroys session hash
+    - redirects to homepage
+
+XGo on a Ride
+    - link from user show page to attractions index page
+    - links from attractions index page to attraction show pages
+    - button from attraction show page to "Go on this ride"
+        - clicking button redirects to user show page
+        - take_ride
+        - if user is tall enough and has enough tickets, clicking button displays "Thanks for riding the #{@attraction.name}!"
+
+ADMIN FLOW
+    [x] on attractions index, admins:
+        [x] have  "New Attraction" link
+        [x] attraction links say "Show #{attraction}" instead of "Go on #{attraction}" link
+    [x] attractions/new has form to add attraction that redirects to created attraction
+    [x] on attraction show page, admin:
+        - do have "Edit Attraction" link, which allows admin to edit
+        - don't have "Go on this ride" link
