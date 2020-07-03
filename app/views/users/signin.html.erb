@@ -1,0 +1,9 @@
+<%= form_tag ({controller: 'users', action: 'signin_user', method: 'post'}) do %>
+  <select name="user_name">
+    <% User.all.each do |user| %>
+        <option value="<%= user.name %>"><%= user.name %></option>
+    <% end %>
+  </select>
+  <input type="password" name="password">
+  <input type="submit" value='Sign In'>
+<% end %>

@@ -1,0 +1,16 @@
+<% if !flash[:alert].nil?%>
+    <%= flash[:alert] %>
+<%end%>
+
+Name: <%= @user.name%><br>
+
+<% if !@user.admin%>
+    Mood: <%= @user.mood%><br>
+    Tickets: <%= @user.tickets%><br>
+    Height: <%= @user.height%><br>
+<% else %>
+    <%= "ADMIN"%><br>
+<%end%>
+
+<%= link_to "See attractions", "/attractions"%>
+<%= link_to "Log Out", "/users/delete", method: :post %>
