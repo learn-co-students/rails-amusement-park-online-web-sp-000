@@ -1,0 +1,6 @@
+<b>Sign In</b><br><br>
+<%= form_tag(signin_path) do %>
+    Name: <%= collection_select(:user, :name, User.all, :id, :name) %><br>
+    Password: <%= password_field_tag 'password', nil, class: 'masked_input_field' %><br>
+    <%= submit_tag 'Sign In' %><br>
+<% end %>
