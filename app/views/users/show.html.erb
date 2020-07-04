@@ -1,0 +1,22 @@
+
+<h2>User Show Page for <%= @user.name %></h2>
+
+<% if flash[:message] %>
+  <div class="center alert">
+    <p><%= flash[:message] %></p>
+  </div>
+<% end %>
+
+<div class="center">
+    <% if @user.admin %>
+        <p>Status = ADMIN</p>
+    <% end %>
+
+    <p><strong>Name:  </strong><%= @user.name %></p>
+    <p><strong>Mood: </strong><%= @user.mood %></p>
+    <p><strong>Height:  </strong><%= @user.height %></p>
+    <p><strong>Tickets:  </strong><%= @user.tickets %></p>
+
+    <%= link_to 'See attractions', attractions_path %>
+    <%= link_to 'Log Out', "/logout" %>
+</div>

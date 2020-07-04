@@ -1,0 +1,27 @@
+<h2>Welcome to Rails Amusement Park!</h2>
+<h3>Please Sign Up!</h3>
+
+<%= form_for @user do |f| %>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name %>
+    <br >
+    <%= f.label :password, "Password:" %>
+    <%= f.text_field :password %>
+    <br>
+    <%= f.label :height, "Height (in inches):" %>
+    <%= f.text_field :height %>
+    <br>
+    <%= f.label :happiness, "Happiness (1 - 5):" %>
+    <%= f.text_field :happiness %>
+    <br>
+    <%= f.label :nausea, "Nausea (1 - 5):" %>
+    <%= f.text_field :nausea %>
+    <br>
+    <%= f.label :tickets, "Tickets:" %>
+    <%= f.text_field :tickets %>
+    <br>
+    <%= f.label :admin, "Check if Administrator" %>
+    <%= f.check_box :admin %>
+    <br>
+    <%= f.submit %>
+<% end%>
