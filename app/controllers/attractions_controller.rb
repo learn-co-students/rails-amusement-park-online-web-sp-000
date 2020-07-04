@@ -7,21 +7,34 @@ class AttractionsController < ApplicationController
     end
 
     def create
-        @attraction = Attraction.new(attraction_params)
-        if current_user.admin?
-            @attraction.save
-        end
-        redirect_to attractions_path
+        @attraction = Attraction.create(attraction_params)
+        redirect_to attraction_path(@attraction)
+    end
+
+    def edit
+        find_attraction
+    end
+
+    def update
+        find_attraction
+        @attraction.update(attraction_params)
+        redirect_to attraction_path(@attraction)
     end
 
     def show
-        @attraction = Attraction.find(params[:id])
+        find_attraction
     end
 
     def destroy
+        find_attraction
+        @attraction.destroy
     end
 
     private
+
+    def find_attraction
+        @attraction = Attraction.find(params[:id])
+    end
 
     def attraction_params
         params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
