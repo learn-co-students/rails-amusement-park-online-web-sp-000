@@ -6,4 +6,10 @@ Happiness Rating: <%= @attraction.happiness_rating %><br />
 Min. Height: <%= @attraction.min_height %><br />
 <br />
 
-<button><link href="/users/<%= @ride.id %>">"Go on this ride"</button>
+
+
+<%= form_for @ride do |f| %>
+    <%= f.hidden_field :user_id %><br />
+    <%= f.hidden_field :attraction_id %><br />
+    <%= f.submit "Go on this ride", class:"btn btn-light" %>
+<% end %>
