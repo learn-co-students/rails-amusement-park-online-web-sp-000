@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   get '/', to: 'users#new'
   get '/logout', to: 'users#destroy'
+  get '/attractions', to: 'attractions#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
