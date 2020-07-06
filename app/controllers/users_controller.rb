@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end 
 
     def create
-        uesr = User.create(post_params)
+        user = User.create(post_params)
         redirect_to user
       end
     

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     has_many :rides
     has_many :attractions, through: :rides
 
+
     def mood
         @happy = self.happiness
         @nausea = self.nausea
