@@ -2,3 +2,9 @@
 <p>Mood<%= @user.mood %></p>
 <%= @user.tickets %>
 <%= @user.height %>
+<% if @user.admin == true %>
+    <p>ADMIN</p>
+<% end %>
+
+<%= link_to 'Log Out', '/logout' %>
+

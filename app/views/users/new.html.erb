@@ -1,3 +1,4 @@
+<p>Sign Up</p>
 <%= form_for @user do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -17,7 +18,11 @@
     <%= f.label :height %>
     <%= f.number_field :height %>
 
+    <p>Admin? <%= f.check_box :admin, options = {:class => "user_admin"} %></p><br />
+    <br />
+  
+
     <%= f.submit %>
 <% end %>
 
-    
+

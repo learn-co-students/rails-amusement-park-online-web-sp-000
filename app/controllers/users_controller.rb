@@ -21,7 +21,11 @@ class UsersController < ApplicationController
     
 
       def show
-        @user = User.find(params[:id])
+        if session[:user_id]
+            @user = User.find(params[:id])
+        else 
+            redirect_to '/'
+        end 
       end
 
     def edit
@@ -33,7 +37,10 @@ class UsersController < ApplicationController
     end 
 
     def destroy
-
+        if current_user
+            session.delete :user_id
+            redirect_to '/'
+        end 
     end
     
     private
