@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 
+
 # bootstrap
 
 gem 'bootstrap-sass', '3.3.7'
@@ -37,6 +38,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry'
+
+gem 'tux'
+
 
 
 # Use Capistrano for deployment
