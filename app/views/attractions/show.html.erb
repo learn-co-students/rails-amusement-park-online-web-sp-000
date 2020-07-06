@@ -6,6 +6,4 @@ Happiness Rating: <%= @attraction.happiness_rating %><br />
 Min. Height: <%= @attraction.min_height %><br />
 <br />
 
-<% binding.pry %>
-
-<button><%= link_to "Go on this ride", user_path(@ride.user_id) %></button>
+<button><link href="/users/<%= @ride.id %>">"Go on this ride"</button>
