@@ -1,6 +1,6 @@
 <%= @user.name %>
 <p>Mood<%= @user.mood %></p>
-<%= @user.tickets %>
+<p>Tickets: <%= @user.tickets %></p>
 <%= @user.height %>
 <% if @user.admin == true %>
     <p>ADMIN</p>
@@ -10,4 +10,8 @@
 
 <%= link_to 'See attractions', '/attractions' %>
 
-
+<% if flash[:message] %>
+  <div class="center alert">
+    <p><%= flash[:message] %></p>
+  </div>
+<% end %>

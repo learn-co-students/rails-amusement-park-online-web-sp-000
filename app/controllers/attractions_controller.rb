@@ -19,7 +19,6 @@ class AttractionsController < ApplicationController
   
     def edit
       @attraction = Attraction.find_by(id: params[:id])
-      @ride = @attraction.rides.build(user_id: current_user.id)
     end
   
     def update
