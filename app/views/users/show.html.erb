@@ -1,0 +1,17 @@
+<%= @user.name %>
+<p>Mood<%= @user.mood %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<%= @user.height %>
+<% if @user.admin == true %>
+    <p>ADMIN</p>
+<% end %>
+
+<%= link_to 'Log Out', '/logout' %>
+
+<%= link_to 'See attractions', '/attractions' %>
+
+<% if flash[:message] %>
+  <div class="center alert">
+    <p><%= flash[:message] %></p>
+  </div>
+<% end %>
