@@ -4,7 +4,21 @@ Tickets Requirement: <%= @attraction.tickets %>
 Happiness Requirement: <%= @attraction.happiness_rating %>
 Nausea Level: <%= @attraction.nausea_rating %>
 
-<%= button_to 'Go on this ride', controller: 'users', action: 'show'%>
+<%= form_for(current_user) do |f| %>
+
+        <%= f.submit 'Go on this ride' %>
+    <% end %>
+
+    # by clicking on the button
+    # it creates new ride which includes ride id user_id and attraction_id
+    # in order to create new ride 
+
+    view:                           controller:               model:
+    sends data includes             updates user info
+        - user id                   uses take_ride method
+        - attraction id             creates ride
+        - newly create ride info
+
 
 
 

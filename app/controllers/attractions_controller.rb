@@ -7,4 +7,5 @@ class AttractionsController < ApplicationController
         @attraction = Attraction.find(params[:id])
     end
 
+
 end
