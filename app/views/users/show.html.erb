@@ -1,0 +1,16 @@
+<% if @user.admin %>
+    <h1>User Name: <%= @user.name %> </h1>
+    <h1>ADMIN</h1>
+<% else %>
+    <h1>User Name: <%= @user.name %></h1>
+    <h1>User Mood: <%= @user.mood %></h1>
+    <h1>Nausea: <%= @user.nausea %></h1>
+    <h1>Ticket Number: <%= @user.tickets %></h1>
+    <h1>User Height: <%= @user.height %></h1>
+<% end %>
+
+<%= link_to 'See attractions', controller: 'attractions', action: 'index' %>
+
+<%= link_to 'Log Out', controller: 'sessions', action: 'destroy'%>
+
+
