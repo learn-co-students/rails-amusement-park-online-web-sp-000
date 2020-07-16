@@ -338,7 +338,7 @@ describe 'Feature Test: Admin Flow', :type => :feature do
     expect(page).to have_content("Haunted Mansion")
   end
 
-  it "has link to attraction/show from attraction/index page for admins" do
+  it "has link to attractions/show from attractions/index page for admins" do
     click_link('See attractions')
     expect(page).to have_content("Show #{@ferriswheel.name}")
   end

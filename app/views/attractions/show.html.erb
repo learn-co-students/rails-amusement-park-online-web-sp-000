@@ -1,24 +1,20 @@
-Atrraction Name: <%= @attraction.name %>
-Height Requirement: <%= @attraction.min_height %>
-Tickets Requirement: <%= @attraction.tickets %>
-Happiness Requirement: <%= @attraction.happiness_rating %>
-Nausea Level: <%= @attraction.nausea_rating %>
 
-<%= form_for(current_user) do |f| %>
+    Atrraction Name: <%= @attraction.name %>
+    Height Requirement: <%= @attraction.min_height %>
+    Tickets Requirement: <%= @attraction.tickets %>
+    Happiness Requirement: <%= @attraction.happiness_rating %>
+    Nausea Level: <%= @attraction.nausea_rating %>
 
-        <%= f.submit 'Go on this ride' %>
-    <% end %>
+    <%= form_for @attraction.rides.build do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :attraction_id, value: @attraction.id %>
+            <%= f.submit 'Go on this ride' %>
+        <% end %>
 
-    # by clicking on the button
-    # it creates new ride which includes ride id user_id and attraction_id
-    # in order to create new ride 
 
-    view:                           controller:               model:
-    sends data includes             updates user info
-        - user id                   uses take_ride method
-        - attraction id             creates ride
-        - newly create ride info
-
+<% if current_user.admin%>
+    <%= link_to 'Edit Attraction', controller: 'attractions', action: 'edit' %>
+<% end %>
 
 
 
