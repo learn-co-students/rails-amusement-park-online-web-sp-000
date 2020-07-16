@@ -1,0 +1,14 @@
+<%= form_for(@attraction) do |f| %>
+    <div><%= f.label 'Name'%>
+        <%= f.text_field :name %></div>
+    <div><%= f.label 'Height Requirement'%>
+        <%= f.text_field :min_height %></div>
+    <div><%= f.label 'Happiness Rating'%>
+        <%= f.text_field :happiness_rating %></div>
+    <div><%= f.label 'Nausea Rating'%>
+        <%= f.text_field :nausea_rating %></div>
+    <div><%= f.label 'Tickets Requirement'%>
+        <%= f.text_field :tickets %></div>
+
+    <div><%= f.submit 'Create Attraction' %></div>
+<% end %>

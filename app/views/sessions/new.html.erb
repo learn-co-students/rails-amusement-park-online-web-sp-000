@@ -1,0 +1,9 @@
+<%= form_tag signin_path do %>
+    <div><label>Your Name: </label><br>
+    <%= collection_select :user, :name, User.all, :name, :name %></div><br>
+
+    <div><label>Your password: </label><br> 
+    <%= text_field_tag :'password' %></div><br>
+
+    <%= submit_tag 'Sign In' %>
+<% end %>
