@@ -1,4 +1,4 @@
 class Attraction < ApplicationRecord
-    has_many :riders
+    has_many :rides
     has_many :users, through: :rides
 end
