@@ -4,5 +4,8 @@
 
     <%=text_field_tag(:password)%>
 
+    <%= f.label "Admin" %>
+    <%= f.check_box :admin %><br><br>       
+
     <%= f.submit "Sign In" %>
 <% end %>

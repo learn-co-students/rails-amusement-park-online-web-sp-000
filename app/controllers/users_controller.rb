@@ -26,7 +26,6 @@ class UsersController < ApplicationController
     end
 
     def signin
-
     end
 
     def loggedin
@@ -34,6 +33,7 @@ class UsersController < ApplicationController
         if params[:user][:name].present? && params[:password].present?
             user = User.find_by(params[:user][:name])
             if params[:password] == user.password
+                binding.pry
                 session[:user_id] = user.id 
                 redirect_to user_path(user) 
             else
