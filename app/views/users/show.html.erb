@@ -1,10 +1,14 @@
-
-<h1>Name:<%= @user.name %></h1>
-<h1>Tickets:<%= @user.tickets %></h1>
-<h1>Happiness:<%= @user.happiness %></h1>
-<h1>Nausea:<%= @user.nausea %></h1>
-<h1>Height:<%= @user.height %></h1>
-<h1>Mood:<%= @user.mood %></h1>
+<% if @user.admin %>
+    <h1>Name:<%= @user.name %></h1>
+    <h1>ADMIN</h1>
+<% else %> 
+    <h1>Name:<%= @user.name %></h1>
+    <h1>Tickets:<%= @user.tickets %></h1>
+    <h1>Happiness:<%= @user.happiness %></h1>
+    <h1>Nausea:<%= @user.nausea %></h1>
+    <h1>Height:<%= @user.height %></h1>
+    <h1>Mood:<%= @user.mood %></h1>
+<% end %>
 
 
 
