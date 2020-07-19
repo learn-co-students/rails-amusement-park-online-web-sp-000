@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     end
 
     def create
+
         if params[:user][:name].present? && params[:user][:password].present?
             @user = User.create(user_params)
             session[:user_id] = @user.id 
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
     private
  
     def user_params
-      params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height)
+      params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
     end
 
 
