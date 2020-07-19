@@ -1,15 +1,11 @@
-<% if !@user.nil? %>
-    <h1>Name:<%= @user.name %></h1>
-    <h1>Tickets:<%= @user.tickets %></h1>
-    <h1>Happiness:<%= @user.happiness %></h1>
-    <h1>Nausea:<%= @user.nausea %></h1>
-    <h1>Height:<%= @user.height %></h1>
-    <h1>Mood:<%= @user.mood %></h1>
-<% else %>
 
-    User Name: <%= select_tag "user_name", options_from_collection_for_select(@users, "id", "name") %>
-    <input type="Password:" id="user[password]" name="password"/>
+<h1>Name:<%= @user.name %></h1>
+<h1>Tickets:<%= @user.tickets %></h1>
+<h1>Happiness:<%= @user.happiness %></h1>
+<h1>Nausea:<%= @user.nausea %></h1>
+<h1>Height:<%= @user.height %></h1>
+<h1>Mood:<%= @user.mood %></h1>
 
-    <%= submit_tag "Sign In" %>
 
-<% end %>
+
+

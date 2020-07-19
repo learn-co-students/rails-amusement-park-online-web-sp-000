@@ -13,8 +13,30 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by(id: params[:id])
-        @users = User.all
+        if helpers.logged_in?
+            @user = User.find_by(id: params[:id])
+        else
+            redirect_to :root
+        end
+    end
+
+    def signin
+
+    end
+
+    def loggedin
+
+        if params[:user][:name].present? && params[:password].present?
+            user = User.find_by(params[:user][:name])
+            if params[:password] == user.password
+                session[:user_id] = user.id 
+                redirect_to user_path(user) 
+            else
+                redirect_to controller: 'users', action: 'signin'
+            end 
+        else
+            redirect_to controller: 'users', action: 'signin'
+        end
     end
 
     private
