@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/signin', to: 'users#signin'
   post '/signin', to: 'users#loggedin'
 
+  # get '/logout', to: 'users#delete'
+  delete '/logout', to: 'users#destroy'
 
   resources :rides
   resources :attractions
