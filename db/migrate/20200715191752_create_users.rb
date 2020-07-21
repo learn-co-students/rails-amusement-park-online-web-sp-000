@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :height
       t.integer :nausea
       t.integer :tickets
+      t.integer :happiness
       t.boolean :admin
       t.string :password
       t.string :password_confirmation

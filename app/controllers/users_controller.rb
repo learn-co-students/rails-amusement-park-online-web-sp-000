@@ -1,5 +1,5 @@
 
-class UsersController < ApplicationRecord
+class UsersController < ApplicationController
 
   def new
     @user = User.new
