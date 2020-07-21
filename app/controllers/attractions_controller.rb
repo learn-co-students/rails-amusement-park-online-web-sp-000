@@ -1,4 +1,3 @@
-
 class AttractionsController < ApplicationController
 
   def index
@@ -41,5 +40,5 @@ class AttractionsController < ApplicationController
       :nausea_rating
     )
   end
-  
+
 end

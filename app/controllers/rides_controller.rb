@@ -1,5 +1,4 @@
-
- class RidesController < ApplicationController
+class RidesController < ApplicationController
 
    def create
      ride = Ride.create(ride_params)
@@ -15,5 +14,5 @@
       :user_id,
       :attraction_id)
    end
-   
+
  end
