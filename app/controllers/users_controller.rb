@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
     if @user.admin
@@ -9,14 +10,16 @@ class UsersController < ApplicationController
   def create 
     @user = User.create(user_params)
     if @user.save 
-      render 'show'
+      redirect_to user_path(@user)
     else  
-      redirect_to 'signup'
+      redirect_to '/users/new'
     end 
   end 
 
   def show 
-    @user = User.find(params[:id])
+    # byebug
+    @user = User.find_by_id(params[:id])
+    # byebug
   end 
 
   private 
