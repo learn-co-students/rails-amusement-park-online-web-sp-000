@@ -1,23 +1,18 @@
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>
-<%= form_for(@user) do |f| %>
-   <%= f.label :name %>
-   <%= f.text_field :name %>
+<%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
+
+   Name: <input name=user[name]>
    <br>
-   <%= f.label :height %>
-   <%= f.text_field :height %>
+   Height: <input name=user[height]>
    <br>
-   <%= f.label :happiness %>
-   <%= f.text_field :happiness %>
+   Happiness: <input name=user[happiness]>
    <br>
-   <%= f.label :nausea %>
-   <%= f.text_field :nausea %>
+   Nausea: <input name=user[nausea]>
    <br>
-   <%= f.label :tickets %>
-   <%= f.text_field :tickets %>
+   Tickets: <input name=user[tickets]>
    <br>
-   <%= f.label :password %>
-   <%= f.password_field :password %>
+   Password: <input name=user[password] type=password>
    <br>
-   <%= f.submit 'Create User'%>
+   <input type=submit value=Create>
 <% end %>
