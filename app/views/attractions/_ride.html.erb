@@ -1,0 +1,5 @@
+<%= form_for @ride do |f| %>
+	<%= f.hidden_field :user_id %><br>
+	<%= f.hidden_field :attraction_id %><br>
+	<%= f.submit 'Go on this ride', class: 'btn btn-light' %>
+<% end %>
