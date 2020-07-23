@@ -16,6 +16,7 @@ class Ride < ActiveRecord::Base
             self.user.happiness += self.attraction.happiness_rating
 
             self.user.save
+
         end
 
     end

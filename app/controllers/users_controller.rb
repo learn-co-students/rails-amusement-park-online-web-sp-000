@@ -48,12 +48,16 @@ class UsersController < ApplicationController
     def logout
     end
 
+
+    def update          
+    end
+
     def destroy
         session.delete :user_id
         redirect_to :root
     end
 
-
+    
     private
  
     def user_params
