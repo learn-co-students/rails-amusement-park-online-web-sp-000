@@ -10,7 +10,4 @@ class AttractionsController < ApplicationController
         ride.take_ride                
     end
 
-    def update
-    end
-
 end
