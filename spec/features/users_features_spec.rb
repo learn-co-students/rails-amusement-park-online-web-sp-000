@@ -241,7 +241,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     click_link('See attractions')
     click_link("Go on #{@ferriswheel.name}")
     click_button("Go on this ride")
-    expect(page).to have_content("Thanks for riding the #{@ferriswheel.name}!")
+    expect(page).to have_content("Thanks for riding the #{@ferriswheel.name}")
   end
 
   it "when the user is too short, clicking on 'Go on ride' displays a sorry message" do
