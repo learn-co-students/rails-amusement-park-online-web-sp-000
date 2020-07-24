@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post '/attractions', to: 'attractions#create'
 
   get '/signin', to: 'session#new', as: 'signin'
+  get '/session', to: 'static#home', as: 'home'
   post '/session', to: 'session#create', as: 'session'
   delete '/session/', to: 'session#destroy', as: 'delete'
 

@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_003729) do
     t.integer "nausea"
     t.integer "tickets"
     t.integer "happiness"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.string "password"
     t.string "password_confirmation"
     t.string "password_digest"
