@@ -4,7 +4,7 @@ class RidesController < ApplicationController
      ride = Ride.create(ride_params)
      message = ride.take_ride
      redirect_to user_path(ride.user)
-     flash: {message:message}
+     flash[:notice] = ""
    end
 
    private
