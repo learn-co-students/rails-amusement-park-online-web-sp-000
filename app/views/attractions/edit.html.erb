@@ -1,6 +1,6 @@
 Edit Attraction <br><br>
 
-<%= form_for :attraction, url: {action: "update"} do |f| %>
+<%= form_for @attraction do |f| %>
     <%= f.text_field :name %>
     <%= f.text_field :tickets %>
     <%= f.text_field :nausea_rating %>
