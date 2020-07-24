@@ -1,0 +1,1273 @@
+
+Feature Test: User Signup
+[32m  successfully signs up as non-admin[0m
+[32m  on sign up, successfully adds a session hash[0m
+[32m  successfully logs in as non-admin[0m
+[32m  on log in, successfully adds a session hash[0m
+[31m  prevents user from viewing user show page and redirects to home page if not logged in (FAILED - 1)[0m
+[32m  successfully signs up as admin[0m
+[32m  on sign up for admin, successfully adds a session hash[0m
+[32m  successfully logs in as admin[0m
+[32m  on log in, successfully adds a session hash to admins[0m
+
+Feature Test: User Signout
+[32m  has a link to log out from the users/show page[0m
+[31m  redirects to home page after logging out (FAILED - 2)[0m
+[31m  successfully destroys session hash when 'Log Out' is clicked (FAILED - 3)[0m
+[32m  has a link to log out from the users/show page when user is an admin[0m
+[31m  redirects to home page after admin logs out when user is an admin (FAILED - 4)[0m
+[31m  successfully destroys session hash when 'Log Out' is clicked as admin (FAILED - 5)[0m
+
+Feature Test: Go on a Ride
+[31m  has a link from the user show page to the attractions index page (FAILED - 6)[0m
+[31m  links from the user show page to the attractions index page (FAILED - 7)[0m
+[31m  prevents users from editing/deleting/adding rides on the index page (FAILED - 8)[0m
+[31m  has titles of the rides on the attractions index page (FAILED - 9)[0m
+[31m  has links on the attractions index page to the attractions' show pages (FAILED - 10)[0m
+[31m  links from the attractions index page to the attractions' show pages (FAILED - 11)[0m
+[31m  prevents users from editing/deleting a ride on the show page (FAILED - 12)[0m
+[31m  has a button from the attraction show page to go on the ride (FAILED - 13)[0m
+[31m  clicking on 'Go on ride' redirects to user show page (FAILED - 14)[0m
+[31m  clicking on 'Go on ride' updates the users ticket number (FAILED - 15)[0m
+[31m  clicking on 'Go on ride' updates the users mood (FAILED - 16)[0m
+[31m  when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message (FAILED - 17)[0m
+[31m  when the user is too short, clicking on 'Go on ride' displays a sorry message (FAILED - 18)[0m
+[31m  when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message (FAILED - 19)[0m
+[31m  when the user is too short and doesn't have enough tickets, clicking on 'Go on ride' displays a detailed sorry message (FAILED - 20)[0m
+
+Feature Test: Admin Flow
+[32m  displays admin when logged in as an admin on user show page[0m
+[32m  links to the attractions from the users show page when logged in as a admin[0m
+[31m  has a link from the user show page to the attractions index page when in admin mode (FAILED - 21)[0m
+[31m  allows admins to add an attraction from the index page (FAILED - 22)[0m
+[31m  allows admins to add an attraction (FAILED - 23)[0m
+[31m  has link to attraction/show from attraction/index page for admins (FAILED - 24)[0m
+[31m  does not suggest that admins go on a ride (FAILED - 25)[0m
+[31m  links to attractions/show page from attractions/index (FAILED - 26)[0m
+[31m  does not suggest that an admin go on a ride from attractions/show page (FAILED - 27)[0m
+[31m  has a link for admin to edit attraction from the attractions/show page (FAILED - 28)[0m
+[31m  links to attraction/edit page from attraction/show page when logged in as an admin (FAILED - 29)[0m
+[31m  updates an attraction when an admin edits it (FAILED - 30)[0m
+
+Attraction
+[32m  is valid with a name, min_height, nausea_rating, happiness_rating, and ticket number[0m
+[32m  has many rides[0m
+[32m  has many users through rides[0m
+
+Ride
+[32m  is valid with a user_id and a attraction_id[0m
+[32m  belongs to one attraction[0m
+[32m  belongs to one user[0m
+[32m  has a method 'take_ride' that accounts for the user not having enough tickets[0m
+[32m  has a method 'take_ride' that accounts for the user not being tall enough[0m
+[32m  has a method 'take_ride' that accounts for the user not being tall enough and not having enough tickets[0m
+[32m  has a method 'take_ride' that updates ticket number[0m
+[32m  has a method 'take_ride' that updates the user's nausea[0m
+[32m  has a method 'take_ride' that updates the user's happiness[0m
+
+User
+[32m  is valid with a name, password, happiness, nausea, height, and tickets[0m
+[32m  is not valid without a password[0m
+[32m  is valid with an admin boolean[0m
+[32m  defaults to admin => false[0m
+[32m  has many rides[0m
+[32m  has many attractions through rides[0m
+[32m  has a method 'mood' that returns 'sad' when the user is more nauseous than happy[0m
+[32m  has a method 'mood' that returns 'happy' when the user is more happy than nauseous[0m
+
+Failures:
+
+  1) Feature Test: User Signup prevents user from viewing user show page and redirects to home page if not logged in
+     [31mFailure/Error: expect(current_path).to eq('/')[0m
+     [31m[0m
+     [31m  expected: "/"[0m
+     [31m       got: "/users/1"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/features/users_features_spec.rb:50:in `block (2 levels) in <top (required)>'[0m
+
+  2) Feature Test: User Signout redirects to home page after logging out
+     [31mFailure/Error: click_link("Log Out")[0m
+     [31m[0m
+     [31mActionController::RoutingError:[0m
+     [31m  No route matches [GET] "/sessions"[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/features/users_features_spec.rb:105:in `block (2 levels) in <top (required)>'[0m
+
+  3) Feature Test: User Signout successfully destroys session hash when 'Log Out' is clicked
+     [31mFailure/Error: click_link("Log Out")[0m
+     [31m[0m
+     [31mActionController::RoutingError:[0m
+     [31m  No route matches [GET] "/sessions"[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/features/users_features_spec.rb:113:in `block (2 levels) in <top (required)>'[0m
+
+  4) Feature Test: User Signout redirects to home page after admin logs out when user is an admin
+     [31mFailure/Error: click_link("Log Out")[0m
+     [31m[0m
+     [31mActionController::RoutingError:[0m
+     [31m  No route matches [GET] "/sessions"[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/features/users_features_spec.rb:128:in `block (2 levels) in <top (required)>'[0m
+
+  5) Feature Test: User Signout successfully destroys session hash when 'Log Out' is clicked as admin
+     [31mFailure/Error: click_link("Log Out")[0m
+     [31m[0m
+     [31mActionController::RoutingError:[0m
+     [31m  No route matches [GET] "/sessions"[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/features/users_features_spec.rb:136:in `block (2 levels) in <top (required)>'[0m
+
+  6) Feature Test: Go on a Ride has a link from the user show page to the attractions index page
+     [31mFailure/Error: click_link('See attractions')[0m
+     [31m[0m
+     [31mSyntaxError:[0m
+     [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+     [31m            ensure[0m
+     [31m            ^~~~~~[0m
+     [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/features/users_features_spec.rb:171:in `block (2 levels) in <top (required)>'[0m
+
+  7) Feature Test: Go on a Ride links from the user show page to the attractions index page
+     [31mFailure/Error: click_link('See attractions')[0m
+     [31m[0m
+     [31mSyntaxError:[0m
+     [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+     [31m            ensure[0m
+     [31m            ^~~~~~[0m
+     [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/features/users_features_spec.rb:175:in `block (2 levels) in <top (required)>'[0m
+
+  8) Feature Test: Go on a Ride prevents users from editing/deleting/adding rides on the index page
+     [31mFailure/Error: click_link('See attractions')[0m
+     [31m[0m
+     [31mSyntaxError:[0m
+     [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+     [31m            ensure[0m
+     [31m            ^~~~~~[0m
+     [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/features/users_features_spec.rb:180:in `block (2 levels) in <top (required)>'[0m
+
+  9) Feature Test: Go on a Ride has titles of the rides on the attractions index page
+     [31mFailure/Error: click_link('See attractions')[0m
+     [31m[0m
+     [31mSyntaxError:[0m
+     [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+     [31m            ensure[0m
+     [31m            ^~~~~~[0m
+     [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+     [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/features/users_features_spec.rb:188:in `block (2 levels) in <top (required)>'[0m
+
+  10) Feature Test: Go on a Ride has links on the attractions index page to the attractions' show pages
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:194:in `block (2 levels) in <top (required)>'[0m
+
+  11) Feature Test: Go on a Ride links from the attractions index page to the attractions' show pages
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:200:in `block (2 levels) in <top (required)>'[0m
+
+  12) Feature Test: Go on a Ride prevents users from editing/deleting a ride on the show page
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:206:in `block (2 levels) in <top (required)>'[0m
+
+  13) Feature Test: Go on a Ride has a button from the attraction show page to go on the ride
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:213:in `block (2 levels) in <top (required)>'[0m
+
+  14) Feature Test: Go on a Ride clicking on 'Go on ride' redirects to user show page
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:220:in `block (2 levels) in <top (required)>'[0m
+
+  15) Feature Test: Go on a Ride clicking on 'Go on ride' updates the users ticket number
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:227:in `block (2 levels) in <top (required)>'[0m
+
+  16) Feature Test: Go on a Ride clicking on 'Go on ride' updates the users mood
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:234:in `block (2 levels) in <top (required)>'[0m
+
+  17) Feature Test: Go on a Ride when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:241:in `block (2 levels) in <top (required)>'[0m
+
+  18) Feature Test: Go on a Ride when the user is too short, clicking on 'Go on ride' displays a sorry message
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:250:in `block (2 levels) in <top (required)>'[0m
+
+  19) Feature Test: Go on a Ride when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:260:in `block (2 levels) in <top (required)>'[0m
+
+  20) Feature Test: Go on a Ride when the user is too short and doesn't have enough tickets, clicking on 'Go on ride' displays a detailed sorry message
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:270:in `block (2 levels) in <top (required)>'[0m
+
+  21) Feature Test: Admin Flow has a link from the user show page to the attractions index page when in admin mode
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:316:in `block (2 levels) in <top (required)>'[0m
+
+  22) Feature Test: Admin Flow allows admins to add an attraction from the index page
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:323:in `block (2 levels) in <top (required)>'[0m
+
+  23) Feature Test: Admin Flow allows admins to add an attraction
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:328:in `block (2 levels) in <top (required)>'[0m
+
+  24) Feature Test: Admin Flow has link to attraction/show from attraction/index page for admins
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:342:in `block (2 levels) in <top (required)>'[0m
+
+  25) Feature Test: Admin Flow does not suggest that admins go on a ride
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:347:in `block (2 levels) in <top (required)>'[0m
+
+  26) Feature Test: Admin Flow links to attractions/show page from attractions/index
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:352:in `block (2 levels) in <top (required)>'[0m
+
+  27) Feature Test: Admin Flow does not suggest that an admin go on a ride from attractions/show page
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:358:in `block (2 levels) in <top (required)>'[0m
+
+  28) Feature Test: Admin Flow has a link for admin to edit attraction from the attractions/show page
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:364:in `block (2 levels) in <top (required)>'[0m
+
+  29) Feature Test: Admin Flow links to attraction/edit page from attraction/show page when logged in as an admin
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:370:in `block (2 levels) in <top (required)>'[0m
+
+  30) Feature Test: Admin Flow updates an attraction when an admin edits it
+      [31mFailure/Error: click_link('See attractions')[0m
+      [31m[0m
+      [31mSyntaxError:[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:13: syntax error, unexpected ensure, expecting end[0m
+      [31m            ensure[0m
+      [31m            ^~~~~~[0m
+      [31m  /Users/alexvelazquez/rails-amusement-park-online-web-sp-000/app/views/attractions/index.html.erb:15: syntax error, unexpected end-of-input, expecting end[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:38:in `call_app'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/rack/logger.rb:26:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.3/lib/rails/engine.rb:524:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `each'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-2.2.3/lib/rack/urlmap.rb:58:in `call'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:37:in `follow'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/rack_test/node.rb:60:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `block in click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/element.rb:143:in `click'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in <class:Session>'[0m
+      [36m# /Library/Ruby/Gems/2.6.0/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'[0m
+      [36m# ./spec/features/users_features_spec.rb:377:in `block (2 levels) in <top (required)>'[0m
+
+Finished in 1.84 seconds (files took 2.07 seconds to load)
+[31m62 examples, 30 failures[0m
+
+Failed examples:
+
+[31mrspec ./spec/features/users_features_spec.rb:47[0m [36m# Feature Test: User Signup prevents user from viewing user show page and redirects to home page if not logged in[0m
+[31mrspec ./spec/features/users_features_spec.rb:101[0m [36m# Feature Test: User Signout redirects to home page after logging out[0m
+[31mrspec ./spec/features/users_features_spec.rb:109[0m [36m# Feature Test: User Signout successfully destroys session hash when 'Log Out' is clicked[0m
+[31mrspec ./spec/features/users_features_spec.rb:124[0m [36m# Feature Test: User Signout redirects to home page after admin logs out when user is an admin[0m
+[31mrspec ./spec/features/users_features_spec.rb:132[0m [36m# Feature Test: User Signout successfully destroys session hash when 'Log Out' is clicked as admin[0m
+[31mrspec ./spec/features/users_features_spec.rb:169[0m [36m# Feature Test: Go on a Ride has a link from the user show page to the attractions index page[0m
+[31mrspec ./spec/features/users_features_spec.rb:174[0m [36m# Feature Test: Go on a Ride links from the user show page to the attractions index page[0m
+[31mrspec ./spec/features/users_features_spec.rb:179[0m [36m# Feature Test: Go on a Ride prevents users from editing/deleting/adding rides on the index page[0m
+[31mrspec ./spec/features/users_features_spec.rb:187[0m [36m# Feature Test: Go on a Ride has titles of the rides on the attractions index page[0m
+[31mrspec ./spec/features/users_features_spec.rb:193[0m [36m# Feature Test: Go on a Ride has links on the attractions index page to the attractions' show pages[0m
+[31mrspec ./spec/features/users_features_spec.rb:199[0m [36m# Feature Test: Go on a Ride links from the attractions index page to the attractions' show pages[0m
+[31mrspec ./spec/features/users_features_spec.rb:205[0m [36m# Feature Test: Go on a Ride prevents users from editing/deleting a ride on the show page[0m
+[31mrspec ./spec/features/users_features_spec.rb:212[0m [36m# Feature Test: Go on a Ride has a button from the attraction show page to go on the ride[0m
+[31mrspec ./spec/features/users_features_spec.rb:219[0m [36m# Feature Test: Go on a Ride clicking on 'Go on ride' redirects to user show page[0m
+[31mrspec ./spec/features/users_features_spec.rb:226[0m [36m# Feature Test: Go on a Ride clicking on 'Go on ride' updates the users ticket number[0m
+[31mrspec ./spec/features/users_features_spec.rb:233[0m [36m# Feature Test: Go on a Ride clicking on 'Go on ride' updates the users mood[0m
+[31mrspec ./spec/features/users_features_spec.rb:240[0m [36m# Feature Test: Go on a Ride when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message[0m
+[31mrspec ./spec/features/users_features_spec.rb:247[0m [36m# Feature Test: Go on a Ride when the user is too short, clicking on 'Go on ride' displays a sorry message[0m
+[31mrspec ./spec/features/users_features_spec.rb:257[0m [36m# Feature Test: Go on a Ride when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message[0m
+[31mrspec ./spec/features/users_features_spec.rb:267[0m [36m# Feature Test: Go on a Ride when the user is too short and doesn't have enough tickets, clicking on 'Go on ride' displays a detailed sorry message[0m
+[31mrspec ./spec/features/users_features_spec.rb:315[0m [36m# Feature Test: Admin Flow has a link from the user show page to the attractions index page when in admin mode[0m
+[31mrspec ./spec/features/users_features_spec.rb:322[0m [36m# Feature Test: Admin Flow allows admins to add an attraction from the index page[0m
+[31mrspec ./spec/features/users_features_spec.rb:327[0m [36m# Feature Test: Admin Flow allows admins to add an attraction[0m
+[31mrspec ./spec/features/users_features_spec.rb:341[0m [36m# Feature Test: Admin Flow has link to attraction/show from attraction/index page for admins[0m
+[31mrspec ./spec/features/users_features_spec.rb:346[0m [36m# Feature Test: Admin Flow does not suggest that admins go on a ride[0m
+[31mrspec ./spec/features/users_features_spec.rb:351[0m [36m# Feature Test: Admin Flow links to attractions/show page from attractions/index[0m
+[31mrspec ./spec/features/users_features_spec.rb:357[0m [36m# Feature Test: Admin Flow does not suggest that an admin go on a ride from attractions/show page[0m
+[31mrspec ./spec/features/users_features_spec.rb:363[0m [36m# Feature Test: Admin Flow has a link for admin to edit attraction from the attractions/show page[0m
+[31mrspec ./spec/features/users_features_spec.rb:369[0m [36m# Feature Test: Admin Flow links to attraction/edit page from attraction/show page when logged in as an admin[0m
+[31mrspec ./spec/features/users_features_spec.rb:376[0m [36m# Feature Test: Admin Flow updates an attraction when an admin edits it[0m
+
