@@ -1,0 +1,12 @@
+<%= form_for :user, url: '/signin' do |f| %>
+    <%=f.label :name, "User Name" %>
+    <%=f.collection_select :name, User.all, :id, :name %><br>
+
+    <%=f.label "Password" %>
+    <%=text_field_tag(:password)%><br>
+
+    <%= f.label "Admin" %>
+    <%= f.check_box :admin %><br><br>       
+
+    <%= f.submit "Sign In" %>
+<% end %>
