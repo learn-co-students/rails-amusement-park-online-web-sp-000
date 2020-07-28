@@ -1,0 +1,6 @@
+<%= form_tag('/sign_user_in') do %>
+  <%= collection_select(:user, :name, @users, :name, :name) %>
+  <label name="password" id="password">password</label>
+  <input type="password" name="password" id="password">
+  <input type="submit" value="Sign In">
+<% end %>
