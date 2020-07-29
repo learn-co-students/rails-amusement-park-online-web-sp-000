@@ -1,7 +1,8 @@
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>
 <%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
-
+   Admin: <%= check_box :user_name, :admin %>
+   <br>
    Name: <input name=user[name]>
    <br>
    Height: <input name=user[height]>
