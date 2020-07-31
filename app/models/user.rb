@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
 
    def mood 
       # returns 'sad' when the user is more nauseous than happy
-      if user_more_nauseous_than_happy 
-         "sad"
-      else  
-         "happy"
+      if self.nausea && self.happiness
+         if user_more_nauseous_than_happy 
+            "sad"
+         else  
+            "happy"
+         end 
       end 
    end 
 
