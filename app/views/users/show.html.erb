@@ -10,3 +10,7 @@ Nausea: <%= @user.nausea %>
 <br>
 Tickets: <%= @user.tickets %>
 <br>
+<% if @user.admin %>
+   <h1>ADMIN</h1>
+   <%= @user.name %>
+<% end %>
