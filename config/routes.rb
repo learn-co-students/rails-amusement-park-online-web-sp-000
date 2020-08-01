@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'static/home'
+  # get 'static/home'
   resources :users
   resources :sessions
   get "/signin", to: 'sessions#new'

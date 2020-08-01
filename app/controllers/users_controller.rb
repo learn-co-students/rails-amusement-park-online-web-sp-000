@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     @user = User.new
     if @user.admin
       redirect_to root_url
+    else  
+      render '/users/new'
     end 
   end
 
@@ -20,7 +22,6 @@ class UsersController < ApplicationController
   end 
 
   def show 
-    # byebug
     @user = User.find_by_id(params[:id])
     # byebug
   end 

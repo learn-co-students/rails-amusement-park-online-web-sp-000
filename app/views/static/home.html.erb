@@ -1,7 +1,7 @@
 <h1>Sign Up</h1>
 <p>Find me in app/views/static/home.html.erb</p>
 <%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
-   ADMIN <%= check_box :user, :admin %>
+   Admin: <%= check_box :user, :admin %>
    <br>
    Name: <input name=user[name]>
    <br>
