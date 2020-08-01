@@ -16,6 +16,10 @@
    <br>
 <% end %>
 <br>
+<% if flash[:notice] %>
+   <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<br>
 <%= link_to("See attractions", attractions_path) %>
 <br>
 <%= link_to("Log Out", {:controller => "sessions", :action => "destroy"}, :method => :delete) %>
