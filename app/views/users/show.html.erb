@@ -15,3 +15,5 @@
    Tickets: <%= @user.tickets %>
    <br>
 <% end %>
+<br>
+<%= link_to("Log Out", {:controller => "sessions", :action => "destroy"}, :method => :delete) %>
