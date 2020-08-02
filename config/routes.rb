@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # get 'static/home'
   get "/signin", to: 'sessions#new'
+  get "/attractions/new", to: 'attractions#new'
+  post "/attractions/new", to: 'attractions#create'
   post "/signin", to: 'sessions#create'
   post "/users/:id", to: 'attractions#show'
   resources :users

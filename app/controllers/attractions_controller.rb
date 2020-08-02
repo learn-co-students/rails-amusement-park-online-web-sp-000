@@ -3,9 +3,21 @@ class AttractionsController < ApplicationController
       @attractions = Attraction.all 
    end 
 
+   def new 
+   end 
+
+   def create 
+      @attraction = Attraction.create(attraction_params)
+      if @attraction.save 
+         redirect_to attraction_path(@attraction)
+      else  
+         redirect_to new_attraction_path
+      end 
+   end 
+
    def show 
       # byebug
-      @attraction = Attraction.find_by(params[:name])
+      @attraction = Attraction.find_by_id(params[:id])
    end 
 
    def user_goes_on_ride
@@ -26,5 +38,10 @@ class AttractionsController < ApplicationController
       # current_user.tickets -= attraction.tickets 
       # current_user.save
       redirect_to user_path(current_user)
+   end 
+
+   private 
+   def attraction_params 
+      params.require(:attraction).permit(:name, :min_height, :tickets, :happiness_rating, :nausea_rating)
    end 
 end

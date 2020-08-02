@@ -5,3 +5,7 @@
    <li><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
    <br>
 </ul><% end %>
+<br>
+<% if current_user.admin %>
+   <%= link_to "New Attraction", new_attraction_path %>
+<% end %>

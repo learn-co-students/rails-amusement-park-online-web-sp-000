@@ -1,0 +1,15 @@
+<h4>Add An Attraction Here</h4>
+
+<%= form_tag ({controller: 'attractions', action: 'create', method: 'post'}) do %> 
+   Name: <input name=attraction[name]>
+   <br>
+   Minimum Height: <input name=attraction[min_height]>
+   <br>
+   Ticket Amount: <input name=attraction[tickets]>
+   <br>
+   Happiness Rating: <input name=attraction[happiness_rating]>
+   <br>
+   Nausea Rating: <input name=attraction[nausea_rating]>
+   <br>
+   <input type=submit value="Create Attraction">
+<% end %>
