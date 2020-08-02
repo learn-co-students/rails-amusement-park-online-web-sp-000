@@ -1,5 +1,9 @@
 Attracttion Name: <%= @attraction.name %>
 <br>
 Attracttion Tickets: <%= @attraction.tickets %>
-
-<%= button_to "Go on this ride", user_goes_on_ride_attraction_path %>
+<br>
+<% if current_user.admin %>
+   <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+   <%= button_to "Go on this ride", user_goes_on_ride_attraction_path %>
+<% end %>
