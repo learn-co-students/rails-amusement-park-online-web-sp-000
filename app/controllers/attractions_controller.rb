@@ -52,8 +52,7 @@ class AttractionsController < ApplicationController
       elsif !ride.user_tickets_are_enough
          flash[:notice] = "You do not have enough tickets to ride the #{attraction.name}"
       end 
-      # current_user.tickets -= attraction.tickets 
-      # current_user.save
+
       redirect_to user_path(current_user)
    end 
 
