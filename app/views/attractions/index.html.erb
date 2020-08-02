@@ -1,3 +1,4 @@
+<% if !current_user.admin %>
 <ul><% @attractions.each_with_index do |attraction, idx| %>
    <li><%= "Attraction ##{idx+1}:" %></li>
    <li><%= "Attraction Name: #{attraction.name}"%></li>
@@ -5,7 +6,13 @@
    <li><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
    <br>
 </ul><% end %>
+<% end %>
 <br>
 <% if current_user.admin %>
+   <ul><% @attractions.each_with_index do |attraction, idx| %>
+      <li><%= "Attraction ##{idx+1}:" %></li>
+      <li><%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+      <br>
+   </ul><% end %>
    <%= link_to "New Attraction", new_attraction_path %>
 <% end %>
