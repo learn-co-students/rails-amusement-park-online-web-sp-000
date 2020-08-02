@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post "/attractions/new", to: 'attractions#create'
   post "/signin", to: 'sessions#create'
   post "/users/:id", to: 'attractions#show'
+  get "/attractions/:id/edit", to: 'attractions#edit'
+  patch "/attractions/:id/edit", to: 'attractions#edit'
   resources :users
   resources :sessions
   resources :attractions do 

@@ -1,0 +1,16 @@
+<h4>Update Attraction Here</h4>
+
+<%= form_tag ({controller: 'attractions', action: 'edit', method: 'patch'}) do %>
+   <input name=_method type=hidden value=patch >
+   Name: <input name=attraction[name] value="<%= @attraction.name %>">
+   <br>
+   Minimum Height: <input name=attraction[min_height] value="<%= @attraction.min_height %>">
+   <br>
+   Ticket Amount: <input name=attraction[tickets] value="<%= @attraction.tickets %>">
+   <br>
+   Happiness Rating: <input name=attraction[happiness_rating] value="<%= @attraction.happiness_rating %>">
+   <br>
+   Nausea Rating: <input name=attraction[nausea_rating] value="<%= @attraction.nausea_rating %>">
+   <br>
+   <input type=submit value="Update Attraction">
+<% end %>

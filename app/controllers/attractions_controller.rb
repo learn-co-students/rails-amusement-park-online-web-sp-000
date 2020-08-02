@@ -15,6 +15,14 @@ class AttractionsController < ApplicationController
       end 
    end 
 
+   def edit 
+      # byebug
+      @attraction = Attraction.find_by_id(params[:id])
+      @attraction = Attraction.update(attraction_params)
+      redirect_to attraction_path(@attraction)
+      # @attraction = Attraction.update(attraction_params)
+   end 
+
    def show 
       # byebug
       @attraction = Attraction.find_by_id(params[:id])
