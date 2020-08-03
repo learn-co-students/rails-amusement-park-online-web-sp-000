@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def create 
     @user = User.create(user_params)
-    # byebug
     if @user.save 
       session[:user_id] = @user.id 
       redirect_to user_path(@user)
@@ -23,7 +22,6 @@ class UsersController < ApplicationController
 
   def show 
     @user = User.find_by_id(params[:id])
-    # byebug
   end 
 
   private 

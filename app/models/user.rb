@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
    has_secure_password 
 
    def mood 
-      # returns 'sad' when the user is more nauseous than happy
       if self.nausea && self.happiness
          if user_more_nauseous_than_happy 
             "sad"
