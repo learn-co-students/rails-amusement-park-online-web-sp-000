@@ -1,19 +1,5 @@
-
 <p>Find me in app/views/users/new.html.erb</p>
 <%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
-   Admin: <%= check_box :user, :admin %>
-   <br>
-   Name: <input name=user[name]>
-   <br>
-   Height: <input name=user[height]>
-   <br>
-   Happiness: <input name=user[happiness]>
-   <br>
-   Nausea: <input name=user[nausea]>
-   <br>
-   Tickets: <input name=user[tickets]>
-   <br>
-   Password: <input name=user[password] type=password>
-   <br>
+   <%= render 'form'%>
    <input type=submit value="Create User">
 <% end %>
