@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
-  # get 'static/home'
   get "/signin", to: 'sessions#new'
-  get "/attractions/new", to: 'attractions#new'
-  post "/attractions/new", to: 'attractions#create'
   post "/signin", to: 'sessions#create'
-  post "/users/:id", to: 'attractions#show'
-  get "/attractions/:id/edit", to: 'attractions#edit'
-  patch "/attractions/:id", to: 'attractions#update'
   resources :users
   resources :sessions
+  resources :attractions
   resources :attractions do 
     post :user_goes_on_ride, on: :member
   end 
