@@ -4,18 +4,22 @@ class UsersController < ApplicationController
   end
 
   def create
-    if params[:user][:password] != params[:user][:password_confirmation]
-      redirect_to '/users/new'
-    else
-     User.new(user_params).save
-     session[:user_id] = User.last.id
-     redirect_to '/'
+    @user = User.new(user_params)
+    if @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+    else params.empty?
+      redirect_to '/users/new', :alert => "Please fill in all fields"
    end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:name, :nausea, :happiness, :tickets, :height, :password)
   end
 end
