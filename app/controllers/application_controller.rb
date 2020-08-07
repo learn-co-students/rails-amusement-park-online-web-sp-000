@@ -1,22 +1,20 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :current_user, :logged_in?
 
     # method for checking current_user
-    def current_user(session)
-      @user ||= User.find(session[:user_id])
+    def current_user
+      if session[:user_id].present?
+        user = User.find_by(:id => session[:user_id])
+      end
     end
 
-    # method for checking if a user is signed in
+    # if user isn't logged in, redirect to root url
     def logged_in?
-      !!session[:user_id]
-      redirect_to '/'
+      unless current_user
+        redirect_to root_url
+      end
     end
-
-    # # grab all plants where the session[:gardener_id] == Plant.gardener_id
-    # def self.my_plants(session)
-    #   @gardener = Gardener.find(session[:gardener_id])
-    #   @my_plants = @gardener.plants
-    # end
 
   private
 
