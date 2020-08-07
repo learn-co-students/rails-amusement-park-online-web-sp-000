@@ -1,2 +1,8 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_tag '/login' do %>
+
+  <%= label_tag "Users" %>
+  <%= select_tag "user[name]", options_from_collection_for_select(User.all, :id, :name)%><br>
+  <%= text_field "password" %>
+  <%= submit_tag "Login" %>
+
+<% end %>
