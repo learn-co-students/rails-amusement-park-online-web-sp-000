@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: params[:name])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
-    else
-      flash[:error] = "Password does not match our records"
-      redirect_to '/users/new'
+      redirect_to user_path(User.find(params[:user][:id]))
+    # else
+    #   flash[:error] = "Password does not match our records"
+    #   redirect_to '/users/new'
     end
   end
 
