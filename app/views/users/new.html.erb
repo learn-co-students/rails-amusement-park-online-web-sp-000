@@ -1,0 +1,5 @@
+<p>Find me in app/views/users/new.html.erb</p>
+<%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
+   <%= render 'form'%>
+   <input type=submit value="Create User">
+<% end %>

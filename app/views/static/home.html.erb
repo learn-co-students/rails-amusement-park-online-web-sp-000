@@ -1,0 +1,6 @@
+<h1>Sign Up</h1>
+<p>Find me in app/views/static/home.html.erb</p>
+<%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
+   <%= render '/users/form'%>
+   <input type=submit value="Sign Up">
+<% end %>
