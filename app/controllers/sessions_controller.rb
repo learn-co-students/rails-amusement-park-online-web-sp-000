@@ -1,10 +1,18 @@
 class SessionsController < ApplicationController
+  # skip_before_action :authorized, only: [:new, :create]
+
   def new
   end
 
   def create
-    session[:user_id] = params[:user][:id]
-    redirect_to user_path(User.find(params[:user[:id]]))
+    @user = User.find_by(name: params[:name])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      flash[:error] = "Password does not match our records"
+      redirect_to '/users/new'
+    end
   end
 
   def destroy

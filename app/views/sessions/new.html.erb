@@ -1,8 +1,6 @@
-<%= form_tag '/login' do %>
-
-  <%= label_tag "Users" %>
-  <%= select_tag "user[name]", options_from_collection_for_select(User.all, :id, :name)%><br>
-  <%= text_field "password" %>
-  <%= submit_tag "Login" %>
+  <%= form_tag session_path do %>
+    <%= select_tag "user[name]", options_from_collection_for_select(User.all, :id, :name)%><br>
+    <%= password_field_tag :password, nil, placeholder: "password", id: "user[password]" %>
+    <%= submit_tag "Sign In" %>
 
 <% end %>
