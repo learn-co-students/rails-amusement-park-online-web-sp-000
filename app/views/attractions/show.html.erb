@@ -5,4 +5,8 @@ Height Requirement: <%= @attraction.min_height %>inches<br><br>
 Nausea Rating: <%= @attraction.nausea_rating %> <br><br>
 Happiness Rating: <%= @attraction.happiness_rating %> <br><br>
 
-<%= link_to "Edit", edit_attraction_path(@attraction) %><br>
+
+<% link_to "Ride", ride_path(@attraction) %><br>
+<% if user.admin %>
+  <%= link_to "Edit", edit_attraction_path(@attraction) %><br>
+<% end %>
