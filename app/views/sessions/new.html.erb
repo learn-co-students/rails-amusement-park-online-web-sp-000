@@ -2,4 +2,5 @@
 <%= f.collection_select :name, User.all, :id, :name, include_blank: true %>
 <label>Password</label>
 <input type="password" id="password" name="user[password]">
+<%= f.submit "Sign In" %>
 <% end %>
