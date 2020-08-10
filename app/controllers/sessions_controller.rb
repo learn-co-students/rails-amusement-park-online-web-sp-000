@@ -1,14 +1,17 @@
 class SessionsController < ApplicationController 
 
     def create 
-        @user = User.find_by(name: params[:user][:name])
-        @user = @user.try(:authenticate, params[:user][:password])
+        if @user = User.find_by(name: params[:user][:name])
+            # @user = @user.try(:authenticate, params[:user][:password])
 
-        return redirect_to(controller: 'sessions', action: 'new') unless @user
+            # return redirect_to(controller: 'sessions', action: 'new') unless @user
 
-        session[:user_id] = @user.id
+            session[:user_id] = @user.id
 
-        redirect_to user_path(@user)
+            redirect_to user_path(@user)
+        else
+            render "new" 
+        end
     end
 
     def new 
@@ -21,10 +24,5 @@ class SessionsController < ApplicationController
         redirect_to '/'
     end
 
-    private 
-
-    def user_params
-        params.require(:user).permit(:name, :password, :password_digest, :nausea, :happiness, :admin, :tickets, :height)
-    end
 
 end

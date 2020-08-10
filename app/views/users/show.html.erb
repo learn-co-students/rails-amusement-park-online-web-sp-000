@@ -11,3 +11,9 @@ Mood:
 <% if @user.admin == false %>
     <%= @user.mood %>
 <% end %>
+
+<a href="<%= logout_path %>"/>Log Out</a>
+
+<form method="get" action="/logout">
+    <button type="submit">Log Out</button>
+</form>
