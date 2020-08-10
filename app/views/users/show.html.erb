@@ -1,7 +1,13 @@
+<% if @user.admin == true %>
+    ADMIN
+<% end %>
+
 <%= @user.name %>
 <%= @user.tickets %>
 <%= @user.nausea %>
 <%= @user.happiness %>
 <%= @user.height %>
 Mood:
-<%= @user.mood %>
+<% if @user.admin == false %>
+    <%= @user.mood %>
+<% end %>
