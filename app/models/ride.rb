@@ -31,10 +31,9 @@ class Ride < ActiveRecord::Base
   end
 
   def ride
-      user.tickets >= attraction.tickets && user.height >= attraction.min_height
-        user.tickets -= attraction.tickets
-        user.nausea += attraction.nausea_rating
-        user.happiness += attraction.happiness_rating
-        user.save
+    self.user.update(:tickets => (self.user.tickets - self.attraction.tickets),
+                     :nausea => (self.user.nausea + self.attraction.nausea_rating),
+                     :happiness => (self.user.happiness + self.attraction.happiness_rating)
+                    )
     end
   end

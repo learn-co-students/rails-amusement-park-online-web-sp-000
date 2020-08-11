@@ -12,4 +12,8 @@ class RidesController < ApplicationController
       redirect_to attraction_path(ride.attraction)
     end
   end
+
+  def ride_params
+    params.permit(:user_id, :attraction_id)
+  end
 end
