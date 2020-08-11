@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :attractions
+
+
+  resources :attractions do 
+    resources :rides
+  end
+
+
   resources :rides
   resources :users
 

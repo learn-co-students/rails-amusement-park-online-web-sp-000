@@ -1,19 +1,19 @@
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+
 <% if @user.admin == true %>
     ADMIN
 <% end %>
-
-<%= @user.name %>
-<%= @user.tickets %>
-<%= @user.nausea %>
-<%= @user.happiness %>
-<%= @user.height %>
+Name: <%= @user.name %>
+Tickets: <%= @user.tickets %>
+Nausea: <%= @user.nausea %>
+Happiness: <%= @user.happiness %>
+Height: <%= @user.height %>
 Mood:
 <% if @user.admin == false %>
     <%= @user.mood %>
 <% end %>
 
-<a href="<%= logout_path %>"/>Log Out</a>
-
-<form method="get" action="/logout">
-    <button type="submit">Log Out</button>
-</form>
+<%= link_to "See attractions", attractions_path %>
+<%= link_to "Log Out", logout_path %>
