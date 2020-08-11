@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-  get 'rides/create'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :users
-  resources :rides
   resources :attractions
 
+  root 'welcome#home'
+  get '/rides/create' => 'rides#create'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/signup' => 'users#new'
   post '/logout' => 'sessions#destroy'
-  root 'welcome#home'
-  post '/take_ride' => 'users#ride'
+  post '/rides' => 'rides#create'
 end
