@@ -15,9 +15,14 @@ class UsersController < ApplicationController
    end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def show
-    @user = User.find_by(:id => params[:id])
-    # if ride 
+    @user = User.find(params[:id])
+    @message = params[:message] if params[:message]
+    @message ||= false
   end
 
   private
