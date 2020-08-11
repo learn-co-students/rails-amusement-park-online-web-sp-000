@@ -1,7 +1,7 @@
 class RidesController < ApplicationController
 
     def create
-        @user = User.find_by(id: session[:user_id])
+        @user = current_user
         @ride = Ride.create(attraction_id: params[:attraction_id], user_id: @user.id)
 
         flash[:notice] = @ride.take_ride

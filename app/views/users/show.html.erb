@@ -2,7 +2,7 @@
     <%= flash[:notice] %>
 <% end %>
 
-<% if @user.admin == true %>
+<% if admin? %>
     ADMIN
 <% end %>
 Name: <%= @user.name %>
@@ -11,7 +11,7 @@ Nausea: <%= @user.nausea %>
 Happiness: <%= @user.happiness %>
 Height: <%= @user.height %>
 Mood:
-<% if @user.admin == false %>
+<% if !admin? %>
     <%= @user.mood %>
 <% end %>
 

@@ -23,7 +23,7 @@
           <a class="navbar-brand" href="<%= new_user_url %>"/>Sign Up</a>
           <a class="navbar-brand" href="<%= signin_url %>"/>Log In</a>
         <% else %>
-        <a class="navbar-brand" href="<%= user_path(ApplicationHelper.current_user(session)) %>"/><%= ApplicationHelper.current_user(session).name %>'s profile</a>
+        <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%= current_user.name %>'s profile</a>
           <a class="navbar-brand" href="<%= logout_path %>"/>Log Out</a>
         <% end %>
 

@@ -1,7 +1,10 @@
 module ApplicationHelper
 
-    def self.current_user(session)
+    def current_user
         user = User.find_by(id: session[:user_id])
-        user
+    end
+
+    def admin?
+        current_user.admin
     end
 end
