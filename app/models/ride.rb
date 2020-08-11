@@ -9,29 +9,28 @@ class Ride < ActiveRecord::Base
   # updates the user's nausea
   # updates the user's happiness
 
-  @message = []
-
-  def ride
-
+  def take_ride
+    if low_tickets && too_short
+      "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. " + "You are not tall enough to ride the #{self.attraction.name}."
+    elsif low_tickets
+      "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
+    elsif too_short
+      "Sorry. You are not tall enough to ride the #{self.attraction.name}."
+    else
+      ride
+      "Thanks for riding the #{self.attraction.name}!"
+    end
   end
 
   def low_tickets
     self.user.tickets < self.attraction.tickets
-    @message << "Sorry. You do not have enough tickets to ride the #{attraction.name}."
   end
 
   def too_short
-    self.user.min_height < self.attraction.min_height
-    @message << "Sorry. You are not tall enough to ride the #{attraction.name}."
+    self.user.height < self.attraction.min_height
   end
 
-  def short_and_poor
-    if low_tickets && too_short
-      @message << "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
-    end
-  end
-
-  def take_ride
+  def ride
       user.tickets >= attraction.tickets && user.height >= attraction.min_height
         user.tickets -= attraction.tickets
         user.nausea += attraction.nausea_rating
@@ -39,4 +38,3 @@ class Ride < ActiveRecord::Base
         user.save
     end
   end
-end
