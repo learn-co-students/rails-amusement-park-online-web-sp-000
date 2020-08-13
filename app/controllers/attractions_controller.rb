@@ -21,6 +21,7 @@ class AttractionsController < ApplicationController
   def show
     # @user = user_path(current_user)
     @attraction = Attraction.find(params[:id])
+    # @ride = @attraction.rides.build(user_id:....)
   end
 
   def edit

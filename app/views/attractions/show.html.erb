@@ -10,8 +10,10 @@ Happiness Rating: <%= @attraction.happiness_rating %> <br><br>
 <% if current_user.admin %>
     <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %><br>
   <% else %>
-    <button>
-      <%= link_to "Go on this ride", {:controller => "rides", :action => "create", :method => "post", :attraction_id => @attraction.id} %><br>
-    </button>
+    <%= form_for Ride.new do |f|%>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :attraction_id, value: @attraction.id %>
+      <%= f.submit "Go on this ride" %>
+      <% end %>
     <br>
 <% end %>
