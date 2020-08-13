@@ -31,8 +31,13 @@
 
     <!-- content -->
     <div class="container"  role="main">
-      <%= alert %><br>
-      <%= yield %>
+        <% if flash[:notice] %>
+          <%= flash[:notice] %>
+        <% end %>
+        <br>
+        <br>
+
+        <%= yield %>
     </div>
   </body>
 </html>

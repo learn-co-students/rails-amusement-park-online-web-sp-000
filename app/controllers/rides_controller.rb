@@ -2,11 +2,12 @@ class RidesController < ApplicationController
   before_action :logged_in?
 
   def create
-    # binding.pry
     @ride = Ride.create(ride_params)
     @message = @ride.take_ride
+    flash[:notice] = @message
 
-    redirect_to user_path(@ride.user), :message => @message
+    redirect_to user_path(@ride.user)
+
   end
 
   private
