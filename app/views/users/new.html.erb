@@ -1,21 +1,21 @@
 <h1>New User!</h1>
 
-<%= form_tag :user do |f| %>
-    Name: <%= f.text_field :name %>
-    Height: <%= f.text_field :height %>
-    Happiness: <%= f.text_field :happiness %>
-    Nausea: <%= f.text_field :nausea %>
-    Tickets: <%= f.text_field :tickets %>
-    Password: <%= f.text_field :password %>
-    <%= f.submit 'Create User' %>
-<% end %>
-
-<%# <%= form_tag users_path do %> %>
-    <%# Name: <%= text_field_tag user[name] %> %>
-    <%# Height: <%= text_field_tag user[height] %> %>
-    <%# Happiness: <%= text_field_tag user[happiness] %> %>
-    <%# Nausea: <%= text_field_tag user[nausea] %> %>
-    <%# Tickets: <%= text_field_tag user[tickets] %> %>
-    <%# Password: <%= text_field_tag user[password] %> %>
-    <%# <%= submit_tag 'Create User' %> %>
+<%# <%= form_tag :user do |f| %> %>
+    <%# Name: <%= f.text_field :name %> %>
+    <%# Height: <%= f.text_field :height %> %>
+    <%# Happiness: <%= f.text_field :happiness %> %>
+    <%# Nausea: <%= f.text_field :nausea %> %>
+    <%# Tickets: <%= f.text_field :tickets %> %>
+    <%# Password: <%= f.text_field :password %> %>
+    <%# <%= f.submit 'Create User' %> %>
 <%# <% end %> %>
+
+<%= form_tag("/users") do %>
+    Name: <%= text_field_tag "user[name]" %>
+    Height: <%= text_field_tag "user[height]" %>
+    Happiness: <%= text_field_tag "user[happiness]" %>
+    Nausea: <%= text_field_tag "user[nausea]" %>
+    Tickets: <%= text_field_tag "user[tickets]" %>
+    Password: <%= text_field_tag "user[password]" %>
+    <%= submit_tag 'Create User' %>
+<% end %>
