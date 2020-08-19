@@ -1,4 +1,7 @@
+<% if @user.admin == true %>
+    <h1> YOU ARE AN ADMIN </h1>
+<% end %>
 <h1>Welcome, <%= @user.name %>!</h1>
-<div> Mood: <%= @user.mood %></div>
-<div> Tickets: <%= @user.tickets %></div>
-<div> Height: <%= @user.height %></div>
+    <div> Mood: <%= @user.mood %></div>
+    <div> Tickets: <%= @user.tickets %></div>
+    <div> Height: <%= @user.height %></div>
