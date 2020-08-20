@@ -1,0 +1,8 @@
+<%= form_tag('/signin', method: 'post') do %>
+    
+    <label>User name</label><br>
+    <%= select(:user, :name, User.all.collect {|p| [ p.name, p.id ] }) %><br>
+    <label>Password</label><br>
+    <%= text_field_tag 'password' %>
+    <%= submit_tag "Sign In" %>
+<% end %>
