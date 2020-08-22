@@ -1,0 +1,15 @@
+<h1><%= @attraction.name %></h1>
+
+<p>WOOT! Wasnt That Great! </p>
+
+<div>Tickets: <%= @attraction.tickets %></div>
+<div>Nausea: <%= @attraction.nausea_rating %></div>
+<div>Happiness: <%= @attraction.happiness_rating %></div>
+<div>Minnimum Height: <%= @attraction.min_height %></div>
+
+<% if current_user.admin %>
+    <%= button_to "Edit Attraction", attraction_edit_path  %>
+<% else %>
+    <%= button_to "Go on this ride.", user_path(current_user) %>
+<% end %>
+<%= link_to "See attractions", attractions_path %>
