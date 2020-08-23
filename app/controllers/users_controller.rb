@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  # before_action :require_login
-  # skip_before_action :require_login, only:[:index, :new, :create]
+  include ApplicationHelper
+  before_action :require_login
+  skip_before_action :require_login, only:[:index, :new, :create]
 
   def new
     @user = User.new
@@ -18,8 +19,19 @@ class UsersController < ApplicationController
   end
 
   def show
-  return redirect_to root_path unless session.include? :user_id
     @user = User.find(session[:user_id])
+    # @alert = session[:msg]
+    # binding.pry
+    # # session[:msg] = []
+  end
+
+  def go_on_ride
+    attraction = Attraction.find_by(id: params[:format])
+    user = current_user
+    ride = Ride.create(user_id: user.id, attraction_id: attraction.id)
+    # session[:msg] = ride.ride
+    msg = ride.ride
+    redirect_to user_path(user), alert: msg
   end
 
   private
