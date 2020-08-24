@@ -1,0 +1,7 @@
+<h1>Attractions</h1>
+
+<% if current_user.admin %>
+    <%= render partial: 'admin_index_options' %>
+<% else %>
+    <%= render partial: 'guest_index_options'%>
+<% end %>

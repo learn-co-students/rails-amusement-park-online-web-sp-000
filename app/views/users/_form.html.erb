@@ -1,0 +1,8 @@
+
+<% if current_user %>
+    <%= link_to "Log Out", logout_path %><br><br>
+<% else %>
+    <%= link_to "Login" , login_path %><br><br>
+<% end %>
+
+<%= link_to "See attractions", attractions_path %>

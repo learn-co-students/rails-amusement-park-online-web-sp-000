@@ -1,0 +1,13 @@
+<% if @user.admin == true %>
+    <h1> YOU ARE AN ADMIN </h1>
+<% end %>
+<h1>Welcome, <%= @user.name %>!</h1>
+    <% if @user.admin == true %>
+        <h3> You Are They </h3><br>
+    <% else%>
+    <div> Mood: <%= @user.mood %></div>
+    <div> Tickets: <%= @user.tickets %></div>
+    <div> Height: <%= @user.height %></div>
+    <% end %>
+
+<%= render partial: 'form' %>

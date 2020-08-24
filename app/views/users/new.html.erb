@@ -1,0 +1,12 @@
+<h1>Sign Up!</h1>
+
+<%= form_tag("/users") do %>
+    <div>Name: <%= text_field_tag "user[name]" %></div><br>
+    <div>Height: <%= text_field_tag "user[height]" %></div><br>
+    <div>Happiness: <%= text_field_tag "user[happiness]" %></div><br>
+    <div>Nausea: <%= text_field_tag "user[nausea]" %></div><br>
+    <div>Tickets: <%= text_field_tag "user[tickets]" %></div><br>
+    <div>Admin?: <%= check_box_tag "user[admin]" %></div><br>
+    <div>Password: <%= text_field_tag "user[password]", checked = true %></div><br>
+    <%= submit_tag 'Create User' %>
+<% end %>

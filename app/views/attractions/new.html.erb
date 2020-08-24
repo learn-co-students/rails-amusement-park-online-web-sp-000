@@ -1,0 +1,10 @@
+<h1>New Attraction</h1>
+
+<%= form_tag("/attractions") do %>
+    Name: <%= text_field_tag "attraction[name]" %>
+    Min Height: <%= text_field_tag "attraction[min_height]" %>
+    Happiness Rating: <%= text_field_tag "attraction[happiness_rating]" %>
+    Nausea Rating: <%= text_field_tag "attraction[nausea_rating]" %>
+    Tickets: <%= text_field_tag "attraction[tickets]" %>
+    <%= submit_tag 'Create Attraction' %>
+<% end %>
