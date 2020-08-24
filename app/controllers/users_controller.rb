@@ -20,17 +20,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    # @alert = session[:msg]
-    # binding.pry
-    # # session[:msg] = []
   end
 
   def go_on_ride
     attraction = Attraction.find_by(id: params[:format])
     user = current_user
     ride = Ride.create(user_id: user.id, attraction_id: attraction.id)
-    # session[:msg] = ride.ride
-    msg = ride.ride
+    msg = ride.take_ride
     redirect_to user_path(user), alert: msg
   end
 

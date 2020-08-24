@@ -1,22 +1,12 @@
 <h1>Sign Up!</h1>
 
-<%# <%= form_tag :user do |f| %> %>
-    <%# Name: <%= f.text_field :name %> %>
-    <%# Height: <%= f.text_field :height %> %>
-    <%# Happiness: <%= f.text_field :happiness %> %>
-    <%# Nausea: <%= f.text_field :nausea %> %>
-    <%# Tickets: <%= f.text_field :tickets %> %>
-    <%# Password: <%= f.text_field :password %> %>
-    <%# <%= f.submit 'Create User' %> %>
-<%# <% end %> %>
-
 <%= form_tag("/users") do %>
-    Name: <%= text_field_tag "user[name]" %>
-    Height: <%= text_field_tag "user[height]" %>
-    Happiness: <%= text_field_tag "user[happiness]" %>
-    Nausea: <%= text_field_tag "user[nausea]" %>
-    Tickets: <%= text_field_tag "user[tickets]" %>
-    Admin?: <%= check_box_tag "user[admin]" %>
-    Password: <%= text_field_tag "user[password]", checked = true %>
+    <div>Name: <%= text_field_tag "user[name]" %></div><br>
+    <div>Height: <%= text_field_tag "user[height]" %></div><br>
+    <div>Happiness: <%= text_field_tag "user[happiness]" %></div><br>
+    <div>Nausea: <%= text_field_tag "user[nausea]" %></div><br>
+    <div>Tickets: <%= text_field_tag "user[tickets]" %></div><br>
+    <div>Admin?: <%= check_box_tag "user[admin]" %></div><br>
+    <div>Password: <%= text_field_tag "user[password]", checked = true %></div><br>
     <%= submit_tag 'Create User' %>
 <% end %>
