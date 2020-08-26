@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
+        # strong params are used to prevent hackers add any rows or informations other than what is permited below
         params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
     end
 end
