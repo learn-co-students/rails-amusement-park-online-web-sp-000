@@ -1,0 +1,11 @@
+<%= form_for @user, url: signin_path, method: :post do |f| %>
+    <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+
+  <%= f.submit "log in" %>
+<% end %>
+
+<%# create a select box of all the user names %>
