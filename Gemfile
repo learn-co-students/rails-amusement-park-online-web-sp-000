@@ -22,7 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 
 
 # bootstrap
-
+gem 'pry'
 gem 'bootstrap-sass', '3.3.7'
 
 # Use CoffeeScript for .coffee assets and views
@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'rack-flash3' 
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,0 +1,13 @@
+<h1> <%= @attraction.name %> </h1>
+
+
+
+<%= form_for (Ride.create) do |f| %>
+    <%= f.hidden_field :user_id, :value => @user.id %>
+    <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+    <% if @user.admin %>
+         <%= link_to "Edit Attraction", controller: 'attractions', action: 'edit' %>
+    <% else %>
+        <%= button_tag "Go on this ride", controller: 'rides', action: 'create' %>
+    <% end %>
+<% end %>
