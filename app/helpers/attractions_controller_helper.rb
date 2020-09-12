@@ -1,0 +1,2 @@
+module AttractionsControllerHelper
+end
