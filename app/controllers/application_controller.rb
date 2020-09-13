@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
     def logged_in?
       !!current_user
     end
+
+    def redirect_if_not_logged_in
+      if !logged_in?
+        flash[:message] = "Please log in to proceed."
+        redirect_to '/'
+      end
+    end
 end

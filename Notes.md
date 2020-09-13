@@ -1,8 +1,8 @@
- # Feature Test: User Signup successfully logs in as non-admin
- # Feature Test: User Signup on log in, successfully adds a session hash
- # Feature Test: User Signup prevents user from viewing user show page and redirects to home page if not logged in
- # Feature Test: User Signup successfully signs up as admin
- # Feature Test: User Signup on sign up for admin, successfully adds a session hash
+ [x] Feature Test: User Signup successfully logs in as non-admin
+ [x] Feature Test: User Signup on log in, successfully adds a session hash
+ [x] Feature Test: User Signup prevents user from viewing user show page and redirects to home page if not logged in
+[x] Feature Test: User Signup successfully signs up as admin
+[x] Feature Test: User Signup on sign up for admin, successfully adds a session hash
  # Feature Test: User Signup successfully logs in as admin
  # Feature Test: User Signup on log in, successfully adds a session hash to admins
 

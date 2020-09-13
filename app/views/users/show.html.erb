@@ -1,4 +1,7 @@
-<h1><%= @user.name %></h1>
+<% if @user.admin %>
+    <strong>ADMIN</strong>
+<% end %><br>
+Name: <%= @user.name %><br>
 Mood: <%= @user.mood %><br>
 Height: <%= @user.height %><br>
 Tickets: <%= @user.tickets %>
