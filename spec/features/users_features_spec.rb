@@ -1,6 +1,7 @@
 require_relative "../rails_helper.rb"
 describe 'Feature Test: User Signup', :type => :feature do
 
+
   it 'successfully signs up as non-admin' do
     visit '/users/new'
     expect(current_path).to eq('/users/new')
@@ -14,6 +15,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("58")
   end
 
+
   it "on sign up, successfully adds a session hash" do
     visit '/users/new'
     # user_signup method is defined in login_helper.rb
@@ -21,6 +23,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
+=begin
   it 'successfully logs in as non-admin' do
 
     # user_login method is defined in login_helper.rb
@@ -35,7 +38,9 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("10")
     expect(page).to have_content("50")
   end
+=end
 
+=begin
   it "on log in, successfully adds a session hash" do
     create_standard_user
     visit '/signin'
@@ -43,6 +48,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     user_login
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
+=end
 
   it 'prevents user from viewing user show page and redirects to home page if not logged in' do
     create_standard_user
@@ -61,12 +67,14 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("ADMIN")
   end
 
+
   it "on sign up for admin, successfully adds a session hash" do
     visit '/users/new'
     # admin_signup method is defined in login_helper.rb
     admin_signup
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
+
 
   it 'successfully logs in as admin' do
     create_standard_and_admin_user
@@ -79,6 +87,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("ADMIN")
   end
 
+
   it "on log in, successfully adds a session hash to admins" do
     create_standard_and_admin_user
     visit '/signin'
@@ -86,6 +95,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     admin_login
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
+
 
 end
 

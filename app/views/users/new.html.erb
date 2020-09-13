@@ -12,7 +12,9 @@
   <%= f.number_field :tickets %><br />
   <%= f.label :password %>
   <%= f.password_field :password %><br />
-  <p>Admin? <%= f.check_box :admin, options = {:class => "user_admin"} %></p><br />
+  <%= f.label :admin %>
+  <%= f.check_box :admin %><br>
+
   <br />
   <%= f.submit %>
 <% end %>
