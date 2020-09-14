@@ -1,4 +1,16 @@
-<% @attractions.each do |attraction| %>
-    <p>Name: <%= attraction.name %></p>
-    <p>Tickets: <%= attraction.tickets %></p>
+<h1>Attractions</h1>
+<% if current_user.admin %>
+    <%= form_for @attraction do |f| %>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %><br>
+        <%= f.label :tickets %><br>
+        <%= f.text_field :tickets %><br>
+        <%= f.submit %>
+    <% end %>
+<% else %>
+    <% @attractions.each do |attraction| %>
+        <p>Name: <%= link_to attraction.name, attraction_path(attraction) %></p>
+        <p>Tickets: <%= attraction.tickets %></p>
+        <p><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></p><br>
+    <% end %>
 <% end %>
