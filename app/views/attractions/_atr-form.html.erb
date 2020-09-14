@@ -1,0 +1,13 @@
+<%= form_for @atr do |f| %>
+    <%= f.label 'Enter Name' %>
+    <%= f.text_field :name %><br>
+    <%= f.label 'Height Requirement (inches)' %>
+    <%= f.text_field :min_height %><br>
+    <%= f.label 'Nausea Rating (1-10)' %>
+    <%= f.text_field :nausea_rating %><br>
+    <%= f.label 'Happiness Rating (1-10)' %>
+    <%= f.text_field :happiness_rating %><br>
+    <%= f.label 'Ticket Requirement' %>
+    <%= f.text_field :tickets %><br>
+    <% yield %>
+<% end %>

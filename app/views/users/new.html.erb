@@ -1,0 +1,19 @@
+<h1>New User Signup</h1>
+
+<%= form_for :user, url: users_path do |f| %>
+    <%= f.label 'Enter Name' %>
+    <%= f.text_field :name %><br>
+    <%= f.label 'Enter Password' %>
+    <%= f.text_field :password %><br>
+    <%= f.label 'What is your Height (inches)?' %>
+    <%= f.text_field :height, value: 0 %><br>
+    <%= f.label 'How many Tickets do you have?' %>
+    <%= f.text_field :tickets, value: 0 %><br>
+    <%= f.label 'What is your Nausea Level (1-10)?' %>
+    <%= f.text_field :nausea, value: 0 %><br>
+    <%= f.label 'What is your Happiness Level (1-10)?' %>
+    <%= f.text_field :happiness, value: 0 %><br>
+    <%= f.label 'Check box if you are a park owner (admin):'%>
+    <%= f.check_box :admin %><br>
+    <%= f.submit 'Create User' %>
+<% end %>
