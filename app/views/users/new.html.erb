@@ -1,0 +1,14 @@
+<%= form_for @user do |f| %>
+  <% iterate_through_attrs(@user) do |attr|%>
+    <%= f.label attr %>
+    <%= f.text_field attr %><br>
+  <% end %>
+
+  <%= f.label "Check box if you are a theme park owner" %>
+  <%= f.check_box :admin %><br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
+
+  <%= f.submit %>
+<% end %>
