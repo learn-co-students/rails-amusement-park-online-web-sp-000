@@ -1,0 +1,9 @@
+=> [32m#<User:0x00007fffdc663c10[0m
+ id: [1;34m1[0m,
+ name: [31m[1;31m"[0m[31mMindy[1;31m"[0m[31m[0m,
+ nausea: [1;34m5[0m,
+ happiness: [1;34m3[0m,
+ tickets: [1;34m10[0m,
+ height: [1;34m30[0m,
+ admin: [1;36mfalse[0m,
+ password_digest: [31m[1;31m"[0m[31m$2a$04$PMl77yAWCCX0iGz4V3VrFuoRMo5.HzfXvNwXMMoow0Mi89144av0K[1;31m"[0m[31m[0m[32m>[0m
