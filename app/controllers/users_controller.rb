@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user, only: [:show]
+
+    def home 
+    end 
 
     def new 
         @user = User.new
@@ -6,12 +10,13 @@ class UsersController < ApplicationController
 
     def create 
         @user = User.new(user_params)
+        @admin = @user if params[:user][:admin] == '1'
         if @user.save 
             session[:user_id] = @user.id 
+            redirect_to user_path(@user)
         else 
             render :new
         end 
-        redirect_to user_path(@user)
     end 
 
     def index 
@@ -21,14 +26,10 @@ class UsersController < ApplicationController
 
     def show 
         @user = User.find(params[:id])
+        if !logged_in? 
+                redirect_to root_path
+        end 
     end 
-    
-    def signin
-        @user = User.last
-        
-        redirect_to signin_path
-    end 
-
 
     private 
         def user_params

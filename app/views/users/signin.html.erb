@@ -1,8 +1,0 @@
-<%= form_for (@user) do |f| %>
-    <%= f.collection_select :name, User.all, :id, :name %> 
-    <%= f.text_field :password %> 
-    <%= button_to "Sign In", signin_path %>
-    <%= f.submit %>
-<% end %>
-
-
