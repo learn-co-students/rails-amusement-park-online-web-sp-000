@@ -13,9 +13,8 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if logged_in?  && current_user.admin 
-      redirect_to new_user_path 
+      redirect_to users_path 
     end 
-
   end
 
 end 
