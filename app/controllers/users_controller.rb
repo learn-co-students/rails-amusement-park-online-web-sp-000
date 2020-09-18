@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
     
-
     def home 
     end 
 
@@ -26,7 +25,7 @@ class UsersController < ApplicationController
     def show 
         @user = User.find(params[:id])
         if !logged_in? 
-                redirect_to root_path
+            redirect_to root_path
         end 
     end 
 
