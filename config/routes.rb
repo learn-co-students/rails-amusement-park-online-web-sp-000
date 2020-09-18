@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#sign_in', as: 'signin'
   post '/signin', to: 'sessions#create'
   delete '/sessions/', to: 'sessions#destroy'
+  get '/attractions', to: 'attractions#index'
+  get '/attractions/id', to: 'attractions#show'
+
 end

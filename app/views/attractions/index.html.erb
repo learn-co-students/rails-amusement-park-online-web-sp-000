@@ -1,0 +1,4 @@
+<%= @attractions.map do |attraction|  %>
+    <%= attraction.name %>
+    <%= link_to "Go on #{attraction.name}", attractions_path(attraction) %>
+<% end %>
