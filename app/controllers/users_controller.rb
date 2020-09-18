@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user, only: [:show]
+    
 
     def home 
     end 
@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
     def create 
         @user = User.new(user_params)
-        @admin = @user if params[:user][:admin] == '1'
         if @user.save 
             session[:user_id] = @user.id 
             redirect_to user_path(@user)

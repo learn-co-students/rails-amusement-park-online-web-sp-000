@@ -2,6 +2,9 @@
 <p>Mood:</p><%= @user.mood %></p>
 <p>Tickets:</p><%= @user.tickets %></p>
 <p>height:</p><%= @user.height %></p>
+<% if @user.admin %>
+<p>ADMIN</p>
 <p>admin:</p><%= @user.admin %></p>
-
+<% end %>
+<%= link_to "Log Out", root_path %>
 

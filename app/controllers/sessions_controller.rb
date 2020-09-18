@@ -1,19 +1,22 @@
 class SessionsController < ApplicationController
+
     def sign_in
         @user = User.new
     end 
 
     def create 
-        @user = User.find_by(name: params[:user][:name])
-        @admin = @user if @user.admin == true 
-
-        if @user && @user.authenticate(params[:user_password])
+        if @user = User.find_by(name: params[:user][:name])
             session[:user_id] = @user.id
             redirect_to user_path(@user)
           else
-            render 'sign_in'
+            render 'new'
           end
     end
+
+    def destroy
+        binding.pry
+        # session.delete(:user_id)
+    end 
 
     # private 
     def sessions_params
