@@ -1,4 +1,4 @@
-<%= form_tag("/signin", method: :post) do %>
+<%= form_tag("/signin", controller: "rides", action: "create", method: :post) do %>
 
     <%= label_tag(:name, "Your Name") %><br>
     <%= collection_select(:user, :name, User.all, :name, :name) %> <br>

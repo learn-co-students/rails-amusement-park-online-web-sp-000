@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    
+
     def home 
     end 
 
@@ -28,6 +28,12 @@ class UsersController < ApplicationController
             redirect_to root_path
         end 
     end 
+
+    def update 
+        binding.pry
+    end 
+
+
 
     private 
         def user_params

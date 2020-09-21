@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get '/attractions', to: 'attractions#index'
   get '/attractions/:id', to: 'attractions#show', as: 'attraction'
   post '/attractions/:id', to: 'attractions#show'
-
+  post '/rides', to: 'rides#create'
 end
