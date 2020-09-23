@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/sessions/', to: 'sessions#destroy'
   get '/attractions', to: 'attractions#index'
-  get '/attractions', to: 'attractions#new', as: 'new_attraction'
+  get '/attractions/new', to: 'attractions#new', as: 'new_attraction'
   get '/attractions/:id', to: 'attractions#show', as: 'attraction'
   post '/attractions/:id', to: 'attractions#show'
   post '/rides', to: 'rides#create'
+  post '/attractions', to: 'attractions#create'
+  get '/attractions/:id/edit', to: 'attractions#edit', as: 'edit_attraction'
+  patch '/attractions/:id', to: 'attractions#update'
 end
