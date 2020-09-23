@@ -1,4 +1,11 @@
 <%= @attractions.map do |attraction|  %>
     <%= attraction.name %><br>
-    <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br>
+     <% if current_user.admin %>
+        <%= link_to "See #{attraction.name}", attraction_path(attraction) %>
+    <% else %>
+        <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+    <% end %>
 <% end %>
+
+<%= link_to "New Attraction", new_attraction_path %>
+
