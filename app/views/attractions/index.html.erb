@@ -1,0 +1,25 @@
+<h1> Attractions </h1>
+
+<% if current_user?.admin==true %>
+<%= link_to "New Attraction", new_attraction_path %><br><br>
+<% @attractions.each do |attraction| %>
+    <p><%=link_to "Show #{attraction.name}", attraction_path(attraction) %></p>
+    <% end %>
+    <% end %>
+    
+<% if current_user?.admin==false %>
+<% @attractions.each do |attraction| %>
+    <p><%=link_to "Go on #{attraction.name}", attraction_path(attraction) %></p>
+    <% end %>
+    <% end %>
+
+    
+
+
+    
+
+    
+
+
+    
+    

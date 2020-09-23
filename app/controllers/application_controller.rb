@@ -5,6 +5,4 @@ class ApplicationController < ActionController::Base
     session[:user_id]
   end
 
-    
-
 end

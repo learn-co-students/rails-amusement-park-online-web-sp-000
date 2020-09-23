@@ -1,0 +1,18 @@
+=> [32m#<User:0x00007fb1bcfaef40[0m
+ id: [1;36mnil[0m,
+ name: [31m[1;31m"[0m[31mKruffin456[1;31m"[0m[31m[0m,
+ nausea: [1;34m3[0m,
+ happiness: [1;34m10[0m,
+ tickets: [1;34m2[0m,
+ height: [1;34m50[0m,
+ admin: [1;36mfalse[0m,
+ password_digest: [31m[1;31m"[0m[31m$2a$12$n/F7I6.lOjk7EWl3QLBaE.lR7UinUg.HuKBrK3S848Tcwt1glTPH.[1;31m"[0m[31m[0m[32m>[0m
+=> [32m#<User:0x00007fb1bd0eba48[0m
+ id: [1;36mnil[0m,
+ name: [31m[1;31m"[0m[31mKruffin456[1;31m"[0m[31m[0m,
+ nausea: [1;34m3[0m,
+ happiness: [1;34m10[0m,
+ tickets: [1;34m2[0m,
+ height: [1;34m50[0m,
+ admin: [1;36mfalse[0m,
+ password_digest: [31m[1;31m"[0m[31m$2a$12$srEgnbz1ZsVze9kfP6amZepSrQbgXMv9YW9voIogbBMrX9fOLzzUm[1;31m"[0m[31m[0m[32m>[0m

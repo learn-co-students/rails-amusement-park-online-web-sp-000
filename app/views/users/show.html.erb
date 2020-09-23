@@ -2,3 +2,12 @@
 <p>Tickets: <%= @user.tickets%></p>
 <p>Height: <%= @user.height%></p>
 <p>Mood: <%= @user.mood %></p>
+
+<p>ADMIN:<%=@user.admin %></p>
+
+<% if flash[:message] %>
+<p><%= flash[:message]%></p>
+<% end %>
+
+<%= link_to "See attractions", "/attractions" %><br><br>
+<%= link_to "Log Out", controller: "sessions", action: "destroy" %><br>

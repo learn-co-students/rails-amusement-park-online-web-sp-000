@@ -1,16 +1,21 @@
 class User < ActiveRecord::Base
     has_many :rides
     has_many :attractions, through: :rides
-    validates :password, presence: true
     has_secure_password
     
     
+    
     def mood
-        if self.nausea > self.happiness
+        if self.nausea.nil? ||self.happiness.nil?
+            "no mood"
+        elsif self.nausea > self.happiness
             "sad"
         elsif self.nausea < self.happiness
-             "happy"
+            "happy"
         end
     end
+    
+
+
     
 end
