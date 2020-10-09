@@ -1,0 +1,20 @@
+<%= @attractions.each do |t| %>
+    <h4><%= t.name %></h4>
+    <ul>
+        <li>Tickets: <%= t.tickets %></li>
+        <li>Nausea: <%= t.nausea_rating %></li>
+        <li>Happiness: <%= t.happiness_rating %></li>
+        <li>Minimum Height: <%= t.min_height %></li>
+    </ul>
+    
+    <% if @user && @user.admin %>
+        <%= link_to "Show #{t.name}", attraction_path(t) %>
+    <% else %>
+        <%= link_to "Go on #{t.name}", attraction_path(t) %>
+    <% end %>
+    
+<% end %>
+
+<% if @user && @user.admin %>
+    <%= link_to "New Attraction", '/attractions/new' %>
+<% end %>

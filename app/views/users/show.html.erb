@@ -1,0 +1,28 @@
+<h1><%= @user.name %></h1>
+
+<% if flash[:message] %>
+    <div class="notice"><%= flash[:message] %></div>
+<% end %>
+
+<% if @user.height %>
+<p>Height: <%= @user.height %> inches</p>
+<% end %>
+
+<% if @user.tickets %>
+<p>Tickets: <%= @user.tickets %></p>
+<% end %>
+
+<% if @user.happiness %>
+<p>Mood: <%= @user.mood %></p>
+<% end %>
+
+<% if @user.nausea %>
+<p>Nausea: <%= @user.nausea %></p>
+<% end %>
+
+<% if @user.admin %>
+<p>ADMIN</p>
+<% end %>
+
+<%= link_to "See attractions", '/attractions' %>
+<%= link_to "Log Out", '/logout' %>
