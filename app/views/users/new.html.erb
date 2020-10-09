@@ -1,0 +1,29 @@
+<h1>Create a New User</h1>
+<%= form_for @user do |t| %>
+    <%= t.label :name %>
+    <%= t.text_field :name %><br>
+
+    <%= t.label :height %>
+    <%= t.text_field :height %><br>
+
+    <%= t.label :happiness %>
+    <%= t.text_field :happiness %><br>
+
+    <%= t.label :nausea %>
+    <%= t.text_field :nausea %><br>
+
+    <%= t.label :tickets %>
+    <%= t.text_field :tickets %><br>
+
+    <%= t.label :password %>
+    <%= t.password_field :password %><br>
+
+    <%= t.label :admin %>
+    <%= t.check_box :admin %><br>
+
+    <%= t.submit %>
+<% end %>
+
+<% if flash[:message] %>
+    <div class="notice"><%= flash[:message] %></div>
+<% end %>

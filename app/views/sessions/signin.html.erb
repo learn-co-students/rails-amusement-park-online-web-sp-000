@@ -1,0 +1,15 @@
+<h1>Sign In</h1>
+<%= form_with url: '/login', model: @user do |t|  %>
+    
+    <%= t.label :name %>
+    <%= collection_select(:user, :name, User.all, :name, :name) %><br>
+
+    <%= t.label :password %>
+    <%= password_field(:user, :password) %><br>
+    
+    <%= t.submit "Sign In" %>
+<% end %>
+
+<% if flash[:message] %>
+    <div class="notice"><%= flash[:message] %></div>
+<% end %>

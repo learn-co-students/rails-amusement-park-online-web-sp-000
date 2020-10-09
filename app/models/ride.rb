@@ -4,16 +4,18 @@ class Ride < ApplicationRecord
 
     def take_ride
         if not_enough_tickets && not_tall_enough
-            "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
+            return "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
         elsif not_enough_tickets
-            "Sorry. You do not have enough tickets to ride the #{attraction.name}."
+            return "Sorry. You do not have enough tickets to ride the #{attraction.name}."
         elsif not_tall_enough
-            "Sorry. You are not tall enough to ride the #{attraction.name}."
+            return "Sorry. You are not tall enough to ride the #{attraction.name}."
         else
-            self.user.tickets -= self.attraction.tickets
-            self.user.nausea += self.attraction.nausea_rating
-            self.user.happiness += self.attraction.happiness_rating
-            self.user.save
+            user = self.user 
+            attraction = self.attraction
+            user.tickets -= attraction.tickets
+            user.nausea += attraction.nausea_rating
+            user.happiness += attraction.happiness_rating
+            user.save
         end
     end
 

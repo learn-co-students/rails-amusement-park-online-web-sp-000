@@ -1,0 +1,23 @@
+<h1>Edit Attraction</h1>
+<%= form_for @attraction do |t| %>
+    <%= t.label :name %>
+    <%= t.text_field :name %><br>
+
+    <%= t.label :tickets %>
+    <%= t.text_field :tickets %><br>
+
+    <%= t.label :nausea_rating %>
+    <%= t.text_field :nausea_rating %><br>
+
+    <%= t.label :happiness_rating %>
+    <%= t.text_field :happiness_rating %><br>
+
+    <%= t.label :min_height %>
+    <%= t.text_field :min_height %><br>
+
+    <%= t.submit %>
+<% end %>
+
+<% if flash[:message] %>
+    <div class="notice"><%= flash[:message] %></div>
+<% end %>
