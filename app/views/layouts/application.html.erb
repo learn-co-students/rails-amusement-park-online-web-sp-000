@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsAmusementPark</title>
+    <title>Amusement Park</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= analytics_init if Rails.env.production? %>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>
   </head>
   <body>
+    <!--  navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -21,7 +23,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+           <li><%= link_to "Sign Up", users_new_path %></li>
+           <li><%= link_to "Sign In", signin_path %></li>
+           <li><%= link_to "Log Out", signout_path, method: :post %></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,7 +33,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <%= alert %><br><br>
       <%= yield %>
     </div>
+
   </body>
 </html>
