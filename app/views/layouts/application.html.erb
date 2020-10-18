@@ -21,7 +21,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+            <li> <%= link_to 'Sign Up', new_user_path%> </li>
+            <li> <%= link_to 'Log Out', logout_path%> </li>
+            <li> <%= link_to 'See attractions', attractions_path%> </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +31,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+    <%if flash[:message]%>
+      <%= flash[:message]%>
+    <%end%>
       <%= yield %>
     </div>
   </body>
