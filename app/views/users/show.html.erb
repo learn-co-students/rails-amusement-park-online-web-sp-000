@@ -1,0 +1,27 @@
+<div class="info">
+  <p>
+  <strong>Name:</strong>
+  <%=@current_user.name%>
+  </p>
+
+  <p>
+  <strong>Tickets:</strong>
+  <%=@current_user.tickets%>
+  </p>
+
+  <p>
+  <strong>Mood:</strong>
+  <%=@current_user.happiness%>
+  </p>
+
+  <p>
+  <strong>Height:</strong>
+  <%=@current_user.height%>
+  </p>
+
+  <p>
+    <%=link_to 'See attractions', attractions_path %>
+  </p>
+
+
+<div>
