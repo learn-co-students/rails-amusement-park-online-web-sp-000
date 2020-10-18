@@ -4,9 +4,11 @@ describe 'Feature Test: User Signup', :type => :feature do
   it 'successfully signs up as non-admin' do
     visit '/users/new'
     expect(current_path).to eq('/users/new')
-    # user_signup method is defined in login_helper.rb
     binding.pry
+
+    # user_signup method is defined in login_helper.rb
     user_signup
+    binding.pry
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Amy Poehler")
     expect(page).to have_content("Mood")
