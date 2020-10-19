@@ -25,11 +25,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     
     # user_login method is defined in login_helper.rb
     create_standard_user
-    binding.pry
-
     visit '/signin'
-    binding.pry
-
     expect(current_path).to eq('/signin')
     user_login
     binding.pry
