@@ -1,0 +1,10 @@
+<h1>SHOW HTML view for User</h1>
+<%= form_for @user do |f| %>
+    Username: <%= @user.name %>
+    Height: <%= @user.height %>
+    Happiness: <%= @user.happiness %>
+    Nausea: <%= @user.nausea %>
+    Tickets: <%= @user.tickets %>
+    Mood: <%= @user.mood %>
+    <%= f.submit "Create User" %>
+<% end %>

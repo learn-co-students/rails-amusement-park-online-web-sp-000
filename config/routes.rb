@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'session#home'
   resources :session
   resources :users
+  get '/signin', to: 'session#new'
 end
