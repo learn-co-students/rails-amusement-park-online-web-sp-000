@@ -1,0 +1,41 @@
+<%= form_for @attraction do |f| %>
+  <p>
+  <%=f.label :name %>
+  <br>
+  <%=f.text_field :name%>
+  </p>
+
+  <div>
+  <%=f.label :min_height, 'Height Requirement (in inches)' %>
+  <br>
+  <%=f.number_field :min_height %>
+  </div>
+
+  <div class="form-group">
+  <%=f.label :happiness_rating, 'Happiness Rating:' %>
+  <br>
+  <%=f.number_field :happiness_rating%>
+  </div>
+
+  <div class="form-group">
+  <%=f.label :nausea_rating, 'Nausea Rating:' %>
+  <br>
+  <%=f.number_field :nausea_rating%>
+  </div>
+
+  <div class="form-group">
+  <%=f.label :tickets, 'Ticket Requirement:' %>
+  <br>
+  <%=f.number_field :tickets%>
+  </div>
+
+  <div class="form-group">
+  Total Number of Users: <%=%>
+  </div>
+
+  <div class="form-group">
+  <%=f.submit 'Update Attraction'%>
+  </div>
+
+
+<% end %>

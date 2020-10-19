@@ -28,6 +28,11 @@
     </div>
 
     <!-- content -->
+    <%if flash[:error]%>
+    <div class="center alert">
+    <%=flash[:error]%>
+    </div>
+    <%end%>
     <div class="container"  role="main">
       <%= yield %>
     </div>

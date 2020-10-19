@@ -10,23 +10,25 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user.id)
         else
-            render 'new'
+            redirect_to signup_path
         end
 
     end
 
     def show
         if current_user
+
+            @mood = current_user.mood
             render 'show'
         else
             flash[:error] = 'Cannot find user'
+            redirect_to '/'
         end
 
     end
 
-    def destroy
 
-    end
+  
 
     private
     def params_user
