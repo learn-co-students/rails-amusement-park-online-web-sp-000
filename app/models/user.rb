@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
     has_many :attractions, through: :rides
 
     def mood
-        binding.pry
         self.happiness < self.nausea ? 'sad' : 'happy'
     end
 end

@@ -12,10 +12,7 @@ module LoginHelper
 
   def user_login
     select 'Mindy',from:'user_name'
-    binding.pry
     fill_in("user_password", :with => "password")
-    binding.pry
-
     click_button('Sign In')
   end
 

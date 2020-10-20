@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'session#home'
-  resources :session
+  root 'sessions#new'
+  get '/signin', to: 'sessions#new'
+  post '/signin', to: 'sessions#create'
+  resources :sessions
   resources :users
-  get '/signin', to: 'session#new'
+  
 end

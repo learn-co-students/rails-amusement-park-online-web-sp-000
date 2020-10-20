@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    before_action :require_login
+    skip_before_action :require_login, only: [:index]
+
     def new
         @user = User.new
     end
@@ -7,13 +10,18 @@ class UsersController < ApplicationController
     end
 
     def create
-        binding.pry
-        @user = User.create(user_params)
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        @user = User.new(user_params)
+        if !@user.valid?
+            redirect_to '/login'
+        else
+            @user.save
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+        end
     end
 
     def show
+        binding.pry
         @user = User.find(params[:id])
     end
 
@@ -29,5 +37,10 @@ class UsersController < ApplicationController
             :tickets,
             :admin
         )
+    end
+
+    def require_login
+        binding.pry
+        redirect_to '/' unless session.include? :user_id
     end
 end
