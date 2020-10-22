@@ -22,7 +22,6 @@ describe 'Feature Test: User Signup', :type => :feature do
   end
 
   it 'successfully logs in as non-admin' do
-    
     # user_login method is defined in login_helper.rb
     create_standard_user
     visit '/signin'
@@ -46,6 +45,7 @@ describe 'Feature Test: User Signup', :type => :feature do
 
   it 'prevents user from viewing user show page and redirects to home page if not logged in' do
     create_standard_user
+    binding.pry
     visit '/users/1'
     expect(current_path).to eq('/')
     expect(page).to have_content("Sign Up")
