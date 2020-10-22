@@ -1,0 +1,9 @@
+<h1>Login</h1>
+<%= form_for(:user, url: '/signin') do |f| %>
+    Name<br>
+<%= f.select :name, options_from_collection_for_select(@users, :name, :name), :prompt => 'Select One' %><br>
+password<br>
+<%= f.text_field :password %>
+
+<%= f.submit "Sign In"%>
+<% end %>
