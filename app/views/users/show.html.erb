@@ -1,0 +1,32 @@
+
+<% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
+
+
+  <% if @user.errors.any? %>
+ 
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class = "info">
+
+<p><%= @user.name %></p>
+<% if @user.admin %>
+    <p>ADMIN</p>
+<% end %>
+<p>Mood  <%= @user.mood %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height <%= @user.height %></p>
+<%= link_to "See attractions", attractions_path %>
+</div>
