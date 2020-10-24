@@ -1,0 +1,10 @@
+<h1> Login</h1>
+<%= form_tag sessions_path do |form| %>
+    <% label_tag :name%>
+    <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Please select your name.")%>
+
+    <%= label_tag :password%>
+    <%= text_field_tag :password%>
+
+    <%= submit_tag "Sign In"%>
+<% end%>
