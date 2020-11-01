@@ -1,0 +1,18 @@
+<h1>Welcome, <%= current_user.name %></h1>
+<ul>
+  <li> <%= current_user.name %> </li>
+  <li> Mood <%= current_user.mood %> </li>
+  <li> <%= current_user.height %> </li>
+  <li>Happiness:<%= current_user.happiness%> </li>
+  <li>Nasuea: <%= current_user.nausea %></li>
+  <li>Tickets: <%= current_user.tickets %> </li>
+<% if current_user.admin == true%>
+  <p> ADMIN </p>
+  <%end%>
+</ul>
+<%if flash.alert.present? %>
+  <%=flash.alert%>
+<%end%>
+<%= link_to(controller: 'sessions', action: 'destroy', method: "delete"){'Log Out'} %>
+
+<%=link_to(controller: 'attractions', action: 'index'){'See attractions'}%>
