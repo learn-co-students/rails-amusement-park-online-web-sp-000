@@ -1,0 +1,10 @@
+<h1>Create a new Attraction </h1>
+
+<%= form_for @attraction, controller: 'attractions', action: 'create' do |f| %>
+Name: <%=f.text_field :name %> <br>
+Min Height: <%=f.text_field :min_height %><br>
+Nausea Rating: <%=f.text_field :nausea_rating %><br>
+Happiness Rating: <%=f.text_field :happiness_rating %><br>
+Tickets Required: <%=f.text_field :tickets %><br>
+<%=f.submit "Create Attraction" %>
+<%end%>
