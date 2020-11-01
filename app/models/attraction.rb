@@ -1,3 +1,5 @@
-class Attraction < ApplicationRecord
+class Attraction < ActiveRecord::Base
      has_many :rides
-end
+     has_many :users, :through => :rides
+   
+   end
