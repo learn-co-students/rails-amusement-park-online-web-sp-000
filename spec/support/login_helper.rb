@@ -11,8 +11,8 @@ module LoginHelper
   end
 
   def user_login
-    select 'Mindy',from:'user_name'
-    fill_in("user_password", :with => "password")
+    select 'Mindy',from:'name'
+    fill_in("password", :with => "password")
     click_button('Sign In')
   end
 

@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
   skip_before_action :verified_user, only: [:new, :create]
 
@@ -6,15 +7,20 @@ class UsersController < ApplicationController
   end
 
   def create
+    
     if (user = User.create(user_params))
       session[:user_id] = user.id
+      
+
       redirect_to user_path(user)
+      
     else
       render 'new'
     end
   end
-
   def show
+    
+
     @user = User.find_by(id: params[:id])
   end
 
