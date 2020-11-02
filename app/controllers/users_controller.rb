@@ -7,21 +7,45 @@ class UsersController < ApplicationController
   end
 
   def create
-    
-    if (user = User.create(user_params))
-      session[:user_id] = user.id
-      
+    @user = User.new(user_params)
 
-      redirect_to user_path(user)
-      
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to @user
     else
-      render 'new'
+      render :new
     end
   end
-  def show
-    
 
+  def show
     @user = User.find_by(id: params[:id])
+  end
+
+  
+  def update
+    ride = Ride.create(user_id: current_user.id, attraction_id: session[:last_attraction])
+    flash[:message] = ride.take_ride
+    redirect_to user_path(current_user)
+  end
+
+  def signin
+    @user = User.new
+    @users = User.all
+  end
+
+  def logout
+    session.destroy
+    redirect_to root_path
+  end
+  
+  def sign_user_in
+    @user = User.find_by(name: user_params[:name])
+    if @user
+      session[:user_id] = @user.id
+      redirect_to @user
+    else
+      redirect_to root_path
+    end
   end
 
   private
