@@ -1,6 +1,7 @@
 require 'pry'
 class UsersController < ApplicationController
   skip_before_action :verified_user, only: [:new, :create]
+  
 
   def new
     @user = User.new
@@ -18,12 +19,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    if logged_in?
-      @user = User.find(params[:id])
-    else
-      flash[:error] = "Please Sign Up"
-      redirect_to root_path
-    end
+    # if logged_in?
+    # redirect_to root_path unless user_is_authenticated
+    @user = User.find_by(id: params[:id])
+    # else 
+      
   end
 
   
