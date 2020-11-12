@@ -1,0 +1,21 @@
+ <h1> Singin </h1>
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+    <label>Name </label>
+    <label>Password:</label>
+    <input type="password" id="password" name="user_password" >
+    
+      <select id="user" name="user_name">
+      <% @users.each do |user| %>   
+      <option value="<%=user.name %>"> <%= user.name%></option>
+      <% end %>
+      </select>
+     
+    
+    <input type=submit value="Sign In">
+  <% end %> 
+
+  <!-- def admin_login
+    select 'Walt Disney',from:'user_name'
+    fill_in("password", :with => "password")
+    click_button('Sign In')
+  end -->
