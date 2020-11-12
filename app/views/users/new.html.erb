@@ -1,0 +1,27 @@
+<%= form_tag('/users', method: 'post') do |f| %>
+    <%= label_tag 'Username' %>
+    <%= text_field_tag 'user[name]' %><br>
+    
+
+    <%= label_tag 'Height (in inches)' %>
+    <%= text_field_tag 'user[height]' %><br>
+
+    <%= label_tag 'Happiness' %>
+    <%= text_field_tag 'user[happiness]' %><br>
+
+    <%= label_tag 'Nausea' %>
+    <%= text_field_tag 'user[nausea]' %><br>
+
+    <%= label_tag 'Tickets' %>
+    <%= text_field_tag 'user[tickets]' %><br>
+    
+    <%= check_box_tag 'user[admin]' %><br>
+
+    <%= label_tag 'Password' %>
+    <%= text_field_tag 'user[password]' %><br>
+
+
+    <%= submit_tag "Create User"%>
+
+
+<% end %>
