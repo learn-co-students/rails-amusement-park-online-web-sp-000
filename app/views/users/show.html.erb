@@ -1,5 +1,7 @@
 <h1>Welcome <%= @user.name %></h1>
-
+<!-- flash messages -->
+<%= flash[:message] if flash[:message] %>
+    
 <% if @user.admin %>
     <p>ADMIN</p>
 <% else %>
