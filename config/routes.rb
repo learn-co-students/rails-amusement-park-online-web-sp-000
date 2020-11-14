@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post '/session', to: 'sessions#create'
   delete '/session', to: 'sessions#destroy'
   post '/signup', to: 'users#create'
-
+  post '/rides', to:"rides#create"
 end
