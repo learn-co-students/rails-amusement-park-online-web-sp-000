@@ -1,0 +1,11 @@
+<% if current_user.admin == true %>
+  <h1>ADMIN</h1><br>
+<% end %>
+
+Name: <%= current_user.name %><br>
+Tickets: <%= current_user.tickets %><br>
+Mood: <%= current_user.mood %><br>
+Height: <%= current_user.height %> inches<br><br>
+
+<%= link_to "Edit", edit_user_path(current_user) %><br>
+<%= link_to "See attractions", attractions_path %>
