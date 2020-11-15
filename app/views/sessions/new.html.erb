@@ -1,0 +1,22 @@
+<h1>Please Sign In</h1><br>
+
+<%= form_for @user, url: signin_path do |f| %>
+<%#= form_for @user, url: signin_path, method: :post do |f| %>
+  <%#= f.label :name %><br>
+  <%= f.collection_select :name, User.all, :name, :name %><br>
+
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+  <br>
+  <%= f.submit 'Sign In' %>
+<% end %>
+
+<%#= form_tag signin_path do %>
+
+  <%#= label_tag "Users" %>
+  <%#= select_tag "user[id]", options_from_collection_for_select(User.all, :id, :name)%>
+  
+  <%#= submit_tag "Sign In" %>
+  <%#= link_to 'Sign Up', new_user_path %>
+
+<%# end %>
