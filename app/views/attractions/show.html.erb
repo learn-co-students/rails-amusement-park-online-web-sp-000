@@ -1,0 +1,11 @@
+<h1><%= @attraction.name %></h1>
+
+<p>Nausea Rating: <%= @attraction.nausea_rating %></p>
+<p>Happiness Rating: <%= @attraction.happiness_rating %></p>
+<p>Tickets Required: <%= @attraction.tickets %></p>
+
+<% if current_user.admin?   %>
+    <%= render 'admin_button' %>
+<% else %>
+    <%= render 'user_button' %>
+<% end %>
