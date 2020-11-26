@@ -6,16 +6,16 @@ class ApplicationController < ActionController::Base
     render :'index'
   end
 
-def require_login
-  return head(:forbidden) unless session.include? :user_id
-end
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
+  end
 
-def logged_in?
-  session[:user_id] ? true : false
-end
+  def logged_in?
+    session[:user_id] ? true : false
+  end
 
-def current_user
-  User.find(session[:user_id])
-end
+  def current_user
+    User.find(session[:user_id])
+  end
 
 end

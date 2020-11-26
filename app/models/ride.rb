@@ -3,7 +3,6 @@ class Ride < ActiveRecord::Base
     belongs_to :attraction
 
     def take_ride
-        # user = self.user
         user = self.user
         attraction = self.attraction
 
@@ -21,21 +20,13 @@ class Ride < ActiveRecord::Base
             explanations.each do |explanation|
                 message += (" " + explanation)
             end
-            message
         else
-
-        user.tickets -= attraction.tickets
-
-        user.nausea += attraction.nausea_rating
-
-        user.happiness += attraction.happiness_rating
-        user.save
-        message = "Thanks for riding the #{attraction.name}!"
+            user.tickets -= attraction.tickets
+            user.nausea += attraction.nausea_rating
+            user.happiness += attraction.happiness_rating
+            user.save
+            message = "Thanks for riding the #{attraction.name}!"
         end
         message
     end
-
-
-
-
 end

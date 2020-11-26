@@ -5,7 +5,7 @@
 <p>Tickets Required: <%= @attraction.tickets %></p>
 
 <% if current_user.admin?   %>
-<%= render 'admin_button' %>
+    <%= render 'admin_button' %>
 <% else %>
-<%= render 'user_button' %>
+    <%= render 'user_button' %>
 <% end %>
