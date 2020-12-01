@@ -1,0 +1,18 @@
+
+<h1><%= @attraction.name %></h1>
+
+  <label>Ticket Requirement</label><br>
+  <%= @attraction.tickets %><br>
+  <label>Height Requirement</label><br>
+  <%= @attraction.min_height %><br>
+  <label>Nausea Rating</label><br>
+  <%= @attraction.nausea_rating %><br>
+  <label>Happiness Rating</label><br>
+  <%= @attraction.happiness_rating %><br>
+  <% if current_user.admin %>
+    <%= link_to 'Edit Attraction', edit_attraction_path(@attraction) %>
+  <% else %>
+<!-- ASK HOW THIS FUNCTION WORKS!!!! -->
+<%= button_to 'Go on this ride', {:controller => "rides", :action => "create", :method => "post", :attraction_id => @attraction.id}%>
+
+<%= link_to 'Back', attractions_path %>

@@ -1,0 +1,15 @@
+<tbody>
+<%@attractions.each.do |attraction|%>
+    <tr>
+      <td><%= attraction.name %></td>
+      <td><%= attraction.tickets %></td>
+      <% if current_user.admin %>
+      <td><%= link_to "Show #{attraction.name}", attraction_path(attraction)%></td>
+      <%end%>
+    </tr>
+<%end%>
+</tbody>
+<% if @user.admin %>
+  <br><%= link_to 'New Attraction', new_attraction_path %>
+<% end %>
+<%= link_to "Back", user_path(@user) %>

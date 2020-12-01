@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :logged_in?, except: [:new, :create]
     def new
         @user = User.new
     end
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
     end
     def show
         @user = User.find(params[:id])
+        #msg is missing
     end
     private
     def user_params
