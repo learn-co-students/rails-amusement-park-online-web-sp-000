@@ -9,7 +9,7 @@ class AttractionsController < ApplicationController
     end
     def create
         @attraction = Attraction.create(attraction_params)
-        redirect_to attraction
+        redirect_to @attraction
     end
     def edit
         @attraction = Attraction.find(params[:id])
@@ -25,6 +25,7 @@ class AttractionsController < ApplicationController
     end
     def show
         @attraction = Attraction.find(params[:id])
+        @ride = @attraction.rides.build(user_id: current_user.id)
     end
     private
     def attraction_params
