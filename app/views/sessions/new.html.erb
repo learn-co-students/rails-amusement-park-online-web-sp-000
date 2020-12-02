@@ -1,0 +1,10 @@
+
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+  <h4>Username</h4>
+  <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown") %><br>
+  <h4>Password</h4>
+  <input type=password name='user[password]'><br><br>
+  <input type=submit value='Sign In'>
+<% end %><br><br>
+
+<%= link_to 'Back', root_path %>
