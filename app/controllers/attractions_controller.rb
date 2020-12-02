@@ -14,6 +14,7 @@ class AttractionsController < ApplicationController
   end
   def edit
       @attraction = Attraction.find(params[:id])
+      @ride = @attraction.rides.build(user_id: current_user.id)
   end
   def update
       @attraction = Attraction.find(params[:id])

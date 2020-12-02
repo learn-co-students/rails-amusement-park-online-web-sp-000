@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     end
     def show
         @user = User.find(params[:id])
-        #msg is missing
+        
     end
     private
     def user_params
