@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
   has_secure_password
+  #validation = password.present?
 
   has_many :rides
-  has_many :attractions, through: :rides
+  has_many :attractions, :through => :rides
 
-  #validation = password.present?
+  def mood
+    happiness > nausea ? "happy" : "sad"
+  end
 end
