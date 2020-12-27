@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :attractions, :through => :rides
 
   def mood
-    if self.admin == false
+    if !self.admin
       if self.happiness > self.nausea
         'happy'
       else
