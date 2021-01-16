@@ -1,0 +1,19 @@
+<h1>Please select User:<h1>
+
+<% #params.inspect %>
+
+<%= form_with url: "/signin", method: :post do |f| %>
+
+<%= f.collection_select :user_name, User.all, :id, :name %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.submit "Sign In" %>
+<% end %>
+
+
+
+
+
+
