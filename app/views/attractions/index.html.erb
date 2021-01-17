@@ -1,0 +1,26 @@
+<h1>Attractions#index</h1>
+<p>Find me in app/views/attractions/index.html.erb</p>
+<% if !current_user.admin %>
+<% @attractions.each do |attraction| %>
+
+    <%= attraction.name %>
+      <%= attraction.tickets %>
+      <%= attraction.nausea_rating %>
+      <%= attraction.happiness_rating %>
+      <%= attraction.min_height %>
+      <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+<% end %>
+
+<% else %>
+<% @attractions.each do |attraction| %>
+
+    <%= attraction.name %>
+      <%= attraction.tickets %>
+      <%= attraction.nausea_rating %>
+      <%= attraction.happiness_rating %>
+      <%= attraction.min_height %>
+      <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+<% end %>
+
+<%= link_to("New Attraction", new_attraction_path) %>
+<% end %>
