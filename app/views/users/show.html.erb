@@ -17,10 +17,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="http://localhost:3000/">Home</a>
 
+          <a class="navbar-brand" href="http://localhost:3000/">Home</a>
           <a class="navbar-brand" href="/users/show"><%= current_user.name %>'s profile</a>
-          <a class="navbar-brand" href="/signin">Log in</a>
+          <%=link_to "Log Out", {:controller => :session, :action => :destroy}, class => "navbar-brand" %>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -42,11 +43,13 @@
       <% end %>
     </div>
 
-    <div>
-      <p>Name: <%= @current_user.name %></p>
-      <p>Tickets: <%= @current_user.tickets %></p>
-      <p>Mood: <%= @current_user.mood %></p>
-      <p>Height: <%= @current_user.height %></p>
-      <br>
-      <p><%= link_to 'See attractions', attractions_path %></p>
+    <div class="center">
+      <div class="info">
+        <p>Name: <%= @current_user.name %></p>
+        <p>Tickets: <%= @current_user.tickets %></p>
+        <p>Mood: <%= @current_user.mood %></p>
+        <p>Height: <%= @current_user.height %></p>
+        <br>
+        <p><%= link_to 'See attractions', attractions_path %></p>
+      </div>
     </div>
