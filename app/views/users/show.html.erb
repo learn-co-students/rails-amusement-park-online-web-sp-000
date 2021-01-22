@@ -20,7 +20,7 @@
 
           <a class="navbar-brand" href="http://localhost:3000/">Home</a>
           <a class="navbar-brand" href="/users/show"><%= current_user.name %>'s profile</a>
-          <%=link_to "Log Out", {:controller => :session, :action => :destroy}, class => "navbar-brand" %>
+          <a class="navbar-brand" rel="nofollow" data-method="delete" href="/session">Log Out</a>
 
         </div>
         <div class="navbar-collapse collapse">
@@ -38,17 +38,19 @@
         <p><%= flash[:message] %></p>
       <% end %>
 
-      <% if @user.admin %>
-        <p><strong>ADMIN</strong></p>
-      <% end %>
     </div>
 
     <div class="center">
       <div class="info">
-        <p>Name: <%= @current_user.name %></p>
-        <p>Tickets: <%= @current_user.tickets %></p>
-        <p>Mood: <%= @current_user.mood %></p>
-        <p>Height: <%= @current_user.height %></p>
+
+        <% if @user.admin %>
+          <p><strong>ADMIN</strong></p>
+        <% end %>
+
+        <p><strong>Name:</strong> <%= @current_user.name %></p>
+        <p><strong>Tickets:</strong> <%= @current_user.tickets %></p>
+        <p><strong>Mood:</strong> <%= @current_user.mood %></p>
+        <p><strong>Height:</strong> <%= @current_user.height %></p>
         <br>
         <p><%= link_to 'See attractions', attractions_path %></p>
       </div>
