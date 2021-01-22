@@ -14,7 +14,6 @@ class AttractionsController < ApplicationController
 
   def create
     attraction = Attraction.create(attraction_params)
-    binding.pry
     redirect_to attraction_path(attraction)
   end
 
@@ -36,7 +35,7 @@ class AttractionsController < ApplicationController
         :min_height,
         :tickets,
         :happiness_rating,
-        :nausea_ratiing
+        :nausea_rating
       )
     end
 end
