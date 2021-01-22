@@ -5,10 +5,8 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
 
   def mood
-    if self.nausea > self.happiness
-      "sad"
-    elsif self.nausea < self.happiness
-      "happy"
+    unless admin
+      self.happiness > self.nausea ? "happy" : "sad"
     end
   end
 

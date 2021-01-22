@@ -26,6 +26,7 @@ class Ride < ActiveRecord::Base
       nausea: new_nausea,
       happiness: new_happiness
     )
+    "Thanks for riding the #{self.attraction.name}!"
   end
 
   def user_has_enough_tickets
