@@ -61,6 +61,7 @@ RSpec.describe User, :type => :model do
   end
 
   it "has many rides" do
+    # binding.pry
     first_ride = Ride.create(:user_id => user.id, :attraction_id => roller_coaster.id)
     second_ride = Ride.create(:user_id => user.id, :attraction_id => ferris_wheel.id)
     expect(user.rides.first).to eq(first_ride)
