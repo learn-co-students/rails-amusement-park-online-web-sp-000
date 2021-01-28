@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'users/show'
   root 'welcome#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/signin' => 'sessions#new'
+  get '/sessions' => 'sessions#new'
   post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 

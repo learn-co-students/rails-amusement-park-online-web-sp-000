@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-    if !logged_in
+    if !logged_in?
       redirect_to signin_path
     end
   end
