@@ -1,0 +1,9 @@
+<h1>Sign In</h1>
+
+<%= form_with url: "sessions#create", method: "post" do |f| %>
+    <%= f.collection_select :user_name, User.all, :name, :name %>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Sign In" %>
+<% end %>

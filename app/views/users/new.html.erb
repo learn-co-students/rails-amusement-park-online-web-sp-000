@@ -1,0 +1,50 @@
+<%= form_for(@user) do |f| %>
+
+    <% if @user.errors.any? %>
+        <%= pluralize(@user.errors.count, "error")%> prohibited this user from being saved.<br> 
+        <ul>
+        <% @user.errors.full_message.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    <% end %>
+
+    <div class="form-group">
+        <%= f.label "Name" %>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label "Height" %>
+        <%= f.number_field :height, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.label "Happiness" %>
+    <%= f.number_field :happiness, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.label "Nausea" %>
+    <%= f.number_field :nausea, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.label "Tickets" %>
+    <%= f.number_field :tickets, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :password %>
+        <%=f.text_field :password, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+    <%= f.label "Check box if you are a theme park owner" %>
+    <%= f.check_box :admin %>
+    </div>
+    
+    <div class="form-group">
+    <%= f.submit "Create User" %>
+    </div>
+<% end %> 
