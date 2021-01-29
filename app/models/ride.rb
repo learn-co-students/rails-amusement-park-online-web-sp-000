@@ -36,7 +36,7 @@ class Ride < ApplicationRecord
       :nausea => new_nausea,
       :tickets => new_ticket_count
     )
-    "Thanks for riding the #{self.attraction.name}"
+    "Thanks for riding the #{self.attraction.name}!"
   end
 
   def not_enough_tickets

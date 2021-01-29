@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :index, :show]
   resources :attractions, except: [:destroy]
-  resources :rides, only: [:new, :create]
+  resources :rides, only: [:create]
 end

@@ -29,7 +29,7 @@
 
 
 <% if current_user.admin %>
-  <%= link_to "New Atrraction", new_attraction_path, {:class => "btn btn-success"}  %>
+  <%= link_to "New Attraction", new_attraction_path, {:class => "btn btn-success"}  %>
 <% else %>
   <%= link_to "Back to profile", user_path(current_user), {:class => "btn btn-success"} %>
 <% end %>
