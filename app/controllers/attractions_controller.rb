@@ -1,8 +1,12 @@
 class AttractionsController < ApplicationController
-  before_action :set_attraction, only: [:show, :edit, :update]
 
   def index
     @attractions = Attraction.all
+  end
+
+  def show
+    @attraction = Attraction.find_by(id: params[:id])
+    @ride = @attraction.rides.build(user_id: current_user.id)
   end
 
   def new
@@ -10,21 +14,24 @@ class AttractionsController < ApplicationController
   end
 
   def create
-    @attraction = Attraction.new(attraction_params)
-    if @attraction.save
-      redirect_to attraction_path(@attraction)
+    attraction = Attraction.new(attraction_params)
+    if attraction.save
+      redirect_to attraction_path(attraction)
     else
       render :new
     end
   end
 
-  def show
-  end
-
   def edit
+    @attraction = Attraction.find_by(id: params[:id])
+    @ride = @attraction.rides.build(user_id: current_user.id)
   end
 
   def update
+    attraction = Attraction.find_by(id: params[:id])
+    attraction.update(attraction_params)
+
+    redirect_to attraction_path(attraction)
   end
 
   private
@@ -33,7 +40,4 @@ class AttractionsController < ApplicationController
     params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
   end
 
-  def set_attraction
-    @attraction = Attraction.find(params[:id])
-  end
 end
