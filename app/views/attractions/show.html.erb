@@ -1,0 +1,14 @@
+<h1>Name: <%= @attraction.name%></h1>
+<h2>Tickets: <%= @attraction.tickets%></h2>
+<h2>Height Requirement: <%= @attraction.min_height%></h2>
+<h2>nausea rating: <%= @attraction.nausea_rating%></h2>
+<h2>happiness rating: <%= @attraction.happiness_rating%></h2>
+<% if is_admin? %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+  <form class = "new_ride" id= "new_ride" action = "/rides" method = "post">
+    <input type="hidden" value="<%=current_user.id%>" name="ride[user_id]" id="ride_user_id">
+    <input type="hidden" value="<%=@attraction.id%>" name="ride[attraction_id]" id="ride_user_id">
+    <input type="submit" id = "Go on this ride" name="commit" value="Go on this ride" class="btn btn-light" data-disable-with="Go on this ride">
+  </form>
+<% end %>
