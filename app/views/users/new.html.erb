@@ -1,10 +1,35 @@
-<%= form_for :user do |f| %>
-  Name: <%= f.text_field :name %>
-  Height: <%= f.number_field :height %>
-  Happiness: <%= f.number_field :happiness %>
-  Nausea: <%= f.number_field :nausea %>
-  Tickets: <%= f.number_field :tickets %>
-  Admin: <%= f.check_box :admin %>
-  Password: <%= f.password_field :password %>
-  <%= f.submit "Create User" %>
-<% end %>
+
+<%= form_for @user do |f| %>
+
+  <%= f.label :name %>
+  <br>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :height, "Height (in inches)" %>
+  <br>
+  <%= f.number_field :height, class: "form-control" %>
+
+  <%= f.label :happiness, "How happy are you? (1-5 scale)" %>
+  <br>
+  <%= f.number_field :happiness, class: "form-control" %>
+
+  <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %>
+  <br>
+  <%= f.number_field :nausea, class: "form-control" %>
+
+  <%= f.label :tickets, "How many dollars are in your pocket?" %>
+  <br>
+  <%= f.number_field :tickets, class: "form-control" %>
+
+  <%= f.label :admin, "Check box if you are a theme park owner" %>
+  <%= f.check_box :admin, class: "form-check-input" %>
+  <br>
+  
+  <%= f.label :password %>
+  <br>
+  <%= f.password_field :password, class: "form-control" %>
+
+  <br/>
+  <%= f.submit class: "btn btn-primary" %>
+
+<% end %> 

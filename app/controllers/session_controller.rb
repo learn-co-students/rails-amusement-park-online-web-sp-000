@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionController < ApplicationController
     skip_before_action :has_access, only: [:new, :create]
 
     def new
@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if @user = User.find_by(name: params[:name])
+        if @user = User.find_by(name: params[:user][:name])
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
