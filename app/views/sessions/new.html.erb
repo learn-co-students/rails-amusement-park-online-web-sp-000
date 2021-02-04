@@ -1,0 +1,9 @@
+<%= form_tag("/signin", method: "post") do %>
+	<label>Your name:</label>
+	<%= select_tag "user[name]", options_from_collection_for_select(User.all, :name, :name), prompt: "Please select your username from this dropdown" %><br><br>
+	<label>Your password:</label>
+	<%= password_field_tag "user[password]" %><br><br>
+	<label>Admin password:</label>
+	<%= password_field_tag "password" %><br><br>
+	<%= submit_tag "Sign In"%><br><br>
+<% end %>
