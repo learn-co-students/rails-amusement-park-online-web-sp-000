@@ -1,0 +1,9 @@
+<h1>Welcome <%=current_user.name%>!</h1>
+<p>Mood: <%=current_user.mood%></p>
+<p>Tickets: <%=current_user.tickets%></p>
+<p>Height: <%=current_user.height%></p>
+<%if current_user.admin == true%>
+<p>ADMIN</p>
+<%end%>
+
+<%=link_to "See attractions", attractions_path%>
