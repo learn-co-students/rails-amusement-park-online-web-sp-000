@@ -3,14 +3,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def new
     @user = User.new
   end
 
-  def create
+  def create #creating a new user, and then logging them in.
     @user = User.new(user_params)
 
     if @user.save

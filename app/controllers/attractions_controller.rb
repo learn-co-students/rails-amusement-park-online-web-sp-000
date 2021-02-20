@@ -1,3 +1,5 @@
+require "pry"
+
 class AttractionsController < ApplicationController
   def index
     @attractions = Attraction.all

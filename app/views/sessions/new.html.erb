@@ -1,5 +1,5 @@
 <%= form_tag("/sessions", method: "post") do %>
-Select your username: <%= collection_select :name, :user_id, User.all, :user_name, :name %>    
+<%= label_tag(:name, "Select your username:") %> </label><%= collection_select :user, :name, User.all, :name, :name %>    
 
 <%= submit_tag "Login" %>
 <% end %>
