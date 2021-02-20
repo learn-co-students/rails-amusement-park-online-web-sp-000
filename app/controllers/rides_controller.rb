@@ -2,12 +2,16 @@ class RidesController < ApplicationController
 
 
     def create
-         byebug
+        #   byebug
+        
         ride=Ride.create(ride_params)
         # byebug
         ride.take_ride
-        
-        redirect_to user_path(current_user)
+        if @error
+            flash[:message] = "#{@error}"
+        end
+        message = ride.display_message
+        redirect_to user_path(current_user), flash: { testy: message }
     end
 
 

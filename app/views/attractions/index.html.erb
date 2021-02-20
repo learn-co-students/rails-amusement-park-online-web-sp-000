@@ -1,6 +1,17 @@
 <h1>Attractions</h1>
+<%if !current_user.admin%>
 <ul>
 <%Attraction.all.each do |a|%>
 <li><%=a.name%> <%=link_to "Go on #{a.name}", attraction_path(a) %></li>
 <%end%>
 </ul>
+<%end%>
+
+<%if current_user.admin%>
+<ul>
+<%Attraction.all.each do |a|%>
+<li><%=a.name%> <%=link_to "Show #{a.name}", attraction_path(a) %></li>
+<%end%>
+</ul>
+<%=link_to "New Attraction", new_attraction_path%>
+<%end%>
