@@ -24,7 +24,7 @@
         <% else %>
         <%= current_user.name %>
         <a class="navbar-brand" href="<%= user_path(@user) %>">Go to profile</a>
-        <%= link_to "Log Out", session_path(@user), class:"navbar-brand", method:"delete" %>        
+        <a class="navbar-brand" href="<%= logout_path %>">Log Out</a>        
         <% end %>                                         <%# <%= #name of profile ( current_user.name?) %>
                                                 <%# <%= link_to "Go to profile", user_path(@user) %>
                                                 <%# <%= link_to "Logout", delete_user_path> %> 

@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def create #creating a new user, and then logging them in.
     @user = User.new(user_params)
-    binding.pry
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)

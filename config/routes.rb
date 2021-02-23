@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   root "application#home"
   get "/signin", to: "users#new", as: "signin"
+  get "/logout", to: "sessions#destroy", as: "logout"
 end
