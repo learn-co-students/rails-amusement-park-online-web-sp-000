@@ -12,12 +12,22 @@
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only">Toggle navigation Sign Up</span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>    
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= root_url %>">Home</a>
+        <% if !current_user %>
+        <a class="navbar-brand" href="<%= new_user_path %>">Sign Up</a> <%# <%= link_to "Sign in", new_session_path %>
+        <%= link_to "Log in", signin_path, class:"navbar-brand" %>        
+        <% else %>
+        <%= current_user.name %>
+        <a class="navbar-brand" href="<%= user_path(@user) %>">Go to profile</a>
+        <%= link_to "Log Out", session_path, class:"navbar-brand", method:"delete" %>        
+        <% end %>                                         <%# <%= #name of profile ( current_user.name?) %>
+                                                <%# <%= link_to "Go to profile", user_path(@user) %>
+                                                <%# <%= link_to "Logout", delete_user_path> %> 
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
