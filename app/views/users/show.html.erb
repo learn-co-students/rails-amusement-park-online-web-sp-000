@@ -1,13 +1,19 @@
 <body>
+<div class="center">
 
+<div class="info">
+
+<% if @user.admin %>
+<p><strong>ADMIN</strong></p>
+<% end %>
 <%= @user.name %><br>
 <label>Mood</label>
 <p>happy</p>
 <p>15</p>
 <p>58</p>
-
-
+</div>
+</div>
 
 
 <%= link_to "See attractions", attractions_path %>
-<%= link_to "Log Out", session_path, method: "delete" %> 
+<%= link_to "Log Out", logout_path, method: "delete" %> 

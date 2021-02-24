@@ -10,7 +10,11 @@ class SessionsController < ApplicationController
       if @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
         redirect_to @user
+      else
+        redirect_to signin_path
       end
+    else
+      redirect_to signin_path
     end
   end
 
