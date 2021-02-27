@@ -14,15 +14,15 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      render "new"
+      redirect_to "/"
     end
   end
 
   def show
     if logged_in?
-      @user = User.find(params[:id])
+      @user = User.find_by(id: params[:id])
     else
-      redirect_to root_path
+      redirect_to "/"
     end
   end
 

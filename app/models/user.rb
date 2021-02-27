@@ -6,10 +6,8 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
 
   def mood
-    if self.nausea > self.happiness
-      return "sad"
-    elsif self.happiness > self.nausea
-      return "happy"
+    unless admin
+      happiness > nausea ? "happy" : "sad"
     end
   end
 end

@@ -5,13 +5,13 @@ module LoginHelper
     fill_in("user[happiness]", :with => "3")
     fill_in("user[nausea]", :with => "2")
     fill_in("user[tickets]", :with => "15")
-    #fill_in("user[password]", :with => "password")
+    fill_in("user[password]", :with => "password")
     click_button("Create User")
   end
 
   def user_login
-    #select "Mindy", from: "user_name"
-    #fill_in("password", :with => "password")
+    select "Mindy", from: "user_name"
+    fill_in("password", :with => "password")
     click_button("Sign In")
   end
 

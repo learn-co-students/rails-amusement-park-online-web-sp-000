@@ -16,9 +16,13 @@ class Ride < ActiveRecord::Base
     elsif not_tall_enough
       "Sorry. You are not tall enough to ride the #{self.attraction.name}."
     elsif not_enough_tickets
-      "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
+      "Sorry. You do not have enough tickets to ride the #{self.attraction.name}." #add flash[:message] = to these lines here?
     else
-      self.user.update(tickets: updated_ticket_number, nausea: updated_nausea, happiness: updated_happiness)
+      self.user.tickets = updated_ticket_number
+      self.user.nausea = updated_nausea
+      self.user.happiness = updated_happiness
+      self.user.save
+      return ""
     end
   end
 end

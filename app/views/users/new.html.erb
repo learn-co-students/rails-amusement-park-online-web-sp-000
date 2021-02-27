@@ -1,26 +1,49 @@
 <h1>Sign Up</h1>
 
 <%= form_for(@user) do |f| %>
+<div class="form-group">
   <br><label>name: </label><br>
-  <%= f.text_field :name %><br>
+<%= f.text_field :name, class: "form-control" %>
+</div>
 
+<div class="form-group">
   <br><label>User height: </label><br>
-<%= f.number_field :height %>
+<%= f.number_field :height, class: "form-control" %>
+</div>
 
+
+<div class="form-group">
  <br><label>User happiness: </label><br>
-<%= f.number_field :happiness %>
+<%= f.number_field :happiness, class: "form-control" %>
+</div>
 
+
+<div class="form-group">
 <br><label>User nausea: </label><br>
-<%= f.number_field :nausea %>
+<%= f.number_field :nausea, class: "form-control" %>
+</div>
 
+
+<div class="form-group">
 <br><label>User tickets: </label><br>
-<%= f.number_field :tickets %>
+<%= f.number_field :tickets, class: "form-control" %>
+</div>
 
-<br><label>User password: </label><br>
-<%= f.password_field :password %>
 
+<div class="form-group">
+<br><%= f.label :password %><br>
+<%= f.password_field :password, class: "form-control" %>
+</div>
+
+
+<div class="form-group">
 <br><label>Admin: </label><br>
 <%= f.check_box :admin, options = { :class => "user_admin" } %>
+</div>
 
-  <br><%= f.submit "Create User" %>
+  <div class="actions">
+
+  <br><%= f.submit "Create User", class: "btn btn-primary" %>
+  </div>
+
 <% end %>
