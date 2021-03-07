@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<% if !@user.admin %>
+<% #binding.pry %>
+  <p>
+    <strong>Nauesa:</strong>
+    <%= @user.nausea %>
+  </p>
+
+  <p>
+    <strong>Happiness:</strong>
+    <%= @user.happiness %>
+  </p>
+
+  <p>
+    <strong>Mood:</strong>
+    <%= @user.mood %>
+  </p>
+
+  <p>
+    <strong>Tickets:</strong>
+    <%= @user.tickets %>
+  </p>
+
+  <p>
+    <strong>Height:</strong>
+    <%= @user.height %>
+  </p>
+<% else %>
+<p>
+  <strong>ADMIN</strong>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
