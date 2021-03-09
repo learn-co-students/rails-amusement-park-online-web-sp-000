@@ -1,0 +1,15 @@
+<h1>Welcome <%= @user.name %>!</h1>
+
+<% if @user.admin %>
+  <h1>ADMIN</h1>
+<% else %>
+  <h2>Mood: <%= @user.mood %></h2>
+  <h2>Height: <%= @user.height %></h2>
+  <h3>Tickets: <%= @user.tickets %></h3>
+  <h3>Happiness Level: <%= @user.happiness %></h3>
+  <h3>Nausea Level: <%= @user.nausea %></h3>
+<% end %>
+
+<br>
+
+<%= link_to "Log Out", "/logout" %>
