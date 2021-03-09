@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :rides
+  resources :rides, only: [:show]
   resources :users
   resources :attractions
 
@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/signin', to: "users#login"
 
   get '/logout', to: "sessions#logout"
+
+  post '/users/:id', to: "rides#create"
 
   root to: "users#new"
 

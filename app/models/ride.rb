@@ -17,6 +17,7 @@ class Ride < ActiveRecord::Base
       user.nausea += attraction.nausea_rating
       user.happiness += attraction.happiness_rating
       user.save
+      user
     end
 
   end

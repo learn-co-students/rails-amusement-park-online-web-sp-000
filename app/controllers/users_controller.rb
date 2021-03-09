@@ -40,8 +40,13 @@ class UsersController < ApplicationController
     else
       redirect_to '/'
     end
-
   end
+
+  def ride
+    user = User.find_by(id: params[:id])
+  end
+
+
 
   private
 
@@ -50,14 +55,3 @@ class UsersController < ApplicationController
   end
 
 end
-
-
-# <%= form_tag "/signin" do %>
-#   <%= label_tag "User name" %>
-#   <%= text_field_tag :user_name %><br>
-
-#   <%= label_tag :password %>
-#   <%= text_field_tag :password %><br>
-
-#   <%= submit_tag "Login" %>
-# <% end %>
