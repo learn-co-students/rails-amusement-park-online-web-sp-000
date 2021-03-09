@@ -56,6 +56,20 @@ class RidesController < ApplicationController
     end
   end
 
+  def take_ride
+    @ride = Ride.new(attraction_id: params[:ride_id], user_id: session[:user_id])
+    tookRide = @ride.take_ride
+    if tookRide[1]
+      #binding.pry
+      session[:ride] = tookRide
+      redirect_to user_path(session[:user_id]), alert: "#{tookRide}"
+    else 
+     # binding.pry
+      session[:ride_id] = Ride.last.id
+      redirect_to user_path(session[:user_id]), alert: "Thanks for riding the #{@ride.attraction.name}!"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ride

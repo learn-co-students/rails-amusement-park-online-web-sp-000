@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
-
+<% if @message[1] %>
+  <h1><%= @message %></h1>
+<% end %>
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
 
 <% if !@user.admin %>
-<% #binding.pry %>
   <p>
     <strong>Nauesa:</strong>
     <%= @user.nausea %>
@@ -37,5 +38,8 @@
 </p>
 <% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Edit', edit_user_path(@user) %> 
+<%= link_to 'Log Out', signout_path %>
+<br>
+<%= link_to 'See attractions', attractions_path %>
 <%= link_to 'Back', users_path %>

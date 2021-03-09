@@ -17,7 +17,7 @@ class Ride < ApplicationRecord
             happy = user.happiness + trac.happiness_rating
             puke = user.nausea + trac.nausea_rating
             user.update(tickets: tiks, happiness: happy, nausea: puke)
-            ride = Ride.create(user_id: user_id, attraction_id: attraction_id)
+            ride = Ride.find_or_create_by(user_id: user_id, attraction_id: attraction_id)
             return ride
         end
     end

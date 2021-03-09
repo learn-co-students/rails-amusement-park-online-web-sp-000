@@ -25,5 +25,14 @@
   <%= @attraction.min_height %>
 </p>
 
-<%= link_to 'Edit', edit_attraction_path(@attraction) %> |
+<% if User.find(session[:user_id]).admin %>
+  <p>
+    <%= link_to 'Edit Attractions', edit_attraction_path(@attraction) %>
+    <%= link_to 'Destroy', @attraction, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% else %>
+  <%= button_to "Go on this ride", take_ride_path(@attraction) %>
+<% end %>
+
+<br>
 <%= link_to 'Back', attractions_path %>

@@ -192,6 +192,8 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     expect(page).to have_content("#{@ferriswheel.name}")
     expect(page).to have_content("#{@rollercoaster.name}")
   end
+  
+#_______________________________________________________WORKING ABOVE___________________________________________________________________________
 
   it "has links on the attractions index page to the attractions' show pages" do
     click_link('See attractions')

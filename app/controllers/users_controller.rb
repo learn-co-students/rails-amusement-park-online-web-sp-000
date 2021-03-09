@@ -8,7 +8,17 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    if session[:user_id]
+    if (session[:user_id])
+      if session[:ride_id]
+        @ride = Ride.find(session[:ride_id])
+        attraction = @ride.attraction
+        #binding.pry
+        @message = "Thanks for riding the #{attraction.name}!"
+      elsif session[:ride]
+        @message = session[:ride]
+      else
+        @message = ""
+      end
     else
       redirect_to root_path
     end
@@ -29,7 +39,8 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.create(user_params)
-    binding.pry
+    @user.admin= (user_params[:admin])
+    #binding.pry
     session[:user_id] = @user.id
     redirect_to user_path(@user)
   end
