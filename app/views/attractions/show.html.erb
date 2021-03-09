@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @attraction.name %>
+</p>
+
+<p>
+  <strong>Tickets:</strong>
+  <%= @attraction.tickets %>
+</p>
+
+<p>
+  <strong>Nausea rating:</strong>
+  <%= @attraction.nausea_rating %>
+</p>
+
+<p>
+  <strong>Happiness rating:</strong>
+  <%= @attraction.happiness_rating %>
+</p>
+
+<p>
+  <strong>Min height:</strong>
+  <%= @attraction.min_height %>
+</p>
+
+<% if User.find(session[:user_id]).admin %>
+  <p>
+    <%= link_to 'Edit Attractions', edit_attraction_path(@attraction) %>
+    <%= link_to 'Destroy', @attraction, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% else %>
+  <%= button_to "Go on this ride", take_ride_path(@attraction) %>
+<% end %>
+
+<br>
+<%= link_to 'Back', attractions_path %>
