@@ -4,7 +4,8 @@
 
 <h1>Welcome <%= @user.name %>!</h1>
 
-<% if @user.admin %>
+
+<% if is_admin? %>
   <h1>ADMIN</h1>
 <% else %>
   <h2>Mood: <%= @user.mood %></h2>
