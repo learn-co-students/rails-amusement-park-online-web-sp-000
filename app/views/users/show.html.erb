@@ -1,0 +1,20 @@
+<% if @out_message %>
+    <div class="center alert">
+        <p><%= @out_message%></p>
+    </div>
+<% end %>
+
+
+<div class="center">
+
+    <div class="info">
+        <% if @user.admin %>
+            <h1> ADMIN </h1>
+        <% end %>
+        <h1>Name: <%= @user.name %></h1>
+        <p>height: <%= @user.height %></p>
+        <p>Tickets: <%= @user.tickets %></p>
+        <p>Mood: <%= @user.mood %></p>
+        <p><%= link_to "See attractions", attractions_path%></p>
+    </div>
+</div>
