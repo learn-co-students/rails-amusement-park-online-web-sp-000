@@ -4,5 +4,11 @@ Rails.application.routes.draw do
 
   get '/signin', to: 'sessions#new', as: 'signin'
   post '/session', to: 'sessions#create', as: 'session'
+  delete '/session', to: 'sessions#destroy'
+
+  resources :attractions
+
+  post '/rides', to: 'rides#create'
+
   root 'welcome#home'
 end
