@@ -57,6 +57,7 @@ RSpec.describe User, :type => :model do
   end
 
   it "defaults to admin => false" do
+    # byebug
     expect(user.admin).to eq(false)
   end
 
