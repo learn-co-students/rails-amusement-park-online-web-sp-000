@@ -1,0 +1,17 @@
+
+<h1>Attractions Index</h1>
+<ul>
+  <% @attractions.each do |attraction| %>
+    <li>
+      <% if @admin %>
+        <p><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></p>
+      <% else %>
+        <p><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @admin %>
+  <p><%= link_to "New Attraction", new_attraction_path %></p>
+<% end %>
