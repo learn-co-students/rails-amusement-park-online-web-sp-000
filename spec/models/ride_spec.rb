@@ -43,7 +43,7 @@ RSpec.describe Ride, :type => :model do
     expect(ride.take_ride).to eq("Sorry. You do not have enough tickets to ride the #{attraction.name}.")
     expect(user.tickets).to eq(4)
     expect(user.happiness).to eq(3)
-    expect(user.nausea).to eq(5)
+    expect(user.nausea).to eq(5) 
   end
 
   it "has a method 'take_ride' that accounts for the user not being tall enough" do
