@@ -37,7 +37,7 @@ describe 'Feature Test: User Signup', :type => :feature do
   end
 
   it "on log in, successfully adds a session hash" do
-    create_standard_user
+    create_standard_user 
     visit '/signin'
     # user_login method is defined in login_helper.rb
     user_login
@@ -67,7 +67,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     admin_signup
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
-
+ 
   it 'successfully logs in as admin' do
     create_standard_and_admin_user
     visit '/signin'

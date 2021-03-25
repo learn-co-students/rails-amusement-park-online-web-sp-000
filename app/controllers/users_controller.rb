@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-
-    def index 
-        @users = User.all 
-    end
+    skip_before_action :verified_user, only: [:new, :create]
     
     def new 
         @user = User.new 
@@ -18,7 +15,7 @@ class UsersController < ApplicationController
     end
 
     def show 
-        @user = User.find_by(params[:id])
+        @user = User.find_by(id: params[:id])
     end
 
     private 
