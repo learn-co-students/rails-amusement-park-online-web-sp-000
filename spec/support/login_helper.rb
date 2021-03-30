@@ -1,4 +1,8 @@
 module LoginHelper
+  # def visit_signup
+  #   visit '/'
+  #   click_link('Sign Up')
+  # end
 
   def user_signup
     fill_in("user[name]", :with => "Amy Poehler")
@@ -11,7 +15,16 @@ module LoginHelper
   end
 
   def user_login
-    select 'Mindy',from:'user_name'
+    @mindy = User.create(
+      name: "Mindy",
+      password: "password",
+      happiness: 3,
+      nausea: 2,
+      tickets: 10,
+      height: 50
+    )
+    # select 'Mindy',from:'user_name'
+    fill_in("user[name]", :with => "Mindy")
     fill_in("password", :with => "password")
     click_button('Sign In')
   end
@@ -24,7 +37,25 @@ module LoginHelper
   end
 
   def admin_login
-    select 'Walt Disney',from:'user_name'
+    # select 'Walt Disney',from:'user_name'
+    @mindy = User.create(
+      name: "Mindy",
+      password: "password",
+      happiness: 3,
+      nausea: 2,
+      tickets: 10,
+      height: 50
+    )
+    @walt = User.create(
+        name: "Walt Disney",
+        password: "password",
+        happiness: 3,
+        nausea: 2,
+        tickets: 15,
+        height: 58,
+        admin: true
+      )
+    fill_in("user[name]", :with => "Walt Disney")
     fill_in("password", :with => "password")
     click_button('Sign In')
   end
