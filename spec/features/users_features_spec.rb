@@ -347,7 +347,7 @@ describe 'Feature Test: Admin Flow', :type => :feature do
     click_link('See attractions')
     expect(page).to_not have_content("Go on #{@ferriswheel.name}")
   end
-
+ 
   it "links to attractions/show page from attractions/index" do
     click_link('See attractions')
     click_link("Show #{@rollercoaster.name}")
