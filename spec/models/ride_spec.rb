@@ -20,7 +20,7 @@ RSpec.describe Ride, :type => :model do
       :tickets => 4,
       :height => 34
     )
-  }
+  } 
 
   let(:ride) {
     Ride.create(user_id: user.id, attraction_id: attraction.id)
@@ -48,7 +48,7 @@ RSpec.describe Ride, :type => :model do
 
   it "has a method 'take_ride' that accounts for the user not being tall enough" do
     user.update(:height => 30, :tickets => 10)
-    ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
+  
     expect(ride.take_ride).to eq("Sorry. You are not tall enough to ride the #{attraction.name}.")
     expect(user.tickets).to eq(10)
     expect(user.happiness).to eq(3)
