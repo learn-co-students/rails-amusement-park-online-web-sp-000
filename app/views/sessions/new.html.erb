@@ -1,0 +1,9 @@
+<%= form_tag('/signin') do %>
+    <%= label_tag 'user_name', "Your Name" %>
+    <%= select_tag 'user_name', options_from_collection_for_select(@users, "name", "name") %><br>
+
+    <%= label_tag 'password' %>
+    <%= text_field_tag 'password' %><br><br>
+
+    <%= submit_tag "Sign In" %>
+<% end %>
