@@ -2,7 +2,13 @@
 <ul>
   <% @attractions.each do |a| %>
     <li>
-      <%= link_to "Go on #{a.name}", a %>
+      <% if is_admin? @user %>
+        <%= link_to "Show #{a.name}", a %>
+      <% else %>
+        <%= link_to "Go on #{a.name}", a %>
+      <% end %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to 'New Attraction', new_attraction_path if is_admin? @user %>

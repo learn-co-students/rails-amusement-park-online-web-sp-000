@@ -2,7 +2,7 @@
   <p><%= flash[:notice] %></p>
 <% end %>
 
-<% if @user.admin %>
+<% if is_admin? @user %>
   <h1>ADMIN</h1>
   <p>Name: <%= @user.name %></p>
 <% else %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'users#new'
   resources :users, only: %i[new create show]
-  resources :attractions, only: %i[index new create show]
+  resources :attractions, only: %i[index new create show edit update]
   post 'attractions/:id/ride', to: 'attractions#ride', as: :ride
   get '/signin', to: 'session#signin', as: :signin
   post '/signin', to: 'session#load', as: :post_signin
