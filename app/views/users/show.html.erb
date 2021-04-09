@@ -21,3 +21,5 @@ p id="notice"><%= notice %></p>
     <p><%= link_to 'See attractions', attractions_path %></p>
   </div>
 </div> 
+
+<%= link_to "Log Out", session_path(@destroy), method: "delete" %>
