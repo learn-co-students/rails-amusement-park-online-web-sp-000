@@ -1,17 +1,17 @@
 class SessionsController < ApplicationController
   def new
     @user = User.new
+    @people = User.all
   end
 
   def create
-    @user = User.find_by(name: params[:name])
-    binding.pry
+    @user = User.find(params[:user_name])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to users_path(@user)
+      redirect_to user_path(@user)
     else
       flash[:warning] = 'Invalid Name or Password'
-      redirect_to '/login'
+      redirect_to '/signin'
     end
   end
 

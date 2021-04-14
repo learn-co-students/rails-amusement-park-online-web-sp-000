@@ -1,6 +1,6 @@
 <h1>Login</h1>
 <%= form_tag '/signin' do %>
-    Name: <%= text_field_tag :name %><br>
+    Name: <%= select_tag :user_name, options_from_collection_for_select(@people, "id", "name") %><br>
     Password: <%= text_field_tag :password %><br>
-    <%= submit_tag "Sign in"%>
+    <%= submit_tag "Sign In"%>
 <%end%>
