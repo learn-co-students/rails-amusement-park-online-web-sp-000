@@ -1,0 +1,9 @@
+<%= form_for :user do |f| %>
+  Your Name <br><%= f.collection_select :name,  User.all, :name, :name, prompt: "Please select your username from this dropdown." %><br><br>
+
+  Your Password <br>
+  <input type="password" name="password" id="password" %><br><br>
+
+  <%= f.submit "Sign In" %>
+<% end %>
+<br>

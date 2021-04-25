@@ -1,0 +1,22 @@
+<%if flash[:notice]%>
+    <%=flash[:notice]%><br>
+<%end%>
+
+<%if @user.admin %>
+    ADMIN<br>
+<%end%>
+
+<%=@user.name%><br>
+Mood: <%=@user.mood%><br>
+Tickets: <%=@user.tickets%><br>
+Height: <%=@user.height%><br>
+
+<%= link_to "See attractions", attractions_path %><br>
+
+
+
+
+
+
+
+<a data-method="delete" href=<%= '/signout'%>/>Log Out</a>
