@@ -1,0 +1,18 @@
+
+
+<h4>Name:</h4> <p><%= @attraction.name%></p> <br>
+<h4>Total number of users:</h4> <p><%= @attraction.tickets%></p> <br>
+<h4>Ticket Requirement:</h4> <p><%= @attraction.tickets%></p> <br>
+<h4>Height Requirement:</h4> <p><%= @attraction.min_height%></p> <br>
+<h4>Nausea Rating:</h4> <p><%= @attraction.nausea_rating%></p> <br>
+<h4>Happiness Rating:</h4> <p><%= @attraction.happiness_rating%></p> <br>
+
+
+
+
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='Log Out'>
+<% end %>
+
+
+<%= link_to "Log Out", "/logout"%>
