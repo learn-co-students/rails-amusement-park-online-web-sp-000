@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'rides/create'
   # get 'users/new'
   # get 'users/create'
   # get 'users/edit'
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   root to: 'users#new'
   resources :users
   resources :attractions
+  resources :rides
   get 'signin', to: 'sessions#new'
   post 'signin', to: 'sessions#create'
   post 'logout', to: 'sessions#destroy'
