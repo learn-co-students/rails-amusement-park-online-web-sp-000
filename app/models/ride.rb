@@ -15,7 +15,7 @@ class Ride < ActiveRecord::Base
             rider.tickets = rider.tickets - attraction.tickets
             rider.nausea += attraction.nausea_rating
             rider.happiness += attraction.happiness_rating
-            rider.save
+            rider.save 
         end
 
         

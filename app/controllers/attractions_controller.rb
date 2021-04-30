@@ -5,6 +5,7 @@ class AttractionsController < ApplicationController
 
   def create
     @attraction = Attraction.create(attraction_params)
+    redirect_to attraction_path(@attraction)
   end
 
   def show
@@ -21,6 +22,7 @@ class AttractionsController < ApplicationController
   end
 
   def index
+    @attractions = Attraction.all
   end
 
   private
