@@ -1,0 +1,5 @@
+<% if @user.admin == true %>
+    <%= render "admin_index" %>
+<%else%>
+    <%= render "user_index" %>
+<% end %>
