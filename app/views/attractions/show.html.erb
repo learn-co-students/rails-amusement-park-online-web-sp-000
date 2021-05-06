@@ -1,0 +1,7 @@
+<h1><%= @attraction.name %></h1><br>
+
+<% if @user.admin == false %>
+    <%= render "user_show" %>
+<% else %>
+    <%= render "admin_show" %>
+<% end %>

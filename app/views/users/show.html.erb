@@ -1,0 +1,18 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<% if @user.admin %>
+    <strong>ADMIN</strong>
+<% end %>
+
+Name <%= @user.name %><br>
+<% if !@user.admin%>
+    <%= render "user_show" %>
+<% end %>
+
+<%= link_to "See attractions", attractions_path %>
+
+<%= link_to "Log Out", logout_path, method: :delete %><br>
