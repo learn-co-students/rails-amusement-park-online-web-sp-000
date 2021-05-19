@@ -13,9 +13,11 @@ Rails.application.routes.draw do
 
   get '/attractions', to: 'attractions#index'
   get '/attractions/:id', to: 'attractions#show', as: 'attraction'
-  
+
   get '/attractions/:id/edit', to: 'attractions#edit', as: 'edit_attraction'
   patch '/attractions/:id', to: 'attractions#update'
+
+  post '/rides', to: 'rides#create'
 
   delete '/signout', to: 'sessions#destroy'
 
