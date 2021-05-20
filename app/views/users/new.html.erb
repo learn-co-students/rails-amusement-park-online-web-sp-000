@@ -1,0 +1,12 @@
+<h1>Signup</h1>
+    <%= form_for @user do |user_builder| %>
+        Name: <%= user_builder.text_field :name %>
+        Password: <%= user_builder.text_field :password %>
+        Nausea: <%= user_builder.number_field :nausea %>
+        Happiness: <%= user_builder.number_field :happiness %>
+        Height: <%= user_builder.number_field :height %>
+        Tickets: <%= user_builder.number_field :tickets %>
+        Admin: <%= user_builder.check_box :admin %>
+
+        <%= user_builder.submit "Create User" %>
+    <% end %>

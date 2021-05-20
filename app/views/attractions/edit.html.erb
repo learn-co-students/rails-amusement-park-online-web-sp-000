@@ -1,0 +1,11 @@
+<h1>Edit Attraction</h1>
+
+<%= form_for @attraction do |attraction_builder| %>
+    Name: <%= attraction_builder.text_field :name %>
+    Tickets: <%= attraction_builder.number_field :tickets %>
+    Nausea Rating: <%= attraction_builder.number_field :nausea_rating %>
+    Happiness Rating: <%= attraction_builder.number_field :happiness_rating %>
+    Minimum Height: <%= attraction_builder.number_field :min_height %>
+
+    <%= attraction_builder.submit "Update Attraction" %>
+<% end %>
