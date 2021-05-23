@@ -5,6 +5,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    redirect_to 'users#show'
+  end
+
+  def show
+    @user = User.find_by(:id => params[:id])
   end
 
 
