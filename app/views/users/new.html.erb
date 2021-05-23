@@ -1,0 +1,12 @@
+<%= form_tag users_new_path do %>
+  <label>Username:</label><br>
+  <%= text_field_tag :'user[name]' %><br>
+
+  <label>Height:</label><br>
+  <%= number_field_tag :'user[height]' %></br>
+
+  <label>Happiness:</label><br>
+  <%= number_field_tag :'user[happiness]' %><br>
+ 
+  <%= submit_tag "Submit" %>
+<% end %>

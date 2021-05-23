@@ -1,7 +1,6 @@
-User
+Attraction
   t.string name
-  t.string password_digest
-  t.integer happiness
-  t.integer nausea
   t.integer tickets
-  t.integer height
+  t.integer nausea_rating
+  t.integer happiness_rating
+  t.integer min_height
