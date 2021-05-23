@@ -4,17 +4,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    session[:user_id] = @user.id
-    redirect_to "/users/#{@user.id}"
-  end
-
-  def signin
-    @user = User.find_by(:id => params[:id])
-    if @user
-      session[:user_id] = @user.id
-      redirect_to "/users/#{@user.id}"
+    @user = User.new(user_params)
+    if @user.save
+      session_hash
     else
+      render 'users/new'
     end
   end
 
@@ -27,5 +21,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :password, :happiness, :nausea, :tickets, :height)
+  end
+
+  def session_hash
+    session[:user_id] = @user.id
+    redirect_to "/users/#{@user.id}"
   end
 end

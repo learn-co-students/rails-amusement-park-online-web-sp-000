@@ -1,22 +1,23 @@
 <h1>Sign Up!</h1>
 
-<%= form_tag users_path do %>
-  <label>Username:</label><br>
-  <%= text_field_tag :'user[name]' %><br>
+<%= form_for @user do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
 
-  <label>Height:</label><br>
-  <%= number_field_tag :'user[height]' %></br>
+  <%= f.label :height %>:
+  <%= f.number_field :height %><br />
 
-  <label>Happiness:</label><br>
-  <%= number_field_tag :'user[happiness]' %><br>
+  <%= f.label :happiness %>:
+  <%= f.number_field :happiness %><br />
 
-  <label>Nausea:</label><br>
-  <%= number_field_tag :'user[nausea]' %></br>
+  <%= f.label :nausea %>:
+  <%= f.number_field :nausea %><br />
 
-  <label>Tickets:</label><br>
-  <%= number_field_tag :'user[tickets]' %></br>
+  <%= f.label :tickets %>:
+  <%= f.number_field :tickets %><br />
 
-  <label>Password:</label><br>
-  <%= password_field_tag :'user[password]' %></br>
+  <%= f.label :password %>:
+  <%= f.password_field :password %><br />
+
   <%= submit_tag "Create User" %>
 <% end %>
