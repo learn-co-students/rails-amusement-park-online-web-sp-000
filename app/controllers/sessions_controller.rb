@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find(name: params[:name])
-    raise params.inspect
+    @user = User.find_by(id: params[:id])
+    if @user.id.exists?
+      raise params.inspect
     session_hash
   end
 
