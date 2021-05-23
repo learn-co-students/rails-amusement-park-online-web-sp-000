@@ -4,17 +4,18 @@ class UsersController < ApplicationController
   end
 
   def create
+    # raise params.inspect
     @user = User.create(user_params)
+    redirect_to "/users/#{@user.id}"
   end
 
   def show
     @user = User.find_by(:id => params[:id])
-    session[:user_id] = @user.id
   end
-
-  def index
-    @users = User.all
-  end
+  #
+  # def index
+  #   @users = User.all
+  # end
 
 
   private
