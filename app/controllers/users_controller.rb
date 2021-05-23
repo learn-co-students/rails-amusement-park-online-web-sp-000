@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # raise params.inspect
     if @user.save
       session_hash
     else
@@ -21,10 +22,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :password, :happiness, :nausea, :tickets, :height)
-  end
-
-  def session_hash
-    session[:user_id] = @user.id
-    redirect_to "/users/#{@user.id}"
   end
 end

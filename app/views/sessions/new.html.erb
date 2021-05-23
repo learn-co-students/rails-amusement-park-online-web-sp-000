@@ -1,6 +1,6 @@
 <h1>Sign In!</h1>
 
-<%= form_tag @user do %>
+<%= form_tag @user do |f| %>
   <label>Username:</label><br>
   <%= select_tag :'user[name]', options_from_collection_for_select(User.all, "id", "name") %><br>
 
