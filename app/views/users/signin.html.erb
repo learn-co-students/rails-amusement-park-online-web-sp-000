@@ -2,10 +2,11 @@
 
 <%= form_tag @user do %>
   <label>Username:</label><br>
-  <%= select_tag :'user[name]', options_from_collection_for_select(@users, "id", "name") %><br>
+  <%= select_tag :'user[name]', options_from_collection_for_select(User.all, "id", "name") %><br>
 
   <label>Password:</label><br>
-  <%= password_field_tag :'user[password]' %></br>
+  <%= password_field_tag :'password'%></br>
 
-  <%= submit_tag "Signin" %>
+  <%= submit_tag "Sign In" %>
+
 <% end %>
