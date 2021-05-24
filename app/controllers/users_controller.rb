@@ -5,11 +5,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # raise params.inspect
     if @user.save
       session_hash
     else
       render 'users/new'
+      session_hash
     end
   end
 

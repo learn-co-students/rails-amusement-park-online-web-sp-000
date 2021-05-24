@@ -4,10 +4,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(id: params[:id])
-    if @user.id.exists?
+    @user = User.find_by(name: params[:name])
+    if User.include?(@user)
       raise params.inspect
-    session_hash
+    else
+      raise params.inspect
+      redirect_to 'users#show'
+    end
   end
 
   def destroy
