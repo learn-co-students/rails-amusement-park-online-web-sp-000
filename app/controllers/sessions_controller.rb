@@ -5,7 +5,11 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(name: params[:user][:name])
-    session_hash
+    if @user == nil
+      redirect_to root_url
+    else
+      session_hash
+    end
   end
 
   def destroy
