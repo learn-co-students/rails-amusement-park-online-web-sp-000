@@ -1,20 +1,17 @@
 class SessionsController < ApplicationController
+  skip_before_action :authorized_user, only: [:new, :create]
 
   def new
-  end
-
-  def sign_in
     @user = User.new
   end
 
   def create
-    @user = User.find_by(name: params[:user][:name])
-    if @user && @user.authenticate(params[:user][:password])
+    if @user = User.find_by(name: params[:user][:name]) && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
       session.clear
-      redirect_to root_url
+      render 'new'
     end
   end
 
