@@ -6,15 +6,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session_hash
+      session[:user_id] = @user.id
     else
       render 'users/new'
-      session_hash
     end
   end
 
   def show
-    @user = User.find_by(:id => params[:id])
+    if logged_in?
+      @user = User.find_by(:id => params[:id])
+    else
+    end
   end
 
 

@@ -5,10 +5,11 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(name: params[:user][:name])
-    if @user == nil
-      redirect_to root_url
+    if @user
+      session[:user_id] = @user.id
+      redirect_to "/users/#{@user.id}"
     else
-      session_hash
+      redirect_to root_url
     end
   end
 
