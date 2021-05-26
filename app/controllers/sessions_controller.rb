@@ -3,12 +3,17 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def sign_in
+    @user = User.new
+  end
+
   def create
     @user = User.find_by(name: params[:user][:name])
-    if @user
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to "/users/#{@user.id}"
+      redirect_to user_path(@user)
     else
+      session.clear
       redirect_to root_url
     end
   end
