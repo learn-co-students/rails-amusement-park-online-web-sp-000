@@ -10,26 +10,24 @@ class AttractionsController < ApplicationController
 
   def create
     @attraction = Attraction.create(attraction_params)
-    if @attraction.save
-      redirect_to @attraction
-    else
-      render :new
-    end
+    redirect_to attraction_path(@attraction)
   end
 
   def show
     @attraction = Attraction.find_by(id: params[:id])
+    @ride = @attraction.rides.build(user_id: current_user.id)
   end
 
   def edit
     @attraction = Attraction.find_by(id: params[:id])
+    @ride = @attraction.rides.build(user_id: current_user.id)
   end
 
   def update
     @attraction = Attraction.find_by(id: params[:id])
     @attraction.update(attraction_params)
 
-    redirect_to @attraction
+    redirect_to attraction_path(@attraction)
   end
 
   def destroy
@@ -39,10 +37,6 @@ class AttractionsController < ApplicationController
 
   def attraction_params
     params.require(:attraction).permit(:name, :tickets, :nausea_rating, :min_height)
-  end
-
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
 end

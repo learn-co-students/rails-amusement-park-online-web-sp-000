@@ -1,12 +1,12 @@
 <h1>Sign In!</h1>
 
-<%= form_tag '/signin', method: :post %>
+<%= form_tag (users_path) do %>
   <%= label_tag :'user[name]' %><br>
-  <%= select_tag :'user[name]', options_for_select(User.all, :name, :name) %><br>
+  <%= select_tag :'user[name]', options_for_select(User.all, :name) %><br>
 
   <%= label_tag :'user[password]' %>
   <%= text_field_tag :'user[password]' %></br>
 
   <%= submit_tag "Sign In" %>
 
-<% end %>
+  <% end %>
