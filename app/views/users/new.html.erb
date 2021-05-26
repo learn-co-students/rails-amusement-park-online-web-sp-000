@@ -1,8 +1,12 @@
 <h1>Sign Up!</h1>
 
 <%= form_for @user do |f| %>
+
   <%= f.label :name %>:
   <%= f.text_field :name %><br />
+
+  <%= f.label :password %>:
+  <%= f.password_field :password %><br />
 
   <%= f.label :height %>:
   <%= f.number_field :height %><br />
@@ -16,8 +20,7 @@
   <%= f.label :tickets %>:
   <%= f.number_field :tickets %><br />
 
-  <%= f.label :password %>:
-  <%= f.password_field :password %><br />
+  Admin: <%= user_builder.check_box :admin %>
 
   <%= submit_tag "Create User" %>
 <% end %>

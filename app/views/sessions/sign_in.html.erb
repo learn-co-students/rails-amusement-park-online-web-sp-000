@@ -1,0 +1,12 @@
+<h1>Sign In!</h1>
+
+<%= form_tag '/signin', method: :post %>
+  <%= label_tag :'user[name]' %><br>
+  <%= select_tag :'user[name]', options_for_select(User.all, :name, :name) %><br>
+
+  <%= label_tag :'user[password]' %>
+  <%= text_field_tag :'user[password]' %></br>
+
+  <%= submit_tag "Sign In" %>
+
+<% end %>
