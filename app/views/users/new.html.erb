@@ -20,7 +20,8 @@
   <%= f.label :tickets %>:
   <%= f.number_field :tickets %><br />
 
-  Admin: <%= f.check_box :admin %>
+  <%= f.label :admin, 'Check here if you are a park owner:' %>
+  <%= f.check_box :admin %>
 
   <%= submit_tag "Create User" %>
 <% end %>
