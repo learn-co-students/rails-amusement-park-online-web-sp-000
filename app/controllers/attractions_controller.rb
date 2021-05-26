@@ -41,4 +41,8 @@ class AttractionsController < ApplicationController
     params.require(:attraction).permit(:name, :tickets, :nausea_rating, :min_height)
   end
 
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
 end

@@ -20,7 +20,7 @@
   <%= f.label :tickets %>:
   <%= f.number_field :tickets %><br />
 
-  Admin: <%= user_builder.check_box :admin %>
+  Admin: <%= f.check_box :admin %>
 
   <%= submit_tag "Create User" %>
 <% end %>
