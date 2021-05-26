@@ -1,15 +1,22 @@
-<%= form_for @attraction do |attraction_builder| %>
+<%= form_for @attraction do |a| %>
+  <%= a.label :name %><br>
+    <%= a.text_field :name %>
 
-    Name: <%= attraction_builder.text_field :name %>
+  <%= a.label :tickets %><br>
+    <%= a.number_field :tickets %>
 
-    Tickets: <%= attraction_builder.number_field :tickets %>
+  <%= a.label :nausea_rating %><br>
+    <%= a.number_field :nausea_rating %>
 
-    Nausea Rating: <%= attraction_builder.number_field :nausea_rating %>
+  <%= a.label :happiness_rating %><br>
+    <%= a.number_field :happiness_rating %>
 
-    Happiness Rating: <%= attraction_builder.number_field :happiness_rating %>
+  <%= a.label :min_height, "Height Requirements (in inches)" %><br>
+    <%= a.number_field :min_height %>
 
-    Minimum Height: <%= attraction_builder.number_field :min_height %>
-
-    <%= attraction_builder.submit "Update Attraction" %>
+    <%= a.submit "Update Attraction" %>
 
 <% end %>
+
+<%= link_to 'Show', @attraction %>
+<%= link_to 'Back', attractions_path %>
