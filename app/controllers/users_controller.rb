@@ -19,22 +19,22 @@ skip_before_action :authorized_user, only: [:new, :create]
     @user = User.find_by(:id => params[:id])
   end
 
-  # def edit
-  # end
-  #
-  # def update
-  #   if params[:attraction_id]
-  #   @user = User.find_by(id: params[:id])
-  #
-  #   attraction = Attraction.find_by(id: params[:attraction_id])
-  #
-  #   ride = Ride.create(user_id: @user.id, attraction_id: attraction.id)
-  #
-  #   flash[:message] = ride.take_ride
-  #
-  #   redirect_to @user
-  #   end
-# end
+  def edit
+  end
+
+  def update
+    if params[:attraction_id]
+    @user = User.find_by(id: params[:id])
+
+    attraction = Attraction.find_by(id: params[:attraction_id])
+
+    ride = Ride.create(user_id: @user.id, attraction_id: attraction.id)
+
+    flash[:message] = ride.take_ride
+
+    redirect_to @user
+    end
+end
 
 
   private
