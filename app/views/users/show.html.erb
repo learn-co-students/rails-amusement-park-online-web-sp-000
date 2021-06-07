@@ -1,0 +1,15 @@
+<% if current_user.admin == true %>
+  <h4>ADMIN</h4>
+<% end %>
+
+<p>Name: <%= @user.name %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Height: <%= @user.height %></p>
+<br>
+<%= link_to "See attractions", attractions_path %>
+<br>
+<br>
+
+<%= link_to "Log Out", logout_path %>
+

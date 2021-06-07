@@ -46,7 +46,15 @@ body {
   margin: 10px;
 }
 
-.info {
-  height: 290px;
-  text-align: left;
+.alert {
+  color: red;
+  
+}
+
+.notice {
+  color: green;
+}
+
+#error_explanation{
+  color: red;
 }
