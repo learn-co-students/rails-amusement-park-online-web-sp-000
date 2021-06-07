@@ -17,7 +17,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= root_path %>"/>Home</a>
+        
+        <% if session[:user_id].present? %>
+
+          <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%= current_user.name %>'s profile</a>
+          <a class="navbar-brand" href="<%= logout_path %>"/>Log Out</a>
+        
+        <% else %>
+
+          <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_path %>"/>Log in</a>
+        
+        <% end %>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -26,9 +39,17 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+    
 
     <!-- content -->
     <div class="container"  role="main">
+
+          <% flash.each do |name, msg| -%>
+       <%= content_tag :div, msg, class: name %>
+     <% end -%> 
+
+     <br>
+     
       <%= yield %>
     </div>
   </body>

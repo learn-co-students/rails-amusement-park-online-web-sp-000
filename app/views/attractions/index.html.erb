@@ -1,0 +1,9 @@
+<h1>Listing Attractions</h1>
+
+<% @attractions.each do |attraction| %>
+   <p><%= link_to "Go on #{attraction.name}", attraction_path(attraction.id) if !current_user.admin? %></p>
+      <p><%= link_to "Show #{attraction.name}", attraction_path(attraction.id) if !!current_user.admin? %></p>
+<% end %> 
+
+<p><b><%= link_to "New Attraction", new_attraction_path if !!current_user.admin? %></b></p> 
+
