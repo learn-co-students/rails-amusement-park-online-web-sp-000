@@ -1,0 +1,121 @@
+MODELS
+- Attraction
+    ATTRS
+    X name : string 
+    X tickets : integer
+    X nausea rating : integer
+    X happiness rating : integer
+    X min_height : integer
+    REQ
+    X is valid with above attrs
+    X has many rides
+    X has many users through rides
+------
+- Ride
+    ATTRS
+    X attraction_id : integer
+    X user_id : integer
+    REQ
+    X is valid with a user_id and attraction_id
+    X belongs to one attraction
+    X belongs to one user
+    X has a method 'take_ride' that accounts for the user not having enough tickets
+    X has a method 'take_ride' that accounts for the user not being tall enough
+    X has a method 'take_ride' that accounts for both of the above 
+    X has a method 'take_ride' that updates ticket number
+    X has a method 'take_ride' that updates the user's nausea
+    X has a method 'take_ride' that updates the user's happiness
+------
+- User
+    ATTRS
+    X name : string
+    X password : string
+    X nausea : integer
+    X happiness : integer
+    X tickets : integer
+    X height : integer
+    X admin : boolean
+    REQ
+    X is valid with the above attrs
+    X is not valid without a password
+    X is valid with an admin boolean
+    X defaults to admin => false
+    X has many rides
+    X has many attractions through rides
+    X has a method 'mood' that returns 'sad' when the user is more nauseous than happy
+    X has a method 'mood' that returns 'happy' when the user is more happy than nauseous
+
+FEATURES
+
+User Signup/Login
+X Successfully signs up as a non-admin
+    X Route '/users/new'
+- Need a user_signup helper method in login_helper.rb
+X On sign up, successfully adds a sessions hash
+X Successfully logs in as non-admin
+    X Route '/signin'
+- Need a user_login helper method in login_helper.rb
+X On login, successfully adds a session hash 
+X If not logged in, prevents user from viewing user show page and redirects to home page
+    X Potential Route '/users/1'
+- Successfully signs up as admin
+- Need a admin_signup helper method in login_helper.rb
+- On sign up for admin, successfully adds a session hash
+- Successfully logs in as admin
+- Need a admin_login helper method in login_helper.rb
+- On login, successfully adds a session hash to admin
+
+User Signout
+X Has a link to log out from the users/show page 
+X Redirects to home page after logging out
+X Successfully destroys session hash when 'Log Out' is clicked
+
+Go On A Ride
+- Has a link from the user show page to the attractions index page - "See attractions"
+    - Route '/attractions'
+- Prevents users from editing/deleting/adding rides on the index page
+- Has titles of the rides on the attractions index page
+- Has links on the attractions index page to the attractions' show pages
+    - Route '/attractions/2'
+- Prevents users from editing/deleting a ride on the show page
+- Has a button from the attraction show page to go on the ride
+- Clicking on "Go on ride" redirects to user show page
+- Clicking on "Go on ride" updates the users ticket number
+- Clicking on "Go on ride" updates the users mood
+- When the user is tall enough and has enough tickets, clicking on "Go on ride" displays a thank you message
+    ex: "Thanks for riding the #{@ferriswheel.name}!"
+- When the user is too short, clicking on "Go on ride" displays a sorry message
+    ex: "You are not tall enough to ride the #{@teacups.name}"
+- When the user doesn't have enough tickets, clicking on "Go on ride" displays a sorry message
+    ex: "You do not have enough tickets to ride the #{@ferriswheel.name}"
+- When the user is too short AND doesn't have enough tickets, clicking on "Go on ride" displays a sorry message
+    ex: "You are not tall enough to ride the #{@teacups.name}"
+    ex: "You do not have enough tickets to ride the #{@teacups.name}"
+
+Admin Flow
+- Displays admin when logged in as ad admin on user show page
+    Ex: "ADMIN"
+- Links to the attractions from the users show page when logged in as a admin
+    Ex: "See attractions"
+- Allows admins to add an attraction from the index page
+    Ex: "New Attraction"
+    - Route: '/attractions/new'
+    - Form Requirements
+        - attraction[name] - text_field
+        - attraction[min_height] - number_field
+        - attraction[happiness_rating] - number_field
+        - attraction[nausea_rating] - number_field
+        - attraction[tickets] - number_field
+        - "Create Attraction" - submit button
+- Has link to attraction/show from attraction/index page for admins
+    Ex: "Show #{@rollercoaster.name}"
+    Route: "/attractions/1"
+- Does not suggest that admins go on a ride
+- Has a link for admin to edit attraction from the attractions/show page
+    Ex: "Edit Attraction"
+- Links to attraction/edit page from attraction/show page when logged in as admin
+- Update an attraction when an admin edits it
+
+
+    
+

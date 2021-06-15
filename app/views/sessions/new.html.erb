@@ -1,0 +1,9 @@
+<h1>Log In</h1>
+
+<%= form_tag("/signin", method: "post") do %>
+    <label>Select A User: </label>
+    <%= collection_select(:user, :name, User.all, :name, :name) %><br>
+    <label>Password: </label>
+    <input type="password" id="password" name="user[password"><br>
+    <input type="submit" value="Sign In"
+<% end %>
