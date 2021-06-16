@@ -1,0 +1,26 @@
+<h1>"<%= @user.name %>'s Account"</h1> 
+<% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
+<br>
+<% if @user.admin %>
+    <p>ADMIN</p>
+<% end %>
+<br>
+<p>Tickets: <%= @user.tickets %></p>
+<br>
+<p>Height: <%= @user.height %></p>
+<br>
+<p>Mood: <%= @user.mood %></p>
+<br>
+<p>Happiness: <%= @user.happiness %></p>
+<br>
+<p>Nausea: <%= @user.nausea %></p>
+<br>
+<%= link_to "See attractions", attractions_path %>
+<br><br>
+<%= link_to "Log Out", signout_path %>
+
+
