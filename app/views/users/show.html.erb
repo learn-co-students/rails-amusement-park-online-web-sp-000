@@ -1,4 +1,5 @@
 <h1>"<%= @user.name %>'s Account"</h1> 
+
 <br>
 <% if @user.admin %>
     <p>ADMIN</p>
@@ -14,6 +15,8 @@
 <br>
 <p>Nausea: <%= @user.nausea %></p>
 <br>
+<%= link_to "See attractions", attractions_path %>
+<br><br>
 <%= link_to "Log Out", signout_path %>
 
 

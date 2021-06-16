@@ -1,0 +1,20 @@
+<h1><%= @attraction.name %></h1>
+<br>
+<label>Ticket Cost: </label>
+<%= @attraction.tickets %>
+<br>
+<label>Happiness Rating: </label>
+<%= @attraction.happiness_rating %>
+<br>
+<label>Nausea Rating: </label>
+<%= @attraction.nausea_rating %>
+<br>
+<label>Minimum Height: </label>
+<%= @attraction.min_height %>
+<br>
+<br>
+<%= form_tag("/rides", method: "post") do %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :attraction_id, @attraction.id %>
+    <%= button_tag "Go on this ride" %>
+  <% end %>

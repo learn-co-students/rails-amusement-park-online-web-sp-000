@@ -58,12 +58,12 @@ X Successfully logs in as non-admin
 X On login, successfully adds a session hash 
 X If not logged in, prevents user from viewing user show page and redirects to home page
     X Potential Route '/users/1'
-- Successfully signs up as admin
+X Successfully signs up as admin
 - Need a admin_signup helper method in login_helper.rb
-- On sign up for admin, successfully adds a session hash
-- Successfully logs in as admin
+X On sign up for admin, successfully adds a session hash
+X Successfully logs in as admin
 - Need a admin_login helper method in login_helper.rb
-- On login, successfully adds a session hash to admin
+X On login, successfully adds a session hash to admin
 
 User Signout
 X Has a link to log out from the users/show page 
@@ -71,17 +71,17 @@ X Redirects to home page after logging out
 X Successfully destroys session hash when 'Log Out' is clicked
 
 Go On A Ride
-- Has a link from the user show page to the attractions index page - "See attractions"
+X Has a link from the user show page to the attractions index page - "See attractions"
     - Route '/attractions'
-- Prevents users from editing/deleting/adding rides on the index page
-- Has titles of the rides on the attractions index page
-- Has links on the attractions index page to the attractions' show pages
+X Prevents users from editing/deleting/adding rides on the index page
+X Has titles of the rides on the attractions index page
+X Has links on the attractions index page to the attractions' show pages
     - Route '/attractions/2'
-- Prevents users from editing/deleting a ride on the show page
-- Has a button from the attraction show page to go on the ride
-- Clicking on "Go on ride" redirects to user show page
-- Clicking on "Go on ride" updates the users ticket number
-- Clicking on "Go on ride" updates the users mood
+X Prevents users from editing/deleting a ride on the show page
+X Has a button from the attraction show page to go on the ride
+X Clicking on "Go on ride" redirects to user show page
+X Clicking on "Go on ride" updates the users ticket number
+X Clicking on "Go on ride" updates the users mood
 - When the user is tall enough and has enough tickets, clicking on "Go on ride" displays a thank you message
     ex: "Thanks for riding the #{@ferriswheel.name}!"
 - When the user is too short, clicking on "Go on ride" displays a sorry message
