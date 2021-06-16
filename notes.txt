@@ -82,22 +82,22 @@ X Has a button from the attraction show page to go on the ride
 X Clicking on "Go on ride" redirects to user show page
 X Clicking on "Go on ride" updates the users ticket number
 X Clicking on "Go on ride" updates the users mood
-- When the user is tall enough and has enough tickets, clicking on "Go on ride" displays a thank you message
+X When the user is tall enough and has enough tickets, clicking on "Go on ride" displays a thank you message
     ex: "Thanks for riding the #{@ferriswheel.name}!"
-- When the user is too short, clicking on "Go on ride" displays a sorry message
+X When the user is too short, clicking on "Go on ride" displays a sorry message
     ex: "You are not tall enough to ride the #{@teacups.name}"
-- When the user doesn't have enough tickets, clicking on "Go on ride" displays a sorry message
+X When the user doesn't have enough tickets, clicking on "Go on ride" displays a sorry message
     ex: "You do not have enough tickets to ride the #{@ferriswheel.name}"
-- When the user is too short AND doesn't have enough tickets, clicking on "Go on ride" displays a sorry message
+X When the user is too short AND doesn't have enough tickets, clicking on "Go on ride" displays a sorry message
     ex: "You are not tall enough to ride the #{@teacups.name}"
     ex: "You do not have enough tickets to ride the #{@teacups.name}"
 
 Admin Flow
-- Displays admin when logged in as ad admin on user show page
+X Displays admin when logged in as ad admin on user show page
     Ex: "ADMIN"
-- Links to the attractions from the users show page when logged in as a admin
+X Links to the attractions from the users show page when logged in as a admin
     Ex: "See attractions"
-- Allows admins to add an attraction from the index page
+X Allows admins to add an attraction from the index page
     Ex: "New Attraction"
     - Route: '/attractions/new'
     - Form Requirements
@@ -107,14 +107,14 @@ Admin Flow
         - attraction[nausea_rating] - number_field
         - attraction[tickets] - number_field
         - "Create Attraction" - submit button
-- Has link to attraction/show from attraction/index page for admins
+X Has link to attraction/show from attraction/index page for admins
     Ex: "Show #{@rollercoaster.name}"
     Route: "/attractions/1"
-- Does not suggest that admins go on a ride
-- Has a link for admin to edit attraction from the attractions/show page
+X Does not suggest that admins go on a ride
+X Has a link for admin to edit attraction from the attractions/show page
     Ex: "Edit Attraction"
-- Links to attraction/edit page from attraction/show page when logged in as admin
-- Update an attraction when an admin edits it
+X Links to attraction/edit page from attraction/show page when logged in as admin
+X Update an attraction when an admin edits it
 
 
     
