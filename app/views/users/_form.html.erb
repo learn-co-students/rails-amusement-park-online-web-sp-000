@@ -1,0 +1,34 @@
+<%= form_with(model: user, local: true) do |form| %>
+
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %><br>
+  <%= form.label :password %>
+  <%= form.password_field :password %><br>
+  <%= form.label :height %>
+  <%= form.password_field :height %><br>
+  <%= form.label :happiness %>
+  <%= form.password_field :happiness %><br>
+  <%= form.label :nausea %>
+  <%= form.password_field :nausea %><br>
+  <%= form.label :tickets %>
+  <%= form.password_field :tickets %><br>
+  <%= form.label :admin %>
+  <%= form.check_box :admin, id: 'user_admin' %><br>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<strong><%= 'ADMIN' if @user.admin %></strong><br>
+<strong>Name: <%= @user.name %><br></strong>
+<% if !@user.admin %>
+  <strong>Happiness: <%= @user.happiness %><br></strong>
+  <strong>Nausea: <%= @user.nausea %><br></strong>
+  <strong>Height: <%= @user.height %><br></strong>
+  <strong>Tickets: <%= @user.tickets %><br></strong>
+  <strong>Mood: <%= @user.mood  %><br></strong> 
+<% end %>
+
+
+ 
+
+
+<%= link_to 'See attractions', attractions_path %><br>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %> |
+<%= link_to 'Log Out', logout_path %>

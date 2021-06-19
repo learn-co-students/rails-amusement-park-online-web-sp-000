@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @attraction.name %>
+</p>
+
+<p>
+  <strong>Tickets:</strong>
+  <%= @attraction.tickets %>
+</p>
+
+<p>
+  <strong>Nausea rating:</strong>
+  <%= @attraction.nausea_rating %>
+</p>
+
+<p>
+  <strong>Happiness rating:</strong>
+  <%= @attraction.happiness_rating %>
+</p>
+
+<p>
+  <strong>Min height:</strong>
+  <%= @attraction.min_height %>
+</p>
+<td><%#= button_to "Go on this ride", {controller: :rides, action: :create, attraction_id: @attraction.id, user_id: session[:user_id]}, method: :post %>
+<%= ride_or_edit %>
+|
+<%= link_to 'Back', attractions_path %>
