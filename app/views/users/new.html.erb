@@ -1,0 +1,8 @@
+<%= form_tag ({ controller: 'users', action: 'create', method: 'post'}) do %>
+    <input name=user_name value='name'>
+    <input height=user_height value='height'>
+    <input happiness=user_happiness value='happiness'>
+    <input nauteous=user_nausea>
+    <input tickets=user_tickets>
+    <input type=submit value='signup'>
+<% end %>
