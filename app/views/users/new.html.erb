@@ -1,8 +1,9 @@
-<%= form_tag ({ controller: 'users', action: 'create', method: 'post'}) do %>
-    <input name=user_name value='name'>
-    <input height=user_height value='height'>
-    <input happiness=user_happiness value='happiness'>
-    <input nauteous=user_nausea>
-    <input tickets=user_tickets>
-    <input type=submit value='signup'>
-<% end %>
+     <%= form_tag ({ controller: 'users', action: 'create', method: 'post'}) do %>
+         <input name=name value='name'>
+         <input height=height value='height_(in_inches)'>
+         <input happiness=happiness value='how_happy_are_you?_(1-5_scale)'>
+         <input nauteous=nausea value='how_nauseous_are_you?_(1-5_scale)'>
+         <input tickets=tickets value='how_many_dollars_are_in_your_pocket?'>
+         <input password=password value='password'>
+         <input type=submit value='create_user'>
+     <% end %>
