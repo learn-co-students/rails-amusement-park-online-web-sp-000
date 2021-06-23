@@ -8,17 +8,17 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.valid?
             @user.save
+            # byebug
             session[:user_id] = @user.id
-            redirect_to controller: 'users', action: 'show'
+            redirect_to users_show_path(@user)
         else
-            redirect_to controller: 'users', action: 'create'
+            redirect_to users_new_path
         end
     end
 
     def show
         # byebug
         @user = User.find(params[:id])
-        render template: 'users/show'
     end
 
     private

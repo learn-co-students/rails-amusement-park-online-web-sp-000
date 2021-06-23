@@ -10,9 +10,10 @@ class User < ApplicationRecord
     has_many :attractions, through: :rides
 
     def mood
-        if self.happiness < 5
+        if self.nausea > self.happiness
+            #byebug
             return "sad"
-        elsif self.happiness > 5
+        else
             return "happy"
         end
     end
