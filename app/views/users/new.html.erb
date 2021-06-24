@@ -1,9 +1,24 @@
-     <%= form_tag("/users") do %>
-        Name: <%= text_field_tag "user[name]" %><br><br>
-        Height (in inches) <%= text_field_tag "user[height]" %><br><br>
-        How happy are you? (1-5 scale) <%= text_field_tag "user[happiness]" %><br><br>
-        How nauseous are you? (1-5 scale) <%= text_field_tag "user[nausea]" %><br><br>
-        How many dollars are in your pocket? <%= text_field_tag "user[tickets]" %><br><br>
-        Password: <%= text_field_tag "user[password]" %><br><br>
-         <%= submit_tag "Create User" %>
-     <% end %>
+    <%= form_for @user do |f| %>
+        <%= f.label "Name" %>
+        <%= f.text_field :name %>
+        <br>
+        <%= f.label "Height (in inches)" %>
+        <%= f.text_field :height %>
+        <br>
+        <%= f.label "How happy are you? (1-5 scale)" %>
+        <%= f.text_field :happiness %>
+        <br>
+        <%= f.label "How nauseous are you? (1-5 scale)" %>
+        <%= f.text_field :nausea %>
+        <br>
+        <%= f.label "How many dollars are in your pocket?" %>
+        <%= f.text_field :tickets %>
+        <br>
+        <%= f.label "Check box if you are a theme park owner" %>
+        <%= f.check_box :admin %>
+        <br>
+        <%= f.label "Password" %>
+        <%= f.password_field :password %>
+        <br>
+        <%= f.submit "Create User" %>
+    <% end %>

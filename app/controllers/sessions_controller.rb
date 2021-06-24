@@ -1,18 +1,27 @@
 class SessionsController < ApplicationController
 
     def new
-        @users = User.all 
+        @user = User.new
+        #byebug 
     end
 
     def create
         byebug
-        @user = User.find_by(name: params[:user][:id])
-        # byebug
-        if !@user.authenticate(params[:user][:password])
-            redirect_to users_new_path
-        else
-            session[:user_id] = @user.id
-            redirect_to users_show_path
+        if user = User.find_by(params[:user_id])
+            byebug
+            if user.authenticate(params[:password])
+               session[:user_id] = user.id
+               redirect_to user
+            else
+               render :new 
+            end
+         end
+    end
+
+    def destroy
+        if session[:user_id]
+            session.destroy
+            redirect_to root_path
         end
     end
 end

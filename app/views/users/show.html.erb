@@ -1,4 +1,7 @@
-<%= @user.name %>
-Mood <%= @user.mood %>
-<%= @user.tickets %>
-<%= @user.height %>
+Name: <%= @user.name %><br>
+Mood: <%= @user.mood %><br>
+Tickets: <%= @user.tickets %><br>
+Height: <%= @user.height %>
+<%= form_tag ({controller: 'users', action: 'destroy', method: 'post'}) do %>
+    <input type=submit value='logout'>
+<% end %>
