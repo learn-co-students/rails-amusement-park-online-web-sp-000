@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
             byebug
             if user.authenticate(params[:password])
                session[:user_id] = user.id
-               redirect_to users_show_path(user)
+               redirect_to user
             else
                render :new 
             end
