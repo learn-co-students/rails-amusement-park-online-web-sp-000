@@ -8,17 +8,18 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
+        # byebug
             if @user.save
             # byebug
             session[:user_id] = @user.id
             redirect_to users_show_path(@user)
-        else
-            redirect_to users_new_path
-        end
+            # else
+            # redirect_to users_new_path
+            end
+            # redirect_to users_show_path(@user)
     end
 
     def show
-        #byebug
         @user = User.find_by(id: session[:user_id])
         #byebug
     end

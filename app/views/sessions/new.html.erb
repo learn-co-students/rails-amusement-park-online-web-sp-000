@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, :url => signin_post_path do |f| %>
     <%= f.label "Name" %>
     <%= f.collection_select :name, User.all, :id, :name %><br>
     <%= f.label "Password" %>
