@@ -17,14 +17,14 @@ class UsersController < ApplicationController
     end
 
     def show
-        # byebug
+        #byebug
         @user = User.find(params[:id])
+        #byebug
     end
 
     private
 
     def user_params
-        params.require(:user).permit(:name, :password)
+        params.require(:user).permit(:name, :password, :nausea, :happiness, :height, :tickets)
     end
-
 end

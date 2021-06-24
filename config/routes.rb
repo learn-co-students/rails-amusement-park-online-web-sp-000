@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   get '/users/new' => 'users#new'
   post '/users' => 'users#create'
   get '/users/:id', to: 'users#show', as: 'users_show'
+  get '/signin', to: 'sessions#new', as: 'signin'
+  post '/signin' => 'sessions#create'
   root :to => "static#home"
 end

@@ -1,5 +1,8 @@
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
-    <input name=name> <%# checkbox with all users.name %>
-    <input password=password>
-    <input type=submit value='signin'>
+    <% @users.each do |user| %>
+    Name: <%= select_tag "user[name]", user.name %>
+    <%# debugger %>
+    <% end %><br><br>
+    Password: <%= password_field_tag "user[password]" %>
+    <%= submit_tag "Login" %>
 <% end %>
