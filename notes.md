@@ -1,0 +1,1 @@
+link to attractions - <%# link_to 'See attractions', attractions_path %>
