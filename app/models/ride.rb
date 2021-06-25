@@ -12,6 +12,7 @@ class Ride < ApplicationRecord
             new_happiness = user.happiness + attraction.happiness_rating
             # byebug
             user.update(happiness: new_happiness, nausea: new_nausea, tickets: tickets_left)
+            return "Thanks for riding the #{attraction.name}!"
         elsif user.tickets < attraction.tickets && user.height < attraction.min_height
             return "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
         elsif user.tickets < attraction.tickets

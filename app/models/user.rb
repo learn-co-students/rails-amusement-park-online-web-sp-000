@@ -10,12 +10,7 @@ class User < ApplicationRecord
     has_many :attractions, through: :rides
 
     def mood
-        # byebug
-        if self.nausea > self.happiness
-            # byebug
-            return "sad"
-        else
-            return "happy"
-        end
+        return "sad" if nausea > happiness
+        return "happy" if nausea < happiness
     end
 end

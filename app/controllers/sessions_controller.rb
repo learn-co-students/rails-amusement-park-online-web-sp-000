@@ -7,21 +7,25 @@ class SessionsController < ApplicationController
     end
 
     def create
-        # binding.pry
-        #  byebug
+        # byebug
         if @user = User.find_by(name: params[:user][:name])
             # byebug
-            if @user.authenticate(params[:user][:password])
+            # if @user.authenticate(params[:user][:password])
                session[:user_id] = @user.id
                redirect_to users_show_path(@user)
-            end
-         end
+            # end
+        end
+        # if @user = User.find_by(id: params[:user][:name])
+        #     # byebug
+        #     session[:user_id] = @user.id
+        #     redirect_to users_show_path(@user)
+        # else
+        #     render :new
+        # end
     end
 
     def destroy
-        if session[:user_id]
-            session.destroy
-            redirect_to root_path
-        end
+        session.delete :user_id
+        redirect_to root_path
     end
 end

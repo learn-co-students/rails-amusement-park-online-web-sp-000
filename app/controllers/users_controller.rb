@@ -23,11 +23,4 @@ class UsersController < ApplicationController
         @user = User.find_by(id: session[:user_id])
         #byebug
     end
-
-    def destroy
-        if session[:user_id]
-            session.destroy
-            redirect_to root_path
-        end
-    end
 end

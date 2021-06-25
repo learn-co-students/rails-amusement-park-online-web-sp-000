@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :nausea, :happiness, :height, :tickets)
+    params.require(:user).permit(:name, :password, :nausea, :happiness, :height, :tickets, :admin)
   end
 
   def logged_in?
