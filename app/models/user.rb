@@ -1,13 +1,11 @@
 class User < ActiveRecord::Base
     has_secure_password
     has_many :rides
-    has_many :attractions, through: :rides
-
+    has_many :attractions, :through => :rides
+  
     def mood
-        if self.happiness > self.nausea
-          return 'happy'
-        else
-          return 'sad'
-        end
+      unless admin
+        happiness > nausea ? "happy" : "sad"
       end
-end
+    end
+  end
