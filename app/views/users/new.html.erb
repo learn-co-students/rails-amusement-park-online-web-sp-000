@@ -1,0 +1,38 @@
+<h1>Sign Up</h1>
+<%= form_for @user do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, required: true %>
+
+  <br>
+
+  <%= f.label :height %>
+  <%= f.number_field :height, in: 30.0..90.0, step: 1.0, required: true %>
+
+  <br>
+
+  <%= f.label :happiness %>
+  <%= f.range_field :happiness, in: 1..10, required: true %>
+
+  <br>
+
+  <%= f.label :nausea %>
+  <%= f.range_field :nausea, in: 1..10, required: true %>
+
+  <br>
+
+  <%= f.label :tickets %>
+  <%= f.number_field :tickets, required: true %>
+
+  <br>
+
+  <%= f.label :admin %>
+  <%= f.check_box :admin, unchecked: true %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, required: true %>
+
+  <br>
+
+  <%= f.submit %>
+<% end %>
